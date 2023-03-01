@@ -4,27 +4,27 @@
         "prenom": "Ridouane",
         "password": "1234",
         "email": "ridouane.ousmane@upsd.fr",
-        "roles": "etudiant"
+        "role": "etudiant"
     },
     {
         "nom": "ANDRIAMAHADIMBY",
         "prenom": "Henintsoa Micael",
         "password": "1234",
         "email": "henintsoa.andriamahadimby@upsd.fr",
-        "roles": "etudiant"
+        "role": "etudiant"
     },
     {
         "nom": "Jean",
         "prenom": "Pierre",
         "password": "1234",
         "email": "jean.pierre@upsd.fr",
-        "roles": "coordinateur"
+        "role": "coordinateur"
     },
     {
         "nom": "Delahaye",
         "prenom": "Sandrine",
         "password": "1234",
         "email": "sandrine.delahaye@upsd.fr",
-        "roles": "responsable"
+        "role": "responsable"
     }
 ]
