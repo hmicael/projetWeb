@@ -1,0 +1,14 @@
+[
+    {
+        "nom": "Frederic Vernier",
+        "matiere": ["Web"]
+    },
+    {
+        "nom": "David Rei",
+        "matiere": ["Web"]
+    },
+    {
+        "nom": "Waller",
+        "matiere": ["BD", "BD Miage"]
+    }
+]
