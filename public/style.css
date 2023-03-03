@@ -21,7 +21,20 @@ table, th, td {
 .ui-widget-overlay {
     background-color: rgba(0, 0, 0, 1); /* Couleur d'arrière-plan modal grisé personnalisée */
 }
-  
+ 
+#tabs > ul > li a{
+    background-color: white; /* Couleur d'arrière-plan des onglets */
+    color: #63003C;
+}  
+
+/* Définir la couleur de la bordure de l'onglet sélectionné */
+#tabs > ul > li {
+    border-color: #63003C;
+}
+
+#tabs > ul {
+    background-color: #63003C;
+}
 
 body {
     background-color: #f1f1f1;
