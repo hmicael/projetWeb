@@ -18,6 +18,11 @@ table, th, td {
     color: red;
 }
 
+.ui-widget-overlay {
+    background-color: rgba(0, 0, 0, 1); /* Couleur d'arrière-plan modal grisé personnalisée */
+}
+  
+
 body {
     background-color: #f1f1f1;
     font-family: Arial, sans-serif;
