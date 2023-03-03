@@ -1,6 +1,6 @@
 <?php
 $title = 'Administration';
-// ouverture des fichiers
+// Ouverture des fichiers
 $jsonUtilisateur = file_get_contents(WEBROOT . '/data/utilisateurs.json');
 $utilisateurs = json_decode($jsonUtilisateur, true);
 $jsonEnseignant = file_get_contents(WEBROOT . '/data/enseignants.json');
@@ -11,7 +11,7 @@ $jsonSalle = file_get_contents(WEBROOT . '/data/salles.json');
 $salles = json_decode($jsonSalle, true);
 
 
-//Suppression
+// Suppression
 if(isset($_GET['delete'])) {
     if (! $_GET['id']) {
         throw new Exception('Vous devez spécifier un identifiant');
@@ -42,8 +42,6 @@ if(isset($_GET['delete'])) {
     header('Location: index.php?action=admin');
     exit();
 }
-
-
 
 // Ajout 
 if(isset($_GET['create'])) {
@@ -117,9 +115,7 @@ if(isset($_GET['create'])) {
     exit();
 }
 
-
-
-//Modification
+// Modification
 if(isset($_GET['edit'])) {
     if (! $_GET['id']) {
         throw new Exception('Vous devez spécifier un identifiant');
@@ -133,8 +129,7 @@ if(isset($_GET['edit'])) {
             $email = htmlspecialchars($_POST['email']);
             $password = htmlspecialchars($_POST['password']);
             $role = htmlspecialchars($_POST['role']);
-            $utilisateur= $utilisateurs[$id];
-
+            $utilisateur = $utilisateurs[$id];
             // Modifier les informations de l'utilisateur
             $utilisateur['nom'] = $nom;
             $utilisateur['prenom'] = $prenom;
@@ -172,15 +167,4 @@ if(isset($_GET['edit'])) {
     exit();
 }
 
-
-
-
-
-
-
-
-
 require(WEBROOT . '/views/administration.php');
-
-
-?>

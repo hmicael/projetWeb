@@ -1,12 +1,21 @@
 $(function() {
     errorMessage = $( ".error-message" );
-
-    function displayError(t) {
+    /**
+     * Function qui affiche les messages d'erreur par rapport au formulaire
+     * @param string txt 
+     */
+    function displayError(txt) {
         errorMessage
-          .text(t)
+          .text(txt)
           .addClass("ui-state-error");
     }
 
+    /**
+     * Function qui vérifie la longeur d'un string, valeur d'un input
+     * @param {*} elt element input d'un formulaire
+     * @param {*} min valeur minimal autorisé
+     * @returns boolean
+     */
     function checkLength(elt, min) {
         if (elt.val().length < min) {
             elt.addClass("ui-state-error");
@@ -17,6 +26,13 @@ $(function() {
         }
     }
 
+    /**
+     * Function qui vérifie si la valeur d'un input est conforme à une expression régulière donnée
+     * @param {*} elt input d'un formulaire
+     * @param {*} type type de l'input
+     * @param {*} regexp expression régulière
+     * @returns boolean
+     */
     function checkRegexp(elt, type, regexp) {
         if (!(regexp.test(elt.val()))) {
             elt.addClass("ui-state-error");
@@ -40,6 +56,7 @@ $(function() {
             let password = $('#password');
             let role = $('#role').val();
             let emailRegex = /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+            // Valider les champs
             let valid = true &&
                 checkLength(nom, 3) &&
                 checkLength(prenom, 3) &&
@@ -51,14 +68,16 @@ $(function() {
                 displayError("Les mots de passe ne se correspondent pas");
             }
             if (valid) {
-                // Envoi des données en ajax
+                // Envoi des données en ajax si les données sont valides
                 $.ajax({
                     url: window.location.href + '&create=utilisateurs',
                     type: 'POST',
                     data: {'nom': nom.val(), 'prenom': prenom.val(), 'password': password.val(), 'email': email.val(), 'role': role},
                     success: function(response) {
-                        console.log(response);
-                        $('#dialog-create-user-form').dialog('close');
+                        response = JSON.parse(response);
+                        if(response.status == 'ok') {
+                            $('#dialog-create-user-form').dialog('close');
+                        }
                     },
                     error: function(jqXHR, textStatus, error) {
                         displayError(error);

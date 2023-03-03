@@ -27,7 +27,7 @@ try {
                 throw new Exception("Error 404 : Page not found");
             }
         } else {
-            // par defaut: page d'accueuil
+            // Par defaut: page d'accueuil
             $title = 'Accueil';
             require(WEBROOT. '/views/accueil.php');
         }
