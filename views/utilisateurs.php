@@ -11,6 +11,7 @@
                     echo '<td>' . ucfirst($value) . '</td>';
                 }
             ?>
+            <td>Actions</td>
         </tr>
     </thead>
     <tbody>
