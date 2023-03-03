@@ -25,7 +25,7 @@
                     }
                     echo '<td>';
                     echo '<a href="index.php?action=admin">Modifier</a>';
-                    if ($_SESSION['id'] != $key) {
+                    if ($value != 'responsable') {
                         echo '<a href="index.php?action=admin&delete=utilisateurs&id=' . $id . '">Supprimer</a>';
                     }
                     echo '</td>';
