@@ -48,6 +48,7 @@ $(function() {
     $('#modal-user-form').dialog({
         autoOpen: false,
         modal: true,
+        resizable: false,
         open: function() {
             // si l'action est un edit, charger le modal form avec les données issues du tr contenant le boutton cliqué
             if($(this).data('action') == 'edit') {
