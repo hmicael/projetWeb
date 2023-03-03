@@ -24,9 +24,8 @@
                         echo '<td>' . ucfirst($value) . '</td>';
                     }
                     echo '<td>';
-                        echo '<a href="" class="">Modifier </a>';
-                        echo '<a href="" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deleteProduit{{$produit->id}}"><i class="fa fa-trash"></i> Retirer </a>';
-                        echo '</div>';
+                    echo '<a href="index.php?action=admin">Modifier</a>';
+                    echo '<a href="index.php?action=admin&delete=salles&id=' . $id . '">Supprimer</a>';
                     echo '</td>';
                 echo '</tr>';
             }

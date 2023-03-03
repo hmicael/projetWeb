@@ -7,6 +7,7 @@
     <title>Document</title>
 </head>
 <body>
+<h1>Liste des Enseignants :</h1>
 <table>
 <thead>
     <tr>
