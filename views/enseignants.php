@@ -15,14 +15,16 @@
         foreach ($entete as $key => $value) {
             echo '<th>'.$key.'</th>';
         }?>
+        <td>Actions</td>
     </tr>
 </thead>
 <tbody>
     <?php 
     
     foreach ($enseignants as $key => $value) {
+        $id = $key +1;
         echo "<tr>";
-        echo '<td>'.$key +1 .'</td>';
+        echo '<td>'.$id .'</td>';
         echo "<td>" . $value['nom'] . "</td>";
         if ($value['matiere']) {
             echo "<td><select>";
@@ -31,6 +33,10 @@
                 }
             echo "</select></td>";
         }
+        echo '<td>';
+        echo '<a href="index.php?action=admin">Modifier</a>';
+        echo '<a href="index.php?action=admin&delete=enseignants&id=' . $id . '">Supprimer</a>';
+        echo '</td>';
         echo "</tr>";
     }
     

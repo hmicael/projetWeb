@@ -25,6 +25,10 @@ if(isset($_GET['delete'])) {
             unset($matieres[$id]);
             file_put_contents(WEBROOT . '/data/matieres.json', json_encode($matieres, JSON_PRETTY_PRINT));
             break;
+        case 'enseignants':
+            unset($enseignants[$id]);
+            file_put_contents(WEBROOT . '/data/enseignants.json', json_encode($enseignants, JSON_PRETTY_PRINT));
+            break;
         default:
             throw new Exception("L'element $entity n'existe pas");
             break;
