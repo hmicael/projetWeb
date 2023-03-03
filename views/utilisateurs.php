@@ -62,11 +62,18 @@
                     echo '<tr>';
                         echo "<td>$id</td>";
                         foreach ($utilisateur as $key2 => $value) {
-                            if ($key2 != 'password')
-                                echo '<td>' . ucfirst($value) . '</td>';
+                            if ($key2 != 'password') {
+                                echo '<td>';
+                                if ($key2 == 'email') {
+                                    echo '<a href="mailto:' . $value . '">' . $value . '</a>';
+                                } else {
+                                    echo $value;
+                                }
+                                echo '</td>';
+                            }
                         }
                         echo '<td>';
-                        echo '<a href="index.php?action=admin">Modifier</a>';
+                        echo '<a href="index.php?action=admin&edit=utilisateurs&id=' . $id . '">Modifier</a>';
                         if ($value != 'responsable') {
                             echo '<a href="index.php?action=admin&delete=utilisateurs&id=' . $id . '">Supprimer</a>';
                         }

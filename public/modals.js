@@ -76,7 +76,18 @@ $(function() {
                     success: function(response) {
                         response = JSON.parse(response);
                         if(response.status == 'ok') {
-                            $('#tbody-utilisateur').append('<tr><td></td></tr>');
+                            let id = ($('#tbody-utilisateur').children().length + 1);
+                            $('#tbody-utilisateur').append('<tr>' + 
+                                    '<td>' + id + '</td>' +
+                                    '<td>' + nom.val() +'</td>' +
+                                    '<td>' + prenom.val() + '</td>' + 
+                                    '<td><a href="mailto:' + email.val() + '">' + email.val() + '</a></td>' + 
+                                    '<td>' + role + '</td>' + 
+                                    '<td>' +
+                                        '<a href="' + window.location.href + '&edit=utilisateurs&id=' + id + '">Modifier</a>' +
+                                        '<a href="' + window.location.href + '&delete=utilisateurs&id=' + id + '">Supprimer</a>' +
+                                    '</td>' +
+                                '</tr>');
                             $('#dialog-create-user-form').dialog('close');
                         }
                     },
