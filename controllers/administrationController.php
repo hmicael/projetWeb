@@ -45,17 +45,17 @@ if(isset($_GET['delete'])) {
 
 
 
-//Ajout Ou Modification
+//Ajout 
 if(isset($_GET['create'])) {
     $entity = htmlspecialchars($_GET['create']);
     switch ($entity) {
         case 'utilisateurs':
             // Récupération des données du formulaire
-            $nom = $_POST['nom'];
-            $prenom = $_POST['prenom'];
-            $email = $_POST['email'];
-            $password = $_POST['password'];
-            $role = $_POST['role'];
+            $nom = htmlspecialchars($_POST['nom']);
+            $prenom = htmlspecialchars($_POST['prenom']);
+            $email = htmlspecialchars($_POST['email']);
+            $password = htmlspecialchars($_POST['password']);
+            $role = htmlspecialchars($_POST['role']);
             if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
                 // Création d'un nouvel objet
                 $newUtilisateur = array(
@@ -78,7 +78,7 @@ if(isset($_GET['create'])) {
             }
             break;
         case 'matieres':
-            $nom = $_POST['nom'];
+            $nom = htmlspecialchars($_POST['nom']);
             $newMatieres = array(
                 'nom' => $nom,
             );
@@ -87,8 +87,8 @@ if(isset($_GET['create'])) {
             file_put_contents('matieres.json', $jsonMatieres);
             break;
         case 'enseignants':
-             $nom = $_POST['nom'];
-             $matiere = $_POST['matiere'];
+             $nom = htmlspecialchars($_POST['nom']);
+             $matiere = htmlspecialchars($_POST['matiere']);
              $newEnseignants = array(
                 'nom' => $nom,
                 'matiere' => $matiere
@@ -98,13 +98,58 @@ if(isset($_GET['create'])) {
                  file_put_contents('enseignants.json', $jsonEnseignants);
                 break;
         case 'salles':
-            $nom = $_POST['nom'];
+            $nom = htmlspecialchars($_POST['nom']);
             $newSalles = array(
             'nom' => $nom
             );
             $salles[] = $newSalles;
             $jsonSalles = json_encode($salles);
             file_put_contents('salles.json', $jsonSalles);
+            break;
+        default:
+            throw new Exception("L'element $entity n'existe pas");
+            break;
+    }
+    header('Location: index.php?action=admin');
+    exit();
+}
+
+
+
+//Modification
+if(isset($_GET['edit'])) {
+    if (! $_GET['id']) {
+        throw new Exception('Vous devez spécifier un identifiant');
+    }
+    $id = intval($_GET['id']) - 1;
+    $entity = htmlspecialchars($_GET['edit']);
+    switch ($entity) {
+        case 'utilisateurs':
+            $nom = htmlspecialchars($_POST['nom']);
+            $prenom = htmlspecialchars($_POST['prenom']);
+            $email = htmlspecialchars($_POST['email']);
+            $password = htmlspecialchars($_POST['password']);
+            $role = htmlspecialchars($_POST['role']);
+            $utilisateur= $utilisateurs[$id];
+
+            // Modifier les informations de l'utilisateur
+            $utilisateur['nom'] = $nom;
+            $utilisateur['prenom'] = $prenom;
+            $utilisateur['email'] = $email;
+            $utilisateur['password'] = $password;
+            file_put_contents(WEBROOT . '/data/utilisateurs.json', json_encode($utilisateurs, JSON_PRETTY_PRINT));
+            break;
+        case 'matieres':
+            unset($matieres[$id]);
+            file_put_contents(WEBROOT . '/data/matieres.json', json_encode($matieres, JSON_PRETTY_PRINT));
+            break;
+        case 'enseignants':
+            unset($enseignants[$id]);
+            file_put_contents(WEBROOT . '/data/enseignants.json', json_encode($enseignants, JSON_PRETTY_PRINT));
+            break;
+        case 'salles':
+            unset($salles[$id]);
+            file_put_contents(WEBROOT . '/data/salles.json', json_encode($salles, JSON_PRETTY_PRINT));
             break;
         default:
             throw new Exception("L'element $entity n'existe pas");
