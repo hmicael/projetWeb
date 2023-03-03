@@ -117,6 +117,7 @@ $(function() {
                                 elt = $('#tbody-utilisateur tr').eq(id-1);
                             }
                             $('#modal-user-form').dialog('close');
+                            // Surligner la ligne créée / modifiée pendant quelques secondes
                             elt.addClass('success-highlight');
                             setTimeout(function() {
                                 elt.removeClass('success-highlight', 1500 );
