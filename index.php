@@ -21,13 +21,14 @@ try {
                 exit();
             } else if ($_GET['action'] === 'visualiser') {
                 require(WEBROOT. '/controllers/visualisationController.php');
-            } else if ($_GET['action'] === 'editer') {
+            } else if ($_GET['action'] === 'admin') {
                 require(WEBROOT. '/controllers/editionController.php');
             } else {
                 throw new Exception("Error 404 : Page not found");
             }
         } else {
             // par defaut: page d'accueuil
+            $title = 'Accueil';
             require(WEBROOT. '/views/accueil.php');
         }
     }   

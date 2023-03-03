@@ -4,7 +4,7 @@ Page d'accueil
 <div>
     <a href="index.php?action=visualiser">Visualiser</a>
     <?php if ($_SESSION['role'] == 'responsable') {
-        echo '<a href="index.php?action=editer">Edition</a>';
+        echo '<a href="index.php?action=admin">Edition</a>';
     }
     ?>
 </div>
