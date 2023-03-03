@@ -23,6 +23,16 @@
                     foreach ($utilisateur as $value) {
                         echo '<td>' . ucfirst($value) . '</td>';
                     }
+                    echo '<td>';
+        ?>
+                    <a href="index.php?action=admin">Modifier</a>
+                    <?php
+                    if ($_SESSION['id'] != $key) {
+                        echo '<a href="index.php?action=admin&delete=utilisateurs&id=<?=$key?>">Supprimer</a>';
+                    }
+                    ?>
+        <?php
+                    echo '</td>';
                 echo '</tr>';
             }
         ?>

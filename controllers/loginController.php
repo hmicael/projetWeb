@@ -11,6 +11,7 @@ echo '<pre>';
 foreach ($utilisateurs as $key => $u) {
     if($u['email'] == htmlspecialchars($_POST['email']) && $u['password'] == htmlspecialchars($_POST['password'])) {
         // si les crendentials sont conforme, on quitte la boucle en se redirigeant vers la page d'accueil
+        $_SESSION['id'] = $key;
         $_SESSION['role'] = $u['role'];
         $_SESSION['nom'] = $u['nom'];
         $_SESSION['prenom'] = $u['prenom'];

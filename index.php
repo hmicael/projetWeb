@@ -4,7 +4,7 @@ define('WEBROOT', str_replace('index.php', '', $_SERVER['SCRIPT_FILENAME']));   
 define('ROOT', str_replace('index.php', '', $_SERVER['SCRIPT_NAME']));  // chemin depuis la racine du site
 // require(WEBROOT. '/controllers/TacheController.php');
 // $tacheController = new TacheController();
-
+// var_dump($_GET);exit;
 try {
     if(! isset($_SESSION['role'])) { // si la personne n'est pas encore connectée
         // si la personne vient de se connecter
