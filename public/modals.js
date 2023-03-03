@@ -1,6 +1,6 @@
 $(function() {
     errorMessage = $('.error-message');
-    
+
     /**
      * Function qui affiche les messages d'erreur par rapport au formulaire
      * @param string txt 
@@ -59,81 +59,81 @@ $(function() {
             }
         },
         buttons: {
-        'Enregistrer': function() {
-            const action = $(this).data('action');
-            // Récupérer les valeurs des champs de formulaire
-            let nom = $('#nom');
-            let prenom = $('#prenom');
-            let email = $('#email');
-            let password = $('#password');
-            let role = $('#role').val();
-            let emailRegex = /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
-            // Valider les champs
-            let valid = true &&
-                checkLength(nom, 3) &&
-                checkLength(prenom, 3) &&
-                checkLength(password, 4) &&
-                checkRegexp(email, 'email', emailRegex)
-            ;
-            if (password.val() != $('#confirm-password').val()) {
-                valid = false;
-                displayError('Les mots de passe ne se correspondent pas');
-            }
-            if (valid) {
-                // Envoi des données en ajax si les données sont valides
-                $.ajax({
-                    url: $(this).data('url'),
-                    type: 'POST',
-                    data: {'nom': nom.val(), 'prenom': prenom.val(), 'password': password.val(), 'email': email.val(), 'role': role},
-                    success: function(response) {
-                        response = JSON.parse(response);
-                        let elt = null;
-                        if(response.status == 'ok') {
-                            if (action == 'create') { // si l'action est un create
-                                const id = $('#tbody-utilisateur').children().length + 1;
-                                $('#tbody-utilisateur').append('<tr>' + 
-                                    '<td>' + id + '</td>' +
-                                    '<td>' + nom.val() +'</td>' +
-                                    '<td>' + prenom.val() + '</td>' + 
-                                    '<td><a href="mailto:' + email.val() + '">' + email.val() + '</a></td>' + 
-                                    '<td>' + role + '</td>' + 
-                                    '<td>' +
-                                        '<a href="' + window.location.href + '&edit=utilisateurs&id=' + id + '" class="btn-edit open-user-modal">Modifier</a>' +
-                                        '<a href="' + window.location.href + '&delete=utilisateurs&id=' + id + '" class="btn-delete">Supprimer</a>' +
-                                    '</td>' +
-                                '</tr>');
-                                elt = $('#tbody-utilisateur').children().last();
-                            } else {
-                                const id = response.id + 1;
-                                $('#tbody-utilisateur tr').eq(id-1).html('<td>' + id + '</td>' +
-                                    '<td>' + nom.val() +'</td>' +
-                                    '<td>' + prenom.val() + '</td>' + 
-                                    '<td><a href="mailto:' + email.val() + '">' + email.val() + '</a></td>' + 
-                                    '<td>' + role + '</td>' + 
-                                    '<td>' +
-                                        '<a href="' + window.location.href + '&edit=utilisateurs&id=' + id + '" class="btn-edit open-user-modal">Modifier</a>' +
-                                        '<a href="' + window.location.href + '&delete=utilisateurs&id=' + id + '" class="btn-delete">Supprimer</a>' +
-                                    '</td>')
-                                ;
-                                elt = $('#tbody-utilisateur tr').eq(id-1);
+            'Enregistrer': function() {
+                const action = $(this).data('action');
+                // Récupérer les valeurs des champs de formulaire
+                let nom = $('#nom');
+                let prenom = $('#prenom');
+                let email = $('#email');
+                let password = $('#password');
+                let role = $('#role').val();
+                let emailRegex = /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+                // Valider les champs
+                let valid = true &&
+                    checkLength(nom, 3) &&
+                    checkLength(prenom, 3) &&
+                    checkLength(password, 4) &&
+                    checkRegexp(email, 'email', emailRegex)
+                ;
+                if (password.val() != $('#confirm-password').val()) {
+                    valid = false;
+                    displayError('Les mots de passe ne se correspondent pas');
+                }
+                if (valid) {
+                    // Envoi des données en ajax si les données sont valides
+                    $.ajax({
+                        url: $(this).data('url'),
+                        type: 'POST',
+                        data: {'nom': nom.val(), 'prenom': prenom.val(), 'password': password.val(), 'email': email.val(), 'role': role},
+                        success: function(response) {
+                            response = JSON.parse(response);
+                            let elt = null;
+                            if(response.status == 'ok') {
+                                if (action == 'create') { // si l'action est un create
+                                    const id = $('#tbody-utilisateur').children().length + 1;
+                                    $('#tbody-utilisateur').append('<tr>' + 
+                                        '<td>' + id + '</td>' +
+                                        '<td>' + nom.val() +'</td>' +
+                                        '<td>' + prenom.val() + '</td>' + 
+                                        '<td><a href="mailto:' + email.val() + '">' + email.val() + '</a></td>' + 
+                                        '<td>' + role + '</td>' + 
+                                        '<td>' +
+                                            '<a href="' + window.location.href + '&edit=utilisateurs&id=' + id + '" class="btn-edit open-user-modal">Modifier</a>' +
+                                            '<a href="' + window.location.href + '&delete=utilisateurs&id=' + id + '" class="btn-delete">Supprimer</a>' +
+                                        '</td>' +
+                                    '</tr>');
+                                    elt = $('#tbody-utilisateur').children().last();
+                                } else {
+                                    const id = response.id + 1;
+                                    $('#tbody-utilisateur tr').eq(id-1).html('<td>' + id + '</td>' +
+                                        '<td>' + nom.val() +'</td>' +
+                                        '<td>' + prenom.val() + '</td>' + 
+                                        '<td><a href="mailto:' + email.val() + '">' + email.val() + '</a></td>' + 
+                                        '<td>' + role + '</td>' + 
+                                        '<td>' +
+                                            '<a href="' + window.location.href + '&edit=utilisateurs&id=' + id + '" class="btn-edit open-user-modal">Modifier</a>' +
+                                            '<a href="' + window.location.href + '&delete=utilisateurs&id=' + id + '" class="btn-delete">Supprimer</a>' +
+                                        '</td>')
+                                    ;
+                                    elt = $('#tbody-utilisateur tr').eq(id-1);
+                                }
+                                $('#modal-user-form').dialog('close');
+                                // Surligner la ligne créée / modifiée pendant quelques secondes
+                                elt.addClass('success-highlight');
+                                setTimeout(function() {
+                                    elt.removeClass('success-highlight', 1500 );
+                                }, 500 );
                             }
-                            $('#modal-user-form').dialog('close');
-                            // Surligner la ligne créée / modifiée pendant quelques secondes
-                            elt.addClass('success-highlight');
-                            setTimeout(function() {
-                                elt.removeClass('success-highlight', 1500 );
-                            }, 500 );
+                        },
+                        error: function(jqXHR, textStatus, error) {
+                            displayError(error);
                         }
-                    },
-                    error: function(jqXHR, textStatus, error) {
-                        displayError(error);
-                    }
-                });
-            }
-        },
-        'Annuler': function() {
-            // Fermer la boîte de dialogue
-            $('#modal-user-form').dialog('close');
+                    });
+                }
+            },
+            'Annuler': function() {
+                // Fermer la boîte de dialogue
+                $('#modal-user-form').dialog('close');
         }
         },
         close: function() {
