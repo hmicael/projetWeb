@@ -11,9 +11,10 @@
 <thead>
     <tr>
         <th scope="col">#</th>
-        <?php ?>
-        <th scope="col">Nom</th>
-        <th scope="col">Matiere</th>
+        <?php  $entete = $enseignants[0];
+        foreach ($entete as $key => $value) {
+            echo '<th>'.$key.'</th>';
+        }?>
     </tr>
 </thead>
 <tbody>
@@ -21,7 +22,16 @@
     
     foreach ($enseignants as $key => $value) {
         echo "<tr>";
-        echo '<td>'.$value['nom']
+        echo '<td>'.$key +1 .'</td>';
+        echo "<td>" . $value['nom'] . "</td>";
+        if ($value['matiere']) {
+            echo "<td><select>";
+            foreach ($value['matiere'] as $key => $v) {
+                echo "<option>". $v . "</option>";
+                }
+            echo "</select></td>";
+        }
+        echo "</tr>";
     }
     
     ?>
