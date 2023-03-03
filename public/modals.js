@@ -1,5 +1,5 @@
 $(function() {
-    errorMessage = $( ".error-message" );
+    errorMessage = $( '.error-message' );
     /**
      * Function qui affiche les messages d'erreur par rapport au formulaire
      * @param string txt 
@@ -7,7 +7,7 @@ $(function() {
     function displayError(txt) {
         errorMessage
           .text(txt)
-          .addClass("ui-state-error");
+          .addClass('ui-state-error');
     }
 
     /**
@@ -18,8 +18,8 @@ $(function() {
      */
     function checkLength(elt, min) {
         if (elt.val().length < min) {
-            elt.addClass("ui-state-error");
-            displayError("La longeur doit-être supérieur à " + min);
+            elt.addClass('ui-state-error');
+            displayError('La longeur doit-être supérieur à ' + min);
             return false;
         } else {
             return true;
@@ -35,8 +35,8 @@ $(function() {
      */
     function checkRegexp(elt, type, regexp) {
         if (!(regexp.test(elt.val()))) {
-            elt.addClass("ui-state-error");
-            displayError("Le format de " + type + " est invalide");
+            elt.addClass('ui-state-error');
+            displayError('Le format de ' + type + ' est invalide');
             return false;
         } else {
             return true;
@@ -48,7 +48,7 @@ $(function() {
         autoOpen: false,
         modal: true,
         buttons: {
-        "Créer": function() {
+        'Créer': function() {
             // Récupérer les valeurs des champs de formulaire
             let nom = $('#nom');
             let prenom = $('#prenom');
@@ -61,11 +61,11 @@ $(function() {
                 checkLength(nom, 3) &&
                 checkLength(prenom, 3) &&
                 checkLength(password, 4) &&
-                checkRegexp(email, "email", emailRegex)
+                checkRegexp(email, 'email', emailRegex)
             ;
             if (password.val() != $('#confirm-password').val()) {
                 valid = false;
-                displayError("Les mots de passe ne se correspondent pas");
+                displayError('Les mots de passe ne se correspondent pas');
             }
             if (valid) {
                 // Envoi des données en ajax si les données sont valides
@@ -76,6 +76,7 @@ $(function() {
                     success: function(response) {
                         response = JSON.parse(response);
                         if(response.status == 'ok') {
+                            $('#tbody-utilisateur').append('<tr><td></td></tr>');
                             $('#dialog-create-user-form').dialog('close');
                         }
                     },
@@ -85,7 +86,7 @@ $(function() {
                 });
             }
         },
-        "Annuler": function() {
+        'Annuler': function() {
             // Fermer la boîte de dialogue
             $('#dialog-create-user-form').dialog('close');
         }
@@ -96,7 +97,7 @@ $(function() {
         }
     });
 
-    // Ouvrir la boîte de dialogue lorsqu'on clique sur le bouton "Créer un utilisateur"
+    // Ouvrir la boîte de dialogue lorsqu'on clique sur le bouton Créer un utilisateur
     $('#create-user-button').click(function() {
         $('#dialog-create-user-form').dialog('open');
     });
