@@ -35,8 +35,8 @@
             echo "</select></td>";
         }
         echo '<td>';
-            echo '<a href="index.php?action=admin&edit=enseignants&id=' . $id . '">Modifier</a>';
-            echo '<a href="index.php?action=admin&delete=enseignants&id=' . $id . '">Supprimer</a>';
+            echo '<a href="index.php?action=admin&edit=enseignants&id=' . $id . '" class="btn-edit open-enseignant-modal">Modifier</a>';
+            echo '<a href="index.php?action=admin&delete=enseignants&id=' . $id . '" class="btn-delete">Supprimer</a>';
         echo '</td>';
         echo "</tr>";
     }
