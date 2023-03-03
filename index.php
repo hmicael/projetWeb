@@ -19,13 +19,10 @@ try {
                 session_destroy();
                 header('Location:' . ROOT);
                 exit();
-            } else if ($_GET['action'] === 'edit') {
-                if (isset($_GET['id']) && $_GET['id'] > 0) {
-                    // $id = $_GET['id'];
-                    // $tacheController->edit($id);
-                } else {
-                    throw new Exception("Invalid Request: id is required");
-                }
+            } else if ($_GET['action'] === 'visualiser') {
+                require(WEBROOT. '/controllers/visualisationController.php');
+            } else if ($_GET['action'] === 'editer') {
+                require(WEBROOT. '/controllers/editionController.php');
             } else {
                 throw new Exception("Error 404 : Page not found");
             }
