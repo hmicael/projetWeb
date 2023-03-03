@@ -140,18 +140,28 @@ if(isset($_GET['edit'])) {
             $utilisateur['prenom'] = $prenom;
             $utilisateur['email'] = $email;
             $utilisateur['password'] = $password;
+            $utilisateur['role'] = $role;
+            // Convertir le tableau PHP en JSON
             file_put_contents(WEBROOT . '/data/utilisateurs.json', json_encode($utilisateurs, JSON_PRETTY_PRINT));
             break;
         case 'matieres':
-            unset($matieres[$id]);
+            $nom = htmlspecialchars($_POST['nom']);
+            $matiere = $matieres[$id];
+            $matiere['nom'] = $nom;
             file_put_contents(WEBROOT . '/data/matieres.json', json_encode($matieres, JSON_PRETTY_PRINT));
             break;
         case 'enseignants':
-            unset($enseignants[$id]);
+            $nom = htmlspecialchars($_POST['nom']);
+            $matiere = htmlspecialchars($_POST['matiere']);
+            $enseignant = $enseignants[$id];
+            $enseignant['nom'] = $nom;
+            $enseignant['matiere'] = $matiere;
             file_put_contents(WEBROOT . '/data/enseignants.json', json_encode($enseignants, JSON_PRETTY_PRINT));
             break;
         case 'salles':
-            unset($salles[$id]);
+            $nom = htmlspecialchars($_POST['nom']);
+            $salle = $salles[$id];
+            $salle['nom'] = $nom;
             file_put_contents(WEBROOT . '/data/salles.json', json_encode($salles, JSON_PRETTY_PRINT));
             break;
         default:
