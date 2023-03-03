@@ -1,5 +1,6 @@
 $(function() {
-    errorMessage = $( '.error-message' );
+    errorMessage = $('.error-message');
+    
     /**
      * Function qui affiche les messages d'erreur par rapport au formulaire
      * @param string txt 
