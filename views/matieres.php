@@ -23,7 +23,10 @@
                     foreach ($matiere as $value) {
                         echo '<td>' . ucfirst($value) . '</td>';
                     }
-                    echo "<td>$id</td>";
+                    echo '<td>';
+                        echo '<a href="index.php?action=admin">Modifier</a>';
+                        echo '<a href="index.php?action=admin&delete=matieres&id=' . $key . '">Supprimer</a>';
+                    echo '</td>';
                 echo '</tr>';
             }
         ?>
