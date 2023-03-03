@@ -8,16 +8,16 @@ Edition responsable
         <li><a href="#tabs-4">Salles</a></li>
     </ul>
     <div id="tabs-1">
-        Utilisateurs
+        <?php require(WEBROOT . 'views/utilisateurs.php') ?>
     </div>
     <div id="tabs-2">
-        Mati&egrave;res
+        <?php require(WEBROOT . 'views/matieres.php') ?>
     </div>
     <div id="tabs-3">
-        Enseignants
+        <?php require(WEBROOT . 'views/enseignants.php') ?>
     </div>
     <div id="tabs-4">
-        Salles
+        <?php require(WEBROOT . 'views/salles.php') ?>
     </div>
 </div>
 <?php $content = ob_get_clean(); ?>
