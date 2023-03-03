@@ -2,35 +2,76 @@
     $tHead = array_keys($utilisateurs[0]);
 ?>
 <h1>Liste des utilisateurs :</h1>
-<table>
-    <thead>
-        <tr>
-            <td>#</td>
-            <?php
-                foreach ($tHead as $value) {
-                    echo '<td>' . ucfirst($value) . '</td>';
-                }
-            ?>
-            <td>Actions</td>
-        </tr>
-    </thead>
-    <tbody>
-        <?php
-            foreach ($utilisateurs as $key => $utilisateur) {
-                $id = $key + 1;
-                echo '<tr>';
-                    echo "<td>$id</td>";
-                    foreach ($utilisateur as $value) {
+<!-- BEGIN: Modal -->
+<button id="create-user-button">+</button>
+
+<section id="dialog-create-user-form" title="Créer un utilisateur" class="modal">
+    <p class="error-message"></p>
+    <form id="create-user-form">
+        <fieldset>
+            <div>
+                <label for="nom">Nom :</label>
+                <input type="text" name="nom" id="nom">
+            </div>
+            <div>
+                <label for="prenom">Pr&eacute;nom :</label>
+                <input type="text" name="prenom" id="prenom">
+            </div>
+            <div>
+                <label for="email">Email :</label>
+                <input type="email" name="email" id="email">
+            </div>
+            <div>
+                <label for="password">Mot de passe :</label>
+                <input type="password" name="password" id="password">
+            </div>
+            <div>
+                <label for="confirm-password">Confirmez le mot de passe :</label>
+                <input type="password" name="confirm-password" id="confirm-password">
+            </div>
+            <div>
+                <label for="role">Role :</label>
+                <select name="role" id="role">
+                    <option value="etudiant">Etudiant</option>
+                    <option value="coordinateur">Coordinateur</option>
+                    <option value="responsable">Responsable</option>
+                </select>
+            </div>
+        </fieldset>
+    </form>
+</section>
+<!-- END: Modal -->
+<section>
+    <table>
+        <thead>
+            <tr>
+                <td>#</td>
+                <?php
+                    foreach ($tHead as $value) {
                         echo '<td>' . ucfirst($value) . '</td>';
                     }
-                    echo '<td>';
-                    echo '<a href="index.php?action=admin">Modifier</a>';
-                    if ($value != 'responsable') {
-                        echo '<a href="index.php?action=admin&delete=utilisateurs&id=' . $id . '">Supprimer</a>';
-                    }
-                    echo '</td>';
-                echo '</tr>';
-            }
-        ?>
-    </tbody>
-</table>
+                ?>
+                <td>Actions</td>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+                foreach ($utilisateurs as $key => $utilisateur) {
+                    $id = $key + 1;
+                    echo '<tr>';
+                        echo "<td>$id</td>";
+                        foreach ($utilisateur as $value) {
+                            echo '<td>' . ucfirst($value) . '</td>';
+                        }
+                        echo '<td>';
+                        echo '<a href="index.php?action=admin">Modifier</a>';
+                        if ($value != 'responsable') {
+                            echo '<a href="index.php?action=admin&delete=utilisateurs&id=' . $id . '">Supprimer</a>';
+                        }
+                        echo '</td>';
+                    echo '</tr>';
+                }
+            ?>
+        </tbody>
+    </table>
+</section>

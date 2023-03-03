@@ -45,7 +45,7 @@ if(isset($_GET['delete'])) {
 
 
 
-//Ajout 
+// Ajout 
 if(isset($_GET['create'])) {
     $entity = htmlspecialchars($_GET['create']);
     switch ($entity) {
@@ -61,20 +61,23 @@ if(isset($_GET['create'])) {
                 $newUtilisateur = array(
                     'nom' => $nom,
                     'prenom' => $prenom,
-                    'email' => $email,
                     'password' => $password,
+                    'email' => $email,
                     'role' => $role
                 );
                 // Ajout du nouvel objet dans le tableau de données
                 $utilisateurs[] = $newUtilisateur;
 
                 // Conversion du tableau PHP en contenu JSON
-                $jsonUtilisateur = json_encode($utilisateurs);
+                $jsonUtilisateur = json_encode($utilisateurs, JSON_PRETTY_PRINT);
 
                 // Écriture du contenu JSON dans le fichier
-                file_put_contents('utilisateurs.json', $jsonUtilisateur);
+                file_put_contents(WEBROOT .  '/data/utilisateurs.json', $jsonUtilisateur);
+                echo json_encode(['status' => 'ok']);
+                die();
             } else {
-                echo "Adresse e-mail est invalide";
+                echo json_encode(['status' => 'Adresse e-mail est invalide']);
+                die();
             }
             break;
         case 'matieres':
@@ -83,8 +86,8 @@ if(isset($_GET['create'])) {
                 'nom' => $nom,
             );
             $matieres[] = $newMatieres;
-            $jsonMatieres = json_encode($matieres);
-            file_put_contents('matieres.json', $jsonMatieres);
+            $jsonMatieres = json_encode($matieres, JSON_PRETTY_PRINT);
+            file_put_contents(WEBROOT .  '/data/matieres.json', $jsonMatieres);
             break;
         case 'enseignants':
              $nom = htmlspecialchars($_POST['nom']);
@@ -94,8 +97,8 @@ if(isset($_GET['create'])) {
                 'matiere' => $matiere
                 );
                  $enseignants[] = $newEnseignants;
-                 $jsonEnseignants = json_encode($enseignants);
-                 file_put_contents('enseignants.json', $jsonEnseignants);
+                 $jsonEnseignants = json_encode($enseignants, JSON_PRETTY_PRINT);
+                 file_put_contents(WEBROOT .  '/data/enseignants.json', $jsonEnseignants);
                 break;
         case 'salles':
             $nom = htmlspecialchars($_POST['nom']);
@@ -103,8 +106,8 @@ if(isset($_GET['create'])) {
             'nom' => $nom
             );
             $salles[] = $newSalles;
-            $jsonSalles = json_encode($salles);
-            file_put_contents('salles.json', $jsonSalles);
+            $jsonSalles = json_encode($salles, JSON_PRETTY_PRINT);
+            file_put_contents(WEBROOT .  '/data/salles.json', $jsonSalles);
             break;
         default:
             throw new Exception("L'element $entity n'existe pas");
