@@ -3,7 +3,7 @@
     <head>
         <meta name="description" content="Gestion d'emploi du temps" />
         <meta charset="utf-8">
-        <title>EDT' | <?= $title ?></title>
+        <title><?= $title ?> | EDT</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="author" content="Ridouane OUSMANE DOUDOU">
         <meta name="author" content="Henintsoa ANDRIAMAHADIMBY">
