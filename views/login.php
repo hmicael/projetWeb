@@ -22,7 +22,7 @@
                 ?>
                 <div>
                     <label>Email:</label>
-                    <input type="email" name="email" required>
+                    <input type="email" name="email" required autofocus>
                 </div>
                 <div>
                     <label>Mot de passe:</label>

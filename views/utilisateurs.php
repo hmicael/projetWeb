@@ -11,7 +11,7 @@
         <fieldset>
             <div>
                 <label for="nom">Nom :</label>
-                <input type="text" name="nom" id="nom">
+                <input type="text" name="nom" id="nom" autofocus>
             </div>
             <div>
                 <label for="prenom">Pr&eacute;nom :</label>

@@ -140,7 +140,7 @@ $(function() {
         }
     });
 
-    // Ouvrir la boîte de dialogue lorsqu'on clique sur le bouton Créer un utilisateur
+    // Ouvrir la boîte de dialogue
     $('.open-user-modal').click(function(e) {
         e.preventDefault();
         const action = $(this).hasClass('btn-edit') ? 'edit' : 'create';
