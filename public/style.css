@@ -5,11 +5,13 @@
     box-shadow: lightgray 4px 4px 20px;
 }
 
-table,
-th,
-td {
+table, th, td {
     border: 1px solid black;
     border-collapse: collapse;
+}
+
+.success-highlight {
+    background-color: rgba(99, 0, 60, 0.3);
 }
 
 .error-msg {
@@ -30,8 +32,6 @@ body {
     border-radius: 5px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
 }
-
-
 
 form {
     display: flex;

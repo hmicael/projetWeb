@@ -71,14 +71,12 @@ if(isset($_GET['create'])) {
                     'prenom' => ucfirst($data['prenom']),
                     'password' => $data['password'],
                     'email' => $data['email'],
-                    'role' => $data['role']
+                    'role' => ucfirst($data['role'])
                 );
                 // Conversion du tableau PHP en contenu JSON
                 $jsonUtilisateur = json_encode($utilisateurs, JSON_PRETTY_PRINT);
                 // Écriture du contenu JSON dans le fichier
                 file_put_contents(WEBROOT .  '/data/utilisateurs.json', $jsonUtilisateur);
-                echo json_encode(['status' => 'ok']);
-                die();
             } else {
                 echo json_encode(['status' => 'Adresse e-mail est invalide']);
                 die();
@@ -111,8 +109,8 @@ if(isset($_GET['create'])) {
             throw new Exception("L'element $entity n'existe pas");
             break;
     }
-    header('Location: index.php?action=admin');
-    exit();
+    echo json_encode(['status' => 'ok']);
+    die();
 }
 
 // Modification
@@ -130,7 +128,7 @@ if(isset($_GET['edit'])) {
                 'prenom' => ucfirst($data['prenom']),
                 'password' => $data['password'],
                 'email' => $data['email'],
-                'role' => $data['role']
+                'role' => ucfirst($data['role'])
             );
             // Convertir le tableau PHP en JSON
             file_put_contents(WEBROOT . '/data/utilisateurs.json', json_encode($utilisateurs, JSON_PRETTY_PRINT));
@@ -160,8 +158,8 @@ if(isset($_GET['edit'])) {
             throw new Exception("L'element $entity n'existe pas");
             break;
     }
-    header('Location: index.php?action=admin');
-    exit();
+    echo json_encode(['status' => 'ok', 'id' => $id]);
+    die();
 }
 
 require(WEBROOT . '/views/administration.php');

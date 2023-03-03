@@ -3,9 +3,9 @@
 ?>
 <h1>Liste des utilisateurs :</h1>
 <!-- BEGIN: Modal -->
-<button id="create-user-button">+</button>
+<a id="create-user-button" href="index.php?action=admin&create=utilisateurs" class="btn-add open-user-modal">+</a>
 
-<section id="dialog-create-user-form" title="Créer un utilisateur" class="modal">
+<section id="modal-user-form" title="Enregister un utilisateur" class="modal">
     <p class="error-message"></p>
     <form id="create-user-form">
         <fieldset>
@@ -32,9 +32,9 @@
             <div>
                 <label for="role">Role :</label>
                 <select name="role" id="role">
-                    <option value="etudiant">Etudiant</option>
-                    <option value="coordinateur">Coordinateur</option>
-                    <option value="responsable">Responsable</option>
+                    <option value="Etudiant">Etudiant</option>
+                    <option value="Coordinateur">Coordinateur</option>
+                    <option value="Responsable">Responsable</option>
                 </select>
             </div>
         </fieldset>
@@ -62,7 +62,7 @@
                     echo '<tr>';
                         echo "<td>$id</td>";
                         foreach ($utilisateur as $key2 => $value) {
-                            if ($key2 != 'password') {
+                            if ($key2 != 'password') { // ne pas afficher le mdp
                                 echo '<td>';
                                 if ($key2 == 'email') {
                                     echo '<a href="mailto:' . $value . '">' . $value . '</a>';
@@ -73,9 +73,9 @@
                             }
                         }
                         echo '<td>';
-                        echo '<a href="index.php?action=admin&edit=utilisateurs&id=' . $id . '">Modifier</a>';
+                        echo '<a href="index.php?action=admin&edit=utilisateurs&id=' . $id . '" class="btn-edit open-user-modal">Modifier</a>';
                         if ($value != 'responsable') {
-                            echo '<a href="index.php?action=admin&delete=utilisateurs&id=' . $id . '">Supprimer</a>';
+                            echo '<a href="index.php?action=admin&delete=utilisateurs&id=' . $id . '" class="btn-delete">Supprimer</a>';
                         }
                         echo '</td>';
                     echo '</tr>';
