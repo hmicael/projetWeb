@@ -22,7 +22,7 @@ try {
             } else if ($_GET['action'] === 'visualiser') {
                 require(WEBROOT. '/controllers/visualisationController.php');
             } else if ($_GET['action'] === 'admin') {
-                require(WEBROOT. '/controllers/editionController.php');
+                require(WEBROOT. '/controllers/administrationController.php');
             } else {
                 throw new Exception("Error 404 : Page not found");
             }
