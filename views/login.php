@@ -14,6 +14,12 @@
         <main>
             <form action="index.php?action=login-check" method="POST" class="form-card">
                 <h1>Login</h1>
+                <?php
+                    if (isset($_SESSION['error-msg'])) {
+                        echo '<span class="error-msg">' . $_SESSION['error-msg'] . '</span>';
+                        unset($_SESSION['error-msg']);
+                    }
+                ?>
                 <div>
                     <label>Email:</label>
                     <input type="email" name="email" required>

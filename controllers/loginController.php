@@ -1,6 +1,7 @@
 <?php
 if (! isset($_POST['email']) && ! isset($_POST['password'])) {
     header('Location: ' . ROOT);
+    $_SESSION['error-msg'] = 'Veuillez fournir un email et un mot de passe';
     exit();
 }
 
@@ -19,5 +20,6 @@ foreach ($utilisateurs as $key => $u) {
     }
 }
 
+$_SESSION['error-msg'] = 'Veuillez vérifier votre email ou votre mot de passe';
 header('Location:' . ROOT);
 exit();

@@ -4,3 +4,7 @@
     padding: 10px 30px;
     box-shadow: lightgray 4px 4px 20px;
 }
+
+.error-msg {
+    color: red;
+}
