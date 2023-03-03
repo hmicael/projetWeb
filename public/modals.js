@@ -85,7 +85,8 @@ $(function() {
                     $.ajax({
                         url: $(this).data('url'),
                         type: 'POST',
-                        data: {'nom': nom.val(), 'prenom': prenom.val(), 'password': password.val(), 'email': email.val(), 'role': role},
+                        data: {'nom': nom.val(), 'prenom': prenom.val(), 'password': password.val(),
+                            'email': email.val(), 'role': role},
                         success: function(response) {
                             response = JSON.parse(response);
                             let elt = null;
@@ -99,8 +100,10 @@ $(function() {
                                         '<td><a href="mailto:' + email.val() + '">' + email.val() + '</a></td>' + 
                                         '<td>' + role + '</td>' + 
                                         '<td>' +
-                                            '<a href="' + window.location.href + '&edit=utilisateurs&id=' + id + '" class="btn-edit open-user-modal">Modifier</a>' +
-                                            '<a href="' + window.location.href + '&delete=utilisateurs&id=' + id + '" class="btn-delete">Supprimer</a>' +
+                                            '<a href="' + window.location.href + '&edit=utilisateurs&id=' +
+                                                id + '" class="btn-edit open-user-modal">Modifier</a>' +
+                                            '<a href="' + window.location.href + '&delete=utilisateurs&id=' +
+                                                id + '" class="btn-delete">Supprimer</a>' +
                                         '</td>' +
                                     '</tr>');
                                     elt = $('#tbody-utilisateur').children().last();
@@ -112,8 +115,10 @@ $(function() {
                                         '<td><a href="mailto:' + email.val() + '">' + email.val() + '</a></td>' + 
                                         '<td>' + role + '</td>' + 
                                         '<td>' +
-                                            '<a href="' + window.location.href + '&edit=utilisateurs&id=' + id + '" class="btn-edit open-user-modal">Modifier</a>' +
-                                            '<a href="' + window.location.href + '&delete=utilisateurs&id=' + id + '" class="btn-delete">Supprimer</a>' +
+                                            '<a href="' + window.location.href + '&edit=utilisateurs&id=' +
+                                                id + '" class="btn-edit open-user-modal">Modifier</a>' +
+                                            '<a href="' + window.location.href + '&delete=utilisateurs&id=' +
+                                                id + '" class="btn-delete">Supprimer</a>' +
                                         '</td>')
                                     ;
                                     elt = $('#tbody-utilisateur tr').eq(id-1);
