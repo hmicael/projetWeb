@@ -3,7 +3,7 @@
     <head>
         <meta name="description" content="Error page" />
         <meta charset="utf-8">
-        <title>EDT | Error</title>
+        <title>Error | EDT</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="author" content="Ridouane OUSMANE DOUDOU">
         <meta name="author" content="Henintsoa ANDRIAMAHADIMBY">
