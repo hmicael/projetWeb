@@ -26,7 +26,7 @@
                     echo '<td>';
                     echo '<a href="index.php?action=admin">Modifier</a>';
                     if ($_SESSION['id'] != $key) {
-                        echo '<a href="index.php?action=admin&delete=utilisateurs&id=' . $key . '">Supprimer</a>';
+                        echo '<a href="index.php?action=admin&delete=utilisateurs&id=' . $id . '">Supprimer</a>';
                     }
                     echo '</td>';
                 echo '</tr>';

@@ -14,7 +14,7 @@ if(isset($_GET['delete'])) {
     if (! $_GET['id']) {
         throw new Exception('Vous devez spécifier un identifiant');
     }
-    $id = intval($_GET['id']);
+    $id = intval($_GET['id']) - 1;
     $entity = htmlspecialchars($_GET['delete']);
     switch ($entity) {
         case 'utilisateurs':
