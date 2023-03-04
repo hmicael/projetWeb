@@ -149,7 +149,7 @@ $(function() {
     });
 
     // Ouvrir la boîte de dialogue
-    $('.open-user-modal').click(function(e) {
+    $('body').on('click', '.open-user-modal', function(e) {
         e.preventDefault();
         const action = $(this).hasClass('btn-edit') ? 'edit' : 'create';
         $('#modal-user-form')
