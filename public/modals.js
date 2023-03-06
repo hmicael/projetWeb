@@ -37,12 +37,38 @@ $(function() {
     function checkRegexp(elt, type, regexp) {
         if (!(regexp.test(elt.val()))) {
             elt.addClass('ui-state-error');
-            displayError('Le format de ' + type + ' est invalide');
+            displayError('Le format de l\' ' + type + ' est invalide');
             return false;
         } else {
             return true;
         }
     }
+
+    // BEGIN: dialog confirm
+    $('#dialog-confirm').dialog({
+        autoOpen: false,
+        modal: true,
+        resizable: false,
+        height: 'auto',
+        width: 400,
+        buttons: {
+            'Annuler': function() {
+                $(this).dialog('close');
+            },
+            'Supprimer': function() {
+                window.location.href = $(this).data('url');
+            }
+        }
+    });
+
+    // Ouvrir la boîte de dialogue
+    $('body').on('click', '.btn-delete', function(e) {
+        e.preventDefault();
+        $('#dialog-confirm')
+            .data('url', $(this).attr('href'))
+            .dialog('open');
+    });
+    // END: dialog confirm
 
     // BEGIN: Modal utilisateur
     $('#modal-user-form').dialog({
@@ -103,7 +129,7 @@ $(function() {
                                             '<a href="' + window.location.href + '&edit=utilisateurs&id=' +
                                                 id + '" class="btn-edit open-user-modal">Modifier</a>' +
                                             '<a href="' + window.location.href + '&delete=utilisateurs&id=' +
-                                                id + '" class="btn-delete">Supprimer</a>' +
+                                                id + '#tabs-1" class="btn-delete">Supprimer</a>' +
                                         '</td>' +
                                     '</tr>');
                                     elt = $('#tbody-utilisateur').children().last();
@@ -118,7 +144,7 @@ $(function() {
                                             '<a href="' + window.location.href + '&edit=utilisateurs&id=' +
                                                 id + '" class="btn-edit open-user-modal">Modifier</a>' +
                                             '<a href="' + window.location.href + '&delete=utilisateurs&id=' +
-                                                id + '" class="btn-delete">Supprimer</a>' +
+                                                id + '#tabs-1" class="btn-delete">Supprimer</a>' +
                                         '</td>')
                                     ;
                                     elt = $('#tbody-utilisateur tr').eq(id-1);

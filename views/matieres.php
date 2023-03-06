@@ -16,19 +16,19 @@
     </thead>
     <tbody>
         <?php
-            foreach ($matieres as $key => $matiere) {
-                $id = $key + 1;
-                echo '<tr>';
-                    echo "<td>$id</td>";
-                    foreach ($matiere as $value) {
-                        echo '<td>' . ucfirst($value) . '</td>';
-                    }
-                    echo '<td>';
-                        echo '<a href="index.php?action=admin&edit=matieres&id=' . $id . '" class="btn-edit open-matiere-modal">Modifier</a>';
-                        echo '<a href="index.php?action=admin&delete=matieres&id=' . $id . '" class="btn-delete">Supprimer</a>';
-                    echo '</td>';
-                echo '</tr>';
-            }
+        foreach ($matieres as $key => $matiere) {
+            $id = $key + 1;
+            echo '<tr>';
+                echo "<td>$id</td>";
+                foreach ($matiere as $value) {
+                    echo '<td>' . ucfirst($value) . '</td>';
+                }
+                echo '<td>';
+                    echo '<a href="index.php?action=admin&edit=matieres&id=' . $id . '" class="btn-edit open-matiere-modal">Modifier</a>';
+                    echo '<a href="index.php?action=admin&delete=matieres&id=' . $id . '#tabs-2" class="btn-delete">Supprimer</a>';
+                echo '</td>';
+            echo '</tr>';
+        }
         ?>
     </tbody>
 </table>

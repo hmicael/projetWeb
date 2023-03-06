@@ -20,8 +20,7 @@
     </tr>
 </thead>
 <tbody>
-    <?php 
-    
+    <?php
     foreach ($enseignants as $key => $value) {
         $id = $key +1;
         echo "<tr>";
@@ -36,11 +35,10 @@
         }
         echo '<td>';
             echo '<a href="index.php?action=admin&edit=enseignants&id=' . $id . '" class="btn-edit open-enseignant-modal">Modifier</a>';
-            echo '<a href="index.php?action=admin&delete=enseignants&id=' . $id . '" class="btn-delete">Supprimer</a>';
+            echo '<a href="index.php?action=admin&delete=enseignants&id=' . $id . '#tabs-3" class="btn-delete">Supprimer</a>';
         echo '</td>';
         echo "</tr>";
     }
-    
     ?>
     </table>
 </tbody>

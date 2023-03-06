@@ -57,29 +57,29 @@
         </thead>
         <tbody id="tbody-utilisateur">
             <?php
-                foreach ($utilisateurs as $key => $utilisateur) {
-                    $id = $key + 1;
-                    echo '<tr>';
-                        echo "<td>$id</td>";
-                        foreach ($utilisateur as $key2 => $value) {
-                            if ($key2 != 'password') { // ne pas afficher le mdp
-                                echo '<td>';
-                                if ($key2 == 'email') {
-                                    echo '<a href="mailto:' . $value . '">' . $value . '</a>';
-                                } else {
-                                    echo $value;
-                                }
-                                echo '</td>';
+            foreach ($utilisateurs as $key => $utilisateur) {
+                $id = $key + 1;
+                echo '<tr>';
+                    echo "<td>$id</td>";
+                    foreach ($utilisateur as $key2 => $value) {
+                        if ($key2 != 'password') { // ne pas afficher le mdp
+                            echo '<td>';
+                            if ($key2 == 'email') {
+                                echo '<a href="mailto:' . $value . '">' . $value . '</a>';
+                            } else {
+                                echo $value;
                             }
+                            echo '</td>';
                         }
-                        echo '<td>';
-                        echo '<a href="index.php?action=admin&edit=utilisateurs&id=' . $id . '" class="btn-edit open-user-modal">Modifier</a>';
-                        if ($value != 'responsable') {
-                            echo '<a href="index.php?action=admin&delete=utilisateurs&id=' . $id . '" class="btn-delete">Supprimer</a>';
-                        }
-                        echo '</td>';
-                    echo '</tr>';
-                }
+                    }
+                    echo '<td>';
+                    echo '<a href="index.php?action=admin&edit=utilisateurs&id=' . $id . '" class="btn-edit open-user-modal">Modifier</a>';
+                    if ($value != 'responsable') {
+                        echo '<a href="index.php?action=admin&delete=utilisateurs&id=' . $id . '#tabs-1" class="btn-delete">Supprimer</a>';
+                    }
+                    echo '</td>';
+                echo '</tr>';
+            }
             ?>
         </tbody>
     </table>
