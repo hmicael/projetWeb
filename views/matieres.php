@@ -2,6 +2,22 @@
     $tHead = array_keys($matieres[0]);
 ?>
 <h1>Liste des matieres :</h1>
+
+<a id="create-matiere-button" href="index.php?action=admin&create=matieres" class="btn-add open-matiere-modal">+</a>
+<!-- BEGIN: Modal -->
+<section id="modal-matiere-form" title="Enregister une matière" class="modal">
+    <p class="error-message"></p>
+    <form id="create-matiere-form">
+        <fieldset>
+            <div>
+                <label for="nom-matiere">Nom :</label>
+                <input type="text" name="nom" id="nom-matiere" autofocus>
+            </div>
+        </fieldset>
+    </form>
+</section>
+<!-- END: Modal -->
+
 <table>
     <thead>
         <tr>
@@ -14,7 +30,7 @@
             <td>Actions</td>
         </tr>
     </thead>
-    <tbody>
+    <tbody id="tbody-matiere">
         <?php
         foreach ($matieres as $key => $matiere) {
             $id = $key + 1;

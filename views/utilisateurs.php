@@ -10,8 +10,8 @@
     <form id="create-user-form">
         <fieldset>
             <div>
-                <label for="nom">Nom :</label>
-                <input type="text" name="nom" id="nom" autofocus>
+                <label for="nom-user">Nom :</label>
+                <input type="text" name="nom" id="nom-user" autofocus>
             </div>
             <div>
                 <label for="prenom">Pr&eacute;nom :</label>
