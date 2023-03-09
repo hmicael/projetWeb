@@ -24,8 +24,8 @@
                         echo '<td>' . ucfirst($value) . '</td>';
                     }
                     echo '<td>';
-                        echo '<a href="index.php?action=admin&edit=salles&id=' . $id . '" class="btn-edit open-salle-modal">Modifier</a>';
-                        echo '<a href="index.php?action=admin&delete=salles&id=' . $id . '#tabs-4" class="btn-delete">Supprimer</a>';
+                        echo '<a href="index.php?action=admin&edit=salles&id=' . $id . '" class="btn btn-edit open-salle-modal">Modifier</a>';
+                        echo '<a href="index.php?action=admin&delete=salles&id=' . $id . '#tabs-4" class="btn btn-delete">Supprimer</a>';
                     echo '</td>';
                 echo '</tr>';
             }

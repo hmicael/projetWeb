@@ -63,7 +63,7 @@ $(function() {
     });
 
     // Ouvrir la boîte de dialogue
-    $('body').on('click', '.btn-delete', function(e) {
+    $('body').on('click', '.btn btn-delete', function(e) {
         e.preventDefault();
         $('#dialog-confirm')
             .data('url', $(this).attr('href'))
@@ -128,9 +128,9 @@ $(function() {
                                         '<td>' + role + '</td>' + 
                                         '<td>' +
                                             '<a href="' + window.location.href + '&edit=utilisateurs&id=' +
-                                                id + '" class="btn-edit open-user-modal">Modifier</a>' +
+                                                id + '" class="btn btn-edit open-user-modal">Modifier</a>' +
                                             '<a href="' + window.location.href + '&delete=utilisateurs&id=' +
-                                                id + '#tabs-1" class="btn-delete">Supprimer</a>' +
+                                                id + '#tabs-1" class="btn btn-delete">Supprimer</a>' +
                                         '</td>' +
                                     '</tr>');
                                     elt = $('#tbody-utilisateur').children().last();
@@ -143,9 +143,9 @@ $(function() {
                                         '<td>' + role + '</td>' + 
                                         '<td>' +
                                             '<a href="' + window.location.href + '&edit=utilisateurs&id=' +
-                                                id + '" class="btn-edit open-user-modal">Modifier</a>' +
+                                                id + '" class="btn btn-edit open-user-modal">Modifier</a>' +
                                             '<a href="' + window.location.href + '&delete=utilisateurs&id=' +
-                                                id + '#tabs-1" class="btn-delete">Supprimer</a>' +
+                                                id + '#tabs-1" class="btn btn-delete">Supprimer</a>' +
                                         '</td>')
                                     ;
                                     elt = $('#tbody-utilisateur tr').eq(id-1);
@@ -178,7 +178,7 @@ $(function() {
     // Ouvrir la boîte de dialogue
     $('body').on('click', '.open-user-modal', function(e) {
         e.preventDefault();
-        const action = $(this).hasClass('btn-edit') ? 'edit' : 'create';
+        const action = $(this).hasClass('btn btn-edit') ? 'edit' : 'create';
         $('#modal-user-form')
             .data('url', $(this).attr('href'))
             .data('action', action)
@@ -221,9 +221,9 @@ $(function() {
                                         '<td>' + nom.val() +'</td>' + 
                                         '<td>' +
                                             '<a href="' + window.location.href + '&edit=matieres&id=' +
-                                                id + '" class="btn-edit open-matiere-modal">Modifier</a>' +
+                                                id + '" class="btn btn-edit open-matiere-modal">Modifier</a>' +
                                             '<a href="' + window.location.href + '&delete=matieres&id=' +
-                                                id + '#tabs-1" class="btn-delete">Supprimer</a>' +
+                                                id + '#tabs-1" class="btn btn-delete">Supprimer</a>' +
                                         '</td>' +
                                     '</tr>');
                                     elt = $('#tbody-matiere').children().last();
@@ -233,9 +233,9 @@ $(function() {
                                         '<td>' + nom.val() +'</td>' +
                                         '<td>' +
                                             '<a href="' + window.location.href + '&edit=matieres&id=' +
-                                                id + '" class="btn-edit open-matiere-modal">Modifier</a>' +
+                                                id + '" class="btn btn-edit open-matiere-modal">Modifier</a>' +
                                             '<a href="' + window.location.href + '&delete=matieres&id=' +
-                                                id + '#tabs-1" class="btn-delete">Supprimer</a>' +
+                                                id + '#tabs-1" class="btn btn-delete">Supprimer</a>' +
                                         '</td>')
                                     ;
                                     elt = $('#tbody-matiere tr').eq(id-1);
@@ -268,7 +268,7 @@ $(function() {
     // Ouvrir la boîte de dialogue
     $('body').on('click', '.open-matiere-modal', function(e) {
         e.preventDefault();
-        const action = $(this).hasClass('btn-edit') ? 'edit' : 'create';
+        const action = $(this).hasClass('btn btn-edit') ? 'edit' : 'create';
         $('#modal-matiere-form')
             .data('url', $(this).attr('href'))
             .data('action', action)

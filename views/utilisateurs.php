@@ -3,7 +3,7 @@
 ?>
 <h1>Liste des utilisateurs :</h1>
 
-<a id="create-user-button" href="index.php?action=admin&create=utilisateurs" class="btn-add open-user-modal">+</a>
+<a id="create-user-button" href="index.php?action=admin&create=utilisateurs" class="btn btn-add open-user-modal">+</a>
 <!-- BEGIN: Modal -->
 <section id="modal-user-form" title="Enregister un utilisateur" class="modal">
     <p class="error-message"></p>
@@ -73,9 +73,9 @@
                         }
                     }
                     echo '<td>';
-                    echo '<a href="index.php?action=admin&edit=utilisateurs&id=' . $id . '" class="btn-edit open-user-modal">Modifier</a>';
+                    echo '<a href="index.php?action=admin&edit=utilisateurs&id=' . $id . '" class="btn btn-edit open-user-modal">Modifier</a>';
                     if ($value != 'responsable') {
-                        echo '<a href="index.php?action=admin&delete=utilisateurs&id=' . $id . '#tabs-1" class="btn-delete">Supprimer</a>';
+                        echo '<a href="index.php?action=admin&delete=utilisateurs&id=' . $id . '#tabs-1" class="btn btn-delete">Supprimer</a>';
                     }
                     echo '</td>';
                 echo '</tr>';
