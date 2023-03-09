@@ -2,9 +2,9 @@
     $tHead = array_keys($utilisateurs[0]);
 ?>
 <h1>Liste des utilisateurs :</h1>
-<!-- BEGIN: Modal -->
-<a id="create-user-button" href="index.php?action=admin&create=utilisateurs" class="btn-add open-user-modal">+</a>
 
+<a id="create-user-button" href="index.php?action=admin&create=utilisateurs" class="btn-add open-user-modal">+</a>
+<!-- BEGIN: Modal -->
 <section id="modal-user-form" title="Enregister un utilisateur" class="modal">
     <p class="error-message"></p>
     <form id="create-user-form">

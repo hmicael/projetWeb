@@ -44,7 +44,7 @@ $(function() {
         }
     }
 
-    // BEGIN: dialog confirm
+    // BEGIN: dialog confirm detete
     $('#dialog-confirm').dialog({
         autoOpen: false,
         modal: true,
@@ -68,7 +68,7 @@ $(function() {
             .data('url', $(this).attr('href'))
             .dialog('open');
     });
-    // END: dialog confirm
+    // END: dialog confirm delete
 
     // BEGIN: Modal utilisateur
     $('#modal-user-form').dialog({
