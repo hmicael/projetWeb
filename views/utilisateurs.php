@@ -1,5 +1,5 @@
 <?php
-    $tHead = ['Nom', 'Email', 'Role', 'Actions'];
+    $tHead = ['Nom', 'Prénom(s)', 'Email', 'Role', 'Actions'];
 ?>
 <h1>Liste des utilisateurs :</h1>
 
@@ -52,7 +52,6 @@
                             echo '<td>' . ucfirst($value) . '</td>';
                     }
                 ?>
-                <td>Actions</td>
             </tr>
         </thead>
         <tbody id="tbody-utilisateur">

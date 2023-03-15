@@ -19,12 +19,5 @@
         "password": "$2y$10$NPjMWjzx55rz1oqObSPpJO6TAq9.vnu6FpCT1kDIsZXbap6bwHG8K",
         "email": "sandrine.delahaye@upsd.fr",
         "role": "Responsable"
-    },
-    "4": {
-        "nom": "ANDRIAMAHADIMBY",
-        "prenom": "Henintsoa Mica\u00ebl",
-        "password": "1234",
-        "email": "sandrine.delahaye@upsd.fr",
-        "role": "Etudiant"
     }
 }
