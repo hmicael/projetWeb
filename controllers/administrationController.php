@@ -69,7 +69,7 @@ if(isset($_GET['create'])) {
                 $utilisateurs[] = array(
                     'nom' => strtoupper($data['nom']),
                     'prenom' => ucfirst($data['prenom']),
-                    'password' => $data['password'],
+                    'password' => password_hash($data['password'], PASSWORD_BCRYPT),
                     'email' => $data['email'],
                     'role' => ucfirst($data['role'])
                 );
@@ -126,7 +126,7 @@ if(isset($_GET['edit'])) {
             $utilisateurs[$id] = array(
                 'nom' => strtoupper($data['nom']),
                 'prenom' => ucfirst($data['prenom']),
-                'password' => $data['password'],
+                'password' => password_hash($data['password'], PASSWORD_BCRYPT),
                 'email' => $data['email'],
                 'role' => ucfirst($data['role'])
             );

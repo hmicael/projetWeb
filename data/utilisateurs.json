@@ -16,7 +16,7 @@
     "3": {
         "nom": "DELAHAYE",
         "prenom": "Sandrine",
-        "password": "1234",
+        "password": "$2y$10$BbKvXLBKbrsQZi5wY0S1CuO1rXtRWlMhRh9bwctLP3CxQqkBj7A4.",
         "email": "sandrine.delahaye@upsd.fr",
         "role": "Responsable"
     },
