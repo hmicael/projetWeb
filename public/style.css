@@ -5,7 +5,9 @@
     box-shadow: lightgray 4px 4px 20px;
 }
 
-table, th, td {
+table,
+th,
+td {
     border: 1px solid black;
     border-collapse: collapse;
 }
@@ -19,20 +21,22 @@ table, th, td {
 }
 
 .ui-widget-overlay {
-    background-color: rgba(0, 0, 0, 1); /* Couleur d'arrière-plan modal grisé personnalisée */
+    background-color: rgba(0, 0, 0, 1);
+    /* Couleur d'arrière-plan modal grisé personnalisée */
 }
- 
-#tabs > ul > li a{
-    background-color: white; /* Couleur d'arrière-plan des onglets */
+
+#tabs>ul>li a {
+    background-color: white;
+    /* Couleur d'arrière-plan des onglets */
     color: #63003C;
-}  
+}
 
 /* Définir la couleur de la bordure de l'onglet sélectionné */
-#tabs > ul > li {
+#tabs>ul>li {
     border-color: #63003C;
 }
 
-#tabs > ul {
+#tabs>ul {
     background-color: #63003C;
 }
 
@@ -81,3 +85,65 @@ input[type="submit"] {
 input[type="submit"]:hover {
     background-color: #3e8e41;
 }
+
+
+
+
+
+/* 
+html {
+    font-family: sans-serif;
+  }
+  
+  div:first-of-type {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 5px;
+  }
+  
+  label {
+    margin-right: 15px;
+    line-height: 32px;
+  }
+  
+  input {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+  
+    border-radius: 50%;
+    width: 16px;
+    height: 16px;
+  
+    border: 2px solid #999;
+    transition: 0.2s all linear;
+    margin-right: 5px;
+  
+    position: relative;
+    top: 4px;
+  }
+  
+  input:checked {
+    border: 6px solid black;
+  }
+  
+  button,
+  legend {
+    color: white;
+    background-color: black;
+    padding: 5px 10px;
+    border-radius: 0;
+    border: 0;
+    font-size: 14px;
+  }
+  
+  button:hover,
+  button:focus {
+    color: #999;
+  }
+  
+  button:active {
+    background-color: white;
+    color: black;
+    outline: 1px solid black;
+  } */

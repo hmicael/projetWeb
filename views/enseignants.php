@@ -23,12 +23,12 @@
             <div>
                 <label for="matiere">Refer&eacute;nt :</label>
                     <div>
-                    <input type="radio" id="huey" name="drone" value="huey">
+                    <input type="radio" id="huey" name="referant" value="1">
                     <label for="huey">Oui</label>
                 </div>
 
                 <div>
-                    <input type="radio" id="dewey" name="drone" value="dewey"checked>
+                    <input type="radio" id="dewey" name="referant" value="0"checked>
                     <label for="dewey">Non</label>
                 </div>
 
