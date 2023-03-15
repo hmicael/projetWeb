@@ -2,7 +2,7 @@ $(function () {
     errorMessage = $('.error-message');
 
     /**
-     * Function qui affiche les messages d'erreur par rapport au formulaire
+     * Fonction qui affiche les messages d'erreur par rapport au formulaire
      * @param string txt 
      */
     function displayError(txt) {
@@ -12,7 +12,7 @@ $(function () {
     }
 
     /**
-     * Function qui vérifie la longeur d'un string, valeur d'un input
+     * Fonction qui vérifie la longeur d'un string, valeur d'un input
      * @param {*} elt element input d'un formulaire
      * @param {*} min valeur minimal autorisé
      * @returns boolean
@@ -29,7 +29,7 @@ $(function () {
     }
 
     /**
-     * Function qui vérifie si la valeur d'un input est conforme à une expression régulière donnée
+     * Fonction qui vérifie si la valeur d'un input est conforme à une expression régulière donnée
      * @param {*} elt input d'un formulaire
      * @param {*} type type de l'input
      * @param {*} regexp expression régulière
@@ -61,6 +61,7 @@ $(function () {
             }
         }
     });
+    // END: dialog confirm detete
 
     // Ouvrir la boîte de dialogue
     $('body').on('click', '.btn-delete', function (e) {
@@ -101,8 +102,7 @@ $(function () {
                     checkLength(nom, 3) &&
                     checkLength(prenom, 3) &&
                     checkLength(password, 4) &&
-                    checkRegexp(email, 'email', emailRegex)
-                    ;
+                    checkRegexp(email, 'email', emailRegex);
                 if (password.val() != $('#confirm-password').val()) {
                     valid = false;
                     displayError('Les mots de passe ne se correspondent pas');
@@ -120,23 +120,23 @@ $(function () {
                             response = JSON.parse(response);
                             let elt = null;
                             if (response.status == 'ok') {
-                                if (action == 'create') { // si l'action est un create
+                                if (action == 'create') { // si l'action est un create, on fait un append
                                     const id = $('#tbody-utilisateur').children().length + 1;
                                     $('#tbody-utilisateur').append('<tr>' +
-                                        '<td>' + id + '</td>' +
-                                        '<td>' + nom.val() + '</td>' +
-                                        '<td>' + prenom.val() + '</td>' +
-                                        '<td><a href="mailto:' + email.val() + '">' + email.val() + '</a></td>' +
-                                        '<td>' + role + '</td>' +
-                                        '<td>' +
-                                        '<a href="' + window.location.href + '&edit=utilisateurs&id=' +
-                                        id + '" class="btn btn-edit open-user-modal">Modifier</a>' +
-                                        '<a href="' + window.location.href + '&delete=utilisateurs&id=' +
-                                        id + '#tabs-1" class="btn btn-delete">Supprimer</a>' +
-                                        '</td>' +
+                                            '<td>' + id + '</td>' +
+                                            '<td>' + nom.val() + '</td>' +
+                                            '<td>' + prenom.val() + '</td>' +
+                                            '<td><a href="mailto:' + email.val() + '">' + email.val() + '</a></td>' +
+                                            '<td>' + role + '</td>' +
+                                            '<td>' +
+                                                '<a href="' + window.location.href + '&edit=utilisateurs&id=' +
+                                                id + '" class="btn btn-edit open-user-modal">Modifier</a>' +
+                                                '<a href="' + window.location.href + '&delete=utilisateurs&id=' +
+                                                id + '#tabs-1" class="btn btn-delete">Supprimer</a>' +
+                                            '</td>' +
                                         '</tr>');
                                     elt = $('#tbody-utilisateur').children().last();
-                                } else {
+                                } else { // sinon, on change son contenu
                                     const id = response.id + 1;
                                     $('#tbody-utilisateur tr').eq(id - 1).html('<td>' + id + '</td>' +
                                         '<td>' + nom.val() + '</td>' +
@@ -144,16 +144,15 @@ $(function () {
                                         '<td><a href="mailto:' + email.val() + '">' + email.val() + '</a></td>' +
                                         '<td>' + role + '</td>' +
                                         '<td>' +
-                                        '<a href="' + window.location.href + '&edit=utilisateurs&id=' +
-                                        id + '" class="btn btn-edit open-user-modal">Modifier</a>' +
-                                        '<a href="' + window.location.href + '&delete=utilisateurs&id=' +
-                                        id + '#tabs-1" class="btn btn-delete">Supprimer</a>' +
-                                        '</td>')
-                                        ;
+                                            '<a href="' + window.location.href + '&edit=utilisateurs&id=' +
+                                            id + '" class="btn btn-edit open-user-modal">Modifier</a>' +
+                                            '<a href="' + window.location.href + '&delete=utilisateurs&id=' +
+                                            id + '#tabs-1" class="btn btn-delete">Supprimer</a>' +
+                                        '</td>');
                                     elt = $('#tbody-utilisateur tr').eq(id - 1);
                                 }
                                 $('#modal-user-form').dialog('close');
-                                // Surligner la ligne créée / modifiée pendant quelques secondes
+                                // Surligner la ligne crée / modifiée pendant quelques secondes
                                 elt.addClass('success-highlight');
                                 setTimeout(function () {
                                     elt.removeClass('success-highlight', 1500);
@@ -216,34 +215,33 @@ $(function () {
                             response = JSON.parse(response);
                             let elt = null;
                             if (response.status == 'ok') {
-                                if (action == 'create') { // si l'action est un create
+                                if (action == 'create') { // si l'action est un create, on fait un append
                                     const id = $('#tbody-matiere').children().length + 1;
                                     $('#tbody-matiere').append('<tr>' +
-                                        '<td>' + id + '</td>' +
-                                        '<td>' + nom.val() + '</td>' +
-                                        '<td>' +
-                                        '<a href="' + window.location.href + '&edit=matieres&id=' +
-                                        id + '" class="btn btn-edit open-matiere-modal">Modifier</a>' +
-                                        '<a href="' + window.location.href + '&delete=matieres&id=' +
-                                        id + '#tabs-1" class="btn btn-delete">Supprimer</a>' +
-                                        '</td>' +
+                                            '<td>' + id + '</td>' +
+                                            '<td>' + nom.val() + '</td>' +
+                                            '<td>' +
+                                                '<a href="' + window.location.href + '&edit=matieres&id=' +
+                                                id + '" class="btn btn-edit open-matiere-modal">Modifier</a>' +
+                                                '<a href="' + window.location.href + '&delete=matieres&id=' +
+                                                id + '#tabs-1" class="btn btn-delete">Supprimer</a>' +
+                                            '</td>' +
                                         '</tr>');
                                     elt = $('#tbody-matiere').children().last();
-                                } else {
+                                } else { // sinon, on change son contenu
                                     const id = response.id + 1;
                                     $('#tbody-matiere tr').eq(id - 1).html('<td>' + id + '</td>' +
                                         '<td>' + nom.val() + '</td>' +
                                         '<td>' +
-                                        '<a href="' + window.location.href + '&edit=matieres&id=' +
-                                        id + '" class="btn btn-edit open-matiere-modal">Modifier</a>' +
-                                        '<a href="' + window.location.href + '&delete=matieres&id=' +
-                                        id + '#tabs-1" class="btn btn-delete">Supprimer</a>' +
-                                        '</td>')
-                                        ;
+                                            '<a href="' + window.location.href + '&edit=matieres&id=' +
+                                            id + '" class="btn btn-edit open-matiere-modal">Modifier</a>' +
+                                            '<a href="' + window.location.href + '&delete=matieres&id=' +
+                                            id + '#tabs-1" class="btn btn-delete">Supprimer</a>' +
+                                        '</td>');
                                     elt = $('#tbody-matiere tr').eq(id - 1);
                                 }
                                 $('#modal-matiere-form').dialog('close');
-                                // Surligner la ligne créée / modifiée pendant quelques secondes
+                                // Surligner la ligne crée / modifiée pendant quelques secondes
                                 elt.addClass('success-highlight');
                                 setTimeout(function () {
                                     elt.removeClass('success-highlight', 1500);
@@ -315,36 +313,35 @@ $(function () {
                             response = JSON.parse(response);
                             let elt = null;
                             if (response.status == 'ok') {
-                                if (action == 'create') { // si l'action est un create
+                                if (action == 'create') { // si l'action est un create, on fait un append
                                     const id = $('#tbody-utilisateur').children().length + 1;
                                     $('#tbody-utilisateur').append('<tr>' +
-                                        '<td>' + id + '</td>' +
-                                        '<td>' + nom.val() + '</td>' +
-                                        '<td>' + matiere.val() + '</td>' +
-                                        '<td>' +
-                                        '<a href="' + window.location.href + '&edit=enseignants&id=' +
-                                        id + '" class="btn-edit open-user-modal">Modifier</a>' +
-                                        '<a href="' + window.location.href + '&delete=enseignants&id=' +
-                                        id + '#tabs-1" class="btn-delete">Supprimer</a>' +
-                                        '</td>' +
+                                            '<td>' + id + '</td>' +
+                                            '<td>' + nom.val() + '</td>' +
+                                            '<td>' + matiere.val() + '</td>' +
+                                            '<td>' +
+                                                '<a href="' + window.location.href + '&edit=enseignants&id=' +
+                                                id + '" class="btn-edit open-user-modal">Modifier</a>' +
+                                                '<a href="' + window.location.href + '&delete=enseignants&id=' +
+                                                id + '#tabs-1" class="btn-delete">Supprimer</a>' +
+                                            '</td>' +
                                         '</tr>');
                                     elt = $('#tbody-enseignant').children().last();
-                                } else {
+                                } else { // sinon, on change son contenu
                                     const id = response.id + 1;
                                     $('#tbody-enseignant tr').eq(id - 1).html('<td>' + id + '</td>' +
                                         '<td>' + nom.val() + '</td>' +
                                         '<td>' + matiere.val() + '</td>' +
                                         '<td>' +
-                                        '<a href="' + window.location.href + '&edit=enseignants&id=' +
-                                        id + '" class="btn-edit open-user-modal">Modifier</a>' +
-                                        '<a href="' + window.location.href + '&delete=enseignants&id=' +
-                                        id + '#tabs-1" class="btn-delete">Supprimer</a>' +
-                                        '</td>')
-                                        ;
+                                            '<a href="' + window.location.href + '&edit=enseignants&id=' +
+                                            id + '" class="btn-edit open-user-modal">Modifier</a>' +
+                                            '<a href="' + window.location.href + '&delete=enseignants&id=' +
+                                            id + '#tabs-1" class="btn-delete">Supprimer</a>' +
+                                        '</td>');
                                     elt = $('#tbody-enseignant tr').eq(id - 1);
                                 }
                                 $('#modal-enseignant-form').dialog('close');
-                                // Surligner la ligne créée / modifiée pendant quelques secondes
+                                // Surligner la ligne crée / modifiée pendant quelques secondes
                                 elt.addClass('success-highlight');
                                 setTimeout(function () {
                                     elt.removeClass('success-highlight', 1500);
@@ -380,15 +377,6 @@ $(function () {
     });
     // END: Modal create Enseignants
 
-
-
-
-
-
-
-
-
-
     // BEGIN: Modal Salle
     $('#modal-salle-form').dialog({
         autoOpen: false,
@@ -421,34 +409,33 @@ $(function () {
                             response = JSON.parse(response);
                             let elt = null;
                             if (response.status == 'ok') {
-                                if (action == 'create') { // si l'action est un create
+                                if (action == 'create') { // si l'action est un create, on fait un append
                                     const id = $('#tbody-salle').children().length + 1;
                                     $('#tbody-salle').append('<tr>' +
-                                        '<td>' + id + '</td>' +
-                                        '<td>' + nom.val() + '</td>' +
-                                        '<td>' +
-                                        '<a href="' + window.location.href + '&edit=salles&id=' +
-                                        id + '" class="btn-edit open-salle-modal">Modifier</a>' +
-                                        '<a href="' + window.location.href + '&delete=salles&id=' +
-                                        id + '#tabs-1" class="btn-delete">Supprimer</a>' +
-                                        '</td>' +
+                                            '<td>' + id + '</td>' +
+                                            '<td>' + nom.val() + '</td>' +
+                                            '<td>' +
+                                                '<a href="' + window.location.href + '&edit=salles&id=' +
+                                                id + '" class="btn-edit open-salle-modal">Modifier</a>' +
+                                                '<a href="' + window.location.href + '&delete=salles&id=' +
+                                                id + '#tabs-1" class="btn-delete">Supprimer</a>' +
+                                            '</td>' +
                                         '</tr>');
                                     elt = $('#tbody-salle').children().last();
-                                } else {
+                                } else { // sinon, on change son contenu
                                     const id = response.id + 1;
                                     $('#tbody-salle tr').eq(id - 1).html('<td>' + id + '</td>' +
                                         '<td>' + nom.val() + '</td>' +
                                         '<td>' +
-                                        '<a href="' + window.location.href + '&edit=salles&id=' +
-                                        id + '" class="btn-edit open-salle-modal">Modifier</a>' +
-                                        '<a href="' + window.location.href + '&delete=salles&id=' +
-                                        id + '#tabs-1" class="btn-delete">Supprimer</a>' +
-                                        '</td>')
-                                        ;
+                                            '<a href="' + window.location.href + '&edit=salles&id=' +
+                                            id + '" class="btn-edit open-salle-modal">Modifier</a>' +
+                                            '<a href="' + window.location.href + '&delete=salles&id=' +
+                                            id + '#tabs-1" class="btn-delete">Supprimer</a>' +
+                                        '</td>');
                                     elt = $('#tbody-salle tr').eq(id - 1);
                                 }
                                 $('#modal-salle-form').dialog('close');
-                                // Surligner la ligne créée / modifiée pendant quelques secondes
+                                // Surligner la ligne crée / modifiée pendant quelques secondes
                                 elt.addClass('success-highlight');
                                 setTimeout(function () {
                                     elt.removeClass('success-highlight', 1500);

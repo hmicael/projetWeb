@@ -1,21 +1,14 @@
 [
     {
         "nom": "Frederic Vernier",
-        "matiere": [
-            "Web"
-        ]
+        "referant": 1
     },
     {
         "nom": "David Rei",
-        "matiere": [
-            "Web"
-        ]
+        "referant": 0
     },
     {
         "nom": "WALLER ",
-        "matiere": [
-            "Web",
-            "BDBD Miage"
-        ]
+        "referant": 1
     }
 ]
