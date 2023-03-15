@@ -21,9 +21,26 @@
                 <input type="text" name="nom" id="nom_e" autofocus>
             </div>
             <div>
+                <label for="matiere">Refer&eacute;nt :</label>
+                    <div>
+                    <input type="radio" id="huey" name="drone" value="huey">
+                    <label for="huey">Oui</label>
+                </div>
+
+                <div>
+                    <input type="radio" id="dewey" name="drone" value="dewey"checked>
+                    <label for="dewey">Non</label>
+                </div>
+
+                <!-- <div>
+                    <input type="radio" id="louie" name="drone" value="louie">
+                    <label for="louie">Louie</label>
+                </div> -->
+            </div>
+            <!-- <div>
                 <label for="matiere">Mati&eacute;re :</label>
                 <input type="text" name="matiere" id="matiere">
-            </div>
+            </div> -->
         </fieldset>
     </form>
 </section>
