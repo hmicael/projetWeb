@@ -56,7 +56,7 @@
                 echo '<td>' . $value['nom'] . '</td>';
                 echo '<td>' . $value['referant'] . '</td>';
                 echo '<td>';
-                    echo '<a href="index.php?action=admin&edit=enseignants&id=' . $id . '" class="btn btn-edit open-enseignant-modal">Modifier</a>';
+                    echo '<a href="index.php?action=admin&edit=enseignants&id=' . $id . '#tabs-3" class="btn btn-edit open-enseignant-modal">Modifier</a>';
                     echo '<a href="index.php?action=admin&delete=enseignants&id=' . $id . '#tabs-3" class="btn btn-delete">Supprimer</a>';
                 echo '</td>';
                 echo '</tr>';

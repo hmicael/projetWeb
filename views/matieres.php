@@ -17,9 +17,9 @@
                 <label for="referant_mat">Refer&eacute;nt :</label>
                 <select id="referant_mat">
                     <?php
-                    foreach ($enseignants as $k => $e) {
+                    foreach ($enseignants as $e) {
                         if($e['referant'] == 'Oui')
-                            echo '<option id="ref-opt-' . $k . '" value="' . $e['nom'] . '">' . $e['nom'] . '</option>';
+                            echo '<option value="' . $e['nom'] . '">' . $e['nom'] . '</option>';
                     }
                     ?>
                 </select>

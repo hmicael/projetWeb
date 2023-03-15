@@ -53,10 +53,10 @@ $(function () {
         height: 'auto',
         width: 400,
         buttons: {
-            'Annuler': function () {
+            'Annuler': function() {
                 $(this).dialog('close');
             },
-            'Supprimer': function () {
+            'Supprimer': function() {
                 window.location.href = $(this).data('url');
             }
         }
@@ -152,7 +152,7 @@ $(function () {
                                     elt = $('#tbody-utilisateur tr').eq(id - 1);
                                 }
                                 $('#modal-user-form').dialog('close');
-                                // Surligner la ligne crée / modifiée pendant quelques secondes
+                                // Surligner la ligne crée / modifiée pendant 1.5 secondes
                                 elt.addClass('success-highlight');
                                 setTimeout(function () {
                                     elt.removeClass('success-highlight', 1500);
@@ -244,7 +244,7 @@ $(function () {
                                     elt = $('#tbody-matiere tr').eq(id - 1);
                                 }
                                 $('#modal-matiere-form').dialog('close');
-                                // Surligner la ligne crée / modifiée pendant quelques secondes
+                                // Surligner la ligne crée / modifiée pendant 1.5 secondes
                                 elt.addClass('success-highlight');
                                 setTimeout(function () {
                                     elt.removeClass('success-highlight', 1500);
@@ -319,39 +319,9 @@ $(function () {
                             response = JSON.parse(response);
                             let elt = null;
                             if (response.status == 'ok') {
-                                if (action == 'create') { // si l'action est un create, on fait un append
-                                    const id = $('#tbody-utilisateur').children().length + 1;
-                                    $('#tbody-utilisateur').append('<tr>' +
-                                            '<td>' + id + '</td>' +
-                                            '<td>' + nom.val() + '</td>' +
-                                            '<td>' + referant.val() + '</td>' +
-                                            '<td>' +
-                                                '<a href="' + window.location.href + '&edit=enseignants&id=' +
-                                                id + '" class="btn-edit open-enseignant-modal">Modifier</a>' +
-                                                '<a href="' + window.location.href + '&delete=enseignants&id=' +
-                                                id + '#tabs-1" class="btn-delete">Supprimer</a>' +
-                                            '</td>' +
-                                        '</tr>');
-                                    elt = $('#tbody-enseignant').children().last();
-                                } else { // sinon, on change son contenu
-                                    const id = response.id + 1;
-                                    $('#tbody-enseignant tr').eq(id - 1).html('<td>' + id + '</td>' +
-                                            '<td>' + nom.val() + '</td>' +
-                                            '<td>' + referant.val() + '</td>' +
-                                            '<td>' +
-                                                '<a href="' + window.location.href + '&edit=enseignants&id=' +
-                                                id + '" class="btn-edit open-enseignant-modal">Modifier</a>' +
-                                                '<a href="' + window.location.href + '&delete=enseignants&id=' +
-                                                id + '#tabs-1" class="btn-delete">Supprimer</a>' +
-                                        '</td>');
-                                    elt = $('#tbody-enseignant tr').eq(id - 1);
-                                }
-                                $('#modal-enseignant-form').dialog('close');
-                                // Surligner la ligne crée / modifiée pendant quelques secondes
-                                elt.addClass('success-highlight');
-                                setTimeout(function () {
-                                    elt.removeClass('success-highlight', 1500);
-                                }, 500);
+                                // si l'action est ok on préfère recharger la page
+                                // pour que le select dans le modal matière soit à jour
+                                location.reload();
                             }
                         },
                         error: function (jqXHR, textStatus, error) {
@@ -441,7 +411,7 @@ $(function () {
                                     elt = $('#tbody-salle tr').eq(id - 1);
                                 }
                                 $('#modal-salle-form').dialog('close');
-                                // Surligner la ligne crée / modifiée pendant quelques secondes
+                                // Surligner la ligne crée / modifiée pendant 1.5 secondes
                                 elt.addClass('success-highlight');
                                 setTimeout(function () {
                                     elt.removeClass('success-highlight', 1500);
