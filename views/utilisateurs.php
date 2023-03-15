@@ -1,5 +1,5 @@
 <?php
-    $tHead = array_keys($utilisateurs[0]);
+    $tHead = ['Nom', 'Email', 'Role', 'Actions'];
 ?>
 <h1>Liste des utilisateurs :</h1>
 

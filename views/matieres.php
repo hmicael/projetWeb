@@ -1,5 +1,5 @@
 <?php
-    $tHead = array_keys($matieres[0]);
+    $tHead = ['Nom', 'Référant', 'Actions'];
 ?>
 <h1>Liste des matieres :</h1>
 
@@ -27,7 +27,6 @@
                     echo '<td>' . ucfirst($value) . '</td>';
                 }
             ?>
-            <td>Actions</td>
         </tr>
     </thead>
     <tbody id="tbody-matiere">
