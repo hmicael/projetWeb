@@ -123,17 +123,17 @@ $(function () {
                                 if (action == 'create') { // si l'action est un create, on fait un append
                                     const id = $('#tbody-utilisateur').children().length + 1;
                                     $('#tbody-utilisateur').append('<tr>' +
-                                            '<td>' + id + '</td>' +
-                                            '<td>' + nom.val() + '</td>' +
-                                            '<td>' + prenom.val() + '</td>' +
-                                            '<td><a href="mailto:' + email.val() + '">' + email.val() + '</a></td>' +
-                                            '<td>' + role + '</td>' +
-                                            '<td>' +
-                                                '<a href="' + window.location.href + '&edit=utilisateurs&id=' +
-                                                id + '" class="btn btn-edit open-user-modal">Modifier</a>' +
-                                                '<a href="' + window.location.href + '&delete=utilisateurs&id=' +
-                                                id + '#tabs-1" class="btn btn-delete">Supprimer</a>' +
-                                            '</td>' +
+                                        '<td>' + id + '</td>' +
+                                        '<td>' + nom.val() + '</td>' +
+                                        '<td>' + prenom.val() + '</td>' +
+                                        '<td><a href="mailto:' + email.val() + '">' + email.val() + '</a></td>' +
+                                        '<td>' + role + '</td>' +
+                                        '<td>' +
+                                        '<a href="' + window.location.href + '&edit=utilisateurs&id=' +
+                                        id + '" class="btn btn-edit open-user-modal">Modifier</a>' +
+                                        '<a href="' + window.location.href + '&delete=utilisateurs&id=' +
+                                        id + '#tabs-1" class="btn btn-delete">Supprimer</a>' +
+                                        '</td>' +
                                         '</tr>');
                                     elt = $('#tbody-utilisateur').children().last();
                                 } else { // sinon, on change son contenu
@@ -144,10 +144,10 @@ $(function () {
                                         '<td><a href="mailto:' + email.val() + '">' + email.val() + '</a></td>' +
                                         '<td>' + role + '</td>' +
                                         '<td>' +
-                                            '<a href="' + window.location.href + '&edit=utilisateurs&id=' +
-                                            id + '" class="btn btn-edit open-user-modal">Modifier</a>' +
-                                            '<a href="' + window.location.href + '&delete=utilisateurs&id=' +
-                                            id + '#tabs-1" class="btn btn-delete">Supprimer</a>' +
+                                        '<a href="' + window.location.href + '&edit=utilisateurs&id=' +
+                                        id + '" class="btn btn-edit open-user-modal">Modifier</a>' +
+                                        '<a href="' + window.location.href + '&delete=utilisateurs&id=' +
+                                        id + '#tabs-1" class="btn btn-delete">Supprimer</a>' +
                                         '</td>');
                                     elt = $('#tbody-utilisateur tr').eq(id - 1);
                                 }
@@ -218,14 +218,14 @@ $(function () {
                                 if (action == 'create') { // si l'action est un create, on fait un append
                                     const id = $('#tbody-matiere').children().length + 1;
                                     $('#tbody-matiere').append('<tr>' +
-                                            '<td>' + id + '</td>' +
-                                            '<td>' + nom.val() + '</td>' +
-                                            '<td>' +
-                                                '<a href="' + window.location.href + '&edit=matieres&id=' +
-                                                id + '" class="btn btn-edit open-matiere-modal">Modifier</a>' +
-                                                '<a href="' + window.location.href + '&delete=matieres&id=' +
-                                                id + '#tabs-1" class="btn btn-delete">Supprimer</a>' +
-                                            '</td>' +
+                                        '<td>' + id + '</td>' +
+                                        '<td>' + nom.val() + '</td>' +
+                                        '<td>' +
+                                        '<a href="' + window.location.href + '&edit=matieres&id=' +
+                                        id + '" class="btn btn-edit open-matiere-modal">Modifier</a>' +
+                                        '<a href="' + window.location.href + '&delete=matieres&id=' +
+                                        id + '#tabs-1" class="btn btn-delete">Supprimer</a>' +
+                                        '</td>' +
                                         '</tr>');
                                     elt = $('#tbody-matiere').children().last();
                                 } else { // sinon, on change son contenu
@@ -233,10 +233,10 @@ $(function () {
                                     $('#tbody-matiere tr').eq(id - 1).html('<td>' + id + '</td>' +
                                         '<td>' + nom.val() + '</td>' +
                                         '<td>' +
-                                            '<a href="' + window.location.href + '&edit=matieres&id=' +
-                                            id + '" class="btn btn-edit open-matiere-modal">Modifier</a>' +
-                                            '<a href="' + window.location.href + '&delete=matieres&id=' +
-                                            id + '#tabs-1" class="btn btn-delete">Supprimer</a>' +
+                                        '<a href="' + window.location.href + '&edit=matieres&id=' +
+                                        id + '" class="btn btn-edit open-matiere-modal">Modifier</a>' +
+                                        '<a href="' + window.location.href + '&delete=matieres&id=' +
+                                        id + '#tabs-1" class="btn btn-delete">Supprimer</a>' +
                                         '</td>');
                                     elt = $('#tbody-matiere tr').eq(id - 1);
                                 }
@@ -288,7 +288,9 @@ $(function () {
             if ($(this).data('action') == 'edit') {
                 const tr = $(this).data('tr');
                 $('#nom_e').val(tr.children()[1].innerText);
-                $('#matiere').val(tr.children()[2].innerText);
+                const referant = tr.children()[2].innerText == "Oui" ? True : False;
+                console.log(referant);
+                $('#referant').attr('checked', referant);
             }
         },
         buttons: {
@@ -296,18 +298,17 @@ $(function () {
                 const action = $(this).data('action');
                 // Récupérer les valeurs des champs de formulaire
                 let nom = $('#nom_e');
-                let matiere = $('#matiere');
+                let referant = $('#referant');
                 // Valider les champs
                 let valid = true &&
-                    checkLength(nom, 3) &&
-                    checkLength(matiere, 3);
+                    checkLength(nom, 3);
                 if (valid) {
                     // Envoi des données en ajax si les données sont valides
                     $.ajax({
                         url: $(this).data('url'),
                         type: 'POST',
                         data: {
-                            'nom': nom.val(), 'matiere': matiere.val()
+                            'nom': nom.val(), 'referant': referant.val()
                         },
                         success: function (response) {
                             response = JSON.parse(response);
@@ -316,27 +317,27 @@ $(function () {
                                 if (action == 'create') { // si l'action est un create, on fait un append
                                     const id = $('#tbody-utilisateur').children().length + 1;
                                     $('#tbody-utilisateur').append('<tr>' +
-                                            '<td>' + id + '</td>' +
-                                            '<td>' + nom.val() + '</td>' +
-                                            '<td>' + matiere.val() + '</td>' +
-                                            '<td>' +
-                                                '<a href="' + window.location.href + '&edit=enseignants&id=' +
-                                                id + '" class="btn-edit open-user-modal">Modifier</a>' +
-                                                '<a href="' + window.location.href + '&delete=enseignants&id=' +
-                                                id + '#tabs-1" class="btn-delete">Supprimer</a>' +
-                                            '</td>' +
+                                        '<td>' + id + '</td>' +
+                                        '<td>' + nom.val() + '</td>' +
+                                        '<td>' + referant.val() + '</td>' +
+                                        '<td>' +
+                                        '<a href="' + window.location.href + '&edit=enseignants&id=' +
+                                        id + '" class="btn-edit open-user-modal">Modifier</a>' +
+                                        '<a href="' + window.location.href + '&delete=enseignants&id=' +
+                                        id + '#tabs-1" class="btn-delete">Supprimer</a>' +
+                                        '</td>' +
                                         '</tr>');
                                     elt = $('#tbody-enseignant').children().last();
                                 } else { // sinon, on change son contenu
                                     const id = response.id + 1;
                                     $('#tbody-enseignant tr').eq(id - 1).html('<td>' + id + '</td>' +
                                         '<td>' + nom.val() + '</td>' +
-                                        '<td>' + matiere.val() + '</td>' +
+                                        '<td>' + referant.val() + '</td>' +
                                         '<td>' +
-                                            '<a href="' + window.location.href + '&edit=enseignants&id=' +
-                                            id + '" class="btn-edit open-user-modal">Modifier</a>' +
-                                            '<a href="' + window.location.href + '&delete=enseignants&id=' +
-                                            id + '#tabs-1" class="btn-delete">Supprimer</a>' +
+                                        '<a href="' + window.location.href + '&edit=enseignants&id=' +
+                                        id + '" class="btn-edit open-user-modal">Modifier</a>' +
+                                        '<a href="' + window.location.href + '&delete=enseignants&id=' +
+                                        id + '#tabs-1" class="btn-delete">Supprimer</a>' +
                                         '</td>');
                                     elt = $('#tbody-enseignant tr').eq(id - 1);
                                 }
@@ -412,14 +413,14 @@ $(function () {
                                 if (action == 'create') { // si l'action est un create, on fait un append
                                     const id = $('#tbody-salle').children().length + 1;
                                     $('#tbody-salle').append('<tr>' +
-                                            '<td>' + id + '</td>' +
-                                            '<td>' + nom.val() + '</td>' +
-                                            '<td>' +
-                                                '<a href="' + window.location.href + '&edit=salles&id=' +
-                                                id + '" class="btn-edit open-salle-modal">Modifier</a>' +
-                                                '<a href="' + window.location.href + '&delete=salles&id=' +
-                                                id + '#tabs-1" class="btn-delete">Supprimer</a>' +
-                                            '</td>' +
+                                        '<td>' + id + '</td>' +
+                                        '<td>' + nom.val() + '</td>' +
+                                        '<td>' +
+                                        '<a href="' + window.location.href + '&edit=salles&id=' +
+                                        id + '" class="btn-edit open-salle-modal">Modifier</a>' +
+                                        '<a href="' + window.location.href + '&delete=salles&id=' +
+                                        id + '#tabs-1" class="btn-delete">Supprimer</a>' +
+                                        '</td>' +
                                         '</tr>');
                                     elt = $('#tbody-salle').children().last();
                                 } else { // sinon, on change son contenu
@@ -427,10 +428,10 @@ $(function () {
                                     $('#tbody-salle tr').eq(id - 1).html('<td>' + id + '</td>' +
                                         '<td>' + nom.val() + '</td>' +
                                         '<td>' +
-                                            '<a href="' + window.location.href + '&edit=salles&id=' +
-                                            id + '" class="btn-edit open-salle-modal">Modifier</a>' +
-                                            '<a href="' + window.location.href + '&delete=salles&id=' +
-                                            id + '#tabs-1" class="btn-delete">Supprimer</a>' +
+                                        '<a href="' + window.location.href + '&edit=salles&id=' +
+                                        id + '" class="btn-edit open-salle-modal">Modifier</a>' +
+                                        '<a href="' + window.location.href + '&delete=salles&id=' +
+                                        id + '#tabs-1" class="btn-delete">Supprimer</a>' +
                                         '</td>');
                                     elt = $('#tbody-salle tr').eq(id - 1);
                                 }

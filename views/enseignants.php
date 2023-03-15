@@ -21,16 +21,16 @@
                 <input type="text" name="nom" id="nom_e" autofocus>
             </div>
             <div>
-                <label for="matiere">Refer&eacute;nt :</label>
+                    <label for="referant">Refer&eacute;nt :</label>
                     <div>
-                    <input type="radio" id="huey" name="referant" value="1">
-                    <label for="huey">Oui</label>
-                </div>
+                        <input type="radio" id="huey" name="referant" value="1">
+                        <label for="huey">Oui</label>
+                    </div>
 
-                <div>
-                    <input type="radio" id="dewey" name="referant" value="0"checked>
-                    <label for="dewey">Non</label>
-                </div>
+                    <div>
+                        <input type="radio" id="dewey" name="referant" value="0"checked>
+                        <label for="dewey">Non</label>
+                    </div>
 
                 <!-- <div>
                     <input type="radio" id="louie" name="drone" value="louie">
@@ -38,8 +38,8 @@
                 </div> -->
             </div>
             <!-- <div>
-                <label for="matiere">Mati&eacute;re :</label>
-                <input type="text" name="matiere" id="matiere">
+                <label for="referant">Mati&eacute;re :</label>
+                <input type="text" name="referant" id="referant">
             </div> -->
         </fieldset>
     </form>
@@ -54,7 +54,7 @@
                 foreach ($entete as $value) {
                     echo '<th>' . $value . '</th>';
                 }?>
-                <td>Actions</td>
+                
             </tr>
         </thead>
         <tbody id="tbody-enseignant">
@@ -64,12 +64,10 @@
                 echo "<tr>";
                 echo '<td>'.$id .'</td>';
                 echo "<td>" . $value['nom'] . "</td>";
-                if ($value['matiere']) {
-                    echo "<td><select>";
-                    foreach ($value['matiere'] as $key => $v) {
-                        echo "<option>". $v . "</option>";
-                        }
-                    echo "</select></td>";
+                if ($value['referant'] == 1) {
+                    echo "<td>Oui</td>";
+                }else {
+                    echo "<td>Non</td>";
                 }
                 echo '<td>';
                     echo '<a href="index.php?action=admin&edit=enseignants&id=' . $id . '" class="btn btn-edit open-enseignant-modal">Modifier</a>';
