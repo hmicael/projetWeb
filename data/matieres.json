@@ -6,5 +6,9 @@
     {
         "nom": "GLA",
         "referant": "Wolf"
+    },
+    {
+        "nom": "Web",
+        "referant": "Frederice Vernier"
     }
 ]

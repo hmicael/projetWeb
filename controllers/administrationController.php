@@ -85,6 +85,7 @@ if(isset($_GET['create'])) {
         case 'matieres':
             $matieres[] = array(
                 'nom' => ucfirst(htmlspecialchars($_POST['nom'])),
+                'referant' => ucfirst(htmlspecialchars($_POST['referant'])),
             );
             $jsonMatieres = json_encode($matieres, JSON_PRETTY_PRINT);
             file_put_contents(WEBROOT .  '/data/matieres.json', $jsonMatieres);
@@ -136,6 +137,7 @@ if(isset($_GET['edit'])) {
         case 'matieres':
             $matieres[$id] = array(
                 'nom' => ucfirst(htmlspecialchars($_POST['nom'])),
+                'referant' => ucfirst(htmlspecialchars($_POST['referant'])),
             );
             file_put_contents(WEBROOT . '/data/matieres.json', json_encode($matieres, JSON_PRETTY_PRINT));
             break;

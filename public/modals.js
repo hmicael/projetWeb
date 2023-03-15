@@ -205,12 +205,13 @@ $(function () {
                 const action = $(this).data('action');
                 // Récupérer les valeurs des champs de formulaire
                 let nom = $('#nom-matiere');
+                let referantText = $('#referant_mat option:selected').text();
                 if (checkLength(nom, 3)) {
                     // Envoi des données en ajax si les données sont valides
                     $.ajax({
                         url: $(this).data('url'),
                         type: 'POST',
-                        data: { 'nom': nom.val() },
+                        data: { 'nom': nom.val(), 'referant': referantText },
                         success: function (response) {
                             response = JSON.parse(response);
                             let elt = null;
@@ -220,6 +221,7 @@ $(function () {
                                     $('#tbody-matiere').append('<tr>' +
                                             '<td>' + id + '</td>' +
                                             '<td>' + nom.val() + '</td>' +
+                                            '<td>' + referantText + '</td>' +
                                             '<td>' +
                                             '<a href="' + window.location.href + '&edit=matieres&id=' +
                                             id + '" class="btn btn-edit open-matiere-modal">Modifier</a>' +
@@ -232,6 +234,7 @@ $(function () {
                                     const id = response.id + 1;
                                     $('#tbody-matiere tr').eq(id - 1).html('<td>' + id + '</td>' +
                                         '<td>' + nom.val() + '</td>' +
+                                        '<td>' + referantText + '</td>' +
                                         '<td>' +
                                             '<a href="' + window.location.href + '&edit=matieres&id=' +
                                             id + '" class="btn btn-edit open-matiere-modal">Modifier</a>' +

@@ -13,6 +13,17 @@
                 <label for="nom-matiere">Nom :</label>
                 <input type="text" name="nom" id="nom-matiere" autofocus>
             </div>
+            <div>
+                <label for="referant_mat">Refer&eacute;nt :</label>
+                <select id="referant_mat">
+                    <?php
+                    foreach ($enseignants as $k => $e) {
+                        if($e['referant'] == 'Oui')
+                            echo '<option id="ref-opt-' . $k . '" value="' . $e['nom'] . '">' . $e['nom'] . '</option>';
+                    }
+                    ?>
+                </select>
+            </div>
         </fieldset>
     </form>
 </section>
