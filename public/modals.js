@@ -18,9 +18,10 @@ $(function () {
      * @returns boolean
      */
     function checkLength(elt, min) {
+        console.log(elt.val().length);
         if (elt.val().length < min) {
             elt.addClass('ui-state-error');
-            displayError('La longeur doit-être supérieur à ' + min);
+            displayError('La longeur doit-être supérieur ou égale à ' + min);
             return false;
         } else {
             return true;
@@ -44,7 +45,7 @@ $(function () {
         }
     }
 
-    // BEGIN: dialog confirm
+    // BEGIN: dialog confirm detete
     $('#dialog-confirm').dialog({
         autoOpen: false,
         modal: true,
@@ -62,13 +63,13 @@ $(function () {
     });
 
     // Ouvrir la boîte de dialogue
-    $('body').on('click', '.btn-delete', function (e) {
+    $('body').on('click', '.btn btn-delete', function (e) {
         e.preventDefault();
         $('#dialog-confirm')
             .data('url', $(this).attr('href'))
             .dialog('open');
     });
-    // END: dialog confirm
+    // END: dialog confirm delete
 
     // BEGIN: Modal utilisateur
     $('#modal-user-form').dialog({
@@ -79,7 +80,7 @@ $(function () {
             // si l'action est un edit, charger le modal form avec les données issues du tr contenant le boutton cliqué
             if ($(this).data('action') == 'edit') {
                 const tr = $(this).data('tr');
-                $('#nom').val(tr.children()[1].innerText);
+                $('#nom-user').val(tr.children()[1].innerText);
                 $('#prenom').val(tr.children()[2].innerText);
                 $('#email').val(tr.children()[3].innerText);
                 $('#role').val(tr.children()[4].innerText);
@@ -89,7 +90,7 @@ $(function () {
             'Enregistrer': function () {
                 const action = $(this).data('action');
                 // Récupérer les valeurs des champs de formulaire
-                let nom = $('#nom');
+                let nom = $('#nom-user');
                 let prenom = $('#prenom');
                 let email = $('#email');
                 let password = $('#password');
@@ -129,9 +130,9 @@ $(function () {
                                         '<td>' + role + '</td>' +
                                         '<td>' +
                                         '<a href="' + window.location.href + '&edit=utilisateurs&id=' +
-                                        id + '" class="btn-edit open-user-modal">Modifier</a>' +
+                                        id + '" class="btn btn-edit open-user-modal">Modifier</a>' +
                                         '<a href="' + window.location.href + '&delete=utilisateurs&id=' +
-                                        id + '#tabs-1" class="btn-delete">Supprimer</a>' +
+                                        id + '#tabs-1" class="btn btn-delete">Supprimer</a>' +
                                         '</td>' +
                                         '</tr>');
                                     elt = $('#tbody-utilisateur').children().last();
@@ -144,9 +145,9 @@ $(function () {
                                         '<td>' + role + '</td>' +
                                         '<td>' +
                                         '<a href="' + window.location.href + '&edit=utilisateurs&id=' +
-                                        id + '" class="btn-edit open-user-modal">Modifier</a>' +
+                                        id + '" class="btn btn-edit open-user-modal">Modifier</a>' +
                                         '<a href="' + window.location.href + '&delete=utilisateurs&id=' +
-                                        id + '#tabs-1" class="btn-delete">Supprimer</a>' +
+                                        id + '#tabs-1" class="btn btn-delete">Supprimer</a>' +
                                         '</td>')
                                         ;
                                     elt = $('#tbody-utilisateur tr').eq(id - 1);
@@ -179,7 +180,7 @@ $(function () {
     // Ouvrir la boîte de dialogue
     $('body').on('click', '.open-user-modal', function (e) {
         e.preventDefault();
-        const action = $(this).hasClass('btn-edit') ? 'edit' : 'create';
+        const action = $(this).hasClass('btn btn-edit') ? 'edit' : 'create';
         $('#modal-user-form')
             .data('url', $(this).attr('href'))
             .data('action', action)
@@ -188,9 +189,95 @@ $(function () {
     });
     // END: Modal create utilisateur
 
+    // BEGIN: Modal matiere
+    $('#modal-matiere-form').dialog({
+        autoOpen: false,
+        modal: true,
+        resizable: false,
+        open: function () {
+            // si l'action est un edit, charger le modal form avec les données issues du tr contenant le boutton cliqué
+            if ($(this).data('action') == 'edit') {
+                const tr = $(this).data('tr');
+                $('#nom-matiere').val(tr.children()[1].innerText);
+            }
+        },
+        buttons: {
+            'Enregistrer': function () {
+                const action = $(this).data('action');
+                // Récupérer les valeurs des champs de formulaire
+                let nom = $('#nom-matiere');
+                if (checkLength(nom, 3)) {
+                    // Envoi des données en ajax si les données sont valides
+                    $.ajax({
+                        url: $(this).data('url'),
+                        type: 'POST',
+                        data: { 'nom': nom.val() },
+                        success: function (response) {
+                            response = JSON.parse(response);
+                            let elt = null;
+                            if (response.status == 'ok') {
+                                if (action == 'create') { // si l'action est un create
+                                    const id = $('#tbody-matiere').children().length + 1;
+                                    $('#tbody-matiere').append('<tr>' +
+                                        '<td>' + id + '</td>' +
+                                        '<td>' + nom.val() + '</td>' +
+                                        '<td>' +
+                                        '<a href="' + window.location.href + '&edit=matieres&id=' +
+                                        id + '" class="btn btn-edit open-matiere-modal">Modifier</a>' +
+                                        '<a href="' + window.location.href + '&delete=matieres&id=' +
+                                        id + '#tabs-1" class="btn btn-delete">Supprimer</a>' +
+                                        '</td>' +
+                                        '</tr>');
+                                    elt = $('#tbody-matiere').children().last();
+                                } else {
+                                    const id = response.id + 1;
+                                    $('#tbody-matiere tr').eq(id - 1).html('<td>' + id + '</td>' +
+                                        '<td>' + nom.val() + '</td>' +
+                                        '<td>' +
+                                        '<a href="' + window.location.href + '&edit=matieres&id=' +
+                                        id + '" class="btn btn-edit open-matiere-modal">Modifier</a>' +
+                                        '<a href="' + window.location.href + '&delete=matieres&id=' +
+                                        id + '#tabs-1" class="btn btn-delete">Supprimer</a>' +
+                                        '</td>')
+                                        ;
+                                    elt = $('#tbody-matiere tr').eq(id - 1);
+                                }
+                                $('#modal-matiere-form').dialog('close');
+                                // Surligner la ligne créée / modifiée pendant quelques secondes
+                                elt.addClass('success-highlight');
+                                setTimeout(function () {
+                                    elt.removeClass('success-highlight', 1500);
+                                }, 500);
+                            }
+                        },
+                        error: function (jqXHR, textStatus, error) {
+                            displayError(error);
+                        }
+                    });
+                }
+            },
+            'Annuler': function () {
+                // Fermer la boîte de dialogue
+                $('#modal-matiere-form').dialog('close');
+            }
+        },
+        close: function () {
+            // Réinitialiser le formulaire
+            $('#modal-matiere-form form')[0].reset();
+        }
+    });
 
-
-
+    // Ouvrir la boîte de dialogue
+    $('body').on('click', '.open-matiere-modal', function (e) {
+        e.preventDefault();
+        const action = $(this).hasClass('btn btn-edit') ? 'edit' : 'create';
+        $('#modal-matiere-form')
+            .data('url', $(this).attr('href'))
+            .data('action', action)
+            .data('tr', $(this).parent().parent())
+            .dialog('open');
+    });
+    // END: Modal create matiere
 
 
     // BEGIN: Modal Enseignants

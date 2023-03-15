@@ -1,0 +1,17 @@
+[
+    {
+        "8:00": {
+            "type": "TD",
+            "matiere": "Web",
+            "enseignant": "Frederic Vernier",
+            "salle": "D203",
+            "date": "06-03-2023",
+            "hdebut": "08:00",
+            "hfin": "10:00",
+            "groupe": 1
+        },
+        "8:15": {
+            "nombre_de_clients": 5, "temps_moyen_attente": 3
+        }
+    }
+]
