@@ -2,21 +2,21 @@
     "0": {
         "nom": "OUSMANE DOUDOU",
         "prenom": "Ridouane",
-        "password": "1234",
+        "password": "$2y$10$6LcM2Tot7icQ6T0AWMvsd.zkEmr8kqzajhsg5Z.CiIi6d5AjHEYnG",
         "email": "ridouane.ousmane@upsd.fr",
         "role": "Etudiant"
     },
     "1": {
         "nom": "ANDRIAMAHADIMBY",
         "prenom": "Henintsoa Micael",
-        "password": "1234",
+        "password": "$2y$10$ucwAahfQidHeels9w1ERR.j1wyv5BK2sXjPGZZWog0O5QhSc5\/Sg2",
         "email": "henintsoa.andriamahadimby@upsd.fr",
         "role": "Etudiant"
     },
     "3": {
         "nom": "DELAHAYE",
         "prenom": "Sandrine",
-        "password": "$2y$10$BbKvXLBKbrsQZi5wY0S1CuO1rXtRWlMhRh9bwctLP3CxQqkBj7A4.",
+        "password": "$2y$10$NPjMWjzx55rz1oqObSPpJO6TAq9.vnu6FpCT1kDIsZXbap6bwHG8K",
         "email": "sandrine.delahaye@upsd.fr",
         "role": "Responsable"
     },

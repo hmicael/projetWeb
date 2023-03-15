@@ -20,27 +20,17 @@
                 <label for="nom_e">Nom :</label>
                 <input type="text" name="nom" id="nom_e" autofocus>
             </div>
-            <div>
-                    <label for="referant">Refer&eacute;nt :</label>
-                    <div>
-                        <input type="radio" id="huey" name="referant" value="1">
-                        <label for="huey">Oui</label>
-                    </div>
-
-                    <div>
-                        <input type="radio" id="dewey" name="referant" value="0"checked>
-                        <label for="dewey">Non</label>
-                    </div>
-
-                <!-- <div>
-                    <input type="radio" id="louie" name="drone" value="louie">
-                    <label for="louie">Louie</label>
-                </div> -->
-            </div>
-            <!-- <div>
-                <label for="referant">Mati&eacute;re :</label>
-                <input type="text" name="referant" id="referant">
-            </div> -->
+            <fieldset>
+                <legend>Refer&eacute;nt :</legend>
+                <div>
+                    <input type="radio" id="radio-oui" name="referant" value="Oui">
+                    <label for="radio-oui">Oui</label>
+                </div>
+                <div>
+                    <input type="radio" id="radio-non" name="referant" value="Non" checked>
+                    <label for="radio-non">Non</label>
+                </div>
+            </fieldset>
         </fieldset>
     </form>
 </section>
@@ -61,19 +51,15 @@
             <?php
             foreach ($enseignants as $key => $value) {
                 $id = $key +1;
-                echo "<tr>";
+                echo '<tr>';
                 echo '<td>'.$id .'</td>';
-                echo "<td>" . $value['nom'] . "</td>";
-                if ($value['referant'] == 1) {
-                    echo "<td>Oui</td>";
-                }else {
-                    echo "<td>Non</td>";
-                }
+                echo '<td>' . $value['nom'] . '</td>';
+                echo '<td>' . $value['referant'] . '</td>';
                 echo '<td>';
                     echo '<a href="index.php?action=admin&edit=enseignants&id=' . $id . '" class="btn btn-edit open-enseignant-modal">Modifier</a>';
                     echo '<a href="index.php?action=admin&delete=enseignants&id=' . $id . '#tabs-3" class="btn btn-delete">Supprimer</a>';
                 echo '</td>';
-                echo "</tr>";
+                echo '</tr>';
             }
             ?>
             

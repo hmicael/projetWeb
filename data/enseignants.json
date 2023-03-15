@@ -1,14 +1,18 @@
 [
     {
-        "nom": "Frederic Vernier",
-        "referant": 1
+        "nom": "FREDERIC VERNIER",
+        "referant": "Oui"
     },
     {
-        "nom": "David Rei",
-        "referant": 0
+        "nom": "DAVID REI",
+        "referant": "Non"
     },
     {
         "nom": "WALLER ",
-        "referant": 1
+        "referant": "Oui"
+    },
+    {
+        "nom": "HENINTSOA",
+        "referant": "Non"
     }
 ]
