@@ -63,7 +63,7 @@ $(function () {
     });
 
     // Ouvrir la boîte de dialogue
-    $('body').on('click', '.btn btn-delete', function (e) {
+    $('body').on('click', '.btn-delete', function (e) {
         e.preventDefault();
         $('#dialog-confirm')
             .data('url', $(this).attr('href'))
