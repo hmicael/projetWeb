@@ -8,39 +8,70 @@
 </head>
 <body>
 <h1>Liste des Enseignants :</h1>
-<table>
-<thead>
-    <tr>
-        <th scope="col">#</th>
-        <?php  $entete = $enseignants[0];
-        foreach ($entete as $key => $value) {
-            echo '<th>'.$key.'</th>';
-        }?>
-        <td>Actions</td>
-    </tr>
-</thead>
-<tbody>
-    <?php
-    foreach ($enseignants as $key => $value) {
-        $id = $key +1;
-        echo "<tr>";
-        echo '<td>'.$id .'</td>';
-        echo "<td>" . $value['nom'] . "</td>";
-        if ($value['matiere']) {
-            echo "<td><select>";
-            foreach ($value['matiere'] as $key => $v) {
-                echo "<option>". $v . "</option>";
+<!-- BEGIN: Modal -->
+<a id="create-enseignant-button" href="index.php?action=admin&create=enseignants" class="btn-add open-enseignant-modal">+</a>
+
+<section id="modal-enseignant-form" title="Enregister un enseignant" class="modal">
+    <p class="error-message"></p>
+    <form id="create-enseignant-form">
+        <fieldset>
+            <div>
+                <label for="nom_e">Nom :</label>
+                <input type="text" name="nom" id="nom_e" autofocus>
+            </div>
+            <div>
+                <!-- <label for="matiere">Mati&eacute;re :</label>
+                <input type="text" name="matiere" id="matiere"> -->
+                <label for="matiere">Mati&eacute;re :</label>
+                <select name="matiere[]" id="matiere" multiple>
+                <?php foreach ($matieres as $key => $matiere) {
+                   foreach ($matiere as $value) {
+                    echo '<option value="'.$value.'">'.ucfirst($value).'</option>';
                 }
-            echo "</select></td>";
-        }
-        echo '<td>';
-            echo '<a href="index.php?action=admin&edit=enseignants&id=' . $id . '" class="btn-edit open-enseignant-modal">Modifier</a>';
-            echo '<a href="index.php?action=admin&delete=enseignants&id=' . $id . '#tabs-3" class="btn-delete">Supprimer</a>';
-        echo '</td>';
-        echo "</tr>";
-    }
-    ?>
+                }
+                ?>
+                </select>
+            </div>
+        </fieldset>
+    </form>
+</section>
+<!-- END: Modal -->
+<section>
+    <table>
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <?php  $entete = $enseignants[0];
+                foreach ($entete as $key => $value) {
+                    echo '<th>'.$key.'</th>';
+                }?>
+                <td>Actions</td>
+            </tr>
+        </thead>
+        <tbody id="tbody-enseignant">
+            <?php
+            foreach ($enseignants as $key => $value) {
+                $id = $key +1;
+                echo "<tr>";
+                echo '<td>'.$id .'</td>';
+                echo "<td>" . $value['nom'] . "</td>";
+                if ($value['matiere']) {
+                    echo "<td><select>";
+                    foreach ($value['matiere'] as $key => $v) {
+                        echo "<option>". $v . "</option>";
+                        }
+                    echo "</select></td>";
+                }
+                echo '<td>';
+                    echo '<a href="index.php?action=admin&edit=enseignants&id=' . $id . '" class="btn-edit open-enseignant-modal">Modifier</a>';
+                    echo '<a href="index.php?action=admin&delete=enseignants&id=' . $id . '#tabs-3" class="btn-delete">Supprimer</a>';
+                echo '</td>';
+                echo "</tr>";
+            }
+            ?>
+            
+        </tbody>
     </table>
-</tbody>
+</section>
 </body>
 </html>
