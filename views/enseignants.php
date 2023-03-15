@@ -50,9 +50,9 @@
         <thead>
             <tr>
                 <th scope="col">#</th>
-                <?php  $entete = $enseignants[0];
-                foreach ($entete as $key => $value) {
-                    echo '<th>'.$key.'</th>';
+                <?php  $entete = ['Nom', 'Référant', 'Actions'];
+                foreach ($entete as $value) {
+                    echo '<th>' . $value . '</th>';
                 }?>
                 <td>Actions</td>
             </tr>

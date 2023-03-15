@@ -1,6 +1,3 @@
-<?php
-    $tHead = array_keys($salles[0]);
-?>
 <h1>Ajouter une salle  :</h1>
 <!-- BEGIN: Modal -->
 <a id="create-salle-button" href="index.php?action=admin&create=salles" class="btn-add open-salle-modal">+</a>
@@ -23,11 +20,7 @@
         <thead>
             <tr>
                 <td>#</td>
-                <?php
-                    foreach ($tHead as $value) {
-                        echo '<td>' . ucfirst($value) . '</td>';
-                    }
-                ?>
+                <td>Nom</td>
                 <td>Actions</td>
             </tr>
         </thead>
