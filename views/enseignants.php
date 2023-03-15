@@ -9,6 +9,7 @@
 <body>
 <h1>Liste des Enseignants :</h1>
 <!-- BEGIN: Modal -->
+<!-- Le modal d'affichage de l'ajout et de modification d'un enseignant -->
 <a id="create-enseignant-button" href="index.php?action=admin&create=enseignants" class="btn-add open-enseignant-modal">+</a>
 
 <section id="modal-enseignant-form" title="Enregister un enseignant" class="modal">
@@ -20,18 +21,8 @@
                 <input type="text" name="nom" id="nom_e" autofocus>
             </div>
             <div>
-                <!-- <label for="matiere">Mati&eacute;re :</label>
-                <input type="text" name="matiere" id="matiere"> -->
                 <label for="matiere">Mati&eacute;re :</label>
-                <select name="matiere[]" id="matiere" multiple>
-                <?php foreach ($matieres as $key => $matiere) {
-                   foreach ($matiere as $value) {
-                    echo '<option value="'.$value.'">'.ucfirst($value).'</option>';
-                }
-
-                }
-                ?>
-                </select>
+                <input type="text" name="matiere" id="matiere">
             </div>
         </fieldset>
     </form>
