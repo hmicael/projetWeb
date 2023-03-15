@@ -14,8 +14,8 @@
                 <input type="text" name="nom" id="nom-matiere" autofocus>
             </div>
             <div>
-                <label for="referant_mat">Refer&eacute;nt :</label>
-                <select id="referant_mat">
+                <label for="referant-mat">Refer&eacute;nt :</label>
+                <select id="referant-mat">
                     <?php
                     foreach ($enseignants as $e) {
                         if($e['referant'] == 'Oui')

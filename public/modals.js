@@ -205,7 +205,7 @@ $(function () {
                 const action = $(this).data('action');
                 // Récupérer les valeurs des champs de formulaire
                 let nom = $('#nom-matiere');
-                let referantText = $('#referant_mat option:selected').text();
+                let referantText = $('#referant-mat option:selected').text();
                 if (checkLength(nom, 3)) {
                     // Envoi des données en ajax si les données sont valides
                     $.ajax({
@@ -290,7 +290,7 @@ $(function () {
             // si l'action est un edit, charger le modal form avec les données issues du tr contenant le boutton cliqué
             if ($(this).data('action') == 'edit') {
                 const tr = $(this).data('tr');
-                $('#nom_e').val(tr.children()[1].innerText);
+                $('#nom-enseignant').val(tr.children()[1].innerText);
                 if (tr.children()[2].innerText == "Oui") {
                     $('#radio-oui').attr('checked', 'checked');
                 } else {
@@ -302,7 +302,7 @@ $(function () {
             'Enregistrer': function () {
                 const action = $(this).data('action');
                 // Récupérer les valeurs des champs de formulaire
-                let nom = $('#nom_e');
+                let nom = $('#nom-enseignant');
                 let referant = $("input[name='referant']:checked"); // Récuperer le radio checked
                 // Valider les champs
                 let valid = true &&
@@ -362,14 +362,14 @@ $(function () {
             // si l'action est un edit, charger le modal form avec les données issues du tr contenant le boutton cliqué
             if ($(this).data('action') == 'edit') {
                 const tr = $(this).data('tr');
-                $('#nom_s').val(tr.children()[1].innerText);
+                $('#nom-salle').val(tr.children()[1].innerText);
             }
         },
         buttons: {
             'Enregistrer': function () {
                 const action = $(this).data('action');
                 // Récupérer les valeurs des champs de formulaire
-                let nom = $('#nom_s');
+                let nom = $('#nom-salle');
                 // Valider les champs
                 let valid = true &&
                     checkLength(nom, 3);

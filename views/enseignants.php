@@ -17,8 +17,8 @@
     <form id="create-enseignant-form">
         <fieldset>
             <div>
-                <label for="nom_e">Nom :</label>
-                <input type="text" name="nom" id="nom_e" autofocus>
+                <label for="nom-enseignant">Nom :</label>
+                <input type="text" name="nom" id="nom-enseignant" autofocus>
             </div>
             <fieldset>
                 <legend>Refer&eacute;nt :</legend>

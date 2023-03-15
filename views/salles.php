@@ -7,8 +7,8 @@
     <form id="create-salle-form">
         <fieldset>
             <div>
-                <label for="nom_s">Nom :</label>
-                <input type="text" name="nom" id="nom_s" autofocus>
+                <label for="nom-salle">Nom :</label>
+                <input type="text" name="nom" id="nom-salle" autofocus>
             </div>
         </fieldset>
     </form>
