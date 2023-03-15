@@ -1,8 +1,10 @@
 [
     {
-        "nom": "Algo"
+        "nom": "Algo",
+        "referant": "Rosaz"
     },
     {
-        "nom": "GLA"
+        "nom": "GLA",
+        "referant": "Wolf"
     }
 ]
