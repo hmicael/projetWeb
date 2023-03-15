@@ -93,7 +93,7 @@ if(isset($_GET['create'])) {
         case 'enseignants':
             $data = sanitize($_POST);
             $enseignants[] = array(
-                'nom' => ucfirst($data['nom']),
+                'nom' => ucwords($data['nom']),
                 'referant' => ucfirst($data['referant'])
             );
             $jsonEnseignants = json_encode($enseignants, JSON_PRETTY_PRINT);
@@ -144,7 +144,7 @@ if(isset($_GET['edit'])) {
         case 'enseignants':
             $data = sanitize($_POST);
             $enseignants[$id] = array(
-                'nom' => ucfirst($data['nom']),
+                'nom' => ucwords($data['nom']),
                 'referant' => ucfirst($data['referant'])
             );
             file_put_contents(WEBROOT . '/data/enseignants.json', json_encode($enseignants, JSON_PRETTY_PRINT));
