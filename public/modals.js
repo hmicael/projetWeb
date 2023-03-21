@@ -213,7 +213,6 @@ $(function () {
     });
     // END: Modal create matiere
 
-
     // BEGIN: Modal Enseignants
     $('#modal-enseignant-form').dialog({
         autoOpen: false,
