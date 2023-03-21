@@ -6,6 +6,7 @@ $(function () {
      * @param string txt 
      */
     function displayError(txt) {
+        $('.error-message').show();
         errorMessage
             .text(txt)
             .addClass('ui-state-error');
@@ -25,6 +26,14 @@ $(function () {
         } else {
             return true;
         }
+    }
+
+    /**
+     * Fonction qui enlève toutes les messages ou forme d'erreur
+     */
+    function hideError() {
+        errorMessage.hide();
+        $('.ui-state-error').removeClass('ui-state-error');
     }
 
     /**
@@ -92,6 +101,7 @@ $(function () {
         modal: true,
         resizable: false,
         open: function () {
+            $('#user-form').attr('action', $(this).data('url'));
             // si l'action est un edit, charger le modal form avec les données issues du tr contenant le boutton cliqué
             if ($(this).data('action') == 'edit') {
                 const tr = $(this).data('tr');
@@ -122,76 +132,25 @@ $(function () {
                     displayError('Les mots de passe ne se correspondent pas');
                 }
                 if (valid) {
-                    // Envoi des données en ajax si les données sont valides
-                    $.ajax({
-                        url: $(this).data('url'),
-                        type: 'POST',
-                        data: {
-                            'nom': nom.val(), 'prenom': prenom.val(), 'password': password.val(),
-                            'email': email.val(), 'role': role
-                        },
-                        success: function (response) {
-                            response = JSON.parse(response);
-                            let elt = null;
-                            if (response.status == 'ok') {
-                                if (action == 'create') { // si l'action est un create, on fait un append
-                                    const id = $('#tbody-utilisateur').children().length + 1;
-                                    $('#tbody-utilisateur').append('<tr>' +
-                                            '<td>' + id + '</td>' +
-                                            '<td>' + nom.val() + '</td>' +
-                                            '<td>' + prenom.val() + '</td>' +
-                                            '<td><a href="mailto:' + email.val() + '">' + email.val() + '</a></td>' +
-                                            '<td>' + role + '</td>' +
-                                            '<td>' +
-                                                '<a href="' + window.location.href + '&edit=utilisateurs&id=' +
-                                                id + '" class="btn btn-edit open-user-modal">Modifier</a>' +
-                                                '<a href="' + window.location.href + '&delete=utilisateurs&id=' +
-                                                id + '#tabs-1" class="btn btn-delete">Supprimer</a>' +
-                                            '</td>' +
-                                        '</tr>');
-                                    elt = $('#tbody-utilisateur').children().last();
-                                } else { // sinon, on change son contenu
-                                    const id = response.id + 1;
-                                    $('#tbody-utilisateur tr').eq(id - 1).html('<td>' + id + '</td>' +
-                                        '<td>' + nom.val() + '</td>' +
-                                        '<td>' + prenom.val() + '</td>' +
-                                        '<td><a href="mailto:' + email.val() + '">' + email.val() + '</a></td>' +
-                                        '<td>' + role + '</td>' +
-                                        '<td>' +
-                                            '<a href="' + window.location.href + '&edit=utilisateurs&id=' +
-                                            id + '" class="btn btn-edit open-user-modal">Modifier</a>' +
-                                            '<a href="' + window.location.href + '&delete=utilisateurs&id=' +
-                                            id + '#tabs-1" class="btn btn-delete">Supprimer</a>' +
-                                        '</td>');
-                                    elt = $('#tbody-utilisateur tr').eq(id - 1);
-                                }
-                                $('#modal-user-form').dialog('close');
-                                // Surligner la ligne crée / modifiée pendant 1.5 secondes
-                                elt.addClass('success-highlight');
-                                setTimeout(function () {
-                                    elt.removeClass('success-highlight', 1500);
-                                }, 500);
-                            }
-                        },
-                        error: function (jqXHR, textStatus, error) {
-                            displayError(error);
-                        }
-                    });
+                    // Envoi des données si les données sont valides
+                    $('#user-form').submit();
                 }
             },
             'Annuler': function () {
                 // Fermer la boîte de dialogue
                 $('#modal-user-form').dialog('close');
+                hideError();
             }
         },
         close: function () {
             // Réinitialiser le formulaire
             $('#modal-user-form form')[0].reset();
+            hideError();
         }
     });
 
     // Ouvrir la boîte de dialogue
-    $('body').on('click', '.open-user-modal', function (e) {
+    $('.open-user-modal').on('click', function (e) {
         e.preventDefault();
         const action = $(this).hasClass('btn btn-edit') ? 'edit' : 'create';
         $('#modal-user-form')
@@ -208,10 +167,12 @@ $(function () {
         modal: true,
         resizable: false,
         open: function () {
+            $('#matiere-form').attr('action', $(this).data('url'));
             // si l'action est un edit, charger le modal form avec les données issues du tr contenant le boutton cliqué
             if ($(this).data('action') == 'edit') {
                 const tr = $(this).data('tr');
                 $('#nom-matiere').val(tr.children()[1].innerText);
+                $('#referant-mat').val(tr.children()[2].innerText);
                 $('#couleur').val(convertRgbToHex(tr.children()[3].style.backgroundColor));
             }
         },
@@ -222,72 +183,26 @@ $(function () {
                 let nom = $('#nom-matiere');
                 let referantText = $('#referant-mat option:selected').text();
                 let couleur = $('#couleur');
-                if (checkLength(nom, 3)) {
-                    // Envoi des données en ajax si les données sont valides
-                    $.ajax({
-                        url: $(this).data('url'),
-                        type: 'POST',
-                        data: { 'nom': nom.val(), 'referant': referantText, 'couleur': couleur.val() },
-                        success: function (response) {
-                            response = JSON.parse(response);
-                            let elt = null;
-                            if (response.status == 'ok') {
-                                if (action == 'create') { // si l'action est un create, on fait un append
-                                    const id = $('#tbody-matiere').children().length + 1;
-                                    $('#tbody-matiere').append('<tr>' +
-                                            '<td>' + id + '</td>' +
-                                            '<td>' + nom.val() + '</td>' +
-                                            '<td>' + referantText + '</td>' +
-                                            '<td style="background-color:' + couleur.val() + '"></td>' +
-                                            '<td>' +
-                                                '<a href="' + window.location.href + '&edit=matieres&id=' +
-                                                id + '" class="btn btn-edit open-matiere-modal">Modifier</a>' +
-                                                '<a href="' + window.location.href + '&delete=matieres&id=' +
-                                                id + '#tabs-2" class="btn btn-delete">Supprimer</a>' +
-                                            '</td>' +
-                                        '</tr>');
-                                    elt = $('#tbody-matiere').children().last();
-                                } else { // sinon, on change son contenu
-                                    const id = response.id + 1;
-                                    $('#tbody-matiere tr').eq(id - 1).html('<td>' + id + '</td>' +
-                                        '<td>' + nom.val() + '</td>' +
-                                        '<td>' + referantText + '</td>' +
-                                        '<td style="background-color:' + couleur.val() + '"></td>' +
-                                        '<td>' +
-                                            '<a href="' + window.location.href + '&edit=matieres&id=' +
-                                            id + '" class="btn btn-edit open-matiere-modal">Modifier</a>' +
-                                            '<a href="' + window.location.href + '&delete=matieres&id=' +
-                                            id + '#tabs-2" class="btn btn-delete">Supprimer</a>' +
-                                        '</td>');
-                                    elt = $('#tbody-matiere tr').eq(id - 1);
-                                }
-                                $('#modal-matiere-form').dialog('close');
-                                // Surligner la ligne crée / modifiée pendant 1.5 secondes
-                                elt.addClass('success-highlight');
-                                setTimeout(function () {
-                                    elt.removeClass('success-highlight', 1500);
-                                }, 500);
-                            }
-                        },
-                        error: function (jqXHR, textStatus, error) {
-                            displayError(error);
-                        }
-                    });
+                if (checkLength(nom, 2)) {
+                    // Envoi des données si les données sont valides
+                    $('#matiere-form').submit();
                 }
             },
             'Annuler': function () {
                 // Fermer la boîte de dialogue
                 $('#modal-matiere-form').dialog('close');
+                hideError();
             }
         },
         close: function () {
             // Réinitialiser le formulaire
             $('#modal-matiere-form form')[0].reset();
+            hideError();
         }
     });
 
     // Ouvrir la boîte de dialogue
-    $('body').on('click', '.open-matiere-modal', function (e) {
+    $('.open-matiere-modal').on('click', function (e) {
         e.preventDefault();
         const action = $(this).hasClass('btn btn-edit') ? 'edit' : 'create';
         $('#modal-matiere-form')
@@ -305,6 +220,7 @@ $(function () {
         modal: true,
         resizable: false,
         open: function () {
+            $('#enseignant-form').attr('action', $(this).data('url'));
             // si l'action est un edit, charger le modal form avec les données issues du tr contenant le boutton cliqué
             if ($(this).data('action') == 'edit') {
                 const tr = $(this).data('tr');
@@ -326,41 +242,25 @@ $(function () {
                 let valid = true &&
                     checkLength(nom, 3);
                 if (valid) {
-                    // Envoi des données en ajax si les données sont valides
-                    $.ajax({
-                        url: $(this).data('url'),
-                        type: 'POST',
-                        data: {
-                            'nom': nom.val(), 'referant': referant.val()
-                        },
-                        success: function (response) {
-                            response = JSON.parse(response);
-                            let elt = null;
-                            if (response.status == 'ok') {
-                                // si l'action est ok on préfère recharger la page
-                                // pour que le select dans le modal matière soit à jour
-                                location.reload();
-                            }
-                        },
-                        error: function (jqXHR, textStatus, error) {
-                            displayError(error);
-                        }
-                    });
+                    // Envoi des données si les données sont valides
+                    $('#enseignant-form').submit();
                 }
             },
             'Annuler': function () {
                 // Fermer la boîte de dialogue
                 $('#modal-enseignant-form').dialog('close');
+                hideError();
             }
         },
         close: function () {
             // Réinitialiser le formulaire
             $('#modal-enseignant-form form')[0].reset();
+            hideError();
         }
     });
 
     // Ouvrir la boîte de dialogue
-    $('body').on('click', '.open-enseignant-modal', function (e) {
+    $('.open-enseignant-modal').on('click', function (e) {
         e.preventDefault();
         const action = $(this).hasClass('btn-edit') ? 'edit' : 'create';
         $('#modal-enseignant-form')
@@ -377,6 +277,7 @@ $(function () {
         modal: true,
         resizable: false,
         open: function () {
+            $('#salle-form').attr('action', $(this).data('url'));
             // si l'action est un edit, charger le modal form avec les données issues du tr contenant le boutton cliqué
             if ($(this).data('action') == 'edit') {
                 const tr = $(this).data('tr');
@@ -392,69 +293,25 @@ $(function () {
                 let valid = true &&
                     checkLength(nom, 3);
                 if (valid) {
-                    // Envoi des données en ajax si les données sont valides
-                    $.ajax({
-                        url: $(this).data('url'),
-                        type: 'POST',
-                        data: {
-                            'nom': nom.val()
-                        },
-                        success: function (response) {
-                            response = JSON.parse(response);
-                            let elt = null;
-                            if (response.status == 'ok') {
-                                if (action == 'create') { // si l'action est un create, on fait un append
-                                    const id = $('#tbody-salle').children().length + 1;
-                                    $('#tbody-salle').append('<tr>' +
-                                            '<td>' + id + '</td>' +
-                                            '<td>' + nom.val() + '</td>' +
-                                            '<td>' +
-                                                '<a href="' + window.location.href + '&edit=salles&id=' +
-                                                id + '" class="btn-edit open-salle-modal">Modifier</a>' +
-                                                '<a href="' + window.location.href + '&delete=salles&id=' +
-                                                id + '#tabs-4" class="btn-delete">Supprimer</a>' +
-                                            '</td>' +
-                                        '</tr>');
-                                    elt = $('#tbody-salle').children().last();
-                                } else { // sinon, on change son contenu
-                                    const id = response.id + 1;
-                                    $('#tbody-salle tr').eq(id - 1).html('<td>' + id + '</td>' +
-                                        '<td>' + nom.val() + '</td>' +
-                                        '<td>' +
-                                            '<a href="' + window.location.href + '&edit=salles&id=' +
-                                            id + '" class="btn-edit open-salle-modal">Modifier</a>' +
-                                            '<a href="' + window.location.href + '&delete=salles&id=' +
-                                            id + '#tabs-4" class="btn-delete">Supprimer</a>' +
-                                        '</td>');
-                                    elt = $('#tbody-salle tr').eq(id - 1);
-                                }
-                                $('#modal-salle-form').dialog('close');
-                                // Surligner la ligne crée / modifiée pendant 1.5 secondes
-                                elt.addClass('success-highlight');
-                                setTimeout(function () {
-                                    elt.removeClass('success-highlight', 1500);
-                                }, 500);
-                            }
-                        },
-                        error: function (jqXHR, textStatus, error) {
-                            displayError(error);
-                        }
-                    });
+                    // Envoi des données si les données sont valides
+                    $('#salle-form').submit();
                 }
             },
             'Annuler': function () {
                 // Fermer la boîte de dialogue
                 $('#modal-salle-form').dialog('close');
+                hideError();
             }
         },
         close: function () {
             // Réinitialiser le formulaire
             $('#modal-salle-form form')[0].reset();
+            hideError();
         }
     });
 
     // Ouvrir la boîte de dialogue
-    $('body').on('click', '.open-salle-modal', function (e) {
+    $('.open-salle-modal').on('click', function (e) {
         e.preventDefault();
         const action = $(this).hasClass('btn-edit') ? 'edit' : 'create';
         $('#modal-salle-form')

@@ -14,7 +14,7 @@
 
 <section id="modal-enseignant-form" title="Enregister un enseignant" class="modal">
     <p class="error-message"></p>
-    <form id="create-enseignant-form">
+    <form id="enseignant-form" action="" method="post">
         <fieldset>
             <div>
                 <label for="nom-enseignant">Nom :</label>
@@ -56,8 +56,8 @@
                 echo '<td>' . $value['nom'] . '</td>';
                 echo '<td>' . $value['referant'] . '</td>';
                 echo '<td>';
-                    echo '<a href="index.php?action=admin&edit=enseignants&id=' . $id . '#tabs-3" class="btn btn-edit open-enseignant-modal">Modifier</a>';
-                    echo '<a href="index.php?action=admin&delete=enseignants&id=' . $id . '#tabs-3" class="btn btn-delete">Supprimer</a>';
+                    echo '<a href="index.php?action=admin&edit=enseignants&id=' . $id . '" class="btn btn-edit open-enseignant-modal">Modifier</a>';
+                    echo '<a href="index.php?action=admin&delete=enseignants&id=' . $id . '" class="btn btn-delete">Supprimer</a>';
                 echo '</td>';
                 echo '</tr>';
             }

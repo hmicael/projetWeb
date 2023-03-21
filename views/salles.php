@@ -4,7 +4,7 @@
 
 <section id="modal-salle-form" title="Enregister un utilisateur" class="modal">
     <p class="error-message"></p>
-    <form id="create-salle-form">
+    <form id="salle-form" action="" method="post">
         <fieldset>
             <div>
                 <label for="nom-salle">Nom :</label>
@@ -35,7 +35,7 @@
                         }
                         echo '<td>';
                             echo '<a href="index.php?action=admin&edit=salles&id=' . $id . '" class="btn btn-edit open-salle-modal">Modifier</a>';
-                            echo '<a href="index.php?action=admin&delete=salles&id=' . $id . '#tabs-4" class="btn btn-delete">Supprimer</a>';
+                            echo '<a href="index.php?action=admin&delete=salles&id=' . $id . '" class="btn btn-delete">Supprimer</a>';
                         echo '</td>';
                     echo '</tr>';
                 }

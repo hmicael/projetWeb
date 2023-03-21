@@ -24,7 +24,7 @@ $jsonMatiere = file_get_contents(WEBROOT . '/data/matieres.json');
 $matieres = json_decode($jsonMatiere, true);
 $jsonSalle = file_get_contents(WEBROOT . '/data/salles.json');
 $salles = json_decode($jsonSalle, true);
-
+$tabs = 1;
 // Suppression
 if(isset($_GET['delete'])) {
     if (! $_GET['id']) {
@@ -36,24 +36,28 @@ if(isset($_GET['delete'])) {
         case 'utilisateurs':
             unset($utilisateurs[$id]);
             file_put_contents(WEBROOT . '/data/utilisateurs.json', json_encode($utilisateurs, JSON_PRETTY_PRINT));
+            $tabs = 1;
             break;
         case 'matieres':
             unset($matieres[$id]);
             file_put_contents(WEBROOT . '/data/matieres.json', json_encode($matieres, JSON_PRETTY_PRINT));
+            $tabs = 2;
             break;
         case 'enseignants':
             unset($enseignants[$id]);
             file_put_contents(WEBROOT . '/data/enseignants.json', json_encode($enseignants, JSON_PRETTY_PRINT));
+            $tabs = 3;
             break;
         case 'salles':
             unset($salles[$id]);
             file_put_contents(WEBROOT . '/data/salles.json', json_encode($salles, JSON_PRETTY_PRINT));
+            $tabs = 4;
             break;
         default:
             throw new Exception("L'element $entity n'existe pas");
             break;
     }
-    header('Location: index.php?action=admin');
+    header('Location: index.php?action=admin#tabs-' . $tabs);
     exit();
 }
 
@@ -77,10 +81,8 @@ if(isset($_GET['create'])) {
                 $jsonUtilisateur = json_encode($utilisateurs, JSON_PRETTY_PRINT);
                 // Écriture du contenu JSON dans le fichier
                 file_put_contents(WEBROOT .  '/data/utilisateurs.json', $jsonUtilisateur);
-            } else {
-                echo json_encode(['status' => 'Adresse e-mail est invalide']);
-                die();
             }
+            $tabs = 1;
             break;
         case 'matieres':
             $matieres[] = array(
@@ -90,6 +92,7 @@ if(isset($_GET['create'])) {
             );
             $jsonMatieres = json_encode($matieres, JSON_PRETTY_PRINT);
             file_put_contents(WEBROOT .  '/data/matieres.json', $jsonMatieres);
+            $tabs = 2;
             break;
         case 'enseignants':
             $data = sanitize($_POST);
@@ -99,6 +102,7 @@ if(isset($_GET['create'])) {
             );
             $jsonEnseignants = json_encode($enseignants, JSON_PRETTY_PRINT);
             file_put_contents(WEBROOT .  '/data/enseignants.json', $jsonEnseignants);
+            $tabs = 3;
             break;
         case 'salles':
             $salles[] = array(
@@ -106,13 +110,14 @@ if(isset($_GET['create'])) {
             );
             $jsonSalles = json_encode($salles, JSON_PRETTY_PRINT);
             file_put_contents(WEBROOT .  '/data/salles.json', $jsonSalles);
+            $tabs = 4;
             break;
         default:
             throw new Exception("L'element $entity n'existe pas");
             break;
     }
-    echo json_encode(['status' => 'ok']);
-    die();
+    header('Location: index.php?action=admin#tabs-' . $tabs);
+    exit();
 }
 
 // Modification
@@ -134,6 +139,7 @@ if(isset($_GET['edit'])) {
             );
             // Convertir le tableau PHP en JSON
             file_put_contents(WEBROOT . '/data/utilisateurs.json', json_encode($utilisateurs, JSON_PRETTY_PRINT));
+            $tabs = 1;
             break;
         case 'matieres':
             // echo json_encode(['status' => 'ok', 'id' => $id]);
@@ -144,6 +150,7 @@ if(isset($_GET['edit'])) {
                 'couleur' => htmlspecialchars($_POST['couleur'])
             );
             file_put_contents(WEBROOT . '/data/matieres.json', json_encode($matieres, JSON_PRETTY_PRINT));
+            $tabs = 2;
             break;
         case 'enseignants':
             $data = sanitize($_POST);
@@ -152,6 +159,7 @@ if(isset($_GET['edit'])) {
                 'referant' => ucfirst($data['referant'])
             );
             file_put_contents(WEBROOT . '/data/enseignants.json', json_encode($enseignants, JSON_PRETTY_PRINT));
+            $tabs = 3;
             break;
         case 'salles':
             $salles[$id] = array(
@@ -159,13 +167,14 @@ if(isset($_GET['edit'])) {
             );
             $jsonSalles = json_encode($salles, JSON_PRETTY_PRINT);
             file_put_contents(WEBROOT . '/data/salles.json', json_encode($salles, JSON_PRETTY_PRINT));
+            $tabs = 4;
             break;
         default:
             throw new Exception("L'element $entity n'existe pas");
             break;
     }
-    echo json_encode(['status' => 'ok', 'id' => $id]);
-    die();
+    header('Location: index.php?action=admin#tabs-' . $tabs);
+    exit();
 }
 
 require(WEBROOT . '/views/administration.php');

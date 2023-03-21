@@ -7,7 +7,7 @@
 <!-- BEGIN: Modal -->
 <section id="modal-matiere-form" title="Enregister une matière" class="modal">
     <p class="error-message"></p>
-    <form id="create-matiere-form">
+    <form id="matiere-form" action="" method="post">
         <fieldset>
             <div>
                 <label for="nom-matiere">Nom :</label>
@@ -15,7 +15,7 @@
             </div>
             <div>
                 <label for="referant-mat">Refer&eacute;nt :</label>
-                <select id="referant-mat">
+                <select id="referant-mat" name="referant">
                     <?php
                     foreach ($enseignants as $e) {
                         if($e['referant'] == 'Oui')
@@ -59,7 +59,7 @@
                 }
                 echo '<td>';
                     echo '<a href="index.php?action=admin&edit=matieres&id=' . $id . '" class="btn btn-edit open-matiere-modal">Modifier</a>';
-                    echo '<a href="index.php?action=admin&delete=matieres&id=' . $id . '#tabs-2" class="btn btn-delete">Supprimer</a>';
+                    echo '<a href="index.php?action=admin&delete=matieres&id=' . $id . '" class="btn btn-delete">Supprimer</a>';
                 echo '</td>';
             echo '</tr>';
         }

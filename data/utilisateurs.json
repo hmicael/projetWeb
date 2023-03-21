@@ -19,5 +19,12 @@
         "password": "$2y$10$KlY25QAokzybMJgZlMl12O8mtEW70ji6dKWdHHuXCI5LH65AYVxYW",
         "email": "sandrine.delahaye@upsd.fr",
         "role": "Responsable"
+    },
+    "4": {
+        "nom": "COSTANTIN",
+        "prenom": "SAMUEL",
+        "password": "$2y$10$llZX4yVRS6LJoT1KQ7Q7\/O225pSAlcg0JQ79Xkbi6swzznAqawLoe",
+        "email": "handriamahadimby@gmail.com",
+        "role": "Etudiant"
     }
 }

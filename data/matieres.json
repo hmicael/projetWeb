@@ -7,11 +7,11 @@
     {
         "nom": "BD2",
         "referant": "Waller",
-        "couleur": "#d4ff00"
+        "couleur": "#ff0000"
     },
     {
         "nom": "Henintsoa",
-        "referant": "Frederic Vernier",
-        "couleur": "#ffffff"
+        "referant": "Waller",
+        "couleur": "#e00000"
     }
 ]

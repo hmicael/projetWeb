@@ -7,7 +7,7 @@
 <!-- BEGIN: Modal -->
 <section id="modal-user-form" title="Enregister un utilisateur" class="modal">
     <p class="error-message"></p>
-    <form id="create-user-form">
+    <form id="user-form" action="" method="post">
         <fieldset>
             <div>
                 <label for="nom-user">Nom :</label>
@@ -74,7 +74,7 @@
                     echo '<td>';
                     echo '<a href="index.php?action=admin&edit=utilisateurs&id=' . $id . '" class="btn btn-edit open-user-modal">Modifier</a>';
                     if ($value != 'responsable') {
-                        echo '<a href="index.php?action=admin&delete=utilisateurs&id=' . $id . '#tabs-1" class="btn btn-delete">Supprimer</a>';
+                        echo '<a href="index.php?action=admin&delete=utilisateurs&id=' . $id . '" class="btn btn-delete">Supprimer</a>';
                     }
                     echo '</td>';
                 echo '</tr>';
