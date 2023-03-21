@@ -1,4 +1,4 @@
-$(function () {
+$(function() {
     errorMessage = $('.error-message');
 
     /**
@@ -87,7 +87,7 @@ $(function () {
     // END: dialog confirm detete
 
     // Ouvrir la boîte de dialogue
-    $('body').on('click', '.btn-delete', function (e) {
+    $('body').on('click', '.btn-delete', function(e) {
         e.preventDefault();
         $('#dialog-confirm')
             .data('url', $(this).attr('href'))
@@ -100,7 +100,7 @@ $(function () {
         autoOpen: false,
         modal: true,
         resizable: false,
-        open: function () {
+        open: function() {
             $('#user-form').attr('action', $(this).data('url'));
             // si l'action est un edit, charger le modal form avec les données issues du tr contenant le boutton cliqué
             if ($(this).data('action') == 'edit') {
@@ -112,7 +112,7 @@ $(function () {
             }
         },
         buttons: {
-            'Enregistrer': function () {
+            'Enregistrer': function() {
                 const action = $(this).data('action');
                 // Récupérer les valeurs des champs de formulaire
                 let nom = $('#nom-user');
@@ -136,13 +136,13 @@ $(function () {
                     $('#user-form').submit();
                 }
             },
-            'Annuler': function () {
+            'Annuler': function() {
                 // Fermer la boîte de dialogue
                 $('#modal-user-form').dialog('close');
                 hideError();
             }
         },
-        close: function () {
+        close: function() {
             // Réinitialiser le formulaire
             $('#modal-user-form form')[0].reset();
             hideError();
@@ -150,7 +150,7 @@ $(function () {
     });
 
     // Ouvrir la boîte de dialogue
-    $('.open-user-modal').on('click', function (e) {
+    $('.open-user-modal').on('click', function(e) {
         e.preventDefault();
         const action = $(this).hasClass('btn btn-edit') ? 'edit' : 'create';
         $('#modal-user-form')
@@ -166,7 +166,7 @@ $(function () {
         autoOpen: false,
         modal: true,
         resizable: false,
-        open: function () {
+        open: function() {
             $('#matiere-form').attr('action', $(this).data('url'));
             // si l'action est un edit, charger le modal form avec les données issues du tr contenant le boutton cliqué
             if ($(this).data('action') == 'edit') {
@@ -177,7 +177,7 @@ $(function () {
             }
         },
         buttons: {
-            'Enregistrer': function () {
+            'Enregistrer': function() {
                 const action = $(this).data('action');
                 // Récupérer les valeurs des champs de formulaire
                 let nom = $('#nom-matiere');
@@ -188,13 +188,13 @@ $(function () {
                     $('#matiere-form').submit();
                 }
             },
-            'Annuler': function () {
+            'Annuler': function() {
                 // Fermer la boîte de dialogue
                 $('#modal-matiere-form').dialog('close');
                 hideError();
             }
         },
-        close: function () {
+        close: function() {
             // Réinitialiser le formulaire
             $('#modal-matiere-form form')[0].reset();
             hideError();
@@ -202,7 +202,7 @@ $(function () {
     });
 
     // Ouvrir la boîte de dialogue
-    $('.open-matiere-modal').on('click', function (e) {
+    $('.open-matiere-modal').on('click', function(e) {
         e.preventDefault();
         const action = $(this).hasClass('btn btn-edit') ? 'edit' : 'create';
         $('#modal-matiere-form')
@@ -218,7 +218,7 @@ $(function () {
         autoOpen: false,
         modal: true,
         resizable: false,
-        open: function () {
+        open: function() {
             $('#enseignant-form').attr('action', $(this).data('url'));
             // si l'action est un edit, charger le modal form avec les données issues du tr contenant le boutton cliqué
             if ($(this).data('action') == 'edit') {
@@ -232,7 +232,7 @@ $(function () {
             }
         },
         buttons: {
-            'Enregistrer': function () {
+            'Enregistrer': function() {
                 const action = $(this).data('action');
                 // Récupérer les valeurs des champs de formulaire
                 let nom = $('#nom-enseignant');
@@ -245,13 +245,13 @@ $(function () {
                     $('#enseignant-form').submit();
                 }
             },
-            'Annuler': function () {
+            'Annuler': function() {
                 // Fermer la boîte de dialogue
                 $('#modal-enseignant-form').dialog('close');
                 hideError();
             }
         },
-        close: function () {
+        close: function() {
             // Réinitialiser le formulaire
             $('#modal-enseignant-form form')[0].reset();
             hideError();
@@ -259,7 +259,7 @@ $(function () {
     });
 
     // Ouvrir la boîte de dialogue
-    $('.open-enseignant-modal').on('click', function (e) {
+    $('.open-enseignant-modal').on('click', function(e) {
         e.preventDefault();
         const action = $(this).hasClass('btn-edit') ? 'edit' : 'create';
         $('#modal-enseignant-form')
@@ -275,7 +275,7 @@ $(function () {
         autoOpen: false,
         modal: true,
         resizable: false,
-        open: function () {
+        open: function() {
             $('#salle-form').attr('action', $(this).data('url'));
             // si l'action est un edit, charger le modal form avec les données issues du tr contenant le boutton cliqué
             if ($(this).data('action') == 'edit') {
@@ -284,7 +284,7 @@ $(function () {
             }
         },
         buttons: {
-            'Enregistrer': function () {
+            'Enregistrer': function() {
                 const action = $(this).data('action');
                 // Récupérer les valeurs des champs de formulaire
                 let nom = $('#nom-salle');
@@ -296,13 +296,13 @@ $(function () {
                     $('#salle-form').submit();
                 }
             },
-            'Annuler': function () {
+            'Annuler': function() {
                 // Fermer la boîte de dialogue
                 $('#modal-salle-form').dialog('close');
                 hideError();
             }
         },
-        close: function () {
+        close: function() {
             // Réinitialiser le formulaire
             $('#modal-salle-form form')[0].reset();
             hideError();
@@ -310,7 +310,7 @@ $(function () {
     });
 
     // Ouvrir la boîte de dialogue
-    $('.open-salle-modal').on('click', function (e) {
+    $('.open-salle-modal').on('click', function(e) {
         e.preventDefault();
         const action = $(this).hasClass('btn-edit') ? 'edit' : 'create';
         $('#modal-salle-form')
