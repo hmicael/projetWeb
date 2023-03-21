@@ -18,7 +18,6 @@ $(function () {
      * @returns boolean
      */
     function checkLength(elt, min) {
-        console.log(elt.val().length);
         if (elt.val().length < min) {
             elt.addClass('ui-state-error');
             displayError('La longeur doit-être supérieur ou égale à ' + min);
@@ -43,6 +42,21 @@ $(function () {
         } else {
             return true;
         }
+    }
+
+    /**
+     * Fonction qui converti un couleur RGB en Hex
+     * @param {} rgb 
+     * @returns 
+     */
+    function convertRgbToHex(rgb) {
+        rgb = rgb.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
+      
+        function hexCode(i) {
+            return ("0" + parseInt(i).toString(16)).slice(-2);
+        }
+        return "#" + hexCode(rgb[1]) + hexCode(rgb[2])
+                + hexCode(rgb[3]);
     }
 
     // BEGIN: dialog confirm detete
@@ -198,6 +212,7 @@ $(function () {
             if ($(this).data('action') == 'edit') {
                 const tr = $(this).data('tr');
                 $('#nom-matiere').val(tr.children()[1].innerText);
+                $('#couleur').val(convertRgbToHex(tr.children()[3].style.backgroundColor));
             }
         },
         buttons: {
@@ -206,12 +221,13 @@ $(function () {
                 // Récupérer les valeurs des champs de formulaire
                 let nom = $('#nom-matiere');
                 let referantText = $('#referant-mat option:selected').text();
+                let couleur = $('#couleur');
                 if (checkLength(nom, 3)) {
                     // Envoi des données en ajax si les données sont valides
                     $.ajax({
                         url: $(this).data('url'),
                         type: 'POST',
-                        data: { 'nom': nom.val(), 'referant': referantText },
+                        data: { 'nom': nom.val(), 'referant': referantText, 'couleur': couleur.val() },
                         success: function (response) {
                             response = JSON.parse(response);
                             let elt = null;
@@ -222,11 +238,12 @@ $(function () {
                                             '<td>' + id + '</td>' +
                                             '<td>' + nom.val() + '</td>' +
                                             '<td>' + referantText + '</td>' +
+                                            '<td style="background-color:' + couleur.val() + '"></td>' +
                                             '<td>' +
-                                            '<a href="' + window.location.href + '&edit=matieres&id=' +
-                                            id + '" class="btn btn-edit open-matiere-modal">Modifier</a>' +
-                                            '<a href="' + window.location.href + '&delete=matieres&id=' +
-                                            id + '#tabs-1" class="btn btn-delete">Supprimer</a>' +
+                                                '<a href="' + window.location.href + '&edit=matieres&id=' +
+                                                id + '" class="btn btn-edit open-matiere-modal">Modifier</a>' +
+                                                '<a href="' + window.location.href + '&delete=matieres&id=' +
+                                                id + '#tabs-2" class="btn btn-delete">Supprimer</a>' +
                                             '</td>' +
                                         '</tr>');
                                     elt = $('#tbody-matiere').children().last();
@@ -235,11 +252,12 @@ $(function () {
                                     $('#tbody-matiere tr').eq(id - 1).html('<td>' + id + '</td>' +
                                         '<td>' + nom.val() + '</td>' +
                                         '<td>' + referantText + '</td>' +
+                                        '<td style="background-color:' + couleur.val() + '"></td>' +
                                         '<td>' +
                                             '<a href="' + window.location.href + '&edit=matieres&id=' +
                                             id + '" class="btn btn-edit open-matiere-modal">Modifier</a>' +
                                             '<a href="' + window.location.href + '&delete=matieres&id=' +
-                                            id + '#tabs-1" class="btn btn-delete">Supprimer</a>' +
+                                            id + '#tabs-2" class="btn btn-delete">Supprimer</a>' +
                                         '</td>');
                                     elt = $('#tbody-matiere tr').eq(id - 1);
                                 }
@@ -394,7 +412,7 @@ $(function () {
                                                 '<a href="' + window.location.href + '&edit=salles&id=' +
                                                 id + '" class="btn-edit open-salle-modal">Modifier</a>' +
                                                 '<a href="' + window.location.href + '&delete=salles&id=' +
-                                                id + '#tabs-1" class="btn-delete">Supprimer</a>' +
+                                                id + '#tabs-4" class="btn-delete">Supprimer</a>' +
                                             '</td>' +
                                         '</tr>');
                                     elt = $('#tbody-salle').children().last();
@@ -406,7 +424,7 @@ $(function () {
                                             '<a href="' + window.location.href + '&edit=salles&id=' +
                                             id + '" class="btn-edit open-salle-modal">Modifier</a>' +
                                             '<a href="' + window.location.href + '&delete=salles&id=' +
-                                            id + '#tabs-1" class="btn-delete">Supprimer</a>' +
+                                            id + '#tabs-4" class="btn-delete">Supprimer</a>' +
                                         '</td>');
                                     elt = $('#tbody-salle tr').eq(id - 1);
                                 }

@@ -1,5 +1,5 @@
 <?php
-    $tHead = ['Nom', 'Référant', 'Actions'];
+    $tHead = ['Nom', 'Référant', 'Couleur', 'Actions'];
 ?>
 <h1>Liste des matieres :</h1>
 
@@ -24,6 +24,10 @@
                     ?>
                 </select>
             </div>
+            <div>
+                <label for="couleur">Code couleur :</label>
+                <input type="color" name="couleur" id="couleur" value="#FFFFFF" required>
+            </div>
         </fieldset>
     </form>
 </section>
@@ -46,8 +50,12 @@
             $id = $key + 1;
             echo '<tr>';
                 echo "<td>$id</td>";
-                foreach ($matiere as $value) {
-                    echo '<td>' . ucfirst($value) . '</td>';
+                foreach ($matiere as $key => $value) {
+                    if ($key == 'couleur') {
+                        echo '<td style="background-color:' . $value . '"></td>';
+                    } else {
+                        echo '<td>' . ucfirst($value) . '</td>';
+                    }
                 }
                 echo '<td>';
                     echo '<a href="index.php?action=admin&edit=matieres&id=' . $id . '" class="btn btn-edit open-matiere-modal">Modifier</a>';

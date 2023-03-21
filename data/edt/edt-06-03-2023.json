@@ -1,17 +1,417 @@
 [
     {
-        "8:00": {
-            "type": "TD",
-            "matiere": "Web",
-            "enseignant": "Frederic Vernier",
-            "salle": "D203",
-            "date": "06-03-2023",
-            "hdebut": "08:00",
-            "hfin": "10:00",
-            "groupe": 1
+        "jour": "Lundi",
+        "G1": {
+            "8:00": {
+                "type": "TD",
+                "matiere": "Web",
+                "enseignant": "Frederic Vernier",
+                "salle": "D203",
+                "date": "06-03-2023",
+                "hdebut": "08:00",
+                "hfin": "10:00"
+            },
+            "8:15": {
+                "type": "TD",
+                "matiere": "Web",
+                "enseignant": "Frederic Vernier",
+                "salle": "D203",
+                "date": "06-03-2023",
+                "hdebut": "08:00",
+                "hfin": "10:00"
+            }
         },
-        "8:15": {
-            "nombre_de_clients": 5, "temps_moyen_attente": 3
+        "G2": {
+            "8:00": {
+                "type": "TD",
+                "matiere": "Web",
+                "enseignant": "Frederic Vernier",
+                "salle": "D203",
+                "date": "06-03-2023",
+                "hdebut": "08:00",
+                "hfin": "10:00"
+            },
+            "8:15": {
+                "type": "TD",
+                "matiere": "Web",
+                "enseignant": "Frederic Vernier",
+                "salle": "D203",
+                "date": "06-03-2023",
+                "hdebut": "08:00",
+                "hfin": "10:00"
+            }
+        },
+        "G3": {
+            "8:00": {
+                "type": "TD",
+                "matiere": "Web",
+                "enseignant": "Frederic Vernier",
+                "salle": "D203",
+                "date": "06-03-2023",
+                "hdebut": "08:00",
+                "hfin": "10:00"
+            },
+            "8:15": {
+                "type": "TD",
+                "matiere": "Web",
+                "enseignant": "Frederic Vernier",
+                "salle": "D203",
+                "date": "06-03-2023",
+                "hdebut": "08:00",
+                "hfin": "10:00"
+            }
+        },
+        "G4": {
+            "8:00": {
+                "type": "TD",
+                "matiere": "Web",
+                "enseignant": "Frederic Vernier",
+                "salle": "D203",
+                "date": "06-03-2023",
+                "hdebut": "08:00",
+                "hfin": "10:00"
+            },
+            "8:15": {
+                "type": "TD",
+                "matiere": "Web",
+                "enseignant": "Frederic Vernier",
+                "salle": "D203",
+                "date": "06-03-2023",
+                "hdebut": "08:00",
+                "hfin": "10:00"
+            }
+        }
+    },
+    {
+        "jour": "Mardi",
+        "G1": {
+            "8:00": {
+                "type": "TD",
+                "matiere": "Web",
+                "enseignant": "Frederic Vernier",
+                "salle": "D203",
+                "date": "06-03-2023",
+                "hdebut": "08:00",
+                "hfin": "10:00"
+            },
+            "8:15": {
+                "type": "TD",
+                "matiere": "Web",
+                "enseignant": "Frederic Vernier",
+                "salle": "D203",
+                "date": "06-03-2023",
+                "hdebut": "08:00",
+                "hfin": "10:00"
+            }
+        },
+        "G2": {
+            "8:00": {
+                "type": "TD",
+                "matiere": "Web",
+                "enseignant": "Frederic Vernier",
+                "salle": "D203",
+                "date": "06-03-2023",
+                "hdebut": "08:00",
+                "hfin": "10:00"
+            },
+            "8:15": {
+                "type": "TD",
+                "matiere": "Web",
+                "enseignant": "Frederic Vernier",
+                "salle": "D203",
+                "date": "06-03-2023",
+                "hdebut": "08:00",
+                "hfin": "10:00"
+            }
+        },
+        "G3": {
+            "8:00": {
+                "type": "TD",
+                "matiere": "Web",
+                "enseignant": "Frederic Vernier",
+                "salle": "D203",
+                "date": "06-03-2023",
+                "hdebut": "08:00",
+                "hfin": "10:00"
+            },
+            "8:15": {
+                "type": "TD",
+                "matiere": "Web",
+                "enseignant": "Frederic Vernier",
+                "salle": "D203",
+                "date": "06-03-2023",
+                "hdebut": "08:00",
+                "hfin": "10:00"
+            }
+        },
+        "G4": {
+            "8:00": {
+                "type": "TD",
+                "matiere": "Web",
+                "enseignant": "Frederic Vernier",
+                "salle": "D203",
+                "date": "06-03-2023",
+                "hdebut": "08:00",
+                "hfin": "10:00"
+            },
+            "8:15": {
+                "type": "TD",
+                "matiere": "Web",
+                "enseignant": "Frederic Vernier",
+                "salle": "D203",
+                "date": "06-03-2023",
+                "hdebut": "08:00",
+                "hfin": "10:00"
+            }
+        }
+    },
+    {
+        "jour": "Mercredi",
+        "G1": {
+            "8:00": {
+                "type": "TD",
+                "matiere": "Web",
+                "enseignant": "Frederic Vernier",
+                "salle": "D203",
+                "date": "06-03-2023",
+                "hdebut": "08:00",
+                "hfin": "10:00"
+            },
+            "8:15": {
+                "type": "TD",
+                "matiere": "Web",
+                "enseignant": "Frederic Vernier",
+                "salle": "D203",
+                "date": "06-03-2023",
+                "hdebut": "08:00",
+                "hfin": "10:00"
+            }
+        },
+        "G2": {
+            "8:00": {
+                "type": "TD",
+                "matiere": "Web",
+                "enseignant": "Frederic Vernier",
+                "salle": "D203",
+                "date": "06-03-2023",
+                "hdebut": "08:00",
+                "hfin": "10:00"
+            },
+            "8:15": {
+                "type": "TD",
+                "matiere": "Web",
+                "enseignant": "Frederic Vernier",
+                "salle": "D203",
+                "date": "06-03-2023",
+                "hdebut": "08:00",
+                "hfin": "10:00"
+            }
+        },
+        "G3": {
+            "8:00": {
+                "type": "TD",
+                "matiere": "Web",
+                "enseignant": "Frederic Vernier",
+                "salle": "D203",
+                "date": "06-03-2023",
+                "hdebut": "08:00",
+                "hfin": "10:00"
+            },
+            "8:15": {
+                "type": "TD",
+                "matiere": "Web",
+                "enseignant": "Frederic Vernier",
+                "salle": "D203",
+                "date": "06-03-2023",
+                "hdebut": "08:00",
+                "hfin": "10:00"
+            }
+        },
+        "G4": {
+            "8:00": {
+                "type": "TD",
+                "matiere": "Web",
+                "enseignant": "Frederic Vernier",
+                "salle": "D203",
+                "date": "06-03-2023",
+                "hdebut": "08:00",
+                "hfin": "10:00"
+            },
+            "8:15": {
+                "type": "TD",
+                "matiere": "Web",
+                "enseignant": "Frederic Vernier",
+                "salle": "D203",
+                "date": "06-03-2023",
+                "hdebut": "08:00",
+                "hfin": "10:00"
+            }
+        }
+    },
+    {
+        "jour": "Jeudi",
+        "G1": {
+            "8:00": {
+                "type": "TD",
+                "matiere": "Web",
+                "enseignant": "Frederic Vernier",
+                "salle": "D203",
+                "date": "06-03-2023",
+                "hdebut": "08:00",
+                "hfin": "10:00"
+            },
+            "8:15": {
+                "type": "TD",
+                "matiere": "Web",
+                "enseignant": "Frederic Vernier",
+                "salle": "D203",
+                "date": "06-03-2023",
+                "hdebut": "08:00",
+                "hfin": "10:00"
+            }
+        },
+        "G2": {
+            "8:00": {
+                "type": "TD",
+                "matiere": "Web",
+                "enseignant": "Frederic Vernier",
+                "salle": "D203",
+                "date": "06-03-2023",
+                "hdebut": "08:00",
+                "hfin": "10:00"
+            },
+            "8:15": {
+                "type": "TD",
+                "matiere": "Web",
+                "enseignant": "Frederic Vernier",
+                "salle": "D203",
+                "date": "06-03-2023",
+                "hdebut": "08:00",
+                "hfin": "10:00"
+            }
+        },
+        "G3": {
+            "8:00": {
+                "type": "TD",
+                "matiere": "Web",
+                "enseignant": "Frederic Vernier",
+                "salle": "D203",
+                "date": "06-03-2023",
+                "hdebut": "08:00",
+                "hfin": "10:00"
+            },
+            "8:15": {
+                "type": "TD",
+                "matiere": "Web",
+                "enseignant": "Frederic Vernier",
+                "salle": "D203",
+                "date": "06-03-2023",
+                "hdebut": "08:00",
+                "hfin": "10:00"
+            }
+        },
+        "G4": {
+            "8:00": {
+                "type": "TD",
+                "matiere": "Web",
+                "enseignant": "Frederic Vernier",
+                "salle": "D203",
+                "date": "06-03-2023",
+                "hdebut": "08:00",
+                "hfin": "10:00"
+            },
+            "8:15": {
+                "type": "TD",
+                "matiere": "Web",
+                "enseignant": "Frederic Vernier",
+                "salle": "D203",
+                "date": "06-03-2023",
+                "hdebut": "08:00",
+                "hfin": "10:00"
+            }
+        }
+    },
+    {
+        "jour": "Vendredi",
+        "G1": {
+            "8:00": {
+                "type": "TD",
+                "matiere": "Web",
+                "enseignant": "Frederic Vernier",
+                "salle": "D203",
+                "date": "06-03-2023",
+                "hdebut": "08:00",
+                "hfin": "10:00"
+            },
+            "8:15": {
+                "type": "TD",
+                "matiere": "Web",
+                "enseignant": "Frederic Vernier",
+                "salle": "D203",
+                "date": "06-03-2023",
+                "hdebut": "08:00",
+                "hfin": "10:00"
+            }
+        },
+        "G2": {
+            "8:00": {
+                "type": "TD",
+                "matiere": "Web",
+                "enseignant": "Frederic Vernier",
+                "salle": "D203",
+                "date": "06-03-2023",
+                "hdebut": "08:00",
+                "hfin": "10:00"
+            },
+            "8:15": {
+                "type": "TD",
+                "matiere": "Web",
+                "enseignant": "Frederic Vernier",
+                "salle": "D203",
+                "date": "06-03-2023",
+                "hdebut": "08:00",
+                "hfin": "10:00"
+            }
+        },
+        "G3": {
+            "8:00": {
+                "type": "TD",
+                "matiere": "Web",
+                "enseignant": "Frederic Vernier",
+                "salle": "D203",
+                "date": "06-03-2023",
+                "hdebut": "08:00",
+                "hfin": "10:00"
+            },
+            "8:15": {
+                "type": "TD",
+                "matiere": "Web",
+                "enseignant": "Frederic Vernier",
+                "salle": "D203",
+                "date": "06-03-2023",
+                "hdebut": "08:00",
+                "hfin": "10:00"
+            }
+        },
+        "G4": {
+            "8:00": {
+                "type": "TD",
+                "matiere": "Web",
+                "enseignant": "Frederic Vernier",
+                "salle": "D203",
+                "date": "06-03-2023",
+                "hdebut": "08:00",
+                "hfin": "10:00"
+            },
+            "8:15": {
+                "type": "TD",
+                "matiere": "Web",
+                "enseignant": "Frederic Vernier",
+                "salle": "D203",
+                "date": "06-03-2023",
+                "hdebut": "08:00",
+                "hfin": "10:00"
+            }
         }
     }
 ]

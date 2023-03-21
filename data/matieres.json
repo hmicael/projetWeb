@@ -1,18 +1,17 @@
 [
     {
-        "nom": "Algo",
-        "referant": "Rosaz"
-    },
-    {
-        "nom": "GLA",
-        "referant": "Wolf"
-    },
-    {
         "nom": "Web",
-        "referant": "Frederice Vernier"
+        "referant": "Frederic Vernier",
+        "couleur": "#2db9a8"
     },
     {
-        "nom": "BD MIAGE",
-        "referant": "Waller"
+        "nom": "BD2",
+        "referant": "Waller",
+        "couleur": "#d4ff00"
+    },
+    {
+        "nom": "Henintsoa",
+        "referant": "Frederic Vernier",
+        "couleur": "#ffffff"
     }
 ]
