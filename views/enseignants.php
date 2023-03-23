@@ -18,7 +18,7 @@
         <fieldset>
             <div>
                 <label for="nom-enseignant">Nom :</label>
-                <input type="text" name="nom" id="nom-enseignant" autofocus>
+                <input type="text" name="nom" id="nom-enseignant" required autofocus>
             </div>
             <fieldset>
                 <legend>Refer&eacute;nt :</legend>

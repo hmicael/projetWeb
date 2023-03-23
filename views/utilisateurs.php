@@ -11,27 +11,27 @@
         <fieldset>
             <div>
                 <label for="nom-user">Nom :</label>
-                <input type="text" name="nom" id="nom-user" autofocus>
+                <input type="text" name="nom" id="nom-user" required autofocus>
             </div>
             <div>
                 <label for="prenom">Pr&eacute;nom :</label>
-                <input type="text" name="prenom" id="prenom">
+                <input type="text" name="prenom" id="prenom" required>
             </div>
             <div>
                 <label for="email">Email :</label>
-                <input type="email" name="email" id="email">
+                <input type="email" name="email" id="email" required>
             </div>
             <div>
                 <label for="password">Mot de passe :</label>
-                <input type="password" name="password" id="password">
+                <input type="password" name="password" id="password" required>
             </div>
             <div>
                 <label for="confirm-password">Confirmez le mot de passe :</label>
-                <input type="password" name="confirm-password" id="confirm-password">
+                <input type="password" name="confirm-password" id="confirm-password" required>
             </div>
             <div>
                 <label for="role">Role :</label>
-                <select name="role" id="role">
+                <select name="role" id="role" required>
                     <option value="Etudiant">Etudiant</option>
                     <option value="Coordinateur">Coordinateur</option>
                     <option value="Responsable">Responsable</option>

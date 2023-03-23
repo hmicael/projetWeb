@@ -101,6 +101,10 @@ $(function() {
         modal: true,
         resizable: false,
         open: function() {
+            // Faire en sorte que le button généré par le modal soit le boutton de submit du formulaire
+            $('div.ui-dialog-buttonpane.ui-widget-content.ui-helper-clearfix > div > button:nth-child(1)').attr('type', 'submit');
+            $('div.ui-dialog-buttonpane.ui-widget-content.ui-helper-clearfix > div > button:nth-child(1)').attr('form', 'user-form');
+            // Modifier la trajectoire de l'action
             $('#user-form').attr('action', $(this).data('url'));
             // si l'action est un edit, charger le modal form avec les données issues du tr contenant le boutton cliqué
             if ($(this).data('action') == 'edit') {
@@ -113,39 +117,16 @@ $(function() {
         },
         buttons: {
             'Enregistrer': function() {
-                const action = $(this).data('action');
-                // Récupérer les valeurs des champs de formulaire
-                let nom = $('#nom-user');
-                let prenom = $('#prenom');
-                let email = $('#email');
-                let password = $('#password');
-                let role = $('#role').val();
-                let emailRegex = /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
-                // Valider les champs
-                let valid = true &&
-                    checkLength(nom, 3) &&
-                    checkLength(prenom, 3) &&
-                    checkLength(password, 4) &&
-                    checkRegexp(email, 'email', emailRegex);
-                if (password.val() != $('#confirm-password').val()) {
-                    valid = false;
-                    displayError('Les mots de passe ne se correspondent pas');
-                }
-                if (valid) {
-                    // Envoi des données si les données sont valides
-                    $('#user-form').submit();
-                }
+                // ne rien faire puisque la validation se fait déjà par les attributs HTML
             },
             'Annuler': function() {
                 // Fermer la boîte de dialogue
                 $('#modal-user-form').dialog('close');
-                hideError();
             }
         },
         close: function() {
             // Réinitialiser le formulaire
             $('#modal-user-form form')[0].reset();
-            hideError();
         }
     });
 
@@ -167,6 +148,10 @@ $(function() {
         modal: true,
         resizable: false,
         open: function() {
+            // Faire en sorte que le button généré par le modal soit le boutton de submit du formulaire
+            $('div.ui-dialog-buttonpane.ui-widget-content.ui-helper-clearfix > div > button:nth-child(1)').attr('type', 'submit');
+            $('div.ui-dialog-buttonpane.ui-widget-content.ui-helper-clearfix > div > button:nth-child(1)').attr('form', 'matiere-form');
+            // Modifier la trajectoire de l'action
             $('#matiere-form').attr('action', $(this).data('url'));
             // si l'action est un edit, charger le modal form avec les données issues du tr contenant le boutton cliqué
             if ($(this).data('action') == 'edit') {
@@ -178,26 +163,16 @@ $(function() {
         },
         buttons: {
             'Enregistrer': function() {
-                const action = $(this).data('action');
-                // Récupérer les valeurs des champs de formulaire
-                let nom = $('#nom-matiere');
-                let referantText = $('#referant-mat option:selected').text();
-                let couleur = $('#couleur');
-                if (checkLength(nom, 2)) {
-                    // Envoi des données si les données sont valides
-                    $('#matiere-form').submit();
-                }
+                // ne rien faire puisque la validation se fait déjà par les attributs HTML
             },
             'Annuler': function() {
                 // Fermer la boîte de dialogue
                 $('#modal-matiere-form').dialog('close');
-                hideError();
             }
         },
         close: function() {
             // Réinitialiser le formulaire
             $('#modal-matiere-form form')[0].reset();
-            hideError();
         }
     });
 
@@ -219,6 +194,10 @@ $(function() {
         modal: true,
         resizable: false,
         open: function() {
+            // Faire en sorte que le button généré par le modal soit le boutton de submit du formulaire
+            $('div.ui-dialog-buttonpane.ui-widget-content.ui-helper-clearfix > div > button:nth-child(1)').attr('type', 'submit');
+            $('div.ui-dialog-buttonpane.ui-widget-content.ui-helper-clearfix > div > button:nth-child(1)').attr('form', 'enseignant-form');
+            // Modifier la trajectoire de l'action
             $('#enseignant-form').attr('action', $(this).data('url'));
             // si l'action est un edit, charger le modal form avec les données issues du tr contenant le boutton cliqué
             if ($(this).data('action') == 'edit') {
@@ -233,28 +212,16 @@ $(function() {
         },
         buttons: {
             'Enregistrer': function() {
-                const action = $(this).data('action');
-                // Récupérer les valeurs des champs de formulaire
-                let nom = $('#nom-enseignant');
-                let referant = $("input[name='referant']:checked"); // Récuperer le radio checked
-                // Valider les champs
-                let valid = true &&
-                    checkLength(nom, 3);
-                if (valid) {
-                    // Envoi des données si les données sont valides
-                    $('#enseignant-form').submit();
-                }
+                // ne rien faire puisque la validation se fait déjà par les attributs HTML
             },
             'Annuler': function() {
                 // Fermer la boîte de dialogue
                 $('#modal-enseignant-form').dialog('close');
-                hideError();
             }
         },
         close: function() {
             // Réinitialiser le formulaire
             $('#modal-enseignant-form form')[0].reset();
-            hideError();
         }
     });
 
@@ -276,6 +243,10 @@ $(function() {
         modal: true,
         resizable: false,
         open: function() {
+            // Faire en sorte que le button généré par le modal soit le boutton de submit du formulaire
+            $('div.ui-dialog-buttonpane.ui-widget-content.ui-helper-clearfix > div > button:nth-child(1)').attr('type', 'submit');
+            $('div.ui-dialog-buttonpane.ui-widget-content.ui-helper-clearfix > div > button:nth-child(1)').attr('form', 'salle-form');
+            // Modifier la trajectoire de l'action
             $('#salle-form').attr('action', $(this).data('url'));
             // si l'action est un edit, charger le modal form avec les données issues du tr contenant le boutton cliqué
             if ($(this).data('action') == 'edit') {
@@ -285,27 +256,16 @@ $(function() {
         },
         buttons: {
             'Enregistrer': function() {
-                const action = $(this).data('action');
-                // Récupérer les valeurs des champs de formulaire
-                let nom = $('#nom-salle');
-                // Valider les champs
-                let valid = true &&
-                    checkLength(nom, 3);
-                if (valid) {
-                    // Envoi des données si les données sont valides
-                    $('#salle-form').submit();
-                }
+                // ne rien faire puisque la validation se fait déjà par les attributs HTML
             },
             'Annuler': function() {
                 // Fermer la boîte de dialogue
                 $('#modal-salle-form').dialog('close');
-                hideError();
             }
         },
         close: function() {
             // Réinitialiser le formulaire
             $('#modal-salle-form form')[0].reset();
-            hideError();
         }
     });
 

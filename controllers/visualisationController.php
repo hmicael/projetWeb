@@ -1,17 +1,23 @@
 <?php
 $title = 'Visualisation';
+$jsonEnseignant = file_get_contents(WEBROOT . '/data/enseignants.json');
+$enseignants = json_decode($jsonEnseignant, true);
+$jsonMatiere = file_get_contents(WEBROOT . '/data/matieres.json');
+$matieres = json_decode($jsonMatiere, true);
+$jsonSalle = file_get_contents(WEBROOT . '/data/salles.json');
+$salles = json_decode($jsonSalle, true);
 // $jsonString = file_get_contents(WEBROOT. '/data/edt/edt-06-03-2023.json');
 // $edt = json_decode($jsonString, true);
 $edt = [];
 // Définir les heures de début et de fin
 $heureDebut = strtotime('08:00');
 $heureFin = strtotime('19:00');
-for ($i=0; $i < 5; $i++) { 
-    $groupes = [];
-    for ($j=0; $j < 4; $j++) {
+for ($heure = $heureDebut; $heure <= $heureFin; $heure += 900) {
+    $horaires = [];
+    for ($i=0; $i < 5; $i++) { 
         // Boucler à travers les heures avec un pas de 15 minutes
-        for ($heure = $heureDebut; $heure <= $heureFin; $heure += 900) {
-            $groupes[$j][date('H:i', $heure)] = [
+        for ($j=0; $j < 4; $j++) {
+            $horaires[$i][$j] = [
                 "type" => "TD",
                 "matiere" => "Web",
                 "enseignant" => "Frederic Vernier",
@@ -22,10 +28,8 @@ for ($i=0; $i < 5; $i++) {
             ];
         }
     }
-    $edt[$i] = $groupes;
+    $edt[date('H:i', $heure)] = $horaires;
 }
-
-var_dump($edt[0][0]["08:00"]);
 
 if ($_SESSION['role'] == 'etudiant') {
     require(WEBROOT . '/views/visualisation.php');

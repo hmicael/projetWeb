@@ -11,11 +11,11 @@
         <fieldset>
             <div>
                 <label for="nom-matiere">Nom :</label>
-                <input type="text" name="nom" id="nom-matiere" autofocus>
+                <input type="text" name="nom" id="nom-matiere" required autofocus>
             </div>
             <div>
                 <label for="referant-mat">Refer&eacute;nt :</label>
-                <select id="referant-mat" name="referant">
+                <select id="referant-mat" name="referant" required>
                     <?php
                     foreach ($enseignants as $e) {
                         if($e['referant'] == 'Oui')

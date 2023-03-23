@@ -8,7 +8,7 @@
         <fieldset>
             <div>
                 <label for="nom-salle">Nom :</label>
-                <input type="text" name="nom" id="nom-salle" autofocus>
+                <input type="text" name="nom" id="nom-salle" required autofocus>
             </div>
         </fieldset>
     </form>
