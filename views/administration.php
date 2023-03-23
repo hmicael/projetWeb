@@ -1,5 +1,11 @@
 <?php ob_start(); ?>
 Edition responsable
+<?php
+    if (isset($_SESSION['error-msg'])) {
+        echo '<span class="error-msg">' . $_SESSION['error-msg'] . '</span>';
+        unset($_SESSION['error-msg']);
+    }
+?>
 <section id="dialog-confirm" title="Suppression">
     <p>
         <span class="ui-icon ui-icon-alert" style="float:left; margin:12px 12px 20px 0;"></span>

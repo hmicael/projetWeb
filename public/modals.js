@@ -58,8 +58,12 @@ $(function() {
                 $('#nom-user').val(tr.children()[1].innerText);
                 $('#prenom').val(tr.children()[2].innerText);
                 $('#email').val(tr.children()[3].innerText);
+                $('#email').attr('readonly', true); // l'email n'est plus modifiable
                 $('#role').val(tr.children()[4].innerText);
+            } else {
+                $('#email').attr('readonly', false);
             }
+            // check si les mots de passe correspondent
             $('#confirm-password').on('keyup', function() {
                 if ($(this).val() != $('#password').val()) {
                     $("div.ui-dialog-buttonpane.ui-widget-content.ui-helper-clearfix > div > button:nth-child(1)").attr("disabled", true);

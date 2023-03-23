@@ -81,6 +81,8 @@ if(isset($_GET['create'])) {
                 $jsonUtilisateur = json_encode($utilisateurs, JSON_PRETTY_PRINT);
                 // Écriture du contenu JSON dans le fichier
                 file_put_contents(WEBROOT .  '/data/utilisateurs.json', $jsonUtilisateur);
+            } else {
+                $_SESSION['error-msg'] = "Votre email est invalide";
             }
             $tabs = 1;
             break;
@@ -130,20 +132,15 @@ if(isset($_GET['edit'])) {
     switch ($entity) {
         case 'utilisateurs':
             $data = sanitize($_POST);
-            $utilisateurs[$id] = array(
-                'nom' => strtoupper($data['nom']),
-                'prenom' => ucfirst($data['prenom']),
-                'password' => password_hash($data['password'], PASSWORD_BCRYPT),
-                'email' => $data['email'],
-                'role' => ucfirst($data['role'])
-            );
+            $utilisateurs[$id]['nom'] = strtoupper($data['nom']);
+            $utilisateurs[$id]['prenom'] = ucfirst($data['prenom']);
+            $utilisateurs[$id]['password'] = password_hash($data['password'], PASSWORD_BCRYPT);
+            $utilisateurs[$id]['role'] = ucfirst($data['role']);
             // Convertir le tableau PHP en JSON
             file_put_contents(WEBROOT . '/data/utilisateurs.json', json_encode($utilisateurs, JSON_PRETTY_PRINT));
             $tabs = 1;
             break;
         case 'matieres':
-            // echo json_encode(['status' => 'ok', 'id' => $id]);
-            // die();
             $matieres[$id] = array(
                 'nom' => ucfirst(htmlspecialchars($_POST['nom'])),
                 'referant' => ucfirst(htmlspecialchars($_POST['referant'])),
