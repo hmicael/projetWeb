@@ -1,58 +1,4 @@
 $(function() {
-    errorMessage = $('.error-message');
-
-    /**
-     * Fonction qui affiche les messages d'erreur par rapport au formulaire
-     * @param string txt 
-     */
-    function displayError(txt) {
-        $('.error-message').show();
-        errorMessage
-            .text(txt)
-            .addClass('ui-state-error');
-    }
-
-    /**
-     * Fonction qui vérifie la longeur d'un string, valeur d'un input
-     * @param {*} elt element input d'un formulaire
-     * @param {*} min valeur minimal autorisé
-     * @returns boolean
-     */
-    function checkLength(elt, min) {
-        if (elt.val().length < min) {
-            elt.addClass('ui-state-error');
-            displayError('La longeur doit-être supérieur ou égale à ' + min);
-            return false;
-        } else {
-            return true;
-        }
-    }
-
-    /**
-     * Fonction qui enlève toutes les messages ou forme d'erreur
-     */
-    function hideError() {
-        errorMessage.hide();
-        $('.ui-state-error').removeClass('ui-state-error');
-    }
-
-    /**
-     * Fonction qui vérifie si la valeur d'un input est conforme à une expression régulière donnée
-     * @param {*} elt input d'un formulaire
-     * @param {*} type type de l'input
-     * @param {*} regexp expression régulière
-     * @returns boolean
-     */
-    function checkRegexp(elt, type, regexp) {
-        if (!(regexp.test(elt.val()))) {
-            elt.addClass('ui-state-error');
-            displayError('Le format de l\' ' + type + ' est invalide');
-            return false;
-        } else {
-            return true;
-        }
-    }
-
     /**
      * Fonction qui converti un couleur RGB en Hex
      * @param {} rgb 
@@ -114,6 +60,15 @@ $(function() {
                 $('#email').val(tr.children()[3].innerText);
                 $('#role').val(tr.children()[4].innerText);
             }
+            $('#confirm-password').on('keyup', function() {
+                if ($(this).val() != $('#password').val()) {
+                    $("div.ui-dialog-buttonpane.ui-widget-content.ui-helper-clearfix > div > button:nth-child(1)").attr("disabled", true);
+                    $('#password-not-match').show();
+                } else {
+                    $("div.ui-dialog-buttonpane.ui-widget-content.ui-helper-clearfix > div > button:nth-child(1)").attr("disabled", false);
+                    $('#password-not-match').hide();
+                }
+            });
         },
         buttons: {
             'Enregistrer': function() {

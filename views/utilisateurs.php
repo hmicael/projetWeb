@@ -26,7 +26,8 @@
                 <input type="password" name="password" id="password" required>
             </div>
             <div>
-                <label for="confirm-password">Confirmez le mot de passe :</label>
+                <label for="confirm-password">Confirmez le mot de passe :</label><br>
+                <span id="password-not-match" style="color:red;font-size:small;display:none">Les mots de passe ne se correspondent pas</span>
                 <input type="password" name="confirm-password" id="confirm-password" required>
             </div>
             <div>
