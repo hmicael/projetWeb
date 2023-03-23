@@ -68,6 +68,10 @@ if(isset($_GET['create'])) {
         case 'utilisateurs':
             // Récupération des données du formulaire
             $data = sanitize($_POST);
+            if (! preg_match('/(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/', $data['password'])) {
+                $_SESSION['error-msg'] = "Le mot de passe doit contenir au moins un chiffre et une lettre majuscule et minuscule, et au moins 8 caractères.";
+                break;
+            }
             if(filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
                 // Ajout du nouvel objet dans le tableau de données
                 $utilisateurs[] = array(

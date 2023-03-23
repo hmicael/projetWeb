@@ -23,7 +23,8 @@
             </div>
             <div>
                 <label for="password">Mot de passe :</label>
-                <input type="password" name="password" id="password" required>
+                <input type="password" name="password" id="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" 
+                    title="Doit contenir au moins un chiffre et une lettre majuscule et minuscule, et au moins 8 caractères." required>
             </div>
             <div>
                 <label for="confirm-password">Confirmez le mot de passe :</label><br>
