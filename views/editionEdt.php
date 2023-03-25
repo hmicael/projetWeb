@@ -89,12 +89,22 @@ Visualisation non etudiant
         </tr>
     </thead>
     <tbody>
+        <tr>
+            <td></td>
+            <?php
+            for ($i=0; $i < 5; $i++) { // boucle jour lundi à vendredi
+                for ($j=0; $j < 4; $j++) { // boucle groupe 1 à 4
+                    echo '<td>Groupe ' . $j . '</td>';
+                }
+            }
+            ?>
+        </tr>
         <?php
-        for ($heure = $heureDebut; $heure <= $heureFin; $heure += 900) {
+        for ($heure = $heureDebut; $heure <= $heureFin; $heure += 900) { // boucle horaire
             echo '<tr>';
                 echo '<td>' . date('H:i', $heure) . '</td>';
-                for ($i=0; $i < 5; $i++) { 
-                    for ($j=0; $j < 4; $j++) {
+                for ($i=0; $i < 5; $i++) { // boucle jour lundi à vendredi
+                    for ($j=0; $j < 4; $j++) { // boucle groupe 1 à 4
                         echo '<td>' . $j . '</td>';
                     }
                 }

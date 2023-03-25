@@ -1,5 +1,8 @@
 <?php
 $title = 'Visualisation';
+$lundiDeLaSemaine =  date('d-m-Y', strtotime("last Monday +5 days"));
+// $defaultDate->modify('last monday');
+var_dump($defaultDate);
 $jsonEnseignant = file_get_contents(WEBROOT . '/data/enseignants.json');
 $enseignants = json_decode($jsonEnseignant, true);
 $jsonMatiere = file_get_contents(WEBROOT . '/data/matieres.json');
