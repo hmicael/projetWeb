@@ -76,6 +76,7 @@ ob_start();
     </form>
 </section>
 <!-- END: Modal -->
+<!-- BEGIN: table -->
 <table>
     <thead>
         <tr>
@@ -91,24 +92,100 @@ ob_start();
         <tr>
             <td></td>
             <?php
-            for ($i=0; $i < 5; $i++) { // boucle jour lundi à vendredi
-                for ($j=0; $j < 4; $j++) { // boucle groupe 1 à 4
-                    echo '<td>Groupe ' . $j . '</td>';
+            for ($jour=0; $jour < 5; $jour++) { // boucle jour lundi à vendredi
+                for ($groupe=0; $groupe < 4; $groupe++) { // boucle groupe 1 à 4
+                    echo '<td>Groupe ' . ($groupe+1) . '</td>';
                 }
             }
             ?>
         </tr>
         <?php
-        for ($heure = $heureDebut; $heure <= $heureFin; $heure += 900) { // boucle horaire
+        // un tableau pour enregistrer les sauts de ligne à faire s'il y a eu des fusions de ligne en haut
+        $sautsLigne = [];
+        $sautsColonne = [];
+        for ($heure = $heureDebut; $heure <= $heureFin; $heure += 900) { // boucle horaire 900s = 15mn
+            $hDeb = date('H:i', $heure);
             echo '<tr>';
-                echo '<td>' . date('H:i', $heure) . '</td>';
-                for ($i=0; $i < 5; $i++) { // boucle jour lundi à vendredi
-                    for ($j=0; $j < 4; $j++) { // boucle groupe 1 à 4
-                        echo '<td>';
-                            if ($_SESSION['role'] != 'etudiant') {
-                                echo "not stud";
+                echo "<td>$hDeb</td>";
+                for ($jour=0; $jour < 5; $jour++) { // boucle jour lundi à vendredi
+                    for ($groupe=0; $groupe < 4; $groupe++) { // boucle groupe 1 à 4
+                        // s'il y a un contenu et que c'est le bon groupe
+                        if(isset($edt[$hDeb][$jour][$groupe]) &&
+                            in_array($groupe, $edt[$hDeb][$jour][$groupe]['groupes'])) {
+                            // calcul de la fusion de ligne: (hfin - hdebut) / 15mn
+                            $slotHFin = strtotime($edt[$hDeb][$jour][$groupe]['hfin']);
+                            $slotHDeb = strtotime($edt[$hDeb][$jour][$groupe]['hdebut']);
+                            $rowspan = ($slotHFin - $slotHDeb) / 900;
+                            $colspan = 1;
+                            // calcul fusion de colonne
+                            $slotGroupes = $edt[$hDeb][$jour][$groupe]['groupes'];
+                            // on va tester sy le groupes dans le slot appartient à la 
+                            // liste d'arrangement possible pour un fusion de colonne
+                            // si array_diff renvoi un array vide, ça veut dire que 
+                            // les éléments du tableau 1 se trouve dans le tableau 2
+                            if(! array_diff([0, 1, 2, 3], $slotGroupes)) {
+                                $colspan = 4;
+                            } else if(! array_diff([0, 2, 3], $slotGroupes)) {
+                                if($groupe == 2) {
+                                    $colspan = 2;
+                                } 
+                            } else if(! array_diff([0, 1, 3], $slotGroupes) && $groupe == $slotGroupes[0]) {
+                                $colspan = 2;
+                            } else if(! array_diff([0, 1, 2], $slotGroupes) && $groupe == $slotGroupes[0]) {
+                                $colspan = 3;
+                            } else if(! array_diff([1, 2, 3], $slotGroupes) && $groupe == $slotGroupes[0]) {
+                                $colspan = 3;
+                            } else if(! array_diff([0, 1], $slotGroupes) && $groupe == $slotGroupes[0]) {
+                                $colspan = 2;
+                            } else if(! array_diff([2, 3], $slotGroupes) && $groupe == $slotGroupes[0]) {
+                                $colspan = 2;
+                            } else if(! array_diff([1, 2], $slotGroupes) && $groupe == $slotGroupes[0]) {
+                                $colspan = 2;
                             }
-                        echo '</td>';
+                            // s'il n'y a pas ligne à fusionner mettre rowspan à 1 pour éviter le rowspan=0
+                            if ($rowspan > 0) {
+                                for ($i=$slotHDeb+900; $i < $slotHFin; $i+=900) {
+                                    // ajout des slots à sauter à cause de la fusion
+                                    $sautsLigne[date('H:i', $i)][$jour][$groupe] = true;
+                                    if ($colspan > 1) {
+                                        for ($j=$groupe; $j < ($groupe + $colspan); $j++) { 
+                                            $sautsColonne[date('H:i', $i)][$jour][$j] = true;
+                                        }
+                                    }
+                                }
+                                if ($colspan > 1) {
+                                    echo '<td style="background-color:red" rowspan="' . $rowspan . '" colspan="' . $colspan . '">';
+                                } else {
+                                    echo '<td style="background-color:red" rowspan="' . $rowspan . '">';
+                                }
+                            } else {
+                                if ($colspan > 1) {
+                                    echo '<td colspan="' . $colspan . '">';
+                                } else {
+                                    echo '<td>';
+                                }
+                            }
+                                echo $groupe;
+                                echo " - $hDeb -";
+                                echo $edt[$hDeb][$jour][$groupe]['matiere'];
+                            echo '</td>';
+                            if ($colspan > 1) {
+                                // si colspan > 1 on va decaler la position de groupe pour ne pas mettre un td en exces
+                                $groupe += ($colspan - 1);
+                            }                   
+                        } else {
+                            // si le slot ne fait pas partie du slot à sauter à cause une fusion de ligne ou de colonne on peut afficher
+                            if (! isset($sautsLigne[$hDeb][$jour][$groupe]) && ! isset($sautsColonne[$hDeb][$jour][$groupe])) {
+                                if ($_SESSION['role'] == 'etudiant') {
+                                    echo '<td></td>';
+                                } else {
+                                    echo '<td>';
+                                        echo $groupe;
+                                        echo '<a href="index.php?action=add-edt&" class="btn btn-add open-edt-modal">+</a>';
+                                    echo '</td>';
+                                }
+                            }
+                        }
                     }
                 }
             echo '</tr>';
@@ -116,5 +193,6 @@ ob_start();
         ?>
     </tbody>
 </table>
+<!-- END: table -->
 <?php $content = ob_get_clean(); ?>
 <?php require('template.php') ?>

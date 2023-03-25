@@ -13,24 +13,41 @@ $salles = json_decode($jsonSalle, true);
 $edt = [];
 // Définir les heures de début et de fin
 $heureDebut = strtotime('08:00');
-$heureFin = strtotime('19:00');
-for ($heure = $heureDebut; $heure <= $heureFin; $heure += 900) {
+$heureDebut2 = strtotime('09:00');
+$heureFin = strtotime('10:00');
+for ($heure = $heureDebut2; $heure <= $heureFin; $heure += 900) {
     $horaires = [];
-    for ($i=0; $i < 5; $i++) { 
+    for ($jour=0; $jour < 5; $jour++) { 
         // Boucler à travers les heures avec un pas de 15 minutes
-        for ($j=0; $j < 4; $j++) {
-            $horaires[$i][$j] = [
+        for ($groupe=0; $groupe < 4; $groupe++) {
+            $horaires[$jour][$groupe] = [
                 "type" => "TD",
                 "matiere" => "Web",
                 "enseignant" => "Frederic Vernier",
                 "salle" => "D203",
-                "date" => date('H:i', $heure),
-                "hdebut" => date('H:i', $heure + 900),
-                "hfin" => "10:00"
+                "date" => date('d-m-Y'),
+                "hdebut" => date('H:i', $heure),
+                "hfin" =>  date('H:i', $heure + 900),
+                "groupes" => [1,2]
             ];
         }
     }
     $edt[date('H:i', $heure)] = $horaires;
 }
+$edt["09:00"][0][1] = [
+    "type" => "TD",
+    "matiere" => "BD",
+    "enseignant" => "Frederic Vernier",
+    "salle" => "D203",
+    "date" => date('d-m-Y'),
+    "hdebut" => date("09:00"),
+    "hfin" =>  date("09:30"),
+    "groupes" => [1, 2]
+];
+unset($edt["09:15"][0][1]);
+unset($edt["09:15"][0][2]);
+unset($edt["09:30"][0][1]);
+// echo '<pre>';
+// var_dump($edt);
 
 require(WEBROOT . '/views/visualisation.php');
