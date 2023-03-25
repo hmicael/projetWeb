@@ -1,6 +1,3 @@
-<?php
-    $tHead = ['Nom', 'Référant', 'Couleur', 'Actions'];
-?>
 <h1>Liste des matieres :</h1>
 
 <a id="create-matiere-button" href="index.php?action=admin&create=matieres" class="btn btn-add open-matiere-modal">+</a>
@@ -36,10 +33,10 @@
 <table>
     <thead>
         <tr>
-            <td>#</td>
+            <th scope="col">#</th>
             <?php
-                foreach ($tHead as $value) {
-                    echo '<td>' . ucfirst($value) . '</td>';
+                foreach (['Nom', 'Référant', 'Couleur', 'Actions'] as $value) {
+                    echo '<th scope="col">' . ucfirst($value) . '</th>';
                 }
             ?>
         </tr>

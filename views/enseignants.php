@@ -40,9 +40,9 @@
         <thead>
             <tr>
                 <th scope="col">#</th>
-                <?php  $entete = ['Nom', 'Référant', 'Actions'];
-                foreach ($entete as $value) {
-                    echo '<th>' . $value . '</th>';
+                <?php
+                foreach (['Nom', 'Référant', 'Actions'] as $value) {
+                    echo '<th scope="col">' . $value . '</th>';
                 }?>
                 
             </tr>

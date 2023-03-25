@@ -1,6 +1,3 @@
-<?php
-    $tHead = ['Nom', 'Prénom(s)', 'Email', 'Role', 'Actions'];
-?>
 <h1>Liste des utilisateurs :</h1>
 
 <a id="create-user-button" href="index.php?action=admin&create=utilisateurs" class="btn btn-add open-user-modal">+</a>
@@ -47,11 +44,11 @@
     <table>
         <thead>
             <tr>
-                <td>#</td>
+                <th scope="col">#</th>
                 <?php
-                    foreach ($tHead as $value) {
+                    foreach (['Nom', 'Prénom(s)', 'Email', 'Role', 'Actions'] as $value) {
                         if ($value != 'password')
-                            echo '<td>' . ucfirst($value) . '</td>';
+                            echo '<th scope="col">' . ucfirst($value) . '</th>';
                     }
                 ?>
             </tr>

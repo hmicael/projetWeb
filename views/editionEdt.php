@@ -80,10 +80,10 @@ Visualisation non etudiant
 <table>
     <thead>
         <tr>
-            <td>Horaires</td>
+            <th scope="col">Horaires</td>
             <?php
                 foreach (["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi"] as $value) {
-                    echo "<td colspan=\"4\">$value</td>";
+                    echo "<th scope=\"col\" colspan=\"4\">$value</th>";
                 }
             ?>
         </tr>

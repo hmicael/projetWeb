@@ -19,9 +19,9 @@
     <table>
         <thead>
             <tr>
-                <td>#</td>
-                <td>Nom</td>
-                <td>Actions</td>
+                <th scope="col">#</th>
+                <th scope="col">Nom</th>
+                <th scope="col">Actions</th>
             </tr>
         </thead>
         <tbody id="tbody-salle">
