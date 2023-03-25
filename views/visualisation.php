@@ -123,17 +123,15 @@ ob_start();
                             // liste d'arrangement possible pour un fusion de colonne
                             // si array_diff renvoi un array vide, ça veut dire que 
                             // les éléments du tableau 1 se trouve dans le tableau 2
-                            if(! array_diff([0, 1, 2, 3], $slotGroupes)) {
+                            if(! array_diff([0, 1, 2, 3], $slotGroupes) && $groupe == $slotGroupes[0]) {
                                 $colspan = 4;
-                            } else if(! array_diff([0, 2, 3], $slotGroupes)) {
-                                if($groupe == 2) {
-                                    $colspan = 2;
-                                } 
-                            } else if(! array_diff([0, 1, 3], $slotGroupes) && $groupe == $slotGroupes[0]) {
-                                $colspan = 2;
-                            } else if(! array_diff([0, 1, 2], $slotGroupes) && $groupe == $slotGroupes[0]) {
-                                $colspan = 3;
+                            // } else if(! array_diff([0, 2, 3], $slotGroupes)) {
+                            //     $colspan = 2;
+                            // } else if(! array_diff([0, 1, 3], $slotGroupes) && $groupe == $slotGroupes[0]) {
+                            //     $colspan = 2;
                             } else if(! array_diff([1, 2, 3], $slotGroupes) && $groupe == $slotGroupes[0]) {
+                                $colspan = 3;
+                            } else if(! array_diff([0, 1, 2], $slotGroupes) && $groupe == $slotGroupes[0]) {
                                 $colspan = 3;
                             } else if(! array_diff([0, 1], $slotGroupes) && $groupe == $slotGroupes[0]) {
                                 $colspan = 2;
@@ -165,8 +163,6 @@ ob_start();
                                     echo '<td>';
                                 }
                             }
-                                echo $groupe;
-                                echo " - $hDeb -";
                                 echo $edt[$hDeb][$jour][$groupe]['matiere'];
                             echo '</td>';
                             if ($colspan > 1) {
@@ -180,7 +176,6 @@ ob_start();
                                     echo '<td></td>';
                                 } else {
                                     echo '<td>';
-                                        echo $groupe;
                                         echo '<a href="index.php?action=add-edt&" class="btn btn-add open-edt-modal">+</a>';
                                     echo '</td>';
                                 }
