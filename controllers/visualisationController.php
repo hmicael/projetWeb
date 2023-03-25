@@ -1,8 +1,7 @@
 <?php
 $title = 'Visualisation';
-$lundiDeLaSemaine =  date('d-m-Y', strtotime("last Monday +5 days"));
+$lundiDeLaSemaine =  date('d-m-Y', strtotime("last Monday +0 days"));
 // $defaultDate->modify('last monday');
-var_dump($defaultDate);
 $jsonEnseignant = file_get_contents(WEBROOT . '/data/enseignants.json');
 $enseignants = json_decode($jsonEnseignant, true);
 $jsonMatiere = file_get_contents(WEBROOT . '/data/matieres.json');
@@ -34,8 +33,4 @@ for ($heure = $heureDebut; $heure <= $heureFin; $heure += 900) {
     $edt[date('H:i', $heure)] = $horaires;
 }
 
-if ($_SESSION['role'] == 'etudiant') {
-    require(WEBROOT . '/views/visualisation.php');
-} else {
-    require(WEBROOT . '/views/editionEdt.php');
-}
+require(WEBROOT . '/views/visualisation.php');
