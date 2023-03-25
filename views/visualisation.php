@@ -164,6 +164,8 @@ ob_start();
                                 }
                             }
                                 echo $edt[$hDeb][$jour][$groupe]['matiere'];
+                                echo '<a href="index.php?action=delete-edt&heure='.
+                                    $hDeb .'&jour=' . $jour . '&groupe=' . $groupe . '" class="btn btn-delete">-</a>';
                             echo '</td>';
                             if ($colspan > 1) {
                                 // si colspan > 1 on va decaler la position de groupe pour ne pas mettre un td en exces
