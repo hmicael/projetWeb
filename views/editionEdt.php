@@ -1,6 +1,5 @@
 <?php 
 ob_start();
-$thead = ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi"];
 ?>
 Visualisation non etudiant
 <a id="create-edt-button" href="index.php?action=visualiser&create=edt" class="btn btn-add open-edt-modal">+</a>
@@ -51,16 +50,14 @@ Visualisation non etudiant
             </div>
             <fieldset>
                 <legend>Groupe concern&eacute;</legend>
-                <div>
-                    <input type="checkbox" id="form-edt-groupe-1" name="form-edt-groupe-1">
+                <div class="checkbox-group required">
+                    <input type="checkbox" id="form-edt-groupe-1" name="form-edt-groupe[]">
                     <label for="form-edt-groupe-1">Groupe 1</label>
-                    <input type="checkbox" id="form-edt-groupe-2" name="form-edt-groupe-2">
+                    <input type="checkbox" id="form-edt-groupe-2" name="form-edt-groupe[]">
                     <label for="form-edt-groupe-2">Groupe 2</label>
-                </div>
-                <div>
-                    <input type="checkbox" id="form-edt-groupe-3" name="form-edt-groupe-3">
+                    <input type="checkbox" id="form-edt-groupe-3" name="form-edt-groupe[]">
                     <label for="form-edt-groupe-3">Groupe 3</label>
-                    <input type="checkbox" id="form-edt-groupe-4" name="form-edt-groupe-4">
+                    <input type="checkbox" id="form-edt-groupe-4" name="form-edt-groupe[]">
                     <label for="form-edt-groupe-4">Groupe 4</label>
                 </div> 
             </fieldset>
@@ -72,6 +69,10 @@ Visualisation non etudiant
                 <label for=form-edt-hfin">Heure de fin: </label>
                 <input type="time" id="form-edt-hfin" name="form-edt-hfin" min="08:00" max="19:00" step="900" required>
             </div>
+            <div>
+                <label for=form-edt-date">Date: </label>
+                <input type="date" id="form-edt-date" name="form-edt-date" min="<?=date('d-m-y') ?>" required>
+            </div>
         </fieldset>
     </form>
 </section>
@@ -81,7 +82,7 @@ Visualisation non etudiant
         <tr>
             <td>Horaires</td>
             <?php
-                foreach ($thead as $value) {
+                foreach (["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi"] as $value) {
                     echo "<td colspan=\"4\">$value</td>";
                 }
             ?>
