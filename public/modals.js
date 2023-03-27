@@ -272,6 +272,8 @@ $(function() {
             // Checker le checkbox du groupe et le mettre en readonly
             const checkedGroup  = '#form-edt-groupe-' + findGetParameter("groupe", $(this).data('url'));
             $(checkedGroup).prop('checked', true);
+            // empecher l'utilisateur de décocher le checkbox sur le groupe où on a declencher l'action
+            $('.form-edt-groupe').removeAttr('onclick');
             $(checkedGroup).attr('onclick', "return false;");
             // set heure de début
             const hdeb = findGetParameter("heure", $(this).data('url'));

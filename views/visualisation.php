@@ -57,13 +57,13 @@ echo '</div>';
             <fieldset>
                 <legend>Groupe concern&eacute;</legend>
                 <div class="checkbox-group">
-                    <input type="checkbox" id="form-edt-groupe-1" name="form-edt-groupe[0]">
+                    <input type="checkbox" id="form-edt-groupe-1" name="form-edt-groupe[0]" class="form-edt-groupe">
                     <label for="form-edt-groupe-1">Groupe 1</label>
-                    <input type="checkbox" id="form-edt-groupe-2" name="form-edt-groupe[1]">
+                    <input type="checkbox" id="form-edt-groupe-2" name="form-edt-groupe[1]" class="form-edt-groupe">
                     <label for="form-edt-groupe-2">Groupe 2</label>
-                    <input type="checkbox" id="form-edt-groupe-3" name="form-edt-groupe[2]">
+                    <input type="checkbox" id="form-edt-groupe-3" name="form-edt-groupe[2]" class="form-edt-groupe">
                     <label for="form-edt-groupe-3">Groupe 3</label>
-                    <input type="checkbox" id="form-edt-groupe-4" name="form-edt-groupe[3]">
+                    <input type="checkbox" id="form-edt-groupe-4" name="form-edt-groupe[3]" class="form-edt-groupe">
                     <label for="form-edt-groupe-4">Groupe 4</label>
                 </div> 
             </fieldset>
