@@ -165,9 +165,14 @@ ob_start();
                                 }
                                 // affichage du contenu du slot
                                 echo $edt[$hDeb][$jour][$groupe]['matiere'];
-                                echo '<a href="index.php?action=delete-edt&heure='.
+                                // boutton edit
+                                echo '<a href="index.php?action=edt-edit&heure='.
                                     $hDeb .'&jour=' . ($jour+1) . '&semaine=' . $lundiDeLaSemaine .
-                                    '&groupe=' . ($groupe+1) . '" class="btn btn-delete">-</a>';
+                                    '&groupe=' . ($groupe+1) . '" class="btn btn-edit open-edt-modal">Modifier</a>';
+                                // bouton delete
+                                echo '<a href="index.php?action=edt-delete&heure='.
+                                    $hDeb .'&jour=' . ($jour+1) . '&semaine=' . $lundiDeLaSemaine .
+                                    '&groupe=' . ($groupe+1) . '" class="btn btn-delete">Delete</a>';
                                 echo '</td>';
                                 if ($colspan > 1) {
                                     // si colspan > 1 on va decaler la position de groupe pour ne pas mettre un td en exces
@@ -179,7 +184,7 @@ ob_start();
                                     echo '<td></td>';
                                 } else {
                                     echo '<td>';
-                                        echo '<a href="index.php?action=add-edt&heure='.
+                                        echo '<a href="index.php?action=edt-add&heure='.
                                         $hDeb .'&jour=' . ($jour+1) . '&semaine=' . $lundiDeLaSemaine .
                                         '&groupe=' . ($groupe+1) . '" class="btn btn-add open-edt-modal">+</a>';
                                     echo '</td>';

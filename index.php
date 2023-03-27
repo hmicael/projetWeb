@@ -20,6 +20,8 @@ try {
                 require(WEBROOT. '/controllers/VisualisationController.php');
             } else if ($_GET['action'] === 'admin') {
                 require(WEBROOT. '/controllers/AdministrationController.php');
+            } else if (preg_match('/^edt-/', $_GET['action'])) {
+                require(WEBROOT. '/controllers/EdtController.php');
             } else {
                 throw new Exception("Error 404 : Page not found");
             }

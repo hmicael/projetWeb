@@ -264,10 +264,6 @@ $(function() {
         modal: true,
         resizable: false,
         open: function() {
-            // Re-enable tous les checkbox
-            for (let i = 1; i <= 4; i++) {
-                $('#form-edt-groupe-' + i).attr('disabled', false);
-            }
             // Faire en sorte que le button généré par le modal soit le boutton de submit du formulaire
             $('div.ui-dialog-buttonpane.ui-widget-content.ui-helper-clearfix > div > button:nth-child(1)').attr('type', 'submit');
             $('div.ui-dialog-buttonpane.ui-widget-content.ui-helper-clearfix > div > button:nth-child(1)').attr('form', 'edt-form');
@@ -276,7 +272,7 @@ $(function() {
             // Checker le checkbox du groupe et le mettre en readonly
             const checkedGroup  = '#form-edt-groupe-' + findGetParameter("groupe", $(this).data('url'));
             $(checkedGroup).prop('checked', true);
-            $(checkedGroup).attr('disabled', true);
+            $(checkedGroup).attr('onclick', "return false;");
             // set heure de début
             const hdeb = findGetParameter("heure", $(this).data('url'));
             $('#form-edt-hdebut').val(hdeb);
