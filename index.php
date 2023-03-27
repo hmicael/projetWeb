@@ -20,6 +20,8 @@ try {
                 require(WEBROOT. '/controllers/VisualisationController.php');
             } else if ($_GET['action'] === 'admin') {
                 require(WEBROOT. '/controllers/AdministrationController.php');
+            } else if ($_GET['action'] === 'ajax' && isset($_GET['search'])) {
+                require(WEBROOT. '/controllers/AjaxRequestController.php');
             } else if (preg_match('/^edt-/', $_GET['action'])) {
                 require(WEBROOT. '/controllers/EdtController.php');
             } else {
