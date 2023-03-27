@@ -8,10 +8,5 @@
         "nom": "BD2",
         "referant": "Waller",
         "couleur": "#ff0000"
-    },
-    {
-        "nom": "Henintsoa",
-        "referant": "Waller",
-        "couleur": "#e00000"
     }
 ]

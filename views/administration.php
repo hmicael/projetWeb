@@ -1,11 +1,11 @@
 <?php ob_start(); ?>
 Edition responsable
-<section id="dialog-confirm" title="Suppression">
-    <p>
-        <span class="ui-icon ui-icon-alert" style="float:left; margin:12px 12px 20px 0;"></span>
-        Cet &eacute;l&eacute;ment sera d&eacute;finitivement supprim&eacute; et ne pourra pas &ecirc;tre r&eacute;cup&eacute;r&eacute;. &Ecirc;tes-vous s&ucirc;r ?
-    </p>
-</section>
+<?php
+    if (isset($_SESSION['error-msg'])) {
+        echo '<span class="error-msg">' . $_SESSION['error-msg'] . '</span>';
+        unset($_SESSION['error-msg']);
+    }
+?>
 <section id="tabs">
     <ul>
         <li><a href="#tabs-1">Utilisateurs</a></li>

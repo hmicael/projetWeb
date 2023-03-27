@@ -1,6 +1,3 @@
-<?php
-    $tHead = ['Nom', 'Référant', 'Couleur', 'Actions'];
-?>
 <h1>Liste des matieres :</h1>
 
 <a id="create-matiere-button" href="index.php?action=admin&create=matieres" class="btn btn-add open-matiere-modal">+</a>
@@ -11,11 +8,11 @@
         <fieldset>
             <div>
                 <label for="nom-matiere">Nom :</label>
-                <input type="text" name="nom" id="nom-matiere" autofocus>
+                <input type="text" name="nom" id="nom-matiere" required autofocus>
             </div>
             <div>
                 <label for="referant-mat">Refer&eacute;nt :</label>
-                <select id="referant-mat" name="referant">
+                <select id="referant-mat" name="referant" required>
                     <?php
                     foreach ($enseignants as $e) {
                         if($e['referant'] == 'Oui')
@@ -36,10 +33,10 @@
 <table>
     <thead>
         <tr>
-            <td>#</td>
+            <th scope="col">#</th>
             <?php
-                foreach ($tHead as $value) {
-                    echo '<td>' . ucfirst($value) . '</td>';
+                foreach (['Nom', 'Référant', 'Couleur', 'Actions'] as $value) {
+                    echo '<th scope="col">' . ucfirst($value) . '</th>';
                 }
             ?>
         </tr>

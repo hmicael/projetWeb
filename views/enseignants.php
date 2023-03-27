@@ -18,7 +18,7 @@
         <fieldset>
             <div>
                 <label for="nom-enseignant">Nom :</label>
-                <input type="text" name="nom" id="nom-enseignant" autofocus>
+                <input type="text" name="nom" id="nom-enseignant" required autofocus>
             </div>
             <fieldset>
                 <legend>Refer&eacute;nt :</legend>
@@ -40,9 +40,9 @@
         <thead>
             <tr>
                 <th scope="col">#</th>
-                <?php  $entete = ['Nom', 'Référant', 'Actions'];
-                foreach ($entete as $value) {
-                    echo '<th>' . $value . '</th>';
+                <?php
+                foreach (['Nom', 'Référant', 'Actions'] as $value) {
+                    echo '<th scope="col">' . $value . '</th>';
                 }?>
                 
             </tr>
