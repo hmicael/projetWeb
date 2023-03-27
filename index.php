@@ -34,5 +34,3 @@ try {
 } catch (Exception $e) {
 	require(WEBROOT. '/views/error.php');
 }
-
-?>

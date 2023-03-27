@@ -174,7 +174,6 @@ echo '</div>';
 
                                     // affichage du contenu du slot
                                     echo $edt[$hDeb][$jour][$groupe]['matiere'];
-                                    var_dump($slotGroupes);
 
                                     // boutton edit
                                     echo '<a href="index.php?action=edt-edit&heure='.
