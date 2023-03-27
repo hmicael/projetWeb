@@ -3,7 +3,6 @@
 <a id="create-salle-button" href="index.php?action=admin&create=salles" class="btn-add open-salle-modal">+</a>
 
 <section id="modal-salle-form" title="Enregister un utilisateur" class="modal">
-    <p class="error-message"></p>
     <form id="salle-form" action="" method="post">
         <fieldset>
             <div>

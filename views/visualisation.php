@@ -12,7 +12,6 @@ echo '</div>';
 ?>
 <!-- BEGIN: Modal -->
 <section id="modal-edt-form" title="Ajout d'une plage" class="modal">
-    <p class="error-message"></p>
     <form id="edt-form" action="" method="post">
         <fieldset>
             <div>

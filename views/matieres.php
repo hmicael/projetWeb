@@ -3,7 +3,6 @@
 <a id="create-matiere-button" href="index.php?action=admin&create=matieres" class="btn btn-add open-matiere-modal">+</a>
 <!-- BEGIN: Modal -->
 <section id="modal-matiere-form" title="Enregister une matière" class="modal">
-    <p class="error-message"></p>
     <form id="matiere-form" action="" method="post">
         <fieldset>
             <div>

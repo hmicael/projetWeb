@@ -3,7 +3,6 @@
 <a id="create-user-button" href="index.php?action=admin&create=utilisateurs" class="btn btn-add open-user-modal">+</a>
 <!-- BEGIN: Modal -->
 <section id="modal-user-form" title="Enregister un utilisateur" class="modal">
-    <p class="error-message"></p>
     <form id="user-form" action="" method="post">
         <fieldset>
             <div>
