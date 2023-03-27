@@ -265,8 +265,10 @@ $(function() {
         resizable: false,
         open: function() {
             // Faire en sorte que le button généré par le modal soit le boutton de submit du formulaire
-            $('div.ui-dialog-buttonpane.ui-widget-content.ui-helper-clearfix > div > button:nth-child(1)').attr('type', 'submit');
-            $('div.ui-dialog-buttonpane.ui-widget-content.ui-helper-clearfix > div > button:nth-child(1)').attr('form', 'edt-form');
+            $('div.ui-dialog-buttonpane.ui-widget-content.ui-helper-clearfix > div > button:nth-child(1)')
+                .attr('type', 'submit');
+            $('div.ui-dialog-buttonpane.ui-widget-content.ui-helper-clearfix > div > button:nth-child(1)')
+                .attr('form', 'edt-form');
             // Modifier la trajectoire de l'action
             $('#edt-form').attr('action', $(this).data('url'));
             // Checker le checkbox du groupe et le mettre en readonly
@@ -306,8 +308,36 @@ $(function() {
             $('#form-edt-date').prop('readonly', true);
             // si l'action est un edit, charger le modal form avec les données issues du tr contenant le boutton cliqué
             if ($(this).data('action') == 'edit') {
-                const tr = $(this).data('tr');
-                $('#nom-edt').val(tr.children()[1].innerText);
+                // faire une requete ajax pour obtenir les infos de l'edt selectionné
+
+                $.ajax({
+                    url: 'index.php?action=ajax&search=edt',
+                    method: 'POST',
+                    data: {
+                        'heure': hdeb,
+                        'jour': jour,
+                        'groupe':findGetParameter("groupe", $(this).data('url')) - 1,
+                        'semaine': lundiSemaine
+                    },
+                    success: function(response) {
+                        const obj = JSON.parse(response);
+                        const data = obj.data;
+                        $('#form-edt-matiere').val(data.matiere);
+                        $('#form-edt-type').val(data.type);
+                        $('#form-edt-enseignant').val(data.enseignant);
+                        $('#form-edt-salle').val(data.salle);
+                        $('#form-edt-hdebut').val(data.hdebut);
+                        $('#form-edt-hfin').val(data.hfin);
+                        $('#form-edt-date').val(data.date);
+                        $.each(data.groupes, function(key, value) {
+                            $('#form-edt-groupe-' + value).prop('checked', true);
+                        });
+                    },
+                    error: function(xhr, status, error) {
+                        console.log("Error: " + error);
+                    }
+                });
+                
             }
         },
         buttons: {
@@ -331,7 +361,6 @@ $(function() {
         $('#modal-edt-form')
             .data('url', $(this).attr('href'))
             .data('action', action)
-            .data('tr', $(this).parent().parent())
             .dialog('open');
     });
     // END: Modal create edt

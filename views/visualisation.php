@@ -72,15 +72,15 @@ echo '</div>';
                 </div> 
             </fieldset>
             <div>
-                <label for=form-edt-hdebut">Heure de d&eacute;but: </label>
+                <label for="form-edt-hdebut">Heure de d&eacute;but: </label>
                 <input type="time" id="form-edt-hdebut" name="form-edt-hdebut" min="08:00" max="18:45" step="900" required>
             </div>
             <div>
-                <label for=form-edt-hfin">Heure de fin: </label>
+                <label for="form-edt-hfin">Heure de fin: </label>
                 <input type="time" id="form-edt-hfin" name="form-edt-hfin" max="19:00" step="900" required>
             </div>
             <div>
-                <label for=form-edt-date">Date: </label>
+                <label for="form-edt-date">Date: </label>
                 <input type="date" id="form-edt-date" name="form-edt-date" readonly required>
             </div>
         </fieldset>
@@ -226,5 +226,5 @@ echo '<div>';
     echo '</p>';
 echo '</div>';
 $content = ob_get_clean();
+require('template.php') 
 ?>
-<?php require('template.php') ?>
