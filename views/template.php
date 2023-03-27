@@ -15,7 +15,7 @@
         <header>
             <nav>
                 Navigation
-                <a href="index.php?action=deconnect">Deconnection</a>
+                <a href="index.php?action=deconnect" class="btn-outline">Deconnection</a>
             </nav>
         </header>
         <main>

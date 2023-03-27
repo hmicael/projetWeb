@@ -1,8 +1,28 @@
+/* Ridouane */
+.btn-outline {
+    border-color: #63003C;
+    color: #63003C;
+}
+
+.btn-outline:hover {
+    background: #63003C;
+    color: #fff;
+}
+
+/* Ridouane */
+
+
+
+
 .form-card {
     box-sizing: border-box;
     margin: 20px auto;
     padding: 10px 30px;
     box-shadow: lightgray 4px 4px 20px;
+}
+
+html {
+    font-family: sans-serif;
 }
 
 table,
