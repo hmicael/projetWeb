@@ -1,7 +1,7 @@
 <?php
 if (! isset($_POST['email']) && ! isset($_POST['password'])) {
-    header('Location: ' . ROOT);
     $_SESSION['error-msg'] = 'Veuillez fournir un email et un mot de passe';
+    header('Location: ' . ROOT);
     exit();
 }
 

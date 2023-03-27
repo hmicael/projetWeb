@@ -1,5 +1,9 @@
 <?php 
 ob_start();
+if (isset($_SESSION['error-msg'])) {
+    echo '<span class="error-msg">' . $_SESSION['error-msg'] . '</span>';
+    unset($_SESSION['error-msg']);
+}
 // Navigation semaine
 echo '<div>';
     echo '<p>';
@@ -89,7 +93,7 @@ echo '</div>';
         <tr>
             <th scope="col">Horaires</td>
             <?php
-                foreach (["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi"] as $key => $value) {
+                foreach (['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi'] as $key => $value) {
                     $date = date('d-m-Y', strtotime($lundiDeLaSemaine. ' + ' . $key . ' days'));
                     echo "<th scope=\"col\" colspan=\"4\">$value<br>$date</th>";
                 }
