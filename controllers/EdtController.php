@@ -24,8 +24,7 @@ $post = sanitize($_POST);
 $filename = '/data/edt/' . $get["semaine"] . '.json';
 
 // ouverture du fichier
-$jsonString = file_get_contents($filename);
-$edt = json_decode($jsonString, true);
+$edt = json_decode(file_get_contents($filename), true);
 
 if ($_GET['action'] == 'edt-delete') {
     echo 'delete';
@@ -90,8 +89,6 @@ if ($_GET['action'] == 'edt-delete') {
                 "groupes" => $groupes
             ];
         }
-        echo '<pre>';
-        var_dump($_POST, $_GET, $edt);
     } elseif ($_GET['action'] == 'edt-edit') {
         # code...
     }

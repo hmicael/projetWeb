@@ -16,15 +16,12 @@ function sanitize(array $data) {
 
 $title = 'Administration';
 // Ouverture des fichiers
-$jsonUtilisateur = file_get_contents(WEBROOT . '/data/utilisateurs.json');
-$utilisateurs = json_decode($jsonUtilisateur, true);
-$jsonEnseignant = file_get_contents(WEBROOT . '/data/enseignants.json');
-$enseignants = json_decode($jsonEnseignant, true);
-$jsonMatiere = file_get_contents(WEBROOT . '/data/matieres.json');
-$matieres = json_decode($jsonMatiere, true);
-$jsonSalle = file_get_contents(WEBROOT . '/data/salles.json');
-$salles = json_decode($jsonSalle, true);
+$utilisateurs = json_decode(file_get_contents(WEBROOT . '/data/utilisateurs.json'), true);
+$enseignants = json_decode(file_get_contents(WEBROOT . '/data/enseignants.json'), true);
+$matieres = json_decode(file_get_contents(WEBROOT . '/data/matieres.json'), true);
+$salles = json_decode(file_get_contents(WEBROOT . '/data/salles.json'), true);
 $tabs = 1;
+
 // Suppression
 if(isset($_GET['delete'])) {
     if (! $_GET['id']) {
