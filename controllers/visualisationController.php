@@ -1,6 +1,15 @@
 <?php
 $title = 'Visualisation';
-$lundiDeLaSemaine =  date('d-m-Y', strtotime("last Monday +0 days"));
+
+$lundiDeLaSemaine =  null;
+// vérifier si le jour actuel est le lundi
+if(date('D') != 'Mon') {    
+ // prendre le dernier lundi
+  $lundiDeLaSemaine = date('Y-m-d', strtotime('last Monday +2 days'));    
+
+}else{
+    $lundiDeLaSemaine = date('Y-m-d');   
+}
 // $defaultDate->modify('last monday');
 $jsonEnseignant = file_get_contents(WEBROOT . '/data/enseignants.json');
 $enseignants = json_decode($jsonEnseignant, true);
@@ -41,6 +50,26 @@ $edt["09:00"][0][0] = [
     "date" => date('d-m-Y'),
     "hdebut" => date("09:00"),
     "hfin" =>  date("09:45"),
+    "groupes" => [0,1,3]
+];
+$edt["09:00"][2][2] = [
+    "type" => "TD",
+    "matiere" => "BD",
+    "enseignant" => "Frederic Vernier",
+    "salle" => "D203",
+    "date" => date('d-m-Y'),
+    "hdebut" => date("09:00"),
+    "hfin" =>  date("09:45"),
+    "groupes" => [2,3]
+];
+$edt["08:00"][0][0] = [
+    "type" => "TD",
+    "matiere" => "BD",
+    "enseignant" => "Frederic Vernier",
+    "salle" => "D203",
+    "date" => date('d-m-Y'),
+    "hdebut" => date("08:00"),
+    "hfin" =>  date("10:00"),
     "groupes" => [0,1,3]
 ];
 // unset($edt["09:15"][0][0]);

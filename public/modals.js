@@ -14,6 +14,24 @@ $(function() {
                 + hexCode(rgb[3]);
     }
 
+    /**
+     * Fonction qui permet d'obtenir le parametre GET
+     * @param {*} parameterName
+     * @param {*} parameterName
+     * @returns 
+     */
+    function findGetParameter(parameterName, url) {
+        var result = null,
+            tmp = [];
+        url.split("&") // spliter l'url avec &
+            .forEach(function (item) {
+                // pour chaque split, respliter pour avoir séparer la clé et le valeur
+              tmp = item.split("=");
+              if (tmp[0] === parameterName) result = decodeURIComponent(tmp[1]);
+            });
+        return result;
+    }
+
     // BEGIN: dialog confirm detete
     $('#dialog-confirm').dialog({
         autoOpen: false,
@@ -239,4 +257,75 @@ $(function() {
             .dialog('open');
     });
     // END: Modal create Salle
+
+    // BEGIN: Modal create edt
+    $('#modal-edt-form').dialog({
+        autoOpen: false,
+        modal: true,
+        resizable: false,
+        open: function() {
+            // Re-enable tous les checkbox
+            for (let i = 1; i <= 4; i++) {
+                $('#form-edt-groupe-' + i).attr('disabled', false);
+            }
+            // Faire en sorte que le button généré par le modal soit le boutton de submit du formulaire
+            $('div.ui-dialog-buttonpane.ui-widget-content.ui-helper-clearfix > div > button:nth-child(1)').attr('type', 'submit');
+            $('div.ui-dialog-buttonpane.ui-widget-content.ui-helper-clearfix > div > button:nth-child(1)').attr('form', 'edt-form');
+            // Modifier la trajectoire de l'action
+            $('#edt-form').attr('action', $(this).data('url'));
+            // Checker le checkbox du groupe et le mettre en readonly
+            const checkedGroup  = '#form-edt-groupe-' + findGetParameter("groupe", $(this).data('url'));
+            $(checkedGroup).prop('checked', true);
+            $(checkedGroup).attr('disabled', true);
+            // set heure de début
+            const hdeb = findGetParameter("heure", $(this).data('url'));
+            $('#form-edt-hdebut').val(hdeb);
+            $('#form-edt-hdebut').prop('readonly', true);
+            // set heure de fin min = hdeb
+            $('#form-edt-hfin').prop('min', hdeb);
+            // set date
+            const lundiSemaine = findGetParameter("semaine", $(this).data('url'));
+            const jour = findGetParameter("jour", $(this).data('url')) - 1;
+            let date = new Date(lundiSemaine);
+            day = date.getDate() + jour;
+            date.setDate(day);
+            // ajout de 0 devant le mois < 10 pour avoir un format correct
+            month = date.getMonth()+1;
+            month = month < 10 ? '0'+month : month;
+            day = date.getDate() < 10 ? '0'+date.getDate() : date.getDate();
+            date = date.getFullYear() + '-' + month + '-' + day;
+            $('#form-edt-date').val(date);
+            $('#form-edt-date').prop('readonly', true);
+            // si l'action est un edit, charger le modal form avec les données issues du tr contenant le boutton cliqué
+            if ($(this).data('action') == 'edit') {
+                const tr = $(this).data('tr');
+                $('#nom-edt').val(tr.children()[1].innerText);
+            }
+        },
+        buttons: {
+            'Enregistrer': function() {
+                // ne rien faire puisque la validation se fait déjà par les attributs HTML
+            },
+            'Annuler': function() {
+                // Fermer la boîte de dialogue
+                $('#modal-edt-form').dialog('close');
+            }
+        },
+        close: function() {
+            // Réinitialiser le formulaire
+            $('#modal-edt-form form')[0].reset();
+        }
+    });
+    // Ouvrir la boîte de dialogue
+    $('.open-edt-modal').on('click', function(e) {
+        e.preventDefault();
+        const action = $(this).hasClass('btn-edit') ? 'edit' : 'create';
+        $('#modal-edt-form')
+            .data('url', $(this).attr('href'))
+            .data('action', action)
+            .data('tr', $(this).parent().parent())
+            .dialog('open');
+    });
+    // END: Modal create edt
+
 });
