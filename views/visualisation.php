@@ -73,7 +73,7 @@ echo '</div>';
             </div>
             <div>
                 <label for=form-edt-hfin">Heure de fin: </label>
-                <input type="time" id="form-edt-hfin" name="form-edt-hfin" max="19:00" step="900" required>
+                <input type="time" id="form-edt-hfin" name="form-edt-hfin" max="18:45" step="900" required>
             </div>
             <div>
                 <label for=form-edt-date">Date: </label>
