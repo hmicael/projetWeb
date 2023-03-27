@@ -57,140 +57,113 @@ if ($_GET['action'] === 'edt-delete') {
         // sectionner la séquence de groupe si elle n'est pas continue pour faciliter l'affichage
         // il faut que l'indice du groupe est égale à la première valeur de "groupes" pour bien afficher
         // array1 === array2 compare s'ils ont les mêmes valeurs dans le même ordre
+        $data = [
+            "type" => $post['form-edt-type'],
+            "matiere" => $post['form-edt-matiere'],
+            "enseignant" => $post['form-edt-enseignant'],
+            "salle" => $post['form-edt-salle'],
+            "date" => $post['form-edt-date'],
+            "hdebut" => $post['form-edt-hdebut'],
+            "hfin" =>  $post['form-edt-hfin']
+        ];
         if([0, 2, 3] === $groupes &&
             ! isset($edt[$post['form-edt-hdebut']][$get['jour'] - 1][0]) && // ! isset pour ne pas écraser un valeur déjà existant
             ! isset($edt[$post['form-edt-hdebut']][$get['jour'] - 1][2])) {
-            $edt[$post['form-edt-hdebut']][$get['jour'] - 1][0] = [
-                "type" => $post['form-edt-type'],
-                "matiere" => $post['form-edt-matiere'],
-                "enseignant" => $post['form-edt-enseignant'],
-                "salle" => $post['form-edt-salle'],
-                "date" => $post['form-edt-date'],
-                "hdebut" => $post['form-edt-hdebut'],
-                "hfin" =>  $post['form-edt-hfin'],
-                "groupes" => [0]
-            ];
+            $data["groupes"] = [0];
+            $edt[$post['form-edt-hdebut']][$get['jour'] - 1][0] = $data;
+
+            $data["groupes"] = [2, 3];
+            $edt[$post['form-edt-hdebut']][$get['jour'] - 1][2] = $data;
             
-            $edt[$post['form-edt-hdebut']][$get['jour'] - 1][2] = [
-                "type" => $post['form-edt-type'],
-                "matiere" => $post['form-edt-matiere'],
-                "enseignant" => $post['form-edt-enseignant'],
-                "salle" => $post['form-edt-salle'],
-                "date" => $post['form-edt-date'],
-                "hdebut" => $post['form-edt-hdebut'],
-                "hfin" =>  $post['form-edt-hfin'],
-                "groupes" => [2, 3]
-            ];
         } else if([0, 1, 3] === $groupes &&
             ! isset($edt[$post['form-edt-hdebut']][$get['jour'] - 1][0]) &&
             ! isset($edt[$post['form-edt-hdebut']][$get['jour'] - 1][3])) {
-            $edt[$post['form-edt-hdebut']][$get['jour'] - 1][0] = [
-                "type" => $post['form-edt-type'],
-                "matiere" => $post['form-edt-matiere'],
-                "enseignant" => $post['form-edt-enseignant'],
-                "salle" => $post['form-edt-salle'],
-                "date" => $post['form-edt-date'],
-                "hdebut" => $post['form-edt-hdebut'],
-                "hfin" =>  $post['form-edt-hfin'],
-                "groupes" => [0, 1]
-            ];
-
-            $edt[$post['form-edt-hdebut']][$get['jour'] - 1][3] = [
-                "type" => $post['form-edt-type'],
-                "matiere" => $post['form-edt-matiere'],
-                "enseignant" => $post['form-edt-enseignant'],
-                "salle" => $post['form-edt-salle'],
-                "date" => $post['form-edt-date'],
-                "hdebut" => $post['form-edt-hdebut'],
-                "hfin" =>  $post['form-edt-hfin'],
-                "groupes" => [3]
-            ];
+            $data["groupes"] = [0, 1];
+            $edt[$post['form-edt-hdebut']][$get['jour'] - 1][0] = $data;
+            
+            $data["groupes"] = [3];
+            $edt[$post['form-edt-hdebut']][$get['jour'] - 1][3] = $data;
         } else if([0, 2] === $groupes &&
             ! isset($edt[$post['form-edt-hdebut']][$get['jour'] - 1][0]) &&
             ! isset($edt[$post['form-edt-hdebut']][$get['jour'] - 1][2])) {
-            $edt[$post['form-edt-hdebut']][$get['jour'] - 1][0] = [
-                "type" => $post['form-edt-type'],
-                "matiere" => $post['form-edt-matiere'],
-                "enseignant" => $post['form-edt-enseignant'],
-                "salle" => $post['form-edt-salle'],
-                "date" => $post['form-edt-date'],
-                "hdebut" => $post['form-edt-hdebut'],
-                "hfin" =>  $post['form-edt-hfin'],
-                "groupes" => [0]
-            ];
+            $data["groupes"] = [0];
+            $edt[$post['form-edt-hdebut']][$get['jour'] - 1][0] = $data;
             
-            $edt[$post['form-edt-hdebut']][$get['jour'] - 1][2] = [
-                "type" => $post['form-edt-type'],
-                "matiere" => $post['form-edt-matiere'],
-                "enseignant" => $post['form-edt-enseignant'],
-                "salle" => $post['form-edt-salle'],
-                "date" => $post['form-edt-date'],
-                "hdebut" => $post['form-edt-hdebut'],
-                "hfin" =>  $post['form-edt-hfin'],
-                "groupes" => [2]
-            ];
+            $data["groupes"] = [2];
+            $edt[$post['form-edt-hdebut']][$get['jour'] - 1][2] = $data;
         } else if([1, 3] === $groupes &&
             ! isset($edt[$post['form-edt-hdebut']][$get['jour'] - 1][1]) &&
             ! isset($edt[$post['form-edt-hdebut']][$get['jour'] - 1][3])) {
-            $edt[$post['form-edt-hdebut']][$get['jour'] - 1][1] = [
-                "type" => $post['form-edt-type'],
-                "matiere" => $post['form-edt-matiere'],
-                "enseignant" => $post['form-edt-enseignant'],
-                "salle" => $post['form-edt-salle'],
-                "date" => $post['form-edt-date'],
-                "hdebut" => $post['form-edt-hdebut'],
-                "hfin" =>  $post['form-edt-hfin'],
-                "groupes" => [1]
-            ];
+            $data["groupes"] = [1];    
+            $edt[$post['form-edt-hdebut']][$get['jour'] - 1][1] = $data;
             
-            $edt[$post['form-edt-hdebut']][$get['jour'] - 1][3] = [
-                "type" => $post['form-edt-type'],
-                "matiere" => $post['form-edt-matiere'],
-                "enseignant" => $post['form-edt-enseignant'],
-                "salle" => $post['form-edt-salle'],
-                "date" => $post['form-edt-date'],
-                "hdebut" => $post['form-edt-hdebut'],
-                "hfin" =>  $post['form-edt-hfin'],
-                "groupes" => [3]
-            ];
+            $data["groupes"] = [3];
+            $edt[$post['form-edt-hdebut']][$get['jour'] - 1][3] = $data;
         } else if([0, 3] === $groupes &&
             ! isset($edt[$post['form-edt-hdebut']][$get['jour'] - 1][0]) &&
             ! isset($edt[$post['form-edt-hdebut']][$get['jour'] - 1][3])) {
-            $edt[$post['form-edt-hdebut']][$get['jour'] - 1][0] = [
-                "type" => $post['form-edt-type'],
-                "matiere" => $post['form-edt-matiere'],
-                "enseignant" => $post['form-edt-enseignant'],
-                "salle" => $post['form-edt-salle'],
-                "date" => $post['form-edt-date'],
-                "hdebut" => $post['form-edt-hdebut'],
-                "hfin" =>  $post['form-edt-hfin'],
-                "groupes" => [0]
-            ];
+            $data["groupes"] = [0];  
+            $edt[$post['form-edt-hdebut']][$get['jour'] - 1][0] = $data;
             
-            $edt[$post['form-edt-hdebut']][$get['jour'] - 1][3] = [
-                "type" => $post['form-edt-type'],
-                "matiere" => $post['form-edt-matiere'],
-                "enseignant" => $post['form-edt-enseignant'],
-                "salle" => $post['form-edt-salle'],
-                "date" => $post['form-edt-date'],
-                "hdebut" => $post['form-edt-hdebut'],
-                "hfin" =>  $post['form-edt-hfin'],
-                "groupes" => [3]
-            ];
+            $data["groupes"] = [3];  
+            $edt[$post['form-edt-hdebut']][$get['jour'] - 1][3] = $data;
         } else if (! isset($edt[$post['form-edt-hdebut']][$get['jour'] - 1][$groupes[0]])) { // $groupes[0] car c'est l'ordre trié des groupes
-            $edt[$post['form-edt-hdebut']][$get['jour'] - 1][$groupes[0]] = [
-                "type" => $post['form-edt-type'],
-                "matiere" => $post['form-edt-matiere'],
-                "enseignant" => $post['form-edt-enseignant'],
-                "salle" => $post['form-edt-salle'],
-                "date" => $post['form-edt-date'],
-                "hdebut" => $post['form-edt-hdebut'],
-                "hfin" =>  $post['form-edt-hfin'],
-                "groupes" => $groupes
-            ];
+            $data["groupes"] = $groupes; 
+            $edt[$post['form-edt-hdebut']][$get['jour'] - 1][$groupes[0]] = $data;
         }
     } else if ($_GET['action'] === 'edt-edit') {
-        # code...
+        // sectionner la séquence de groupe si elle n'est pas continue pour faciliter l'affichage
+        // il faut que l'indice du groupe est égale à la première valeur de "groupes" pour bien afficher
+        // array1 === array2 compare s'ils ont les mêmes valeurs dans le même ordre
+        $data = [
+            "type" => $post['form-edt-type'],
+            "matiere" => $post['form-edt-matiere'],
+            "enseignant" => $post['form-edt-enseignant'],
+            "salle" => $post['form-edt-salle'],
+            "date" => $post['form-edt-date'],
+            "hdebut" => $post['form-edt-hdebut'],
+            "hfin" =>  $post['form-edt-hfin']
+        ];
+        if([0, 2, 3] === $groupes &&
+            isset($edt[$post['form-edt-hdebut']][$get['jour'] - 1][0])) {
+            $data["groupes"] = [0];
+            $edt[$post['form-edt-hdebut']][$get['jour'] - 1][0] = $data;
+
+            $data["groupes"] = [2, 3];
+            $edt[$post['form-edt-hdebut']][$get['jour'] - 1][2] = $data;
+            
+        } else if([0, 1, 3] === $groupes &&
+            isset($edt[$post['form-edt-hdebut']][$get['jour'] - 1][0])) {
+            $data["groupes"] = [0, 1];
+            $edt[$post['form-edt-hdebut']][$get['jour'] - 1][0] = $data;
+            
+            $data["groupes"] = [3];
+            $edt[$post['form-edt-hdebut']][$get['jour'] - 1][3] = $data;
+        } else if([0, 2] === $groupes &&
+            isset($edt[$post['form-edt-hdebut']][$get['jour'] - 1][0])) {
+            $data["groupes"] = [0];
+            $edt[$post['form-edt-hdebut']][$get['jour'] - 1][0] = $data;
+            
+            $data["groupes"] = [2];
+            $edt[$post['form-edt-hdebut']][$get['jour'] - 1][2] = $data;
+        } else if([1, 3] === $groupes &&
+            isset($edt[$post['form-edt-hdebut']][$get['jour'] - 1][1])) {
+            $data["groupes"] = [1];    
+            $edt[$post['form-edt-hdebut']][$get['jour'] - 1][1] = $data;
+            
+            $data["groupes"] = [3];
+            $edt[$post['form-edt-hdebut']][$get['jour'] - 1][3] = $data;
+        } else if([0, 3] === $groupes &&
+            isset($edt[$post['form-edt-hdebut']][$get['jour'] - 1][0])) {
+            $data["groupes"] = [0];  
+            $edt[$post['form-edt-hdebut']][$get['jour'] - 1][0] = $data;
+            
+            $data["groupes"] = [3];  
+            $edt[$post['form-edt-hdebut']][$get['jour'] - 1][3] = $data;
+        } else if (isset($edt[$post['form-edt-hdebut']][$get['jour'] - 1][$groupes[0]])) { // $groupes[0] car c'est l'ordre trié des groupes
+            $data["groupes"] = $groupes; 
+            $edt[$post['form-edt-hdebut']][$get['jour'] - 1][$groupes[0]] = $data;
+        }
     }
 }
 

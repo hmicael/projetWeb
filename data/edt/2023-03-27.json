@@ -13,10 +13,10 @@
             },
             "0": {
                 "type": "Cours",
-                "matiere": "Web",
+                "matiere": "BD2",
                 "enseignant": "Frederic Vernier",
                 "salle": "D201",
-                "date": null,
+                "date": "",
                 "hdebut": "08:00",
                 "hfin": "08:15",
                 "groupes": [
@@ -43,10 +43,10 @@
         "0": [
             {
                 "type": "Cours",
-                "matiere": "Web",
+                "matiere": "BD2",
                 "enseignant": "Frederic Vernier",
                 "salle": "D201",
-                "date": null,
+                "date": "",
                 "hdebut": "08:15",
                 "hfin": "08:30",
                 "groupes": [
@@ -60,7 +60,7 @@
         [
             {
                 "type": "Cours",
-                "matiere": "Web",
+                "matiere": "BD2",
                 "enseignant": "Frederic Vernier",
                 "salle": "D201",
                 "date": "2023-03-27",
@@ -76,7 +76,7 @@
         [
             {
                 "type": "Cours",
-                "matiere": "Web",
+                "matiere": "BD2",
                 "enseignant": "Frederic Vernier",
                 "salle": "D201",
                 "date": "2023-03-27",
@@ -95,7 +95,7 @@
         {
             "1": {
                 "type": "Cours",
-                "matiere": "Web",
+                "matiere": "BD2",
                 "enseignant": "Frederic Vernier",
                 "salle": "D201",
                 "date": "2023-03-27",
@@ -103,6 +103,51 @@
                 "hfin": "09:45",
                 "groupes": [
                     1
+                ]
+            }
+        }
+    ],
+    "10:15": [
+        [
+            {
+                "type": "Cours",
+                "matiere": "BD2",
+                "enseignant": "Frederic Vernier",
+                "salle": "D201",
+                "date": "2023-03-27",
+                "hdebut": "10:15",
+                "hfin": "10:30",
+                "groupes": [
+                    0
+                ]
+            }
+        ]
+    ],
+    "10:45": [
+        {
+            "0": {
+                "type": "Cours",
+                "matiere": "BD2",
+                "enseignant": "Frederic Vernier",
+                "salle": "D201",
+                "date": "2023-03-27",
+                "hdebut": "10:45",
+                "hfin": "11:00",
+                "groupes": [
+                    0
+                ]
+            },
+            "2": {
+                "type": "Cours",
+                "matiere": "BD2",
+                "enseignant": "Frederic Vernier",
+                "salle": "D201",
+                "date": "2023-03-27",
+                "hdebut": "10:45",
+                "hfin": "11:00",
+                "groupes": [
+                    2,
+                    3
                 ]
             }
         }

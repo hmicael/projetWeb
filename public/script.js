@@ -324,6 +324,7 @@ $(function() {
                     success: function(response) {
                         const obj = JSON.parse(response);
                         const data = obj.data;
+                        console.log(data);
                         $('#form-edt-matiere').val(data.matiere);
                         $('#form-edt-type').val(data.type);
                         $('#form-edt-enseignant').val(data.enseignant);
@@ -332,7 +333,7 @@ $(function() {
                         $('#form-edt-hfin').val(data.hfin);
                         $('#form-edt-date').val(data.date);
                         $.each(data.groupes, function(key, value) {
-                            $('#form-edt-groupe-' + value).prop('checked', true);
+                            $('#form-edt-groupe-' + (value+1)).prop('checked', true);
                         });
                     },
                     error: function(xhr, status, error) {
