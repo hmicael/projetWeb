@@ -32,7 +32,7 @@ $filename = WEBROOT . '/data/edt/' . $get['semaine'] . '.json';
 // ouverture du fichier
 $edt = json_decode(file_get_contents($filename), true);
 
-if ($_GET['action'] == 'edt-delete') {
+if ($_GET['action'] === 'edt-delete') {
     if (isset($edt[$get['heure']][$get['jour'] - 1][$get['groupe'] - 1])) {
         unset($edt[$get['heure']][$get['jour'] - 1][$get['groupe'] - 1]);
     }
@@ -53,7 +53,7 @@ if ($_GET['action'] == 'edt-delete') {
     $groupes = array_keys($post['form-edt-groupe']);
     // on fait un tri du tableau pour faciliter la determination des fusions colonnes
     sort($groupes);
-    if ($_GET['action'] == 'edt-add') {
+    if ($_GET['action'] === 'edt-add') {
         // sectionner la séquence de groupe si elle n'est pas continue pour faciliter l'affichage
         // il faut que l'indice du groupe est égale à la première valeur de "groupes" pour bien afficher
         // array1 === array2 compare s'ils ont les mêmes valeurs dans le même ordre
@@ -189,7 +189,7 @@ if ($_GET['action'] == 'edt-delete') {
                 "groupes" => $groupes
             ];
         }
-    } else if ($_GET['action'] == 'edt-edit') {
+    } else if ($_GET['action'] === 'edt-edit') {
         # code...
     }
 }
