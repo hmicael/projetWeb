@@ -6,7 +6,7 @@ try {
     if(! isset($_SESSION['role'])) { // si la personne n'est pas encore connectée
         // si la personne vient de se connecter
         if(isset($_GET['action']) && $_GET['action'] === 'login-check') {
-            require(WEBROOT. '/controllers/loginController.php');
+            require(WEBROOT. '/controllers/LoginController.php');
         } else {
             require(WEBROOT. '/views/login.php');
         }
@@ -17,9 +17,9 @@ try {
                 header('Location:' . ROOT);
                 exit();
             } else if ($_GET['action'] === 'visualiser') {
-                require(WEBROOT. '/controllers/visualisationController.php');
+                require(WEBROOT. '/controllers/VisualisationController.php');
             } else if ($_GET['action'] === 'admin') {
-                require(WEBROOT. '/controllers/administrationController.php');
+                require(WEBROOT. '/controllers/AdministrationController.php');
             } else {
                 throw new Exception("Error 404 : Page not found");
             }
