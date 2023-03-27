@@ -49,13 +49,13 @@ ob_start();
             <fieldset>
                 <legend>Groupe concern&eacute;</legend>
                 <div class="checkbox-group required">
-                    <input type="checkbox" id="form-edt-groupe-1" name="form-edt-groupe[]">
+                    <input type="checkbox" id="form-edt-groupe-1" name="form-edt-groupe[0]">
                     <label for="form-edt-groupe-1">Groupe 1</label>
-                    <input type="checkbox" id="form-edt-groupe-2" name="form-edt-groupe[]">
+                    <input type="checkbox" id="form-edt-groupe-2" name="form-edt-groupe[1]">
                     <label for="form-edt-groupe-2">Groupe 2</label>
-                    <input type="checkbox" id="form-edt-groupe-3" name="form-edt-groupe[]">
+                    <input type="checkbox" id="form-edt-groupe-3" name="form-edt-groupe[2]">
                     <label for="form-edt-groupe-3">Groupe 3</label>
-                    <input type="checkbox" id="form-edt-groupe-4" name="form-edt-groupe[]">
+                    <input type="checkbox" id="form-edt-groupe-4" name="form-edt-groupe[3]">
                     <label for="form-edt-groupe-4">Groupe 4</label>
                 </div> 
             </fieldset>
