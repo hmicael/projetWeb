@@ -1,5 +1,14 @@
 <?php 
 ob_start();
+// Navigation semaine
+echo '<div>';
+    echo '<p>';
+        echo '<a href="index.php?action=visualiser&semaine=' . date('Y-m-d', strtotime($lundiDeLaSemaine . ' - 7 days')) .'"><<<a>';
+        echo '<span>Semaine du ' . date('d-m-Y', strtotime($lundiDeLaSemaine)) .
+            ' au ' . date('d-m-Y', strtotime($lundiDeLaSemaine . ' + 4 days')) . '</span>';
+        echo '<a href="index.php?action=visualiser&semaine=' . date('Y-m-d', strtotime($lundiDeLaSemaine . ' + 7 days')) .'">>><a>';
+    echo '</p>';
+echo '</div>';
 ?>
 <!-- BEGIN: Modal -->
 <section id="modal-edt-form" title="Ajout d'une plage" class="modal">
@@ -48,7 +57,7 @@ ob_start();
             </div>
             <fieldset>
                 <legend>Groupe concern&eacute;</legend>
-                <div class="checkbox-group required">
+                <div class="checkbox-group">
                     <input type="checkbox" id="form-edt-groupe-1" name="form-edt-groupe[0]">
                     <label for="form-edt-groupe-1">Groupe 1</label>
                     <input type="checkbox" id="form-edt-groupe-2" name="form-edt-groupe[1]">
@@ -118,20 +127,17 @@ ob_start();
                                 $slotHFin = strtotime($edt[$hDeb][$jour][$groupe]['hfin']);
                                 $slotHDeb = strtotime($edt[$hDeb][$jour][$groupe]['hdebut']);
                                 $rowspan = ($slotHFin - $slotHDeb) / 900;
-                                $colspan = 1;
+
                                 // calcul fusion de colonne
+                                $colspan = 1;
                                 $slotGroupes = $edt[$hDeb][$jour][$groupe]['groupes'];
-                                // on va tester sy le groupes dans le slot appartient à la 
-                                // liste d'arrangement possible pour un fusion de colonne
+
+                                // on va tester si le groupe dans le slot appartient à la 
+                                // liste d'arrangement possible pour une fusion de colonne
                                 // si array_diff renvoi un array vide, ça veut dire que 
                                 // les éléments du tableau 1 se trouve dans le tableau 2
                                 if(! array_diff([0, 1, 2, 3], $slotGroupes) && $groupe == $slotGroupes[0]) {
                                     $colspan = 4;
-                                // mila sarahana 2 ref misy decalage
-                                // } else if(! array_diff([0, 2, 3], $slotGroupes)) {
-                                //     $colspan = 2;
-                                // } else if(! array_diff([0, 1, 3], $slotGroupes) && $groupe == $slotGroupes[0]) {
-                                //     $colspan = 2;
                                 } else if(! array_diff([1, 2, 3], $slotGroupes) && $groupe == $slotGroupes[0] ||
                                     ! array_diff([0, 1, 2], $slotGroupes) && $groupe == $slotGroupes[0]) {
                                     $colspan = 3;
@@ -140,7 +146,8 @@ ob_start();
                                     ! array_diff([1, 2], $slotGroupes) && $groupe == $slotGroupes[0]) {
                                     $colspan = 2;
                                 }
-                                // s'il n'y a pas ligne à fusionner mettre rowspan à 1 pour éviter le rowspan=0
+
+                                // s'il n'y a pas de lignes à fusionner mettre rowspan à 1 pour éviter le rowspan=0
                                 if ($rowspan > 0) {
                                     for ($i=$slotHDeb+900; $i < $slotHFin; $i+=900) {
                                         // ajout des slots à sauter à cause de la fusion
@@ -163,16 +170,19 @@ ob_start();
                                         echo '<td>';
                                     }
                                 }
-                                // affichage du contenu du slot
-                                echo $edt[$hDeb][$jour][$groupe]['matiere'];
-                                // boutton edit
-                                echo '<a href="index.php?action=edt-edit&heure='.
-                                    $hDeb .'&jour=' . ($jour+1) . '&semaine=' . $lundiDeLaSemaine .
-                                    '&groupe=' . ($groupe+1) . '" class="btn btn-edit open-edt-modal">Modifier</a>';
-                                // bouton delete
-                                echo '<a href="index.php?action=edt-delete&heure='.
-                                    $hDeb .'&jour=' . ($jour+1) . '&semaine=' . $lundiDeLaSemaine .
-                                    '&groupe=' . ($groupe+1) . '" class="btn btn-delete">Delete</a>';
+
+                                    // affichage du contenu du slot
+                                    echo $edt[$hDeb][$jour][$groupe]['matiere'];
+
+                                    // boutton edit
+                                    echo '<a href="index.php?action=edt-edit&heure='.
+                                        $hDeb .'&jour=' . ($jour+1) . '&semaine=' . $lundiDeLaSemaine .
+                                        '&groupe=' . ($groupe+1) . '" class="btn btn-edit open-edt-modal">Modifier</a>';
+                                        
+                                    // bouton delete
+                                    echo '<a href="index.php?action=edt-delete&heure='.
+                                        $hDeb .'&jour=' . ($jour+1) . '&semaine=' . $lundiDeLaSemaine .
+                                        '&groupe=' . ($groupe+1) . '" class="btn btn-delete">Delete</a>';
                                 echo '</td>';
                                 if ($colspan > 1) {
                                     // si colspan > 1 on va decaler la position de groupe pour ne pas mettre un td en exces
@@ -181,6 +191,7 @@ ob_start();
                             } else {
                                 // si le slot est vide
                                 if ($_SESSION['role'] == 'etudiant') {
+                                    // si l'utilisateur est un étudiant
                                     echo '<td></td>';
                                 } else {
                                     echo '<td>';
@@ -199,5 +210,16 @@ ob_start();
     </tbody>
 </table>
 <!-- END: table -->
-<?php $content = ob_get_clean(); ?>
+<?php 
+// Navigation semaine
+echo '<div>';
+    echo '<p>';
+        echo '<a href="index.php?action=visualiser&semaine=' . date('Y-m-d', strtotime($lundiDeLaSemaine . ' - 7 days')) .'"><<<a>';
+        echo '<span>Semaine du ' . date('d-m-Y', strtotime($lundiDeLaSemaine)) .
+            ' au ' . date('d-m-Y', strtotime($lundiDeLaSemaine . ' + 4 days')) . '</span>';
+        echo '<a href="index.php?action=visualiser&semaine=' . date('Y-m-d', strtotime($lundiDeLaSemaine . ' + 7 days')) .'">>><a>';
+    echo '</p>';
+echo '</div>';
+$content = ob_get_clean();
+?>
 <?php require('template.php') ?>
