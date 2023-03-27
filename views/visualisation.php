@@ -133,16 +133,18 @@ echo '</div>';
 
                                 // on va tester si le groupe dans le slot appartient à la 
                                 // liste d'arrangement possible pour une fusion de colonne
-                                // si array_diff renvoi un array vide, ça veut dire que 
-                                // les éléments du tableau 1 se trouve dans le tableau 2
-                                if(! array_diff([0, 1, 2, 3], $slotGroupes) && $groupe == $slotGroupes[0]) {
+                                // array1 === array2 compare s'ils ont les mêmes valeurs dans le même ordre
+                                if([0, 1, 2, 3] === $slotGroupes && $groupe == $slotGroupes[0]) {
                                     $colspan = 4;
-                                } else if(! array_diff([1, 2, 3], $slotGroupes) && $groupe == $slotGroupes[0] ||
-                                    ! array_diff([0, 1, 2], $slotGroupes) && $groupe == $slotGroupes[0]) {
+                                } else if([1, 2, 3] === $slotGroupes && $groupe == $slotGroupes[0]) {
                                     $colspan = 3;
-                                } else if(! array_diff([0, 1], $slotGroupes) && $groupe == $slotGroupes[0] ||
-                                    ! array_diff([2, 3], $slotGroupes) && $groupe == $slotGroupes[0] || 
-                                    ! array_diff([1, 2], $slotGroupes) && $groupe == $slotGroupes[0]) {
+                                } else if([0, 1, 2] === $slotGroupes && $groupe == $slotGroupes[0]) {
+                                    $colspan = 3;
+                                } else if([0, 1] === $slotGroupes && $groupe == $slotGroupes[0]) {
+                                    $colspan = 2;
+                                } else if([2, 3] === $slotGroupes && $groupe == $slotGroupes[0]) {
+                                    $colspan = 2;
+                                } else if([1, 2] === $slotGroupes && $groupe == $slotGroupes[0]) {
                                     $colspan = 2;
                                 }
 
@@ -172,6 +174,7 @@ echo '</div>';
 
                                     // affichage du contenu du slot
                                     echo $edt[$hDeb][$jour][$groupe]['matiere'];
+                                    var_dump($slotGroupes);
 
                                     // boutton edit
                                     echo '<a href="index.php?action=edt-edit&heure='.

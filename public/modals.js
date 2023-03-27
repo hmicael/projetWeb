@@ -281,6 +281,16 @@ $(function() {
             $('#form-edt-hdebut').prop('readonly', true);
             // set heure de fin min = hdeb
             $('#form-edt-hfin').prop('min', hdeb);
+            // set valeur heure de fin = valeur heure debut + 15mn
+            const timeParts = hdeb.split(":"); // Split heure et minute
+            const heure = parseInt(timeParts[0], 10);
+            const minutes = parseInt(timeParts[1], 10);
+            const dateFin = new Date();
+            dateFin.setHours(heure);
+            dateFin.setMinutes(minutes + 15);
+            // Conversion de la date en un nouveau format de chaîne de temps
+            const hebPlus15 = dateFin.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+            $('#form-edt-hfin').val(hebPlus15);
             // set date
             const lundiSemaine = findGetParameter("semaine", $(this).data('url'));
             const jour = findGetParameter("jour", $(this).data('url')) - 1;
