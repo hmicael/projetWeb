@@ -33,7 +33,7 @@
                         foreach ($salle as $value) {
                             echo '<td>' . ucfirst($value) . '</td>';
                         }
-                        echo '<td>';
+                        echo '<td class="action-buttons">';
                             echo '<a href="index.php?action=admin&edit=salles&id=' . $id . '" class="btn btn-edit open-salle-modal">Modifier</a>';
                             echo '<a href="index.php?action=admin&delete=salles&id=' . $id . '" class="btn btn-delete">Supprimer</a>';
                         echo '</td>';

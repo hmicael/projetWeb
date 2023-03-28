@@ -14,9 +14,15 @@
     <body>
         <header>
             <nav>
-                Navigation
-                <a href="index.php?action=deconnect" class="btn-outline">Deconnection</a>
+                <ul>
+                <li><a href="index.php">Accueil</a></li>
+                <li><a href="index.php?action=deconnect" class="logout-button">Deconnection</a></li>
+                </ul>
             </nav>
+            <!-- <nav>
+                Navigation
+                <a href="index.php?action=deconnect" class="logout-button">Deconnection</a>
+            </nav> -->
         </header>
         <main>
         <section id="dialog-confirm" title="Suppression">

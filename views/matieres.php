@@ -54,7 +54,7 @@
                         echo '<td>' . ucfirst($value) . '</td>';
                     }
                 }
-                echo '<td>';
+                echo '<td class="action-buttons">';
                     echo '<a href="index.php?action=admin&edit=matieres&id=' . $id . '" class="btn btn-edit open-matiere-modal">Modifier</a>';
                     echo '<a href="index.php?action=admin&delete=matieres&id=' . $id . '" class="btn btn-delete">Supprimer</a>';
                 echo '</td>';

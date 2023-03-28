@@ -12,24 +12,27 @@
 
     <body>
         <main>
-            <form action="index.php?action=login-check" method="POST" class="form-card">
+            <div class="background-image"></div>
+            <div class="login-form">
                 <h1>Login</h1>
-                <?php
-                    if (isset($_SESSION['error-msg'])) {
-                        echo '<span class="error-msg">' . $_SESSION['error-msg'] . '</span>';
-                        unset($_SESSION['error-msg']);
-                    }
-                ?>
-                <div>
-                    <label>Email:</label>
-                    <input type="email" name="email" required autofocus>
-                </div>
-                <div>
-                    <label>Mot de passe:</label>
-                    <input type="password" name="password" required>
-                </div>
-                <input type="submit" name="submit" value="Login">
-            </form>
+                <form action="index.php?action=login-check" method="POST" class="form-card">*
+                    <?php
+                        if (isset($_SESSION['error-msg'])) {
+                            echo '<span class="error-msg">' . $_SESSION['error-msg'] . '</span>';
+                            unset($_SESSION['error-msg']);
+                        }
+                    ?>
+                    <div>
+                        <label>Email:</label>
+                        <input type="email" name="email" required autofocus>
+                    </div>
+                    <div>
+                        <label>Mot de passe:</label>
+                        <input type="password" name="password" required>
+                    </div>
+                    <input type="submit" name="submit" value="Login">
+                </form>
+            </div>
         </main>
     </body>
 </html>

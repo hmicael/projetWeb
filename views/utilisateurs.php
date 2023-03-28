@@ -70,7 +70,7 @@
                             echo '</td>';
                         }
                     }
-                    echo '<td>';
+                    echo '<td class="action-buttons">';
                     echo '<a href="index.php?action=admin&edit=utilisateurs&id=' . $id . '" class="btn btn-edit open-user-modal">Modifier</a>';
                     if ($value != 'responsable') {
                         echo '<a href="index.php?action=admin&delete=utilisateurs&id=' . $id . '" class="btn btn-delete">Supprimer</a>';
