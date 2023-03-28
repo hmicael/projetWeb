@@ -308,10 +308,30 @@ $(function() {
             date = date.getFullYear() + '-' + month + '-' + day;
             $('#form-edt-date').val(date);
             $('#form-edt-date').prop('readonly', true);
+            // Choix du prof lorsqu'on choisi une matière
+            $('#form-edt-matiere').on('change', function() {
+                // vide le select
+                $('#form-edt-enseignant').empty();
+                // faire une requete ajax pour obtenir les enseignants
+                $.ajax({
+                    url: 'index.php?action=ajax&search=enseignant',
+                    method: 'POST',
+                    data: {'matiere' : $(this).val()},
+                    success: function(response) {
+                        const obj = JSON.parse(response);
+                        const data = obj.data;
+                        $.each(data, function(key, value) {
+                            $('#form-edt-enseignant').append('<option value="' + value + '">' + value + '</option>');
+                        });
+                    },
+                    error: function(xhr, status, error) {
+                        console.log("Error: " + error);
+                    }
+                });
+            });
             // si l'action est un edit, charger le modal form avec les données issues du tr contenant le boutton cliqué
             if ($(this).data('action') == 'edit') {
                 // faire une requete ajax pour obtenir les infos de l'edt selectionné
-
                 $.ajax({
                     url: 'index.php?action=ajax&search=edt',
                     method: 'POST',
@@ -324,7 +344,6 @@ $(function() {
                     success: function(response) {
                         const obj = JSON.parse(response);
                         const data = obj.data;
-                        console.log(data);
                         $('#form-edt-matiere').val(data.matiere);
                         $('#form-edt-type').val(data.type);
                         $('#form-edt-enseignant').val(data.enseignant);

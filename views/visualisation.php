@@ -177,7 +177,9 @@ echo '</div>';
                                 }
 
                                     // affichage du contenu du slot
-                                    echo $edt[$hDeb][$jour][$groupe]['matiere'];
+                                    echo $edt[$hDeb][$jour][$groupe]['matiere'] . '<br>';
+                                    echo $edt[$hDeb][$jour][$groupe]['salle'] . '<br>';
+                                    echo $edt[$hDeb][$jour][$groupe]['hdebut'] . ' à ' .  $edt[$hDeb][$jour][$groupe]['hfin'] . '<br>';
 
                                     // boutton edit
                                     echo '<a href="index.php?action=edt-edit&heure='.
