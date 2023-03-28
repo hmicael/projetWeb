@@ -5,10 +5,21 @@
  * @param array $data
  * @return array $sanitizedData
  */
-function sanitize(array $data) {
+function sanitize(array $data, $dataKey) {
     $sanitizedData = [];
-    foreach ($data as $key => $value) {
-        $sanitizedData[$key] = htmlspecialchars($value);
+    foreach ($dataKey as $key) {
+        if (! isset($data[$key])) {
+            // si une donnée obligatoire est absent -> redirection
+            $_SESSION['error-msg'] = 'Veuillez bien remplir le formulaire';
+            header('Location: index.php?action=admin');
+            exit();
+        } else {  
+            if (! is_array($data[$key])) {
+                $sanitizedData[$key] = htmlspecialchars($data[$key]);
+            } else {
+                $sanitizedData[$key] = sanitize($data[$key], array_keys($data[$key]));
+            }
+        }
     }
 
     return $sanitizedData;
@@ -16,19 +27,19 @@ function sanitize(array $data) {
 
 $title = 'Administration';
 // Ouverture des fichiers
-$jsonUtilisateur = file_get_contents(WEBROOT . '/data/utilisateurs.json');
-$utilisateurs = json_decode($jsonUtilisateur, true);
-$jsonEnseignant = file_get_contents(WEBROOT . '/data/enseignants.json');
-$enseignants = json_decode($jsonEnseignant, true);
-$jsonMatiere = file_get_contents(WEBROOT . '/data/matieres.json');
-$matieres = json_decode($jsonMatiere, true);
-$jsonSalle = file_get_contents(WEBROOT . '/data/salles.json');
-$salles = json_decode($jsonSalle, true);
+$utilisateurs = json_decode(file_get_contents(WEBROOT . '/data/utilisateurs.json'), true);
+$enseignants = json_decode(file_get_contents(WEBROOT . '/data/enseignants.json'), true);
+$matieres = json_decode(file_get_contents(WEBROOT . '/data/matieres.json'), true);
+$salles = json_decode(file_get_contents(WEBROOT . '/data/salles.json'), true);
 $tabs = 1;
+
 // Suppression
 if(isset($_GET['delete'])) {
     if (! $_GET['id']) {
         throw new Exception('Vous devez spécifier un identifiant');
+    }
+    if (! $_GET['delete']) {
+        throw new Exception('Vous devez spécifier un element à supprimer');
     }
     $id = intval($_GET['id']) - 1;
     $entity = htmlspecialchars($_GET['delete']);
@@ -67,7 +78,7 @@ if(isset($_GET['create'])) {
     switch ($entity) {
         case 'utilisateurs':
             // Récupération des données du formulaire
-            $data = sanitize($_POST);
+            $data = sanitize($_POST, ['nom', 'prenom', 'password', 'email', 'role']);
             // check password
             if (! preg_match('/(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/', $data['password'])) {
                 $_SESSION['error-msg'] = "Le mot de passe doit contenir au moins un chiffre et une lettre majuscule et minuscule, et au moins 8 caractères.";
@@ -92,17 +103,18 @@ if(isset($_GET['create'])) {
             $tabs = 1;
             break;
         case 'matieres':
+            $data = sanitize($_POST, ['nom', 'referant', 'couleur']);
             $matieres[] = array(
-                'nom' => ucfirst(htmlspecialchars($_POST['nom'])),
-                'referant' => ucfirst(htmlspecialchars($_POST['referant'])),
-                'couleur' => htmlspecialchars($_POST['couleur'])
+                'nom' => ucfirst($data['nom']),
+                'referant' => ucfirst($data['referant']),
+                'couleur' => $data['couleur']
             );
             $jsonMatieres = json_encode($matieres, JSON_PRETTY_PRINT);
             file_put_contents(WEBROOT .  '/data/matieres.json', $jsonMatieres);
             $tabs = 2;
             break;
         case 'enseignants':
-            $data = sanitize($_POST);
+            $data = sanitize($_POST, ['nom', 'referant']);
             $enseignants[] = array(
                 'nom' => ucwords($data['nom']),
                 'referant' => ucfirst($data['referant'])
@@ -112,8 +124,9 @@ if(isset($_GET['create'])) {
             $tabs = 3;
             break;
         case 'salles':
+            $data = sanitize($_POST, ['nom']);
             $salles[] = array(
-                'nom' => strtoupper(htmlspecialchars($_POST['nom']))
+                'nom' => strtoupper($data['nom'])
             );
             $jsonSalles = json_encode($salles, JSON_PRETTY_PRINT);
             file_put_contents(WEBROOT .  '/data/salles.json', $jsonSalles);
@@ -136,7 +149,7 @@ if(isset($_GET['edit'])) {
     $entity = htmlspecialchars($_GET['edit']);
     switch ($entity) {
         case 'utilisateurs':
-            $data = sanitize($_POST);
+            $data = sanitize($_POST, ['nom', 'prenom', 'password', 'email', 'role']);
             // check password
             if (! preg_match('/(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/', $data['password'])) {
                 $_SESSION['error-msg'] = "Le mot de passe doit contenir au moins un chiffre et une lettre majuscule et minuscule, et au moins 8 caractères.";
@@ -151,16 +164,17 @@ if(isset($_GET['edit'])) {
             $tabs = 1;
             break;
         case 'matieres':
+            $data = sanitize($_POST, ['nom', 'referant', 'couleur']);
             $matieres[$id] = array(
-                'nom' => ucfirst(htmlspecialchars($_POST['nom'])),
-                'referant' => ucfirst(htmlspecialchars($_POST['referant'])),
-                'couleur' => htmlspecialchars($_POST['couleur'])
+                'nom' => ucfirst($data['nom']),
+                'referant' => ucfirst($data['referant']),
+                'couleur' => $data['couleur']
             );
             file_put_contents(WEBROOT . '/data/matieres.json', json_encode($matieres, JSON_PRETTY_PRINT));
             $tabs = 2;
             break;
         case 'enseignants':
-            $data = sanitize($_POST);
+            $data = sanitize($_POST, ['nom', 'referant']);
             $enseignants[$id] = array(
                 'nom' => ucwords($data['nom']),
                 'referant' => ucfirst($data['referant'])
@@ -169,8 +183,9 @@ if(isset($_GET['edit'])) {
             $tabs = 3;
             break;
         case 'salles':
+            $data = sanitize($_POST, ['nom']);
             $salles[$id] = array(
-                'nom' => strtoupper(htmlspecialchars($_POST['nom']))
+                'nom' => strtoupper($data['nom'])
             );
             $jsonSalles = json_encode($salles, JSON_PRETTY_PRINT);
             file_put_contents(WEBROOT . '/data/salles.json', json_encode($salles, JSON_PRETTY_PRINT));

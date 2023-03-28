@@ -13,7 +13,6 @@
 <a id="create-enseignant-button" href="index.php?action=admin&create=enseignants" class="btn-add open-enseignant-modal">+</a>
 
 <section id="modal-enseignant-form" title="Enregister un enseignant" class="modal">
-    <p class="error-message"></p>
     <form id="enseignant-form" action="" method="post">
         <fieldset>
             <div>
