@@ -1,3 +1,7 @@
 [
-
+    {
+        "nom": "Web",
+        "referent": "Frederic Vernier",
+        "couleur": "#c60606"
+    }
 ]

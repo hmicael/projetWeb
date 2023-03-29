@@ -25,13 +25,38 @@ function sanitizeAndCheck(array $data, $dataKey) {
     return $sanitizedData;
 }
 
+/**
+ * Fonction qui vérifie si une valeur existe déjà
+ *
+ * @param $uniqueValue
+ * @param $key
+ * @param array $data
+ * @param int $tabs
+ * @return void
+ */
+function checkUnique($uniqueValue, $key, array $data, int $tabs) {
+    foreach ($data as $value) {
+        if ($value[$key] == $uniqueValue) {
+            $_SESSION['error-msg'] = "La valeur $uniqueValue existe déjà";
+            header('Location: index.php?action=admin#tabs-' . $tabs);
+            exit();
+        }
+    }
+}
+
+function checkIdExist($id, array $data) {
+    if (! array_key_exists($id, $data)) {
+        throw new Exception('La page n\'existe pas');
+    }
+}
+
 $title = 'Administration';
 // Ouverture des fichiers
 $utilisateurs = json_decode(file_get_contents(WEBROOT . '/data/utilisateurs.json'), true);
 $enseignants = json_decode(file_get_contents(WEBROOT . '/data/enseignants.json'), true);
 $matieres = json_decode(file_get_contents(WEBROOT . '/data/matieres.json'), true);
 $salles = json_decode(file_get_contents(WEBROOT . '/data/salles.json'), true);
-$tabs = 1;
+$tabs = 1; // correspond à l'id du tabs dans l'affichage
 
 // Suppression
 if(isset($_GET['delete'])) {
@@ -45,28 +70,31 @@ if(isset($_GET['delete'])) {
     $entity = htmlspecialchars($_GET['delete']);
     switch ($entity) {
         case 'utilisateurs':
+            checkIdExist($id, $utilisateurs);
             unset($utilisateurs[$id]);
             file_put_contents(WEBROOT . '/data/utilisateurs.json', json_encode($utilisateurs, JSON_PRETTY_PRINT));
             $tabs = 1;
             break;
         case 'matieres':
+            checkIdExist($id, $matieres);
             unset($matieres[$id]);
             file_put_contents(WEBROOT . '/data/matieres.json', json_encode($matieres, JSON_PRETTY_PRINT));
             $tabs = 2;
             break;
         case 'enseignants':
+            checkIdExist($id, $enseignants);
             unset($enseignants[$id]);
             file_put_contents(WEBROOT . '/data/enseignants.json', json_encode($enseignants, JSON_PRETTY_PRINT));
             $tabs = 3;
             break;
         case 'salles':
+            checkIdExist($id, $salles);
             unset($salles[$id]);
             file_put_contents(WEBROOT . '/data/salles.json', json_encode($salles, JSON_PRETTY_PRINT));
             $tabs = 4;
             break;
         default:
             throw new Exception("L'element $entity n'existe pas");
-            break;
     }
     header('Location: index.php?action=admin#tabs-' . $tabs);
     exit();
@@ -77,8 +105,10 @@ if(isset($_GET['create'])) {
     $entity = htmlspecialchars($_GET['create']);
     switch ($entity) {
         case 'utilisateurs':
+            $tabs = 1;
             // Récupération des données du formulaire
             $data = sanitizeAndCheck($_POST, ['nom', 'prenom', 'password', 'email', 'role']);
+            checkUnique($data['email'], 'email', $utilisateurs, $tabs);
             // check password
             if (! preg_match('/(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/', $data['password'])) {
                 $_SESSION['error-msg'] = "Le mot de passe doit contenir au moins un chiffre et une lettre majuscule et minuscule, et au moins 8 caractères.";
@@ -100,10 +130,11 @@ if(isset($_GET['create'])) {
             } else {
                 $_SESSION['error-msg'] = "Votre email est invalide";
             }
-            $tabs = 1;
             break;
         case 'matieres':
+            $tabs = 2;
             $data = sanitizeAndCheck($_POST, ['nom', 'referent', 'couleur']);
+            checkUnique($data['nom'], 'nom', $matieres, $tabs);
             $matieres[] = array(
                 'nom' => ucfirst($data['nom']),
                 'referent' => ucfirst($data['referent']),
@@ -111,30 +142,30 @@ if(isset($_GET['create'])) {
             );
             $jsonMatieres = json_encode($matieres, JSON_PRETTY_PRINT);
             file_put_contents(WEBROOT .  '/data/matieres.json', $jsonMatieres);
-            $tabs = 2;
             break;
         case 'enseignants':
+            $tabs = 3;
             $data = sanitizeAndCheck($_POST, ['nom', 'referent']);
+            checkUnique($data['nom'], 'nom', $enseignants, $tabs);
             $enseignants[] = array(
                 'nom' => ucwords($data['nom']),
                 'referent' => ucfirst($data['referent'])
             );
             $jsonEnseignants = json_encode($enseignants, JSON_PRETTY_PRINT);
             file_put_contents(WEBROOT .  '/data/enseignants.json', $jsonEnseignants);
-            $tabs = 3;
             break;
         case 'salles':
+            $tabs = 4;
             $data = sanitizeAndCheck($_POST, ['nom']);
+            checkUnique($data['nom'], 'nom', $salles, $tabs);
             $salles[] = array(
                 'nom' => strtoupper($data['nom'])
             );
             $jsonSalles = json_encode($salles, JSON_PRETTY_PRINT);
             file_put_contents(WEBROOT .  '/data/salles.json', $jsonSalles);
-            $tabs = 4;
             break;
         default:
             throw new Exception("L'element $entity n'existe pas");
-            break;
     }
     header('Location: index.php?action=admin#tabs-' . $tabs);
     exit();
@@ -149,6 +180,7 @@ if(isset($_GET['edit'])) {
     $entity = htmlspecialchars($_GET['edit']);
     switch ($entity) {
         case 'utilisateurs':
+            $tabs = 1;
             $data = sanitizeAndCheck($_POST, ['nom', 'prenom', 'password', 'email', 'role']);
             // check password
             if (! preg_match('/(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/', $data['password'])) {
@@ -161,9 +193,9 @@ if(isset($_GET['edit'])) {
             $utilisateurs[$id]['role'] = ucfirst($data['role']);
             // Convertir le tableau PHP en JSON
             file_put_contents(WEBROOT . '/data/utilisateurs.json', json_encode($utilisateurs, JSON_PRETTY_PRINT));
-            $tabs = 1;
             break;
         case 'matieres':
+            $tabs = 2;
             $data = sanitizeAndCheck($_POST, ['nom', 'referent', 'couleur']);
             $matieres[$id] = array(
                 'nom' => ucfirst($data['nom']),
@@ -171,29 +203,27 @@ if(isset($_GET['edit'])) {
                 'couleur' => $data['couleur']//  . '80'// 80 pour la transparence
             );
             file_put_contents(WEBROOT . '/data/matieres.json', json_encode($matieres, JSON_PRETTY_PRINT));
-            $tabs = 2;
             break;
         case 'enseignants':
+            $tabs = 3;
             $data = sanitizeAndCheck($_POST, ['nom', 'referent']);
             $enseignants[$id] = array(
                 'nom' => ucwords($data['nom']),
                 'referent' => ucfirst($data['referent'])
             );
             file_put_contents(WEBROOT . '/data/enseignants.json', json_encode($enseignants, JSON_PRETTY_PRINT));
-            $tabs = 3;
             break;
         case 'salles':
+            $tabs = 4;
             $data = sanitizeAndCheck($_POST, ['nom']);
             $salles[$id] = array(
                 'nom' => strtoupper($data['nom'])
             );
             $jsonSalles = json_encode($salles, JSON_PRETTY_PRINT);
             file_put_contents(WEBROOT . '/data/salles.json', json_encode($salles, JSON_PRETTY_PRINT));
-            $tabs = 4;
             break;
         default:
             throw new Exception("L'element $entity n'existe pas");
-            break;
     }
     header('Location: index.php?action=admin#tabs-' . $tabs);
     exit();
