@@ -29,8 +29,8 @@
         "1": [
             {
                 "type": "Cours",
-                "matiere": "BD2",
-                "enseignant": "Waller",
+                "matiere": "Web",
+                "enseignant": "Frederic Vernier",
                 "salle": "D201",
                 "date": "2023-03-28",
                 "hdebut": "08:15",

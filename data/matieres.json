@@ -2,11 +2,11 @@
     {
         "nom": "Web",
         "referent": "Frederic Vernier",
-        "couleur": "#244994"
+        "couleur": "#c6060680"
     },
     {
-        "nom": "BD2",
+        "nom": "BD",
         "referent": "Waller",
-        "couleur": "#ff0000"
+        "couleur": "#0874e780"
     }
 ]

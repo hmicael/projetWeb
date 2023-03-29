@@ -5,7 +5,7 @@
  * @param array $data
  * @return array $sanitizedData
  */
-function sanitize(array $data, $dataKey) {
+function sanitizeAndCheck(array $data, $dataKey) {
     $sanitizedData = [];
     foreach ($dataKey as $key) {
         if (! isset($data[$key])) {
@@ -17,7 +17,7 @@ function sanitize(array $data, $dataKey) {
             if (! is_array($data[$key])) {
                 $sanitizedData[$key] = htmlspecialchars($data[$key]);
             } else {
-                $sanitizedData[$key] = sanitize($data[$key], array_keys($data[$key]));
+                $sanitizedData[$key] = sanitizeAndCheck($data[$key], array_keys($data[$key]));
             }
         }
     }
@@ -26,7 +26,7 @@ function sanitize(array $data, $dataKey) {
 }
 
 // sanitize les données
-$get = sanitize($_GET, ['heure', 'jour', 'groupe', 'semaine']);
+$get = sanitizeAndCheck($_GET, ['heure', 'jour', 'groupe', 'semaine']);
 $filename = WEBROOT . '/data/edt/' . $get['semaine'] . '.json';
 
 // ouverture du fichier
@@ -47,7 +47,7 @@ if ($_GET['action'] === 'edt-delete') {
         'form-edt-hfin',
         'form-edt-date'
     ];    
-    $post = sanitize($_POST, $postDataKey);
+    $post = sanitizeAndCheck($_POST, $postDataKey);
 
     // les identifiants des groupes sont les clé du tableau, du coup on fait array_key
     $groupes = array_keys($post['form-edt-groupe']);
