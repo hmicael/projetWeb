@@ -34,7 +34,28 @@ $(function() {
         return result;
     }
 
-    $( '#tabs' ).tabs();
+    /**
+     * Fonction qui fait une requete ajax pour rechercher le bon enseignant pour une matière
+     * @param {*} matiere 
+     */
+    function searchEnseignantByMatiere(matiere) {
+        $.ajax({
+            url: 'index.php?action=ajax&search=enseignant',
+            method: 'POST',
+            data: {'matiere' : matiere.split(';')[0]}, // matiere: nom;couleur, on recherche par le nom
+            success: function(response) {
+            const obj = JSON.parse(response);
+            const data = obj.data;
+            $.each(data, function(key, value) {
+                $('#form-edt-enseignant').append('<option value="' + value + '">' + value + '</option>');
+            });
+            },
+            error: function(xhr, status, error) {}
+        });
+    }
+      
+
+    $( '#tabs' ).tabs(); // active le tabs dans la page d'admin
 
     // BEGIN: dialog confirm detete
     $('#dialog-confirm').dialog({
@@ -315,19 +336,7 @@ $(function() {
                 // vide le select
                 $('#form-edt-enseignant').empty();
                 // faire une requete ajax pour obtenir les enseignants
-                $.ajax({
-                    url: 'index.php?action=ajax&search=enseignant',
-                    method: 'POST',
-                    data: {'matiere' : $(this).val()},
-                    success: function(response) {
-                        const obj = JSON.parse(response);
-                        const data = obj.data;
-                        $.each(data, function(key, value) {
-                            $('#form-edt-enseignant').append('<option value="' + value + '">' + value + '</option>');
-                        });
-                    },
-                    error: function(xhr, status, error) {}
-                });
+                searchEnseignantByMatiere($(this).val());
             });
             // si l'action est un edit, charger le modal form avec les données issues du tr contenant le boutton cliqué
             if ($(this).data('action') == 'edit') {
@@ -346,6 +355,7 @@ $(function() {
                         const data = obj.data;
                         $('#form-edt-matiere').val(data.matiere);
                         $('#form-edt-type').val(data.type);
+                        searchEnseignantByMatiere(data.matiere); // recherche enseignant
                         $('#form-edt-enseignant').val(data.enseignant);
                         $('#form-edt-salle').val(data.salle);
                         $('#form-edt-hdebut').val(data.hdebut);

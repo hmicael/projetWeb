@@ -33,8 +33,10 @@ echo '</nav>';
                 <select id="form-edt-matiere" name="form-edt-matiere" required>
                     <option disabled selected value> -- Choisissez une mati&egrave;re -- </option>
                     <?php
+                        // pour ne pas faciliter l'obtention du code couleur de la matière
+                        // on va directement mettre sa couleur dans value et splitter le traitement
                         foreach ($matieres as $m) {
-                            echo '<option value="' . $m['nom'] . '">' . $m['nom'] . '</option>';
+                            echo '<option style="background-color:' . $m['couleur'] . '" value="' . $m['nom'] . ';' . $m['couleur'] .'">' . $m['nom'] . '</option>';
                         }
                     ?>
                 </select>
@@ -131,6 +133,8 @@ echo '</nav>';
                             // s'il y a un contenu et que c'est le bon groupe
                             if(isset($edt[$hDeb][$jour][$groupe]) &&
                                 in_array($groupe, $edt[$hDeb][$jour][$groupe]['groupes'])) {
+                                // splitter le matiere puisque c'est un string nom;couleur
+                                $matiere = explode(';', $edt[$hDeb][$jour][$groupe]['matiere']);
                                 // calcul de la fusion de ligne: (hfin - hdebut) / 15mn
                                 $slotHFin = strtotime($edt[$hDeb][$jour][$groupe]['hfin']);
                                 $slotHDeb = strtotime($edt[$hDeb][$jour][$groupe]['hdebut']);
@@ -170,9 +174,9 @@ echo '</nav>';
                                         }
                                     }
                                     if ($colspan > 1) {
-                                        echo '<td style="background-color:red" rowspan="' . $rowspan . '" colspan="' . $colspan . '">';
+                                        echo '<td style="background-color:'  . $matiere[1] . '" rowspan="' . $rowspan . '" colspan="' . $colspan . '">';
                                     } else {
-                                        echo '<td style="background-color:red" rowspan="' . $rowspan . '">';
+                                        echo '<td style="background-color:'  . $matiere[1] . '" rowspan="' . $rowspan . '">';
                                     }
                                 } else {
                                     if ($colspan > 1) {
@@ -181,22 +185,22 @@ echo '</nav>';
                                         echo '<td>';
                                     }
                                 }
-
-                                    // affichage du contenu du slot
-                                    echo $edt[$hDeb][$jour][$groupe]['matiere'] . '<br>';
-                                    echo $edt[$hDeb][$jour][$groupe]['enseignant'] . '<br>';
-                                    echo $edt[$hDeb][$jour][$groupe]['salle'] . '<br>';
-                                    echo $edt[$hDeb][$jour][$groupe]['hdebut'] . ' à ' .  $edt[$hDeb][$jour][$groupe]['hfin'] . '<br>';
-                                    echo '<br>';
-                                    // boutton edit
-                                    echo '<a href="index.php?action=edt-edit&heure='.
-                                        $hDeb .'&jour=' . ($jour+1) . '&semaine=' . $lundiDeLaSemaine .
-                                        '&groupe=' . ($groupe+1) . '" class="btn btn-edit open-edt-modal"><i class="fa-solid fa-pen-to-square"></i></a>';
-                                        
-                                    // bouton delete
-                                    echo '<a href="index.php?action=edt-delete&heure='.
-                                        $hDeb .'&jour=' . ($jour+1) . '&semaine=' . $lundiDeLaSemaine .
-                                        '&groupe=' . ($groupe+1) . '" class="btn btn-delete delete-modal"><i class="fa-solid fa-trash"></a>';
+                                
+                                // affichage du contenu du slot
+                                echo $matiere[0] . '<br>';
+                                echo $edt[$hDeb][$jour][$groupe]['enseignant'] . '<br>';
+                                echo $edt[$hDeb][$jour][$groupe]['salle'] . '<br>';
+                                echo $edt[$hDeb][$jour][$groupe]['hdebut'] . ' à ' .  $edt[$hDeb][$jour][$groupe]['hfin'] . '<br>';
+                                echo '<br>';
+                                // boutton edit
+                                echo '<a href="index.php?action=edt-edit&heure='.
+                                    $hDeb .'&jour=' . ($jour+1) . '&semaine=' . $lundiDeLaSemaine .
+                                    '&groupe=' . ($groupe+1) . '" class="btn btn-edit open-edt-modal"><i class="fa-solid fa-pen-to-square"></i></a>';
+                                    
+                                // bouton delete
+                                echo '<a href="index.php?action=edt-delete&heure='.
+                                    $hDeb .'&jour=' . ($jour+1) . '&semaine=' . $lundiDeLaSemaine .
+                                    '&groupe=' . ($groupe+1) . '" class="btn btn-delete delete-modal"><i class="fa-solid fa-trash"></a>';
                                 echo '</td>';
                                 if ($colspan > 1) {
                                     // si colspan > 1 on va decaler la position de groupe pour ne pas mettre un td en exces

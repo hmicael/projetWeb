@@ -66,6 +66,7 @@ if ($_GET['action'] === 'edt-delete') {
             "hdebut" => $post['form-edt-hdebut'],
             "hfin" =>  $post['form-edt-hfin']
         ];
+
         if([0, 2, 3] === $groupes &&
             ! isset($edt[$post['form-edt-hdebut']][$get['jour'] - 1][0]) && // ! isset pour ne pas écraser un valeur déjà existant
             ! isset($edt[$post['form-edt-hdebut']][$get['jour'] - 1][2])) {
