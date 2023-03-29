@@ -11,11 +11,11 @@
                 <input type="text" name="nom" id="nom-matiere" required autofocus>
             </div>
             <div>
-                <label for="referant-mat">Refer&eacute;nt :</label>
-                <select id="referant-mat" name="referant" required>
+                <label for="referent-mat">Ref&eacute;rent :</label>
+                <select id="referent-mat" name="referent" required>
                     <?php
                     foreach ($enseignants as $e) {
-                        if($e['referant'] == 'Oui')
+                        if($e['referent'] == 'Oui')
                             echo '<option value="' . $e['nom'] . '">' . $e['nom'] . '</option>';
                     }
                     ?>
@@ -35,7 +35,7 @@
         <tr>
             <th scope="col">#</th>
             <?php
-                foreach (['Nom', 'Référant', 'Couleur', 'Actions'] as $value) {
+                foreach (['Nom', 'Référent', 'Couleur', 'Actions'] as $value) {
                     echo '<th scope="col">' . ucfirst($value) . '</th>';
                 }
             ?>

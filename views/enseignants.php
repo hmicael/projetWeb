@@ -20,11 +20,11 @@
             <fieldset>
                 <legend>Refer&eacute;nt :</legend>
                 <div>
-                    <input type="radio" id="radio-oui" name="referant" value="Oui">
+                    <input type="radio" id="radio-oui" name="referent" value="Oui">
                     <label for="radio-oui">Oui</label>
                 </div>
                 <div>
-                    <input type="radio" id="radio-non" name="referant" value="Non" checked>
+                    <input type="radio" id="radio-non" name="referent" value="Non" checked>
                     <label for="radio-non">Non</label>
                 </div>
             </fieldset>
@@ -52,7 +52,7 @@
                     echo '<tr>';
                     echo '<td>'.$id .'</td>';
                     echo '<td>' . $value['nom'] . '</td>';
-                    echo '<td>' . $value['referant'] . '</td>';
+                    echo '<td>' . $value['referent'] . '</td>';
                     echo '<td class="action-buttons">';
                         echo '<a href="index.php?action=admin&edit=enseignants&id=' . $id . '" class="btn btn-edit open-enseignant-modal">Modifier</a>';
                         echo '<a href="index.php?action=admin&delete=enseignants&id=' . $id . '" class="btn btn-delete">Supprimer</a>';
