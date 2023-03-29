@@ -1,18 +1,20 @@
 $(function() {
     /**
-     * Fonction qui converti un couleur RGB en Hex
-     * @param {} rgb 
-     * @returns 
+     * Fonction qui convertit une couleur RGBA en Hex
+     * @param {string} rgba
+     * @returns {string}
      */
-    function convertRgbToHex(rgb) {
-        rgb = rgb.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
-      
+    function convertRgbaToHex(rgba) {
+        rgba = rgba.match(/^rgba?\((\d+),\s*(\d+),\s*(\d+),?\s*([\d\.]+)?\)$/);
+        
         function hexCode(i) {
-            return ("0" + parseInt(i).toString(16)).slice(-2);
+            // convertit decimal en hexadecimal
+            return ('0' + parseInt(i).toString(16)).slice(-2);
         }
-        return "#" + hexCode(rgb[1]) + hexCode(rgb[2])
-                + hexCode(rgb[3]);
+
+        return '#' + hexCode(rgba[1]) + hexCode(rgba[2]) + hexCode(rgba[3]);
     }
+  
 
     /**
      * Fonction qui permet d'obtenir le parametre GET
@@ -23,16 +25,16 @@ $(function() {
     function findGetParameter(parameterName, url) {
         var result = null,
             tmp = [];
-        url.split("&") // spliter l'url avec &
+        url.split('&') // spliter l'url avec &
             .forEach(function (item) {
                 // pour chaque split, respliter pour avoir séparer la clé et le valeur
-              tmp = item.split("=");
-              if (tmp[0] === parameterName) result = decodeURIComponent(tmp[1]);
+                tmp = item.split('=');
+                if (tmp[0] === parameterName) result = decodeURIComponent(tmp[1]);
             });
         return result;
     }
 
-    $( "#tabs" ).tabs();
+    $( '#tabs' ).tabs();
 
     // BEGIN: dialog confirm detete
     $('#dialog-confirm').dialog({
@@ -86,10 +88,10 @@ $(function() {
             // check si les mots de passe correspondent
             $('#confirm-password').on('keyup', function() {
                 if ($(this).val() != $('#password').val()) {
-                    $("div.ui-dialog-buttonpane.ui-widget-content.ui-helper-clearfix > div > button:nth-child(1)").attr("disabled", true);
+                    $('div.ui-dialog-buttonpane.ui-widget-content.ui-helper-clearfix > div > button:nth-child(1)').attr('disabled', true);
                     $('#password-not-match').show();
                 } else {
-                    $("div.ui-dialog-buttonpane.ui-widget-content.ui-helper-clearfix > div > button:nth-child(1)").attr("disabled", false);
+                    $('div.ui-dialog-buttonpane.ui-widget-content.ui-helper-clearfix > div > button:nth-child(1)').attr('disabled', false);
                     $('#password-not-match').hide();
                 }
             });
@@ -137,7 +139,7 @@ $(function() {
                 const tr = $(this).data('tr');
                 $('#nom-matiere').val(tr.children()[1].innerText);
                 $('#referant-mat').val(tr.children()[2].innerText);
-                $('#couleur').val(convertRgbToHex(tr.children()[3].style.backgroundColor));
+                $('#couleur').val(convertRgbaToHex(tr.children()[3].style.backgroundColor));
             }
         },
         buttons: {
@@ -182,7 +184,7 @@ $(function() {
             if ($(this).data('action') == 'edit') {
                 const tr = $(this).data('tr');
                 $('#nom-enseignant').val(tr.children()[1].innerText);
-                if (tr.children()[2].innerText == "Oui") {
+                if (tr.children()[2].innerText == 'Oui') {
                     $('#radio-oui').attr('checked', 'checked');
                 } else {
                     $('#radio-non').attr('checked', 'checked');
@@ -274,19 +276,19 @@ $(function() {
             // Modifier la trajectoire de l'action
             $('#edt-form').attr('action', $(this).data('url'));
             // Checker le checkbox du groupe et le mettre en readonly
-            const checkedGroup  = '#form-edt-groupe-' + findGetParameter("groupe", $(this).data('url'));
+            const checkedGroup  = '#form-edt-groupe-' + findGetParameter('groupe', $(this).data('url'));
             $(checkedGroup).prop('checked', true);
             // empecher l'utilisateur de décocher le checkbox sur le groupe où on a declencher l'action
             $('.form-edt-groupe').removeAttr('onclick');
-            $(checkedGroup).attr('onclick', "return false;");
+            $(checkedGroup).attr('onclick', 'return false;');
             // set heure de début
-            const hdeb = findGetParameter("heure", $(this).data('url'));
+            const hdeb = findGetParameter('heure', $(this).data('url'));
             $('#form-edt-hdebut').val(hdeb);
             $('#form-edt-hdebut').prop('readonly', true);
             // set heure de fin min = hdeb
             $('#form-edt-hfin').prop('min', hdeb);
             // set valeur heure de fin = valeur heure debut + 15mn
-            const timeParts = hdeb.split(":"); // Split heure et minute
+            const timeParts = hdeb.split(':'); // Split heure et minute
             const heure = parseInt(timeParts[0], 10);
             const minutes = parseInt(timeParts[1], 10);
             const dateFin = new Date();
@@ -296,8 +298,8 @@ $(function() {
             const hebPlus15 = dateFin.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
             $('#form-edt-hfin').val(hebPlus15);
             // set date
-            const lundiSemaine = findGetParameter("semaine", $(this).data('url'));
-            const jour = findGetParameter("jour", $(this).data('url')) - 1;
+            const lundiSemaine = findGetParameter('semaine', $(this).data('url'));
+            const jour = findGetParameter('jour', $(this).data('url')) - 1;
             let date = new Date(lundiSemaine);
             day = date.getDate() + jour;
             date.setDate(day);
@@ -324,9 +326,7 @@ $(function() {
                             $('#form-edt-enseignant').append('<option value="' + value + '">' + value + '</option>');
                         });
                     },
-                    error: function(xhr, status, error) {
-                        console.log("Error: " + error);
-                    }
+                    error: function(xhr, status, error) {}
                 });
             });
             // si l'action est un edit, charger le modal form avec les données issues du tr contenant le boutton cliqué
@@ -338,7 +338,7 @@ $(function() {
                     data: {
                         'heure': hdeb,
                         'jour': jour,
-                        'groupe':findGetParameter("groupe", $(this).data('url')) - 1,
+                        'groupe':findGetParameter('groupe', $(this).data('url')) - 1,
                         'semaine': lundiSemaine
                     },
                     success: function(response) {
@@ -355,9 +355,7 @@ $(function() {
                             $('#form-edt-groupe-' + (value+1)).prop('checked', true);
                         });
                     },
-                    error: function(xhr, status, error) {
-                        console.log("Error: " + error);
-                    }
+                    error: function(xhr, status, error) {}
                 });
                 
             }

@@ -145,7 +145,7 @@ if(isset($_GET['create'])) {
             $matieres[] = array(
                 'nom' => ucfirst($data['nom']),
                 'referent' => ucfirst($data['referent']),
-                'couleur' => $data['couleur']//  . '80'// 80 pour la transparence
+                'couleur' => $data['couleur'] . '80' // 80 pour la transparence
             );
             $jsonMatieres = json_encode($matieres, JSON_PRETTY_PRINT);
             file_put_contents(WEBROOT .  '/data/matieres.json', $jsonMatieres);
@@ -207,7 +207,7 @@ if(isset($_GET['edit'])) {
             $matieres[$id] = array(
                 'nom' => ucfirst($data['nom']),
                 'referent' => ucfirst($data['referent']),
-                'couleur' => $data['couleur']//  . '80'// 80 pour la transparence
+                'couleur' => $data['couleur'] . '80' // 80 pour la transparence
             );
             file_put_contents(WEBROOT . '/data/matieres.json', json_encode($matieres, JSON_PRETTY_PRINT));
             break;
