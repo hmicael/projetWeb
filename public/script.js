@@ -42,6 +42,7 @@ $(function() {
         $.ajax({
             url: 'index.php?action=ajax&search=enseignant',
             method: 'POST',
+            dataType: "json",
             data: {'matiere' : matiere.split(';')[0]}, // matiere: nom;couleur, on recherche par le nom
             success: function(response) {
                 const obj = JSON.parse(response);
@@ -337,6 +338,7 @@ $(function() {
                 $.ajax({
                     url: 'index.php?action=ajax&search=edt',
                     method: 'POST',
+                    dataType: "json",
                     data: {
                         'heure': hdeb,
                         'jour': jour,
