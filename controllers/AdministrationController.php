@@ -44,6 +44,13 @@ function checkUnique($uniqueValue, $key, array $data, int $tabs) {
     }
 }
 
+/**
+ * Fonction qui test si un id existe dans un tableau
+ *
+ * @param [type] $id
+ * @param array $data
+ * @return void
+ */
 function checkIdExist($id, array $data) {
     if (! array_key_exists($id, $data)) {
         throw new Exception('La page n\'existe pas');
