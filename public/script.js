@@ -136,7 +136,7 @@ $(function() {
             if ($(this).data('action') == 'edit') {
                 const tr = $(this).data('tr');
                 $('#nom-matiere').val(tr.children()[1].innerText);
-                $('#referent-mat').val(tr.children()[2].innerText);
+                $('#referant-mat').val(tr.children()[2].innerText);
                 $('#couleur').val(convertRgbToHex(tr.children()[3].style.backgroundColor));
             }
         },

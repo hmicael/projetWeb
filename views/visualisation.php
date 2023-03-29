@@ -5,11 +5,11 @@ if (isset($_SESSION['error-msg'])) {
     unset($_SESSION['error-msg']);
 }
 // Navigation semaine
-echo '<div>';
+echo '<nav class="semaine-nav">';
     echo '<p>';
-        echo '<a href="index.php?action=visualiser&semaine=' . date('Y-m-d', strtotime($lundiDeLaSemaine . ' - 7 days')) .'">
-                <i class="fa-solid fa-chevron-left" style="color: #63003c;"></i>
-            </a>';
+        echo '<a href="index.php?action=visualiser&semaine=' . date('Y-m-d', strtotime($lundiDeLaSemaine . ' - 7 days')) .'">';
+                echo '<i class="fa-solid fa-chevron-left" style="color: #63003c;"></i>';
+            echo '</a>';
         echo '<span>
                 Semaine du 
                 <time datetime="' . date('d-m-Y', strtotime($lundiDeLaSemaine)) . '">' . 
@@ -22,7 +22,7 @@ echo '<div>';
                 <i class="fa-solid fa-chevron-right" style="color: #63003c;"></i>
             </a>';
     echo '</p>';
-echo '</div>';
+echo '</nav>';
 ?>
 <!-- BEGIN: Modal -->
 <section id="modal-edt-form" title="Ajout d'une plage" class="modal">
@@ -224,11 +224,12 @@ echo '</div>';
 <!-- END: table -->
 <?php 
 // Navigation semaine
-echo '<div>';
+// Navigation semaine
+echo '<nav class="semaine-nav">';
     echo '<p>';
-        echo '<a href="index.php?action=visualiser&semaine=' . date('Y-m-d', strtotime($lundiDeLaSemaine . ' - 7 days')) .'">
-                <i class="fa-solid fa-chevron-left" style="color: #63003c;"></i>
-            </a>';
+        echo '<a href="index.php?action=visualiser&semaine=' . date('Y-m-d', strtotime($lundiDeLaSemaine . ' - 7 days')) .'">';
+                echo '<i class="fa-solid fa-chevron-left" style="color: #63003c;"></i>';
+            echo '</a>';
         echo '<span>
                 Semaine du 
                 <time datetime="' . date('d-m-Y', strtotime($lundiDeLaSemaine)) . '">' . 
@@ -241,7 +242,7 @@ echo '<div>';
                 <i class="fa-solid fa-chevron-right" style="color: #63003c;"></i>
             </a>';
     echo '</p>';
-echo '</div>';
+echo '</nav>';
 $content = ob_get_clean();
 require('template.php') 
 ?>
