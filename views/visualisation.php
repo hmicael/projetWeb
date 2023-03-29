@@ -105,7 +105,7 @@ echo '</nav>';
             ?>
         </tr>
     </thead>
-    <tbody>
+    <tbody id="visualisation">
         <tr>
             <td></td>
             <?php

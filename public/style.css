@@ -249,6 +249,15 @@ header {
 .delete-modal,
 .open-edt-modal {
     color: #63003C;
+    margin: 8px 4px;
+}
+
+#visualisation td {
+    text-align: center;
+}
+
+.semaine-nav {
+    text-align: center;
 }
 
 /* Fin Ajustement des Boutons Modification et Suppression */
