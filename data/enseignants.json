@@ -1,14 +1,14 @@
 [
     {
         "nom": "Frederic Vernier",
-        "referant": "Oui"
+        "referent": "Oui"
     },
     {
         "nom": "David Rei",
-        "referant": "Non"
+        "referent": "Non"
     },
     {
         "nom": "Waller",
-        "referant": "Oui"
+        "referent": "Oui"
     }
 ]

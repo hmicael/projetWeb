@@ -103,21 +103,21 @@ if(isset($_GET['create'])) {
             $tabs = 1;
             break;
         case 'matieres':
-            $data = sanitize($_POST, ['nom', 'referant', 'couleur']);
+            $data = sanitize($_POST, ['nom', 'referent', 'couleur']);
             $matieres[] = array(
                 'nom' => ucfirst($data['nom']),
-                'referant' => ucfirst($data['referant']),
-                'couleur' => $data['couleur']
+                'referent' => ucfirst($data['referent']),
+                'couleur' => $data['couleur']//  . '80'// 80 pour la transparence
             );
             $jsonMatieres = json_encode($matieres, JSON_PRETTY_PRINT);
             file_put_contents(WEBROOT .  '/data/matieres.json', $jsonMatieres);
             $tabs = 2;
             break;
         case 'enseignants':
-            $data = sanitize($_POST, ['nom', 'referant']);
+            $data = sanitize($_POST, ['nom', 'referent']);
             $enseignants[] = array(
                 'nom' => ucwords($data['nom']),
-                'referant' => ucfirst($data['referant'])
+                'referent' => ucfirst($data['referent'])
             );
             $jsonEnseignants = json_encode($enseignants, JSON_PRETTY_PRINT);
             file_put_contents(WEBROOT .  '/data/enseignants.json', $jsonEnseignants);
@@ -164,20 +164,20 @@ if(isset($_GET['edit'])) {
             $tabs = 1;
             break;
         case 'matieres':
-            $data = sanitize($_POST, ['nom', 'referant', 'couleur']);
+            $data = sanitize($_POST, ['nom', 'referent', 'couleur']);
             $matieres[$id] = array(
                 'nom' => ucfirst($data['nom']),
-                'referant' => ucfirst($data['referant']),
-                'couleur' => $data['couleur']
+                'referent' => ucfirst($data['referent']),
+                'couleur' => $data['couleur']//  . '80'// 80 pour la transparence
             );
             file_put_contents(WEBROOT . '/data/matieres.json', json_encode($matieres, JSON_PRETTY_PRINT));
             $tabs = 2;
             break;
         case 'enseignants':
-            $data = sanitize($_POST, ['nom', 'referant']);
+            $data = sanitize($_POST, ['nom', 'referent']);
             $enseignants[$id] = array(
                 'nom' => ucwords($data['nom']),
-                'referant' => ucfirst($data['referant'])
+                'referent' => ucfirst($data['referent'])
             );
             file_put_contents(WEBROOT . '/data/enseignants.json', json_encode($enseignants, JSON_PRETTY_PRINT));
             $tabs = 3;

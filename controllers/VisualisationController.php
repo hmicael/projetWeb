@@ -22,7 +22,6 @@ if (isset($_GET['semaine']) &&
     }
 }
 
-$enseignants = json_decode(file_get_contents(WEBROOT . '/data/enseignants.json'), true);
 $matieres = json_decode(file_get_contents(WEBROOT . '/data/matieres.json'), true);
 $salles = json_decode(file_get_contents(WEBROOT . '/data/salles.json'), true);
 // le tableau qui recevra le contenu du fichier

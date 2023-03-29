@@ -60,7 +60,7 @@ if ($_GET['search'] === 'edt') {
 }
 
 if ($_GET['search'] === 'enseignant') {
-    // Rechercher le prof referant d'une matiere et tout les autres prof non référant (jugé etre tous aptes à dispenser le cours)
+    // Rechercher le prof referent d'une matiere et tout les autres prof non référant (jugé etre tous aptes à dispenser le cours)
     $nomMatiere = sanitize($_POST, ['matiere'])['matiere'];
     $matieres = json_decode(file_get_contents(WEBROOT . '/data/matieres.json'), true);
     $profs = json_decode(file_get_contents(WEBROOT . '/data/enseignants.json'), true);
@@ -68,14 +68,14 @@ if ($_GET['search'] === 'enseignant') {
     // recherche du prof référant de la matière;
     foreach ($matieres as $m) {
         if ($m['nom'] == $nomMatiere) {
-            $data[] = $m['referant'];
+            $data[] = $m['referent'];
             break;
         }
     }
 
-    // recherche prof non referant
+    // recherche prof non referent
     foreach ($profs as $p) {
-        if ($p['referant'] == 'Non') {
+        if ($p['referent'] == 'Non') {
             $data[] = $p['nom'] = $p['nom'];
         }
     }

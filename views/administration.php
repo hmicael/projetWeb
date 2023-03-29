@@ -26,6 +26,5 @@
         <?php require(WEBROOT . 'views/salles.php') ?>
     </section>
 </section>
-<!-- <a href="index.php">Accueil</a> -->
 <?php $content = ob_get_clean(); ?>
 <?php require('template.php') ?>
