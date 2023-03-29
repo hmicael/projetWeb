@@ -8,8 +8,14 @@ if (isset($_SESSION['error-msg'])) {
 echo '<div>';
     echo '<p>';
         echo '<a href="index.php?action=visualiser&semaine=' . date('Y-m-d', strtotime($lundiDeLaSemaine . ' - 7 days')) .'"><<<a>';
-        echo '<span>Semaine du ' . date('d-m-Y', strtotime($lundiDeLaSemaine)) .
-            ' au ' . date('d-m-Y', strtotime($lundiDeLaSemaine . ' + 4 days')) . '</span>';
+        echo '<span>
+            Semaine du 
+            <time datetime="' . date('d-m-Y', strtotime($lundiDeLaSemaine)) . '">' . 
+                date('d-m-Y', strtotime($lundiDeLaSemaine)) .
+            '</time> au <time>' . 
+                date('d-m-Y', strtotime($lundiDeLaSemaine . ' + 4 days')) . 
+            '</time>
+        </span>';
         echo '<a href="index.php?action=visualiser&semaine=' . date('Y-m-d', strtotime($lundiDeLaSemaine . ' + 7 days')) .'">>><a>';
     echo '</p>';
 echo '</div>';
@@ -21,6 +27,7 @@ echo '</div>';
             <div>
                 <label for="form-edt-matiere">Mati&egrave;re: </label>
                 <select id="form-edt-matiere" name="form-edt-matiere" required>
+                    <option disabled selected value> -- Choisissez une mati&egrave;re -- </option>
                     <?php
                         foreach ($matieres as $m) {
                             echo '<option value="' . $m['nom'] . '">' . $m['nom'] . '</option>';
@@ -89,7 +96,7 @@ echo '</div>';
             <?php
                 foreach (['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi'] as $key => $value) {
                     $date = date('d-m-Y', strtotime($lundiDeLaSemaine. ' + ' . $key . ' days'));
-                    echo "<th scope=\"col\" colspan=\"4\">$value<br>$date</th>";
+                    echo "<th scope=\"col\" colspan=\"4\">$value<br><time datetime=\"$date\">$date</time></th>";
                 }
             ?>
         </tr>
@@ -112,7 +119,7 @@ echo '</div>';
         for ($heure = $heureDebut; $heure <= $heureFin; $heure += 900) { // boucle horaire 900s = 15mn
             $hDeb = date('H:i', $heure);
             echo '<tr>';
-                echo "<td>$hDeb</td>";
+                echo "<td><time>$hDeb</time></td>";
                 for ($jour=0; $jour < 5; $jour++) { // boucle jour lundi à vendredi
                     for ($groupe=0; $groupe < 4; $groupe++) { // boucle groupe 1 à 4
                         // si le bloc appartient à la liste de colonne ou de ligne à sauter à cause d'une fusion
@@ -216,8 +223,14 @@ echo '</div>';
 echo '<div>';
     echo '<p>';
         echo '<a href="index.php?action=visualiser&semaine=' . date('Y-m-d', strtotime($lundiDeLaSemaine . ' - 7 days')) .'"><<<a>';
-        echo '<span>Semaine du ' . date('d-m-Y', strtotime($lundiDeLaSemaine)) .
-            ' au ' . date('d-m-Y', strtotime($lundiDeLaSemaine . ' + 4 days')) . '</span>';
+        echo '<span>
+            Semaine du 
+            <time datetime="' . date('d-m-Y', strtotime($lundiDeLaSemaine)) . '">' . 
+                date('d-m-Y', strtotime($lundiDeLaSemaine)) .
+            '</time> au <time>' . 
+                date('d-m-Y', strtotime($lundiDeLaSemaine . ' + 4 days')) . 
+            '</time>
+        </span>';
         echo '<a href="index.php?action=visualiser&semaine=' . date('Y-m-d', strtotime($lundiDeLaSemaine . ' + 7 days')) .'">>><a>';
     echo '</p>';
 echo '</div>';
