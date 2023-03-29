@@ -40,13 +40,7 @@ echo '</div>';
             </div>
             <div>
                 <label for="form-edt-enseignant">Enseignant: </label>
-                <select id="form-edt-enseignant" name="form-edt-enseignant" required>
-                    <?php
-                        foreach ($enseignants as $e) {
-                            echo '<option value="' . $e['nom'] . '">' . $e['nom'] . '</option>';
-                        }
-                    ?>
-                </select>
+                <select id="form-edt-enseignant" name="form-edt-enseignant" required></select>
             </div>
             <div>
                 <label for="form-edt-salle">Salle: </label>
