@@ -194,7 +194,7 @@ echo '</nav>';
                                     // bouton delete
                                     echo '<a href="index.php?action=edt-delete&heure='.
                                         $hDeb .'&jour=' . ($jour+1) . '&semaine=' . $lundiDeLaSemaine .
-                                        '&groupe=' . ($groupe+1) . '" class="btn btn-delete"><i class="fa-solid fa-trash"></a>';
+                                        '&groupe=' . ($groupe+1) . '" class="btn btn-delete delete-modal"><i class="fa-solid fa-trash"></a>';
                                 echo '</td>';
                                 if ($colspan > 1) {
                                     // si colspan > 1 on va decaler la position de groupe pour ne pas mettre un td en exces
