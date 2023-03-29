@@ -13,7 +13,7 @@
 
     <body>
         <header>
-            <nav>
+            <nav id="navigation">
                 <ul>
                 <?php
                     if (isset($_GET['action'])) {
@@ -28,14 +28,17 @@
                 <a href="index.php?action=deconnect" class="logout-button">Deconnection</a>
             </nav> -->
         </header>
+        <div id="contents">
+            
+        </div>
         <main>
-        <section id="dialog-confirm" title="Suppression">
-            <p>
-                <span class="ui-icon ui-icon-alert" style="float:left; margin:12px 12px 20px 0;"></span>
-                Cet &eacute;l&eacute;ment sera d&eacute;finitivement supprim&eacute; et ne pourra pas &ecirc;tre r&eacute;cup&eacute;r&eacute;. &Ecirc;tes-vous s&ucirc;r ?
-            </p>
-        </section>
-            <?= $content ?>
+            <section id="dialog-confirm" title="Suppression">
+                <p>
+                    <span class="ui-icon ui-icon-alert" style="float:left; margin:12px 12px 20px 0;"></span>
+                    Cet &eacute;l&eacute;ment sera d&eacute;finitivement supprim&eacute; et ne pourra pas &ecirc;tre r&eacute;cup&eacute;r&eacute;. &Ecirc;tes-vous s&ucirc;r ?
+                </p>
+            </section>
+                <?= $content ?>
         </main>
         <footer>
             <!-- BEGIN: Footer -->
