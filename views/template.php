@@ -15,7 +15,11 @@
         <header>
             <nav>
                 <ul>
-                <li><a href="index.php">Accueil</a></li>
+                <?php
+                    if (isset($_GET['action'])) {
+                        echo '<li><a href="index.php">Accueil</a></li>';
+                    }
+                ?>
                 <li><a href="index.php?action=deconnect" class="logout-button">Deconnection</a></li>
                 </ul>
             </nav>

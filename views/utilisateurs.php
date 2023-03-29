@@ -1,6 +1,7 @@
 <h1>Liste des utilisateurs :</h1>
-
-<a id="create-user-button" href="index.php?action=admin&create=utilisateurs" class="btn btn-add open-user-modal">+</a>
+<div class="action">
+    <a id="create-user-button" href="index.php?action=admin&create=utilisateurs" class="btn btn-add open-user-modal">+</a>
+</div>
 <!-- BEGIN: Modal -->
 <section id="modal-user-form" title="Enregister un utilisateur" class="modal">
     <form id="user-form" action="" method="post">
