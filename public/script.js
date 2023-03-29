@@ -208,9 +208,9 @@ $(function() {
                 const tr = $(this).data('tr');
                 $('#nom-enseignant').val(tr.children()[1].innerText);
                 if (tr.children()[2].innerText == 'Oui') {
-                    $('#radio-oui').attr('checked', 'checked');
+                    $('#referent-radio-oui').attr('checked', 'checked');
                 } else {
-                    $('#radio-non').attr('checked', 'checked');
+                    $('#referent-radio-non').attr('checked', 'checked');
                 }
             }
         },
