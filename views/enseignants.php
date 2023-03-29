@@ -1,12 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
 <h1>Liste des Enseignants :</h1>
 <!-- BEGIN: Modal -->
 <!-- Le modal d'affichage de l'ajout et de modification d'un enseignant -->
@@ -20,11 +11,11 @@
             <fieldset>
                 <legend>Refer&eacute;nt :</legend>
                 <div>
-                    <input type="radio" id="radio-oui" name="referent" value="Oui">
+                    <input type="radio" id="radio-oui" name="referant" value="Oui">
                     <label for="radio-oui">Oui</label>
                 </div>
                 <div>
-                    <input type="radio" id="radio-non" name="referent" value="Non" checked>
+                    <input type="radio" id="radio-non" name="referant" value="Non" checked>
                     <label for="radio-non">Non</label>
                 </div>
             </fieldset>
@@ -52,20 +43,18 @@
                     echo '<tr>';
                     echo '<td>'.$id .'</td>';
                     echo '<td>' . $value['nom'] . '</td>';
-                    echo '<td>' . $value['referent'] . '</td>';
+                    echo '<td>' . $value['referant'] . '</td>';
                     echo '<td class="action-buttons">';
-                        echo '<a href="index.php?action=admin&edit=enseignants&id=' . $id . '" class="btn btn-edit open-enseignant-modal">Modifier</a>';
-                        echo '<a href="index.php?action=admin&delete=enseignants&id=' . $id . '" class="btn btn-delete">Supprimer</a>';
+                        echo '<a href="index.php?action=admin&edit=enseignants&id=' . $id . '" class="btn btn-edit open-enseignant-modal">Modifier <i class="fa-solid fa-pen-to-square"></i></a>';
+                        echo '<a href="index.php?action=admin&delete=enseignants&id=' . $id . '" class="btn btn-delete">Supprimer <i class="fa-solid fa-trash"></i></a>';
                     echo '</td>';
                     echo '</tr>';
                 }
                 ?>
                 <div class="action">
-                    <a id="create-enseignant-button" href="index.php?action=admin&create=enseignants" class="btn-add open-enseignant-modal">+</a>      
+                    <a id="create-enseignant-button" href="index.php?action=admin&create=enseignants" class="btn-add open-enseignant-modal"><i class="fa-solid fa-plus"></i></a>      
                 </div>
             </tbody>
         </table>
     </div>
 </section>
-</body>
-</html>

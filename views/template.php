@@ -8,6 +8,8 @@
         <meta name="author" content="Ridouane OUSMANE DOUDOU">
         <meta name="author" content="Henintsoa ANDRIAMAHADIMBY">
         <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+            integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <link rel="stylesheet" href="public/style.css">
     </head>
 
@@ -15,12 +17,17 @@
         <header>
             <nav>
                 <ul>
-                <?php
-                    if (isset($_GET['action'])) {
-                        echo '<li><a href="index.php">Accueil</a></li>';
-                    }
-                ?>
-                <li><a href="index.php?action=deconnect" class="logout-button">Deconnection</a></li>
+                    <?php
+                        if (isset($_GET['action'])) {
+                            echo '<li><a href="index.php">Accueil</a></li>';
+                        }
+                    ?>
+                    <li>
+                        <a href="index.php?action=deconnect" class="logout-button">
+                            Deconnection 
+                            <i class="fa-solid fa-right-from-bracket"></i>
+                        </a>
+                    </li>
                 </ul>
             </nav>
             <!-- <nav>

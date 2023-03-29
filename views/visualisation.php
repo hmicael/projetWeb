@@ -7,16 +7,20 @@ if (isset($_SESSION['error-msg'])) {
 // Navigation semaine
 echo '<div>';
     echo '<p>';
-        echo '<a href="index.php?action=visualiser&semaine=' . date('Y-m-d', strtotime($lundiDeLaSemaine . ' - 7 days')) .'"><<<a>';
+        echo '<a href="index.php?action=visualiser&semaine=' . date('Y-m-d', strtotime($lundiDeLaSemaine . ' - 7 days')) .'">
+                <i class="fa-solid fa-chevron-left" style="color: #63003c;"></i>
+            </a>';
         echo '<span>
-            Semaine du 
-            <time datetime="' . date('d-m-Y', strtotime($lundiDeLaSemaine)) . '">' . 
-                date('d-m-Y', strtotime($lundiDeLaSemaine)) .
-            '</time> au <time>' . 
-                date('d-m-Y', strtotime($lundiDeLaSemaine . ' + 4 days')) . 
-            '</time>
-        </span>';
-        echo '<a href="index.php?action=visualiser&semaine=' . date('Y-m-d', strtotime($lundiDeLaSemaine . ' + 7 days')) .'">>><a>';
+                Semaine du 
+                <time datetime="' . date('d-m-Y', strtotime($lundiDeLaSemaine)) . '">' . 
+                    date('d-m-Y', strtotime($lundiDeLaSemaine)) .
+                '</time> au <time>' . 
+                    date('d-m-Y', strtotime($lundiDeLaSemaine . ' + 4 days')) . 
+                '</time>
+            </span>';
+        echo '<a href="index.php?action=visualiser&semaine=' . date('Y-m-d', strtotime($lundiDeLaSemaine . ' + 7 days')) .'">
+                <i class="fa-solid fa-chevron-right" style="color: #63003c;"></i>
+            </a>';
     echo '</p>';
 echo '</div>';
 ?>
@@ -185,12 +189,12 @@ echo '</div>';
                                     // boutton edit
                                     echo '<a href="index.php?action=edt-edit&heure='.
                                         $hDeb .'&jour=' . ($jour+1) . '&semaine=' . $lundiDeLaSemaine .
-                                        '&groupe=' . ($groupe+1) . '" class="btn btn-edit open-edt-modal">Modifier</a>';
+                                        '&groupe=' . ($groupe+1) . '" class="btn btn-edit open-edt-modal"><i class="fa-solid fa-pen-to-square"></i></a>';
                                         
                                     // bouton delete
                                     echo '<a href="index.php?action=edt-delete&heure='.
                                         $hDeb .'&jour=' . ($jour+1) . '&semaine=' . $lundiDeLaSemaine .
-                                        '&groupe=' . ($groupe+1) . '" class="btn btn-delete">Delete</a>';
+                                        '&groupe=' . ($groupe+1) . '" class="btn btn-delete"><i class="fa-solid fa-trash"></a>';
                                 echo '</td>';
                                 if ($colspan > 1) {
                                     // si colspan > 1 on va decaler la position de groupe pour ne pas mettre un td en exces
@@ -205,7 +209,7 @@ echo '</div>';
                                     echo '<td>';
                                         echo '<a href="index.php?action=edt-add&heure='.
                                         $hDeb .'&jour=' . ($jour+1) . '&semaine=' . $lundiDeLaSemaine .
-                                        '&groupe=' . ($groupe+1) . '" class="btn btn-add open-edt-modal">+</a>';
+                                        '&groupe=' . ($groupe+1) . '" class="btn btn-add open-edt-modal"><i class="fa-solid fa-plus"></i></a>';
                                     echo '</td>';
                                 }
                             }
@@ -222,16 +226,20 @@ echo '</div>';
 // Navigation semaine
 echo '<div>';
     echo '<p>';
-        echo '<a href="index.php?action=visualiser&semaine=' . date('Y-m-d', strtotime($lundiDeLaSemaine . ' - 7 days')) .'"><<<a>';
+        echo '<a href="index.php?action=visualiser&semaine=' . date('Y-m-d', strtotime($lundiDeLaSemaine . ' - 7 days')) .'">
+                <i class="fa-solid fa-chevron-left" style="color: #63003c;"></i>
+            </a>';
         echo '<span>
-            Semaine du 
-            <time datetime="' . date('d-m-Y', strtotime($lundiDeLaSemaine)) . '">' . 
-                date('d-m-Y', strtotime($lundiDeLaSemaine)) .
-            '</time> au <time>' . 
-                date('d-m-Y', strtotime($lundiDeLaSemaine . ' + 4 days')) . 
-            '</time>
-        </span>';
-        echo '<a href="index.php?action=visualiser&semaine=' . date('Y-m-d', strtotime($lundiDeLaSemaine . ' + 7 days')) .'">>><a>';
+                Semaine du 
+                <time datetime="' . date('d-m-Y', strtotime($lundiDeLaSemaine)) . '">' . 
+                    date('d-m-Y', strtotime($lundiDeLaSemaine)) .
+                '</time> au <time>' . 
+                    date('d-m-Y', strtotime($lundiDeLaSemaine . ' + 4 days')) . 
+                '</time>
+            </span>';
+        echo '<a href="index.php?action=visualiser&semaine=' . date('Y-m-d', strtotime($lundiDeLaSemaine . ' + 7 days')) .'">
+                <i class="fa-solid fa-chevron-right" style="color: #63003c;"></i>
+            </a>';
     echo '</p>';
 echo '</div>';
 $content = ob_get_clean();

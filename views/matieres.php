@@ -1,6 +1,6 @@
 <h1>Liste des matieres :</h1>
 <div class="action">
-    <a id="create-matiere-button" href="index.php?action=admin&create=matieres" class="btn btn-add open-matiere-modal">+</a>
+    <a id="create-matiere-button" href="index.php?action=admin&create=matieres" class="btn btn-add open-matiere-modal"><i class="fa-solid fa-plus"></i></a>
 </div>
 <!-- BEGIN: Modal -->
 <section id="modal-matiere-form" title="Enregister une matière" class="modal">
@@ -55,8 +55,8 @@
                     }
                 }
                 echo '<td class="action-buttons">';
-                    echo '<a href="index.php?action=admin&edit=matieres&id=' . $id . '" class="btn btn-edit open-matiere-modal">Modifier</a>';
-                    echo '<a href="index.php?action=admin&delete=matieres&id=' . $id . '" class="btn btn-delete">Supprimer</a>';
+                    echo '<a href="index.php?action=admin&edit=matieres&id=' . $id . '" class="btn btn-edit open-matiere-modal">Modifier <i class="fa-solid fa-pen-to-square"></i></a>';
+                    echo '<a href="index.php?action=admin&delete=matieres&id=' . $id . '" class="btn btn-delete">Supprimer <i class="fa-solid fa-trash"></i></a>';
                 echo '</td>';
             echo '</tr>';
         }
