@@ -13,6 +13,23 @@
                     0
                 ]
             }
+        ],
+        [
+            {
+                "type": "Cours",
+                "matiere": "BD;#0874e780",
+                "enseignant": "David Rei",
+                "salle": "D201",
+                "date": "2023-03-28",
+                "hdebut": "08:00",
+                "hfin": "08:15",
+                "groupes": [
+                    0,
+                    1,
+                    2,
+                    3
+                ]
+            }
         ]
     ],
     "08:45": [

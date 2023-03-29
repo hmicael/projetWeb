@@ -5,7 +5,7 @@ $(function() {
      * @returns {string}
      */
     function convertRgbaToHex(rgba) {
-        rgba = rgba.match(/^rgba?\((\d+),\s*(\d+),\s*(\d+),?\s*([\d\.]+)?\)$/);
+        let rgba = rgba.match(/^rgba?\((\d+),\s*(\d+),\s*(\d+),?\s*([\d\.]+)?\)$/);
         
         function hexCode(i) {
             // convertit decimal en hexadecimal
@@ -23,7 +23,7 @@ $(function() {
      * @returns 
      */
     function findGetParameter(parameterName, url) {
-        var result = null,
+        let result = null,
             tmp = [];
         url.split('&') // spliter l'url avec &
             .forEach(function (item) {
@@ -44,13 +44,15 @@ $(function() {
             method: 'POST',
             data: {'matiere' : matiere.split(';')[0]}, // matiere: nom;couleur, on recherche par le nom
             success: function(response) {
-            const obj = JSON.parse(response);
-            const data = obj.data;
-            $.each(data, function(key, value) {
-                $('#form-edt-enseignant').append('<option value="' + value + '">' + value + '</option>');
-            });
+                const obj = JSON.parse(response);
+                const data = obj.data;
+                $.each(data, function(key, value) {
+                    $('#form-edt-enseignant').append('<option value="' + value + '">' + value + '</option>');
+                });
             },
-            error: function(xhr, status, error) {}
+            error: function(xhr, status, error) {
+                // erreur
+            }
         });
     }
       
@@ -312,7 +314,7 @@ $(function() {
             const timeParts = hdeb.split(':'); // Split heure et minute
             const heure = parseInt(timeParts[0], 10);
             const minutes = parseInt(timeParts[1], 10);
-            const dateFin = new Date();
+            let dateFin = new Date();
             dateFin.setHours(heure);
             dateFin.setMinutes(minutes + 15);
             // Conversion de la date en un nouveau format de chaîne de temps
