@@ -299,7 +299,7 @@ $(function() {
             // Modifier la trajectoire de l'action
             $('#edt-form').attr('action', $(this).data('url'));
             // Checker le checkbox du groupe et le mettre en readonly
-            const checkedGroup  = '#form-edt-groupe-' + findGetParameter('groupe', $(this).data('url'));
+            let checkedGroup  = '#form-edt-groupe-' + findGetParameter('groupe', $(this).data('url'));
             $(checkedGroup).prop('checked', true);
             // empecher l'utilisateur de décocher le checkbox sur le groupe où on a declencher l'action
             $('.form-edt-groupe').removeAttr('onclick');
@@ -318,8 +318,8 @@ $(function() {
             dateFin.setHours(heure);
             dateFin.setMinutes(minutes + 15);
             // Conversion de la date en un nouveau format de chaîne de temps
-            const hebPlus15 = dateFin.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
-            $('#form-edt-hfin').val(hebPlus15);
+            const hdebPlus15 = dateFin.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+            $('#form-edt-hfin').val(hdebPlus15);
             // set date
             const lundiSemaine = findGetParameter('semaine', $(this).data('url'));
             const jour = findGetParameter('jour', $(this).data('url')) - 1;
