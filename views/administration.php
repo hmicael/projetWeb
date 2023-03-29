@@ -1,5 +1,5 @@
 <?php ob_start(); ?>
-Edition responsable
+<marquee class="marque">Edition responsable</marquee>
 <?php
     if (isset($_SESSION['error-msg'])) {
         echo '<span class="error-msg">' . $_SESSION['error-msg'] . '</span>';

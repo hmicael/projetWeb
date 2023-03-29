@@ -1,8 +1,6 @@
-/* Ridouane */
 body {
     margin: 0;
     padding: 0;
-    background-color: #63003C;
 }
 
 .background-image {
@@ -76,20 +74,35 @@ header {
     background-color: #63003C;
     color: #fff;
     padding: 10px;
+    position: fixed;
+    top: 0;
+    width: 99%;
+    height: 40px;
 }
 
-nav ul {
+#contents {
+    padding-top: 70px;
+    background-color: #63003C;
+}
+
+.marque {
+    background-color: #63003C;
+    color: #fff;
+}
+
+
+#navigation ul {
     list-style: none;
     margin: 0;
     padding: 0;
 }
 
-nav li {
+#navigation li {
     display: inline-block;
     margin-right: 20px;
 }
 
-nav a {
+#navigation a {
     color: #fff;
     text-decoration: none;
 }
@@ -104,9 +117,8 @@ nav a {
 }
 
 .action a {
-    background-color: #63003C;
-    border: none;
-    color: white;
+    border: 1px solid #63003C;
+    color: black;
     padding: 8px 16px;
     text-align: center;
     text-decoration: none;
@@ -118,7 +130,10 @@ nav a {
     transition: background-color 0.3s ease;
 }
 
-
+.action a:hover {
+    background-color: #63003C;
+    color: white;
+}
 
 
 
@@ -199,7 +214,7 @@ nav a {
 
 
 .action-buttons {
-    display: flex;
+
     justify-content: space-between;
 }
 
@@ -230,6 +245,12 @@ nav a {
     background-color: #f44336;
 }
 
+
+.delete-modal,
+.open-edt-modal {
+    color: #63003C;
+}
+
 /* Fin Ajustement des Boutons Modification et Suppression */
 /* .btn-outline {
     border-color: #63003C;
@@ -241,7 +262,6 @@ nav a {
     color: #fff;
 } */
 
-/* Ridouane */
 
 
 
@@ -255,6 +275,7 @@ nav a {
 
 html {
     font-family: sans-serif;
+
 }
 
 table,
@@ -262,6 +283,7 @@ th,
 td {
     border: 1px solid black;
     border-collapse: collapse;
+
 }
 
 .success-highlight {
@@ -294,7 +316,6 @@ td {
 
 body {
     height: 100%;
-    /* Ajoute une hauteur au corps de la page */
     background-color: #f1f1f1;
     font-family: Arial, sans-serif;
 }
@@ -328,7 +349,7 @@ input[type="password"] {
 }
 
 input[type="submit"] {
-    background-color: #4CAF50;
+    background-color: #63003C;
     color: white;
     padding: 10px;
     border: none;
@@ -337,67 +358,5 @@ input[type="submit"] {
 }
 
 input[type="submit"]:hover {
-    background-color: #3e8e41;
+    background-color: #63003C;
 }
-
-
-
-
-
-/* 
-html {
-    font-family: sans-serif;
-  }
-  
-  div:first-of-type {
-    display: flex;
-    align-items: flex-start;
-    margin-bottom: 5px;
-  }
-  
-  label {
-    margin-right: 15px;
-    line-height: 32px;
-  }
-  
-  input {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-  
-    border-radius: 50%;
-    width: 16px;
-    height: 16px;
-  
-    border: 2px solid #999;
-    transition: 0.2s all linear;
-    margin-right: 5px;
-  
-    position: relative;
-    top: 4px;
-  }
-  
-  input:checked {
-    border: 6px solid black;
-  }
-  
-  button,
-  legend {
-    color: white;
-    background-color: black;
-    padding: 5px 10px;
-    border-radius: 0;
-    border: 0;
-    font-size: 14px;
-  }
-  
-  button:hover,
-  button:focus {
-    color: #999;
-  }
-  
-  button:active {
-    background-color: white;
-    color: black;
-    outline: 1px solid black;
-  } */
