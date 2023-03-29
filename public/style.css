@@ -16,8 +16,6 @@ body {
     z-index: -1;
 }
 
-
-
 .login-form {
     position: absolute;
     top: 50%;
@@ -90,7 +88,6 @@ header {
     color: #fff;
 }
 
-
 #navigation ul {
     list-style: none;
     margin: 0;
@@ -108,8 +105,6 @@ header {
 }
 
 /* Fin Ajustement Nav Bar */
-
-
 
 /* Ajustement Des Boutons de Modification et de Suppression */
 .table-container {
@@ -134,13 +129,6 @@ header {
     background-color: #63003C;
     color: white;
 }
-
-
-
-
-
-
-
 
 .modal {
     background-color: #fff;
@@ -191,28 +179,6 @@ header {
     height: 40px;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .action-buttons {
 
     justify-content: space-between;
@@ -245,9 +211,7 @@ header {
     background-color: #f44336;
 }
 
-
-.delete-modal,
-.open-edt-modal {
+.delete-modal, .open-edt-modal {
     color: #63003C;
     margin: 8px 4px;
 }
@@ -261,19 +225,6 @@ header {
 }
 
 /* Fin Ajustement des Boutons Modification et Suppression */
-/* .btn-outline {
-    border-color: #63003C;
-    color: #63003C;
-}
-
-.btn-outline:hover {
-    background: #63003C;
-    color: #fff;
-} */
-
-
-
-
 
 .form-card {
     box-sizing: border-box;
@@ -287,9 +238,7 @@ html {
 
 }
 
-table,
-th,
-td {
+table, th, td {
     border: 1px solid black;
     border-collapse: collapse;
 
