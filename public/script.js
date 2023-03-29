@@ -5,7 +5,7 @@ $(function() {
      * @returns {string}
      */
     function convertRgbaToHex(rgba) {
-        let rgba = rgba.match(/^rgba?\((\d+),\s*(\d+),\s*(\d+),?\s*([\d\.]+)?\)$/);
+        rgba = rgba.match(/^rgba?\((\d+),\s*(\d+),\s*(\d+),?\s*([\d\.]+)?\)$/);
         
         function hexCode(i) {
             // convertit decimal en hexadecimal
@@ -54,6 +54,21 @@ $(function() {
                 // erreur
             }
         });
+    }
+
+    /**
+     * Fonction appelée lorsqu'on clique sur un boutton qui est censé ouvrir un modal
+     * @param {*} e 
+     * @param {*} selector 
+     */
+    function callbackClickButtonModal(e, selector) {
+        e.preventDefault();
+        const action = $(e.target).hasClass('btn-edit') ? 'edit' : 'create';
+        $(selector)
+            .data('url', $(e.target).attr('href'))
+            .data('action', action)
+            .data('tr', $(e.target).parent().parent())
+            .dialog('open');
     }
       
 
@@ -136,13 +151,7 @@ $(function() {
 
     // Ouvrir la boîte de dialogue
     $('.open-user-modal').on('click', function(e) {
-        e.preventDefault();
-        const action = $(this).hasClass('btn btn-edit') ? 'edit' : 'create';
-        $('#modal-user-form')
-            .data('url', $(this).attr('href'))
-            .data('action', action)
-            .data('tr', $(this).parent().parent())
-            .dialog('open');
+        callbackClickButtonModal(e, '#modal-user-form')
     });
     // END: Modal create utilisateur
 
@@ -182,13 +191,7 @@ $(function() {
 
     // Ouvrir la boîte de dialogue
     $('.open-matiere-modal').on('click', function(e) {
-        e.preventDefault();
-        const action = $(this).hasClass('btn btn-edit') ? 'edit' : 'create';
-        $('#modal-matiere-form')
-            .data('url', $(this).attr('href'))
-            .data('action', action)
-            .data('tr', $(this).parent().parent())
-            .dialog('open');
+        callbackClickButtonModal(e, '#modal-matiere-form')
     });
     // END: Modal create matiere
 
@@ -231,13 +234,7 @@ $(function() {
 
     // Ouvrir la boîte de dialogue
     $('.open-enseignant-modal').on('click', function(e) {
-        e.preventDefault();
-        const action = $(this).hasClass('btn-edit') ? 'edit' : 'create';
-        $('#modal-enseignant-form')
-            .data('url', $(this).attr('href'))
-            .data('action', action)
-            .data('tr', $(this).parent().parent())
-            .dialog('open');
+        callbackClickButtonModal(e, '#modal-enseignant-form')
     });
     // END: Modal create Enseignants
 
@@ -275,13 +272,7 @@ $(function() {
 
     // Ouvrir la boîte de dialogue
     $('.open-salle-modal').on('click', function(e) {
-        e.preventDefault();
-        const action = $(this).hasClass('btn-edit') ? 'edit' : 'create';
-        $('#modal-salle-form')
-            .data('url', $(this).attr('href'))
-            .data('action', action)
-            .data('tr', $(this).parent().parent())
-            .dialog('open');
+        callbackClickButtonModal(e, '#modal-salle-form')
     });
     // END: Modal create Salle
 
