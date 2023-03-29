@@ -1,8 +1,260 @@
+/* Ridouane */
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #63003C;
+}
+
+.background-image {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('UPSUD.jpg');
+    background-size: cover;
+    background-position: center;
+    opacity: 1;
+    z-index: -1;
+}
+
+
+
+.login-form {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+}
+
+.login-form h1 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.login-form form label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.login-form form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: none;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+
+.login-form form button {
+    width: 100%;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: #fff;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+
+.login-form form button:hover {
+    background-color: #3e8e41;
+}
+
+/* Ajustement Nav Bar */
+.logout-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+header {
+    background-color: #63003C;
+    color: #fff;
+    padding: 10px;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav li {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+}
+
+/* Fin Ajustement Nav Bar */
+
+
+
+/* Ajustement Des Boutons de Modification et de Suppression */
+.table-container {
+    position: relative;
+}
+
+.action a {
+    background-color: #63003C;
+    border: none;
+    color: white;
+    padding: 8px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+
+
+
+
+
+
+
+
+
+.modal {
+    background-color: #fff;
+    margin: auto;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+}
+
+.modal fieldset {
+    border: none;
+}
+
+.modal legend {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.modal div {
+    margin-bottom: 10px;
+}
+
+.modal label {
+    width: 120px;
+    font-weight: bold;
+}
+
+.modal input[type="text"],
+.modal input[type="email"],
+.modal input[type="password"],
+.modal select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.modal input[type="color"] {
+    border: none;
+    height: 30px;
+    width: 100%;
+    padding: 0;
+}
+
+.modal select {
+    height: 40px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.action-buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
+.action-buttons a {
+    background-color: #63003C;
+    border: none;
+    color: white;
+    padding: 8px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.action-buttons a:hover {
+    background-color: #63003C;
+}
+
+.action-buttons .btn-edit {
+    background-color: #2196F3;
+}
+
+.action-buttons .btn-delete {
+    background-color: #f44336;
+}
+
+/* Fin Ajustement des Boutons Modification et Suppression */
+/* .btn-outline {
+    border-color: #63003C;
+    color: #63003C;
+}
+
+.btn-outline:hover {
+    background: #63003C;
+    color: #fff;
+} */
+
+/* Ridouane */
+
+
+
+
 .form-card {
     box-sizing: border-box;
     margin: 20px auto;
     padding: 10px 30px;
     box-shadow: lightgray 4px 4px 20px;
+}
+
+html {
+    font-family: sans-serif;
 }
 
 table,
@@ -41,6 +293,8 @@ td {
 }
 
 body {
+    height: 100%;
+    /* Ajoute une hauteur au corps de la page */
     background-color: #f1f1f1;
     font-family: Arial, sans-serif;
 }

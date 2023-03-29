@@ -1,7 +1,8 @@
 <h1>Ajouter une salle  :</h1>
 <!-- BEGIN: Modal -->
-<a id="create-salle-button" href="index.php?action=admin&create=salles" class="btn-add open-salle-modal">+</a>
-
+<div class="action">
+    <a id="create-salle-button" href="index.php?action=admin&create=salles" class="btn-add open-salle-modal">+</a>
+</div>
 <section id="modal-salle-form" title="Enregister un utilisateur" class="modal">
     <form id="salle-form" action="" method="post">
         <fieldset>
@@ -32,7 +33,7 @@
                         foreach ($salle as $value) {
                             echo '<td>' . ucfirst($value) . '</td>';
                         }
-                        echo '<td>';
+                        echo '<td class="action-buttons">';
                             echo '<a href="index.php?action=admin&edit=salles&id=' . $id . '" class="btn btn-edit open-salle-modal">Modifier</a>';
                             echo '<a href="index.php?action=admin&delete=salles&id=' . $id . '" class="btn btn-delete">Supprimer</a>';
                         echo '</td>';

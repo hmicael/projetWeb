@@ -14,9 +14,19 @@
     <body>
         <header>
             <nav>
-                Navigation
-                <a href="index.php?action=deconnect">Deconnection</a>
+                <ul>
+                <?php
+                    if (isset($_GET['action'])) {
+                        echo '<li><a href="index.php">Accueil</a></li>';
+                    }
+                ?>
+                <li><a href="index.php?action=deconnect" class="logout-button">Deconnection</a></li>
+                </ul>
             </nav>
+            <!-- <nav>
+                Navigation
+                <a href="index.php?action=deconnect" class="logout-button">Deconnection</a>
+            </nav> -->
         </header>
         <main>
         <section id="dialog-confirm" title="Suppression">

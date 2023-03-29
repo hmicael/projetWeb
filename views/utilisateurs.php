@@ -1,6 +1,7 @@
 <h1>Liste des utilisateurs :</h1>
-
-<a id="create-user-button" href="index.php?action=admin&create=utilisateurs" class="btn btn-add open-user-modal">+</a>
+<div class="action">
+    <a id="create-user-button" href="index.php?action=admin&create=utilisateurs" class="btn btn-add open-user-modal">+</a>
+</div>
 <!-- BEGIN: Modal -->
 <section id="modal-user-form" title="Enregister un utilisateur" class="modal">
     <form id="user-form" action="" method="post">
@@ -69,7 +70,7 @@
                             echo '</td>';
                         }
                     }
-                    echo '<td>';
+                    echo '<td class="action-buttons">';
                     echo '<a href="index.php?action=admin&edit=utilisateurs&id=' . $id . '" class="btn btn-edit open-user-modal">Modifier</a>';
                     if ($value != 'responsable') {
                         echo '<a href="index.php?action=admin&delete=utilisateurs&id=' . $id . '" class="btn btn-delete">Supprimer</a>';

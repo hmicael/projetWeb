@@ -73,23 +73,7 @@
         ]
     ],
     "09:00": [
-        [
-            {
-                "type": "Cours",
-                "matiere": "BD2",
-                "enseignant": "Frederic Vernier",
-                "salle": "D201",
-                "date": "2023-03-27",
-                "hdebut": "09:00",
-                "hfin": "09:15",
-                "groupes": [
-                    0,
-                    1,
-                    2,
-                    3
-                ]
-            }
-        ]
+        []
     ],
     "09:30": [
         {

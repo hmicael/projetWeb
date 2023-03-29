@@ -1,6 +1,7 @@
 <h1>Liste des matieres :</h1>
-
-<a id="create-matiere-button" href="index.php?action=admin&create=matieres" class="btn btn-add open-matiere-modal">+</a>
+<div class="action">
+    <a id="create-matiere-button" href="index.php?action=admin&create=matieres" class="btn btn-add open-matiere-modal">+</a>
+</div>
 <!-- BEGIN: Modal -->
 <section id="modal-matiere-form" title="Enregister une matière" class="modal">
     <form id="matiere-form" action="" method="post">
@@ -53,7 +54,7 @@
                         echo '<td>' . ucfirst($value) . '</td>';
                     }
                 }
-                echo '<td>';
+                echo '<td class="action-buttons">';
                     echo '<a href="index.php?action=admin&edit=matieres&id=' . $id . '" class="btn btn-edit open-matiere-modal">Modifier</a>';
                     echo '<a href="index.php?action=admin&delete=matieres&id=' . $id . '" class="btn btn-delete">Supprimer</a>';
                 echo '</td>';
