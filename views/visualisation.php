@@ -107,7 +107,7 @@ echo '</nav>';
     </thead>
     <tbody id="visualisation">
         <tr>
-            <td></td>
+            <td>-</td>
             <?php
             for ($jour=0; $jour < 5; $jour++) { // boucle jour lundi à vendredi
                 for ($groupe=0; $groupe < 4; $groupe++) { // boucle groupe 1 à 4
@@ -143,6 +143,7 @@ echo '</nav>';
                                 // on va tester si le groupe dans le slot appartient à la 
                                 // liste d'arrangement possible pour une fusion de colonne
                                 // array1 === array2 compare s'ils ont les mêmes valeurs dans le même ordre
+                                // il faut que $groupe == $slotGroupes[0] pour commencer la fusion à la bonne place
                                 if([0, 1, 2, 3] === $slotGroupes && $groupe == $slotGroupes[0]) {
                                     $colspan = 4;
                                 } else if([1, 2, 3] === $slotGroupes && $groupe == $slotGroupes[0]) {
