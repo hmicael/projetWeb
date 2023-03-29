@@ -184,9 +184,10 @@ echo '</nav>';
 
                                     // affichage du contenu du slot
                                     echo $edt[$hDeb][$jour][$groupe]['matiere'] . '<br>';
+                                    echo $edt[$hDeb][$jour][$groupe]['enseignant'] . '<br>';
                                     echo $edt[$hDeb][$jour][$groupe]['salle'] . '<br>';
                                     echo $edt[$hDeb][$jour][$groupe]['hdebut'] . ' à ' .  $edt[$hDeb][$jour][$groupe]['hfin'] . '<br>';
-
+                                    echo '<br>';
                                     // boutton edit
                                     echo '<a href="index.php?action=edt-edit&heure='.
                                         $hDeb .'&jour=' . ($jour+1) . '&semaine=' . $lundiDeLaSemaine .
@@ -224,7 +225,6 @@ echo '</nav>';
 </table>
 <!-- END: table -->
 <?php 
-// Navigation semaine
 // Navigation semaine
 echo '<nav class="semaine-nav">';
     echo '<p>';
