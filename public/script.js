@@ -106,6 +106,8 @@ $(function() {
         autoOpen: false,
         modal: true,
         resizable: false,
+        width: 400,
+        height: 500,
         open: function() {
             // Faire en sorte que le button généré par le modal soit le boutton de submit du formulaire
             $('div.ui-dialog-buttonpane.ui-widget-content.ui-helper-clearfix > div > button:nth-child(1)').attr('type', 'submit');
@@ -281,6 +283,8 @@ $(function() {
         autoOpen: false,
         modal: true,
         resizable: false,
+        width: 400,
+        height: 500,
         open: function() {
             // Faire en sorte que le button généré par le modal soit le boutton de submit du formulaire
             $('div.ui-dialog-buttonpane.ui-widget-content.ui-helper-clearfix > div > button:nth-child(1)')
