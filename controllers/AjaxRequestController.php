@@ -5,7 +5,7 @@
  * @param array $data
  * @return
  */
-function sanitize(array $data, $dataKey) {
+function sanitizeAndCheck(array $data, $dataKey) {
     $sanitizedData = [];
     foreach ($dataKey as $key) {
         if (! isset($data[$key])) {
@@ -19,7 +19,7 @@ function sanitize(array $data, $dataKey) {
             if (! is_array($data[$key])) {
                 $sanitizedData[$key] = htmlspecialchars($data[$key]);
             } else {
-                $sanitizedData[$key] = sanitize($data[$key], array_keys($data[$key]));
+                $sanitizedData[$key] = sanitizeAndCheck($data[$key], array_keys($data[$key]));
             }
         }
     }
@@ -28,7 +28,7 @@ function sanitize(array $data, $dataKey) {
 }
 
 if ($_GET['search'] === 'edt') {
-    $data = sanitize($_POST, ['heure', 'jour', 'groupe', 'semaine']);
+    $data = sanitizeAndCheck($_POST, ['heure', 'jour', 'groupe', 'semaine']);
     $filename = WEBROOT . '/data/edt/' . $data['semaine'] . '.json';
     if (! file_exists($filename)) {
         // si le fichier n'existe pas, on renvoi un erreur
@@ -61,7 +61,7 @@ if ($_GET['search'] === 'edt') {
 
 if ($_GET['search'] === 'enseignant') {
     // Rechercher le prof referent d'une matiere et tout les autres prof non référant (jugé etre tous aptes à dispenser le cours)
-    $nomMatiere = sanitize($_POST, ['matiere'])['matiere'];
+    $nomMatiere = sanitizeAndCheck($_POST, ['matiere'])['matiere'];
     $matieres = json_decode(file_get_contents(WEBROOT . '/data/matieres.json'), true);
     $profs = json_decode(file_get_contents(WEBROOT . '/data/enseignants.json'), true);
     $data = [];

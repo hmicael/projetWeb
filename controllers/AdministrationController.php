@@ -5,7 +5,7 @@
  * @param array $data
  * @return array $sanitizedData
  */
-function sanitize(array $data, $dataKey) {
+function sanitizeAndCheck(array $data, $dataKey) {
     $sanitizedData = [];
     foreach ($dataKey as $key) {
         if (! isset($data[$key])) {
@@ -17,7 +17,7 @@ function sanitize(array $data, $dataKey) {
             if (! is_array($data[$key])) {
                 $sanitizedData[$key] = htmlspecialchars($data[$key]);
             } else {
-                $sanitizedData[$key] = sanitize($data[$key], array_keys($data[$key]));
+                $sanitizedData[$key] = sanitizeAndCheck($data[$key], array_keys($data[$key]));
             }
         }
     }
@@ -78,7 +78,7 @@ if(isset($_GET['create'])) {
     switch ($entity) {
         case 'utilisateurs':
             // Récupération des données du formulaire
-            $data = sanitize($_POST, ['nom', 'prenom', 'password', 'email', 'role']);
+            $data = sanitizeAndCheck($_POST, ['nom', 'prenom', 'password', 'email', 'role']);
             // check password
             if (! preg_match('/(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/', $data['password'])) {
                 $_SESSION['error-msg'] = "Le mot de passe doit contenir au moins un chiffre et une lettre majuscule et minuscule, et au moins 8 caractères.";
@@ -103,7 +103,7 @@ if(isset($_GET['create'])) {
             $tabs = 1;
             break;
         case 'matieres':
-            $data = sanitize($_POST, ['nom', 'referent', 'couleur']);
+            $data = sanitizeAndCheck($_POST, ['nom', 'referent', 'couleur']);
             $matieres[] = array(
                 'nom' => ucfirst($data['nom']),
                 'referent' => ucfirst($data['referent']),
@@ -114,7 +114,7 @@ if(isset($_GET['create'])) {
             $tabs = 2;
             break;
         case 'enseignants':
-            $data = sanitize($_POST, ['nom', 'referent']);
+            $data = sanitizeAndCheck($_POST, ['nom', 'referent']);
             $enseignants[] = array(
                 'nom' => ucwords($data['nom']),
                 'referent' => ucfirst($data['referent'])
@@ -124,7 +124,7 @@ if(isset($_GET['create'])) {
             $tabs = 3;
             break;
         case 'salles':
-            $data = sanitize($_POST, ['nom']);
+            $data = sanitizeAndCheck($_POST, ['nom']);
             $salles[] = array(
                 'nom' => strtoupper($data['nom'])
             );
@@ -149,7 +149,7 @@ if(isset($_GET['edit'])) {
     $entity = htmlspecialchars($_GET['edit']);
     switch ($entity) {
         case 'utilisateurs':
-            $data = sanitize($_POST, ['nom', 'prenom', 'password', 'email', 'role']);
+            $data = sanitizeAndCheck($_POST, ['nom', 'prenom', 'password', 'email', 'role']);
             // check password
             if (! preg_match('/(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/', $data['password'])) {
                 $_SESSION['error-msg'] = "Le mot de passe doit contenir au moins un chiffre et une lettre majuscule et minuscule, et au moins 8 caractères.";
@@ -164,7 +164,7 @@ if(isset($_GET['edit'])) {
             $tabs = 1;
             break;
         case 'matieres':
-            $data = sanitize($_POST, ['nom', 'referent', 'couleur']);
+            $data = sanitizeAndCheck($_POST, ['nom', 'referent', 'couleur']);
             $matieres[$id] = array(
                 'nom' => ucfirst($data['nom']),
                 'referent' => ucfirst($data['referent']),
@@ -174,7 +174,7 @@ if(isset($_GET['edit'])) {
             $tabs = 2;
             break;
         case 'enseignants':
-            $data = sanitize($_POST, ['nom', 'referent']);
+            $data = sanitizeAndCheck($_POST, ['nom', 'referent']);
             $enseignants[$id] = array(
                 'nom' => ucwords($data['nom']),
                 'referent' => ucfirst($data['referent'])
@@ -183,7 +183,7 @@ if(isset($_GET['edit'])) {
             $tabs = 3;
             break;
         case 'salles':
-            $data = sanitize($_POST, ['nom']);
+            $data = sanitizeAndCheck($_POST, ['nom']);
             $salles[$id] = array(
                 'nom' => strtoupper($data['nom'])
             );
