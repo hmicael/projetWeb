@@ -104,7 +104,7 @@ if ($_GET['action'] === 'edt-delete') { // si on veut supprimer un slot
         for ($h = $hdeb; $h < $hfin; $h += 900) {
             if (isset($edt[date('H:i', $h)][$jour][$g])) {
                 $_SESSION['error-msg'] = 'Vous ne pouvez plus mettre un cours sur ' .
-                    $jours[$jour] . ' à ' . date('H:i', $h);
+                    $jours[$jour] . ' à ' . date('H:i', $h) . ' Groupe ' . (intval($g)+1);
                 header('Location: index.php?action=visualiser');
                 exit();
             };

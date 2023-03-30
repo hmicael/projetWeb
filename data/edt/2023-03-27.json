@@ -68,13 +68,21 @@
                 "hdebut": "08:45",
                 "hfin": "09:00",
                 "groupes": [
-                    1,
-                    2,
-                    3
+                    1
                 ]
             },
             {
-                "fusion": true
+                "type": "Cours",
+                "matiere": "BD Miage;#23d13880",
+                "enseignant": "Waller",
+                "salle": "D201",
+                "date": "2023-03-27",
+                "hdebut": "08:45",
+                "hfin": "09:00",
+                "groupes": [
+                    2,
+                    3
+                ]
             },
             {
                 "fusion": true
