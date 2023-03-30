@@ -8,9 +8,9 @@ if (isset($_SESSION['error-msg'])) {
 echo '<nav class="semaine-nav">';
     echo '<p>';
         echo '<a href="index.php?action=visualiser&semaine=' . date('Y-m-d', strtotime($lundiDeLaSemaine . ' - 7 days')) .'">';
-                echo '<i class="fa-solid fa-chevron-left" style="color: #63003c;"></i>';
+                echo '<i class="fa-solid fa-chevron-left" ></i>';
             echo '</a>';
-        echo '<span>
+        echo '<span class="semaine">
                 Semaine du 
                 <time datetime="' . date('d-m-Y', strtotime($lundiDeLaSemaine)) . '">' . 
                     date('d-m-Y', strtotime($lundiDeLaSemaine)) .
@@ -19,7 +19,7 @@ echo '<nav class="semaine-nav">';
                 '</time>
             </span>';
         echo '<a href="index.php?action=visualiser&semaine=' . date('Y-m-d', strtotime($lundiDeLaSemaine . ' + 7 days')) .'">
-                <i class="fa-solid fa-chevron-right" style="color: #63003c;"></i>
+                <i class="fa-solid fa-chevron-right" ></i>
             </a>';
     echo '</p>';
 echo '</nav>';
@@ -228,9 +228,9 @@ echo '</nav>';
 echo '<nav class="semaine-nav">';
     echo '<p>';
         echo '<a href="index.php?action=visualiser&semaine=' . date('Y-m-d', strtotime($lundiDeLaSemaine . ' - 7 days')) .'">';
-                echo '<i class="fa-solid fa-chevron-left" style="color: #63003c;"></i>';
+                echo '<i class="fa-solid fa-chevron-left"></i>';
             echo '</a>';
-        echo '<span>
+        echo '<span class="semaine">
                 Semaine du 
                 <time datetime="' . date('d-m-Y', strtotime($lundiDeLaSemaine)) . '">' . 
                     date('d-m-Y', strtotime($lundiDeLaSemaine)) .
@@ -239,7 +239,7 @@ echo '<nav class="semaine-nav">';
                 '</time>
             </span>';
         echo '<a href="index.php?action=visualiser&semaine=' . date('Y-m-d', strtotime($lundiDeLaSemaine . ' + 7 days')) .'">
-                <i class="fa-solid fa-chevron-right" style="color: #63003c;"></i>
+                <i class="fa-solid fa-chevron-right"></i>
             </a>';
     echo '</p>';
 echo '</nav>';
