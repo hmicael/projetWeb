@@ -1,142 +1,54 @@
 {
     "08:00": [
-        {
-            "": {
-                "type": "Cours",
-                "matiere": "Web",
-                "enseignant": "Frederic Vernier",
-                "salle": "D201",
-                "date": null,
-                "hdebut": "08:00",
-                "hfin": "08:15",
-                "groupes": null
-            },
-            "0": {
-                "type": "Cours",
-                "matiere": "Web",
-                "enseignant": "Frederic Vernier",
-                "salle": "D201",
-                "date": "",
-                "hdebut": "08:00",
-                "hfin": "08:15",
-                "groupes": [
-                    0
-                ]
-            }
-        }
-    ],
-    "08:15": {
-        "1": [
+        [
             {
                 "type": "Cours",
-                "matiere": "Web",
+                "matiere": "Web;#c6060680",
                 "enseignant": "Frederic Vernier",
                 "salle": "D201",
-                "date": "2023-03-28",
-                "hdebut": "08:15",
-                "hfin": "08:30",
+                "date": "2023-03-27",
+                "hdebut": "08:00",
+                "hfin": "08:15",
                 "groupes": [
                     0
                 ]
             }
         ],
-        "0": [
+        [
             {
                 "type": "Cours",
-                "matiere": "BD2",
-                "enseignant": "Frederic Vernier",
+                "matiere": "BD;#0874e780",
+                "enseignant": "David Rei",
                 "salle": "D201",
-                "date": "",
-                "hdebut": "08:15",
-                "hfin": "08:30",
+                "date": "2023-03-28",
+                "hdebut": "08:00",
+                "hfin": "08:15",
                 "groupes": [
                     0,
-                    1
-                ]
-            }
-        ]
-    },
-    "08:30": [
-        [
-            {
-                "type": "Cours",
-                "matiere": "BD2",
-                "enseignant": "Frederic Vernier",
-                "salle": "D201",
-                "date": "2023-03-27",
-                "hdebut": "08:30",
-                "hfin": "08:45",
-                "groupes": [
-                    0
-                ]
-            }
-        ]
-    ],
-    "09:00": [
-        []
-    ],
-    "09:30": [
-        {
-            "1": {
-                "type": "Cours",
-                "matiere": "BD2",
-                "enseignant": "Frederic Vernier",
-                "salle": "D201",
-                "date": "2023-03-27",
-                "hdebut": "09:30",
-                "hfin": "09:45",
-                "groupes": [
-                    1
-                ]
-            }
-        }
-    ],
-    "10:15": [
-        [
-            {
-                "type": "Cours",
-                "matiere": "BD2",
-                "enseignant": "Frederic Vernier",
-                "salle": "D201",
-                "date": "2023-03-27",
-                "hdebut": "10:15",
-                "hfin": "10:30",
-                "groupes": [
-                    0
-                ]
-            }
-        ]
-    ],
-    "10:45": [
-        {
-            "0": {
-                "type": "Cours",
-                "matiere": "BD2",
-                "enseignant": "Frederic Vernier",
-                "salle": "D201",
-                "date": "2023-03-27",
-                "hdebut": "10:45",
-                "hfin": "11:00",
-                "groupes": [
-                    0
-                ]
-            },
-            "2": {
-                "type": "Cours",
-                "matiere": "BD2",
-                "enseignant": "Frederic Vernier",
-                "salle": "D201",
-                "date": "2023-03-27",
-                "hdebut": "10:45",
-                "hfin": "11:00",
-                "groupes": [
+                    1,
                     2,
                     3
                 ]
             }
-        }
+        ]
     ],
-    "12:00": [
-        []
+    "08:45": [
+        [
+            {
+                "type": "Cours",
+                "matiere": "BD;#0874e780",
+                "enseignant": "David Rei",
+                "salle": "E205",
+                "date": "2023-03-27",
+                "hdebut": "08:45",
+                "hfin": "10:00",
+                "groupes": [
+                    0,
+                    1,
+                    2,
+                    3
+                ]
+            }
+        ]
     ]
 }

@@ -23,7 +23,7 @@ $(function() {
      * @returns 
      */
     function findGetParameter(parameterName, url) {
-        var result = null,
+        let result = null,
             tmp = [];
         url.split('&') // spliter l'url avec &
             .forEach(function (item) {
@@ -34,7 +34,45 @@ $(function() {
         return result;
     }
 
-    $( '#tabs' ).tabs();
+    /**
+     * Fonction qui fait une requete ajax pour rechercher le bon enseignant pour une matière
+     * @param {*} matiere 
+     */
+    function searchEnseignantByMatiere(matiere) {
+        $.ajax({
+            url: 'index.php?action=ajax&search=enseignant',
+            method: 'POST',
+            data: {'matiere' : matiere.split(';')[0]}, // matiere: nom;couleur, on recherche par le nom
+            success: function(response) {
+                const obj = JSON.parse(response);
+                const data = obj.data;
+                $.each(data, function(key, value) {
+                    $('#form-edt-enseignant').append('<option value="' + value + '">' + value + '</option>');
+                });
+            },
+            error: function(xhr, status, error) {
+                // erreur
+            }
+        });
+    }
+
+    /**
+     * Fonction appelée lorsqu'on clique sur un boutton qui est censé ouvrir un modal
+     * @param {*} e 
+     * @param {*} selector 
+     */
+    function callbackClickButtonModal(e, selector) {
+        e.preventDefault();
+        const action = $(e.target).hasClass('btn-edit') ? 'edit' : 'create';
+        $(selector)
+            .data('url', $(e.target).attr('href'))
+            .data('action', action)
+            .data('tr', $(e.target).parent().parent())
+            .dialog('open');
+    }
+      
+
+    $( '#tabs' ).tabs(); // active le tabs dans la page d'admin
 
     // BEGIN: dialog confirm detete
     $('#dialog-confirm').dialog({
@@ -68,6 +106,8 @@ $(function() {
         autoOpen: false,
         modal: true,
         resizable: false,
+        width: 400,
+        height: 500,
         open: function() {
             // Faire en sorte que le button généré par le modal soit le boutton de submit du formulaire
             $('div.ui-dialog-buttonpane.ui-widget-content.ui-helper-clearfix > div > button:nth-child(1)').attr('type', 'submit');
@@ -113,13 +153,7 @@ $(function() {
 
     // Ouvrir la boîte de dialogue
     $('.open-user-modal').on('click', function(e) {
-        e.preventDefault();
-        const action = $(this).hasClass('btn btn-edit') ? 'edit' : 'create';
-        $('#modal-user-form')
-            .data('url', $(this).attr('href'))
-            .data('action', action)
-            .data('tr', $(this).parent().parent())
-            .dialog('open');
+        callbackClickButtonModal(e, '#modal-user-form')
     });
     // END: Modal create utilisateur
 
@@ -159,13 +193,7 @@ $(function() {
 
     // Ouvrir la boîte de dialogue
     $('.open-matiere-modal').on('click', function(e) {
-        e.preventDefault();
-        const action = $(this).hasClass('btn btn-edit') ? 'edit' : 'create';
-        $('#modal-matiere-form')
-            .data('url', $(this).attr('href'))
-            .data('action', action)
-            .data('tr', $(this).parent().parent())
-            .dialog('open');
+        callbackClickButtonModal(e, '#modal-matiere-form')
     });
     // END: Modal create matiere
 
@@ -185,9 +213,9 @@ $(function() {
                 const tr = $(this).data('tr');
                 $('#nom-enseignant').val(tr.children()[1].innerText);
                 if (tr.children()[2].innerText == 'Oui') {
-                    $('#radio-oui').attr('checked', 'checked');
+                    $('#referent-radio-oui').attr('checked', 'checked');
                 } else {
-                    $('#radio-non').attr('checked', 'checked');
+                    $('#referent-radio-non').attr('checked', 'checked');
                 }
             }
         },
@@ -208,13 +236,7 @@ $(function() {
 
     // Ouvrir la boîte de dialogue
     $('.open-enseignant-modal').on('click', function(e) {
-        e.preventDefault();
-        const action = $(this).hasClass('btn-edit') ? 'edit' : 'create';
-        $('#modal-enseignant-form')
-            .data('url', $(this).attr('href'))
-            .data('action', action)
-            .data('tr', $(this).parent().parent())
-            .dialog('open');
+        callbackClickButtonModal(e, '#modal-enseignant-form')
     });
     // END: Modal create Enseignants
 
@@ -252,13 +274,7 @@ $(function() {
 
     // Ouvrir la boîte de dialogue
     $('.open-salle-modal').on('click', function(e) {
-        e.preventDefault();
-        const action = $(this).hasClass('btn-edit') ? 'edit' : 'create';
-        $('#modal-salle-form')
-            .data('url', $(this).attr('href'))
-            .data('action', action)
-            .data('tr', $(this).parent().parent())
-            .dialog('open');
+        callbackClickButtonModal(e, '#modal-salle-form')
     });
     // END: Modal create Salle
 
@@ -267,6 +283,8 @@ $(function() {
         autoOpen: false,
         modal: true,
         resizable: false,
+        width: 400,
+        height: 500,
         open: function() {
             // Faire en sorte que le button généré par le modal soit le boutton de submit du formulaire
             $('div.ui-dialog-buttonpane.ui-widget-content.ui-helper-clearfix > div > button:nth-child(1)')
@@ -276,7 +294,7 @@ $(function() {
             // Modifier la trajectoire de l'action
             $('#edt-form').attr('action', $(this).data('url'));
             // Checker le checkbox du groupe et le mettre en readonly
-            const checkedGroup  = '#form-edt-groupe-' + findGetParameter('groupe', $(this).data('url'));
+            let checkedGroup  = '#form-edt-groupe-' + findGetParameter('groupe', $(this).data('url'));
             $(checkedGroup).prop('checked', true);
             // empecher l'utilisateur de décocher le checkbox sur le groupe où on a declencher l'action
             $('.form-edt-groupe').removeAttr('onclick');
@@ -291,12 +309,12 @@ $(function() {
             const timeParts = hdeb.split(':'); // Split heure et minute
             const heure = parseInt(timeParts[0], 10);
             const minutes = parseInt(timeParts[1], 10);
-            const dateFin = new Date();
+            let dateFin = new Date();
             dateFin.setHours(heure);
             dateFin.setMinutes(minutes + 15);
             // Conversion de la date en un nouveau format de chaîne de temps
-            const hebPlus15 = dateFin.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
-            $('#form-edt-hfin').val(hebPlus15);
+            const hdebPlus15 = dateFin.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+            $('#form-edt-hfin').val(hdebPlus15);
             // set date
             const lundiSemaine = findGetParameter('semaine', $(this).data('url'));
             const jour = findGetParameter('jour', $(this).data('url')) - 1;
@@ -315,19 +333,7 @@ $(function() {
                 // vide le select
                 $('#form-edt-enseignant').empty();
                 // faire une requete ajax pour obtenir les enseignants
-                $.ajax({
-                    url: 'index.php?action=ajax&search=enseignant',
-                    method: 'POST',
-                    data: {'matiere' : $(this).val()},
-                    success: function(response) {
-                        const obj = JSON.parse(response);
-                        const data = obj.data;
-                        $.each(data, function(key, value) {
-                            $('#form-edt-enseignant').append('<option value="' + value + '">' + value + '</option>');
-                        });
-                    },
-                    error: function(xhr, status, error) {}
-                });
+                searchEnseignantByMatiere($(this).val());
             });
             // si l'action est un edit, charger le modal form avec les données issues du tr contenant le boutton cliqué
             if ($(this).data('action') == 'edit') {
@@ -346,6 +352,7 @@ $(function() {
                         const data = obj.data;
                         $('#form-edt-matiere').val(data.matiere);
                         $('#form-edt-type').val(data.type);
+                        searchEnseignantByMatiere(data.matiere); // recherche enseignant
                         $('#form-edt-enseignant').val(data.enseignant);
                         $('#form-edt-salle').val(data.salle);
                         $('#form-edt-hdebut').val(data.hdebut);

@@ -11,12 +11,12 @@
             <fieldset>
                 <legend>Refer&eacute;nt :</legend>
                 <div>
-                    <input type="radio" id="radio-oui" name="referent" value="Oui">
-                    <label for="radio-oui">Oui</label>
+                    <input type="radio" id="referent-radio-oui" name="referent" value="Oui">
+                    <label for="referent-radio-oui">Oui</label>
                 </div>
                 <div>
-                    <input type="radio" id="radio-non" name="referent" value="Non" checked>
-                    <label for="radio-non">Non</label>
+                    <input type="radio" id="referent-radio-non" name="referent" value="Non" checked>
+                    <label for="referent-radio-non">Non</label>
                 </div>
             </fieldset>
         </fieldset>
