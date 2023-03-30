@@ -19,7 +19,7 @@
                 <ul>
                     <?php
                         if (isset($_GET['action'])) {
-                            echo '<li><a href="index.php">Accueil</a></li>';
+                            echo '<li><a href="index.php"><i class="fa-solid fa-home"></i> Accueil</a></li>';
                         }
                     ?>
                     <li>
