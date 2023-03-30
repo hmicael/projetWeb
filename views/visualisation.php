@@ -119,93 +119,43 @@ echo '</nav>';
             ?>
         </tr>
         <?php
-        // un tableau pour enregistrer les sauts de ligne à faire s'il y a eu des fusions de ligne en haut
-        $sautsLigne = [];
-        $sautsColonne = [];
-        for ($heure = $heureDebut; $heure <= $heureFin; $heure += 900) { // boucle horaire 900s = 15mn
+        for ($heure = $heureDebut; $heure < $heureFin; $heure += 900) { // boucle horaire 900s = 15mn
             $hDeb = date('H:i', $heure);
             echo '<tr>';
                 echo "<td><time>$hDeb</time></td>";
                 for ($jour=0; $jour < 5; $jour++) { // boucle jour lundi à vendredi
                     for ($groupe=0; $groupe < 4; $groupe++) { // boucle groupe 1 à 4
                         // si le bloc appartient à la liste de colonne ou de ligne à sauter à cause d'une fusion
-                        if (! isset($sautsLigne[$hDeb][$jour][$groupe]) && ! isset($sautsColonne[$hDeb][$jour][$groupe])) {
-                            // s'il y a un contenu et que c'est le bon groupe
-                            if(isset($edt[$hDeb][$jour][$groupe]) &&
-                                in_array($groupe, $edt[$hDeb][$jour][$groupe]['groupes'])) {
+                        if (! isset($edt[$hDeb][$jour][$groupe]['fusion'])  ) {
+                            // vérifie s'il y a un contenu
+                            if(isset($edt[$hDeb][$jour][$groupe]) ) {
                                 // splitter le matiere puisque c'est un string nom;couleur
                                 $matiere = explode(';', $edt[$hDeb][$jour][$groupe]['matiere']);
                                 // calcul de la fusion de ligne: (hfin - hdebut) / 15mn
                                 $slotHFin = strtotime($edt[$hDeb][$jour][$groupe]['hfin']);
                                 $slotHDeb = strtotime($edt[$hDeb][$jour][$groupe]['hdebut']);
                                 $rowspan = ($slotHFin - $slotHDeb) / 900;
-
                                 // calcul fusion de colonne
-                                $colspan = 1;
-                                $slotGroupes = $edt[$hDeb][$jour][$groupe]['groupes'];
-
-                                // on va tester si le groupe dans le slot appartient à la 
-                                // liste d'arrangement possible pour une fusion de colonne
-                                // array1 === array2 compare s'ils ont les mêmes valeurs dans le même ordre
-                                // il faut que $groupe == $slotGroupes[0] pour commencer la fusion à la bonne place
-                                if([0, 1, 2, 3] === $slotGroupes && $groupe == $slotGroupes[0]) {
-                                    $colspan = 4;
-                                } else if([1, 2, 3] === $slotGroupes && $groupe == $slotGroupes[0]) {
-                                    $colspan = 3;
-                                } else if([0, 1, 2] === $slotGroupes && $groupe == $slotGroupes[0]) {
-                                    $colspan = 3;
-                                } else if([0, 1] === $slotGroupes && $groupe == $slotGroupes[0]) {
-                                    $colspan = 2;
-                                } else if([2, 3] === $slotGroupes && $groupe == $slotGroupes[0]) {
-                                    $colspan = 2;
-                                } else if([1, 2] === $slotGroupes && $groupe == $slotGroupes[0]) {
-                                    $colspan = 2;
-                                }
-
+                                $colspan = count($edt[$hDeb][$jour][$groupe]['groupes']);
                                 // s'il n'y a pas de lignes à fusionner mettre rowspan à 1 pour éviter le rowspan=0
-                                if ($rowspan > 0) {
-                                    for ($i=$slotHDeb+900; $i < $slotHFin; $i+=900) {
-                                        // ajout des slots à sauter à cause de la fusion
-                                        $sautsLigne[date('H:i', $i)][$jour][$groupe] = true;
-                                        if ($colspan > 1) {
-                                            for ($j=$groupe; $j < ($groupe + $colspan); $j++) { 
-                                                $sautsColonne[date('H:i', $i)][$jour][$j] = true;
-                                            }
-                                        }
-                                    }
-                                    if ($colspan > 1) {
-                                        echo '<td style="background-color:'  . $matiere[1] . '" rowspan="' . $rowspan . '" colspan="' . $colspan . '">';
-                                    } else {
-                                        echo '<td style="background-color:'  . $matiere[1] . '" rowspan="' . $rowspan . '">';
-                                    }
-                                } else {
-                                    if ($colspan > 1) {
-                                        echo '<td colspan="' . $colspan . '">';
-                                    } else {
-                                        echo '<td>';
-                                    }
-                                }
-                                
-                                // affichage du contenu du slot
-                                echo $matiere[0] . '<br>';
-                                echo $edt[$hDeb][$jour][$groupe]['enseignant'] . '<br>';
-                                echo $edt[$hDeb][$jour][$groupe]['salle'] . '<br>';
-                                echo $edt[$hDeb][$jour][$groupe]['hdebut'] . ' à ' .  $edt[$hDeb][$jour][$groupe]['hfin'] . '<br>';
-                                echo '<br>';
-                                // boutton edit
-                                echo '<a href="index.php?action=edt-edit&heure='.
-                                    $hDeb .'&jour=' . ($jour+1) . '&semaine=' . $lundiDeLaSemaine .
-                                    '&groupe=' . ($groupe+1) . '" class="btn btn-edit open-edt-modal"><i class="fa-solid fa-pen-to-square"></i></a>';
-                                    
-                                // bouton delete
-                                echo '<a href="index.php?action=edt-delete&heure='.
-                                    $hDeb .'&jour=' . ($jour+1) . '&semaine=' . $lundiDeLaSemaine .
-                                    '&groupe=' . ($groupe+1) . '" class="btn btn-delete delete-modal"><i class="fa-solid fa-trash"></a>';
-                                echo '</td>';
-                                if ($colspan > 1) {
-                                    // si colspan > 1 on va decaler la position de groupe pour ne pas mettre un td en exces
-                                    $groupe += ($colspan - 1);
-                                }                   
+                                echo '<td style="background-color:'  . $matiere[1] . '" rowspan="' . $rowspan . '" colspan="' . $colspan . '">';       
+                                    // affichage du contenu du slot
+                                    echo $edt[$hDeb][$jour][$groupe]['type'] . '<br><br>';
+                                    echo $matiere[0] . '<br>';
+                                    echo $edt[$hDeb][$jour][$groupe]['enseignant'] . '<br>';
+                                    echo $edt[$hDeb][$jour][$groupe]['salle'] . '<br>';
+                                    echo $edt[$hDeb][$jour][$groupe]['hdebut'] . ' à ' .  $edt[$hDeb][$jour][$groupe]['hfin'] . '<br>';
+                                    echo '<br>';
+                                    // boutton edit
+                                    echo '<a href="index.php?action=edt-edit&heure='.
+                                        $hDeb .'&jour=' . ($jour+1) . '&semaine=' . $lundiDeLaSemaine .
+                                        '&groupe=' . ($groupe+1) . '" class="btn btn-edit open-edt-modal"><i class="fa-solid fa-pen-to-square"></i></a>';
+                                        
+                                    // bouton delete
+                                    echo '<a href="index.php?action=edt-delete&heure='.
+                                        $hDeb .'&jour=' . ($jour+1) . '&semaine=' . $lundiDeLaSemaine .
+                                        '&groupe=' . ($groupe+1) . '" class="btn btn-delete delete-modal"><i class="fa-solid fa-trash"></a>';
+                                echo '</td>';                 
                             } else {
                                 // si le slot est vide
                                 if ($_SESSION['role'] == 'etudiant') {

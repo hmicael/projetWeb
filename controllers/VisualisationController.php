@@ -40,6 +40,6 @@ if (!file_exists($filename)) {
 
 // Définir les heures de début et de fin
 $heureDebut = strtotime('08:00');
-$heureFin = strtotime('18:45');
+$heureFin = strtotime('19:00');
 
 require(WEBROOT . '/views/visualisation.php');
