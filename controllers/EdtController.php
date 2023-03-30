@@ -53,20 +53,22 @@ if ($_GET['action'] === 'edt-delete') {
     $groupes = array_keys($post['form-edt-groupe']);
     // on fait un tri du tableau pour faciliter la determination des fusions colonnes
     sort($groupes);
+
+    // les nouvelles données
+    $data = [
+        "type" => $post['form-edt-type'],
+        "matiere" => $post['form-edt-matiere'],
+        "enseignant" => $post['form-edt-enseignant'],
+        "salle" => $post['form-edt-salle'],
+        "date" => $post['form-edt-date'],
+        "hdebut" => $post['form-edt-hdebut'],
+        "hfin" =>  $post['form-edt-hfin']
+    ];
+
     if ($_GET['action'] === 'edt-add') {
         // sectionner la séquence de groupe si elle n'est pas continue pour faciliter l'affichage
         // il faut que l'indice du groupe est égale à la première valeur de "groupes" pour bien afficher
         // array1 === array2 compare s'ils ont les mêmes valeurs dans le même ordre
-        $data = [
-            "type" => $post['form-edt-type'],
-            "matiere" => $post['form-edt-matiere'],
-            "enseignant" => $post['form-edt-enseignant'],
-            "salle" => $post['form-edt-salle'],
-            "date" => $post['form-edt-date'],
-            "hdebut" => $post['form-edt-hdebut'],
-            "hfin" =>  $post['form-edt-hfin']
-        ];
-
         if([0, 2, 3] === $groupes &&
             ! isset($edt[$post['form-edt-hdebut']][$get['jour'] - 1][0]) && // ! isset pour ne pas écraser un valeur déjà existant
             ! isset($edt[$post['form-edt-hdebut']][$get['jour'] - 1][2])) {
@@ -116,17 +118,8 @@ if ($_GET['action'] === 'edt-delete') {
         // sectionner la séquence de groupe si elle n'est pas continue pour faciliter l'affichage
         // il faut que l'indice du groupe est égale à la première valeur de "groupes" pour bien afficher
         // array1 === array2 compare s'ils ont les mêmes valeurs dans le même ordre
-        $data = [
-            "type" => $post['form-edt-type'],
-            "matiere" => $post['form-edt-matiere'],
-            "enseignant" => $post['form-edt-enseignant'],
-            "salle" => $post['form-edt-salle'],
-            "date" => $post['form-edt-date'],
-            "hdebut" => $post['form-edt-hdebut'],
-            "hfin" =>  $post['form-edt-hfin']
-        ];
         if([0, 2, 3] === $groupes &&
-            isset($edt[$post['form-edt-hdebut']][$get['jour'] - 1][0])) {
+            isset($edt[$post['form-edt-hdebut']][$get['jour'] - 1][0])) { // il faut s'assurer que la case existe déjà
             $data["groupes"] = [0];
             $edt[$post['form-edt-hdebut']][$get['jour'] - 1][0] = $data;
 

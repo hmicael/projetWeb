@@ -12,10 +12,35 @@
                 "groupes": [
                     0
                 ]
+            },
+            {
+                "type": "Cours",
+                "matiere": "BD;#0874e780",
+                "enseignant": "Waller",
+                "salle": "D201",
+                "date": "2023-03-27",
+                "hdebut": "08:00",
+                "hfin": "08:15",
+                "groupes": [
+                    1
+                ]
+            },
+            {
+                "type": "Cours",
+                "matiere": "BD Miage;#23d13880",
+                "enseignant": "Waller",
+                "salle": "D201",
+                "date": "2023-03-27",
+                "hdebut": "08:00",
+                "hfin": "08:15",
+                "groupes": [
+                    2,
+                    3
+                ]
             }
         ],
-        [
-            {
+        {
+            "0": {
                 "type": "Cours",
                 "matiere": "BD;#0874e780",
                 "enseignant": "David Rei",
@@ -26,18 +51,29 @@
                 "groupes": [
                     0,
                     1,
-                    2,
+                    2
+                ]
+            },
+            "3": {
+                "type": "Cours",
+                "matiere": "BD Miage;#23d13880",
+                "enseignant": "David Rei",
+                "salle": "D201",
+                "date": "2023-03-28",
+                "hdebut": "08:00",
+                "hfin": "08:15",
+                "groupes": [
                     3
                 ]
             }
-        ]
+        }
     ],
     "08:45": [
         [
             {
                 "type": "Cours",
                 "matiere": "BD;#0874e780",
-                "enseignant": "David Rei",
+                "enseignant": "Waller",
                 "salle": "E205",
                 "date": "2023-03-27",
                 "hdebut": "08:45",
@@ -45,10 +81,12 @@
                 "groupes": [
                     0,
                     1,
-                    2,
-                    3
+                    2
                 ]
             }
         ]
+    ],
+    "08:30": [
+        []
     ]
 }
