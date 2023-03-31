@@ -24,7 +24,7 @@ body {
     background-color: #fff;
     padding: 30px;
     border-radius: 10px;
-    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.8);
 }
 
 .login-form h1 {
@@ -259,7 +259,6 @@ header {
     box-sizing: border-box;
     margin: 20px auto;
     padding: 10px 30px;
-    box-shadow: lightgray 4px 4px 20px;
 }
 
 html {
