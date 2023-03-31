@@ -15,7 +15,7 @@
             <div class="background-image"></div>
             <div class="login-form">
                 <h1>Login</h1>
-                <form action="index.php?action=login-check" method="POST" class="form-card">*
+                <form action="index.php?action=login-check" method="POST" class="form-card">
                     <?php
                         if (isset($_SESSION['error-msg'])) {
                             echo '<span class="error-msg">' . $_SESSION['error-msg'] . '</span>';
