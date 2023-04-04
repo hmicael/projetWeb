@@ -161,7 +161,6 @@ echo '</nav>';
                                 } else if([1, 2] === $slotGroupes && $groupe == $slotGroupes[0]) {
                                     $colspan = 2;
                                 }
-
                                 // s'il n'y a pas de lignes à fusionner mettre rowspan à 1 pour éviter le rowspan=0
                                 if ($rowspan > 0) {
                                     for ($i=$slotHDeb+900; $i < $slotHFin; $i+=900) {
