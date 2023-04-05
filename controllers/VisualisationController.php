@@ -1,5 +1,4 @@
 <?php
-$title = 'Visualisation';
 $lundiDeLaSemaine =  null;
 
 if (isset($_GET['semaine']) &&

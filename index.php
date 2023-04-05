@@ -8,6 +8,7 @@ try {
         if(isset($_GET['action']) && $_GET['action'] === 'login-check') {
             require(WEBROOT. '/controllers/LoginController.php');
         } else {
+            $title = 'Accueil';
             require(WEBROOT. '/views/login.php');
         }
     } else {
@@ -17,8 +18,10 @@ try {
                 header('Location:' . ROOT);
                 exit();
             } else if ($_GET['action'] === 'visualiser') {
+                $title = 'Visualisation';
                 require(WEBROOT. '/controllers/VisualisationController.php');
             } else if ($_GET['action'] === 'admin') {
+                $title = 'Administration';
                 require(WEBROOT. '/controllers/AdministrationController.php');
             } else if ($_GET['action'] === 'ajax' && isset($_GET['search'])) {
                 require(WEBROOT. '/controllers/AjaxRequestController.php');

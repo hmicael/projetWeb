@@ -57,7 +57,6 @@ function checkIdExist($id, array $data) {
     }
 }
 
-$title = 'Administration';
 // Ouverture des fichiers
 $utilisateurs = json_decode(file_get_contents(WEBROOT . '/data/utilisateurs.json'), true);
 $enseignants = json_decode(file_get_contents(WEBROOT . '/data/enseignants.json'), true);

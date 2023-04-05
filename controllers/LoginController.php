@@ -15,7 +15,6 @@ foreach ($utilisateurs as $key => $u) {
         $_SESSION['role'] = strtolower($u['role']);
         $_SESSION['nom'] = $u['nom'];
         $_SESSION['prenom'] = $u['prenom'];
-        $title = 'Accueil';
         header('Location:' . ROOT);
         exit();
     }
