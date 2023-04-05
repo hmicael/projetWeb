@@ -1,8 +1,8 @@
 $(function() {
     /**
-     * Fonction qui convertit une couleur RGBA en Hex
-     * @param {string} rgba
-     * @returns {string}
+     * Fonction qui convertit une couleur RGBA en Hex (ex: rgba(255, 255, 255, 1) => #FFFFFF)
+     * @param {string} rgba la couleur en rgba
+     * @returns {string} la couleur en hex
      */
     function convertRgbaToHex(rgba) {
         rgba = rgba.match(/^rgba?\((\d+),\s*(\d+),\s*(\d+),?\s*([\d\.]+)?\)$/);
@@ -17,9 +17,9 @@ $(function() {
   
 
     /**
-     * Fonction qui permet d'obtenir le parametre GET
-     * @param {*} parameterName
-     * @param {*} parameterName
+     * Fonction qui permet d'obtenir le parametre GET d'une url
+     * @param {*} parameterName le n
+     * @param {*} url l'url
      * @returns 
      */
     function findGetParameter(parameterName, url) {
@@ -35,8 +35,8 @@ $(function() {
     }
 
     /**
-     * Fonction qui fait une requete ajax pour rechercher le bon enseignant pour une matière
-     * @param {*} matiere 
+     * Fonction qui fait une requete ajax pour rechercher le bon enseignant pour une matière donnée
+     * @param {*} matiere le nom de la matière
      */
     function searchEnseignantByMatiere(matiere) {
         $.ajax({
@@ -58,8 +58,8 @@ $(function() {
 
     /**
      * Fonction appelée lorsqu'on clique sur un boutton qui est censé ouvrir un modal
-     * @param {*} e 
-     * @param {*} selector 
+     * @param {*} e c'est l'event
+     * @param {*} selector le selecteur du modal
      */
     function callbackClickButtonModal(e, selector) {
         e.preventDefault();
@@ -86,7 +86,7 @@ $(function() {
                 $(this).dialog('close');
             },
             'Supprimer': function() {
-                window.location.href = $(this).data('url');
+                window.location.href = $(this).data('url'); // rediriger vers la page de suppression
             }
         }
     });
@@ -110,6 +110,7 @@ $(function() {
         height: 500,
         open: function() {
             // Faire en sorte que le button généré par le modal soit le boutton de submit du formulaire
+            // et que le formulaire soit celui du modal
             $('div.ui-dialog-buttonpane.ui-widget-content.ui-helper-clearfix > div > button:nth-child(1)').attr('type', 'submit');
             $('div.ui-dialog-buttonpane.ui-widget-content.ui-helper-clearfix > div > button:nth-child(1)').attr('form', 'user-form');
             // Modifier la trajectoire de l'action
@@ -362,7 +363,9 @@ $(function() {
                             $('#form-edt-groupe-' + (value+1)).prop('checked', true);
                         });
                     },
-                    error: function(xhr, status, error) {}
+                    error: function(xhr, status, error) {
+                        // TODO: afficher un message d'erreur
+                    }
                 });
                 
             }
@@ -391,5 +394,4 @@ $(function() {
             .dialog('open');
     });
     // END: Modal create edt
-
 });
