@@ -22,7 +22,7 @@ try {
                 require(WEBROOT. '/controllers/AdministrationController.php');
             } else if ($_GET['action'] === 'ajax' && isset($_GET['search'])) {
                 require(WEBROOT. '/controllers/AjaxRequestController.php');
-            } else if (preg_match('/^edt-/', $_GET['action'])) {
+            } else if (preg_match('/^edt-(delete|add|edit)$/', $_GET['action'])) {
                 require(WEBROOT. '/controllers/EdtController.php');
             } else {
                 throw new Exception("Error 404 : Page not found");

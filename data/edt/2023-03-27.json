@@ -12,27 +12,25 @@
                 "groupes": [
                     0
                 ]
-            }
-        ],
-        "2": {
-            "0": {
+            },
+            {
                 "type": "Cours",
-                "matiere": "BD;#0874e780",
+                "matiere": "BD Miage;#23d13880",
                 "enseignant": "Waller",
                 "salle": "D201",
-                "date": "2023-03-29",
+                "date": "2023-03-27",
                 "hdebut": "08:00",
                 "hfin": "08:15",
                 "groupes": [
-                    0
+                    1
                 ]
             },
-            "2": {
+            {
                 "type": "Cours",
-                "matiere": "BD;#0874e780",
+                "matiere": "BD Miage;#23d13880",
                 "enseignant": "Waller",
                 "salle": "D201",
-                "date": "2023-03-29",
+                "date": "2023-03-27",
                 "hdebut": "08:00",
                 "hfin": "08:15",
                 "groupes": [
@@ -40,10 +38,11 @@
                     3
                 ]
             },
-            "3": {
+            {
                 "fusion": true
             }
-        }
+        ],
+        "2": []
     },
     "08:45": [
         [
@@ -164,22 +163,112 @@
         []
     ],
     "15:00": [
-        []
+        [
+            {
+                "type": "Cours",
+                "matiere": "BD;#0874e780",
+                "enseignant": "Waller",
+                "salle": "D201",
+                "date": "2023-03-27",
+                "hdebut": "15:00",
+                "hfin": "17:15",
+                "groupes": [
+                    0,
+                    1,
+                    2,
+                    3
+                ]
+            },
+            {
+                "fusion": true
+            },
+            {
+                "fusion": true
+            },
+            {
+                "fusion": true
+            }
+        ]
     ],
     "15:15": [
-        []
+        [
+            {
+                "fusion": true
+            },
+            {
+                "fusion": true
+            },
+            {
+                "fusion": true
+            },
+            {
+                "fusion": true
+            }
+        ]
     ],
     "15:30": [
-        []
+        [
+            {
+                "fusion": true
+            },
+            {
+                "fusion": true
+            },
+            {
+                "fusion": true
+            },
+            {
+                "fusion": true
+            }
+        ]
     ],
     "15:45": [
-        []
+        [
+            {
+                "fusion": true
+            },
+            {
+                "fusion": true
+            },
+            {
+                "fusion": true
+            },
+            {
+                "fusion": true
+            }
+        ]
     ],
     "16:00": [
-        []
+        [
+            {
+                "fusion": true
+            },
+            {
+                "fusion": true
+            },
+            {
+                "fusion": true
+            },
+            {
+                "fusion": true
+            }
+        ]
     ],
     "16:15": [
-        []
+        [
+            {
+                "fusion": true
+            },
+            {
+                "fusion": true
+            },
+            {
+                "fusion": true
+            },
+            {
+                "fusion": true
+            }
+        ]
     ],
     "": [
         {
@@ -210,5 +299,53 @@
                 ]
             }
         }
+    ],
+    "16:30": [
+        [
+            {
+                "fusion": true
+            },
+            {
+                "fusion": true
+            },
+            {
+                "fusion": true
+            },
+            {
+                "fusion": true
+            }
+        ]
+    ],
+    "16:45": [
+        [
+            {
+                "fusion": true
+            },
+            {
+                "fusion": true
+            },
+            {
+                "fusion": true
+            },
+            {
+                "fusion": true
+            }
+        ]
+    ],
+    "17:00": [
+        [
+            {
+                "fusion": true
+            },
+            {
+                "fusion": true
+            },
+            {
+                "fusion": true
+            },
+            {
+                "fusion": true
+            }
+        ]
     ]
 }
