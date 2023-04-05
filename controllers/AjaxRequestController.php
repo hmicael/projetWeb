@@ -27,6 +27,7 @@ function sanitizeAndCheck(array $data, $dataKey) {
     return $sanitizedData;
 }
 
+//recherche des données d'un emploi du temps dans le fichier json
 if ($_GET['search'] === 'edt') {
     $data = sanitizeAndCheck($_POST, ['heure', 'jour', 'groupe', 'semaine']);
     $filename = WEBROOT . '/data/edt/' . $data['semaine'] . '.json';
