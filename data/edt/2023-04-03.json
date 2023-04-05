@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
     "09:00": [
         [
             {
@@ -178,5 +179,34 @@
                 "fusion": true
             }
         ]
+=======
+    "08:00": [
+        {
+            "0": {
+                "type": "Cours",
+                "matiere": "BD;#0874e780",
+                "enseignant": "David Rei",
+                "salle": "D201",
+                "date": "2023-04-03",
+                "hdebut": "08:00",
+                "hfin": "08:15",
+                "groupes": [
+                    0
+                ]
+            },
+            "2": {
+                "type": "Cours",
+                "matiere": "BD;#0874e780",
+                "enseignant": "David Rei",
+                "salle": "D201",
+                "date": "2023-04-03",
+                "hdebut": "08:00",
+                "hfin": "08:15",
+                "groupes": [
+                    2
+                ]
+            }
+        }
+>>>>>>> 640d6639902183b7a7889010d93f56c9443ec390
     ]
 }

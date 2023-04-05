@@ -4,10 +4,11 @@ define('WEBROOT', str_replace('index.php', '', $_SERVER['SCRIPT_FILENAME']));   
 define('ROOT', str_replace('index.php', '', $_SERVER['SCRIPT_NAME']));  // chemin depuis la racine du site
 try {
     if(! isset($_SESSION['role'])) { // si la personne n'est pas encore connectée
-        // si la personne vient de se connecter
         if(isset($_GET['action']) && $_GET['action'] === 'login-check') {
+            // si la personne vient de se connecter
             require(WEBROOT. '/controllers/LoginController.php');
         } else {
+            $title = 'Accueil';
             require(WEBROOT. '/views/login.php');
         }
     } else {
@@ -17,12 +18,14 @@ try {
                 header('Location:' . ROOT);
                 exit();
             } else if ($_GET['action'] === 'visualiser') {
+                $title = 'Visualisation';
                 require(WEBROOT. '/controllers/VisualisationController.php');
             } else if ($_GET['action'] === 'admin') {
+                $title = 'Administration';
                 require(WEBROOT. '/controllers/AdministrationController.php');
             } else if ($_GET['action'] === 'ajax' && isset($_GET['search'])) {
                 require(WEBROOT. '/controllers/AjaxRequestController.php');
-            } else if (preg_match('/^edt-/', $_GET['action'])) {
+            } else if (preg_match('/^edt-(delete|add|edit)$/', $_GET['action'])) {
                 require(WEBROOT. '/controllers/EdtController.php');
             } else {
                 throw new Exception("Error 404 : Page not found");

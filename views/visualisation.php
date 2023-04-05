@@ -1,9 +1,5 @@
 <?php 
 ob_start();
-if (isset($_SESSION['error-msg'])) {
-    echo '<span class="error-msg">' . $_SESSION['error-msg'] . '</span>';
-    unset($_SESSION['error-msg']);
-}
 // Navigation semaine
 echo '<nav class="semaine-nav">';
     echo '<p>';
