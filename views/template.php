@@ -24,7 +24,7 @@
                     ?>
                     <li>
                         <a href="index.php?action=deconnect" class="logout-button">
-                            Deconnection 
+                            D&eacute;connexion 
                             <i class="fa-solid fa-right-from-bracket"></i>
                         </a>
                     </li>
