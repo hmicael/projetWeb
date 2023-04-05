@@ -1,11 +1,5 @@
 <?php ob_start(); ?>
 <marquee class="marque">Edition responsable</marquee>
-<?php
-    if (isset($_SESSION['error-msg'])) {
-        echo '<span class="error-msg">' . $_SESSION['error-msg'] . '</span>';
-        unset($_SESSION['error-msg']);
-    }
-?>
 <section id="tabs">
     <ul>
         <li><a href="#tabs-1">Utilisateurs</a></li>

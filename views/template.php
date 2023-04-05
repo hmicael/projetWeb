@@ -30,14 +30,17 @@
                     </li>
                 </ul>
             </nav>
-            <!-- <nav>
-                Navigation
-                <a href="index.php?action=deconnect" class="logout-button">Deconnection</a>
-            </nav> -->
         </header>
         <div id="contents">
             
         </div>
+        <?php
+            // Affichage des messages d'erreur
+            if (isset($_SESSION['error-msg'])) {
+                echo '<span class="error-msg">' . $_SESSION['error-msg'] . ' !</span>';
+                unset($_SESSION['error-msg']); // on supprime le message d'erreur
+            }
+        ?>
         <main>
             <section id="dialog-confirm" title="Suppression">
                 <p>
