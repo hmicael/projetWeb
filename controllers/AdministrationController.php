@@ -1,6 +1,8 @@
 <?php
 /**
  * Function qui echappe les caractères spécials des données envoyé par les utilisateurs
+ * et renvoie un tableau avec les données nettoyées et vérifiées
+ * sinon redirection vers la page d'administration avec un message d'erreur
  *
  * @param array $data
  * @return array $sanitizedData
@@ -26,7 +28,8 @@ function sanitizeAndCheck(array $data, $dataKey) {
 }
 
 /**
- * Fonction qui vérifie si une valeur existe déjà
+ * Fonction qui vérifie si une valeur existe déjà dans un tableau
+ * sinon redirection vers la page d'administration avec un message d'erreur
  *
  * @param $uniqueValue
  * @param $key
@@ -38,6 +41,7 @@ function checkUnique($uniqueValue, $key, array $data, int $tabs) {
     foreach ($data as $value) {
         if ($value[$key] == $uniqueValue) {
             $_SESSION['error-msg'] = "La valeur $uniqueValue existe déjà";
+            // redirection vers la page d'administration avec un message d'erreur dans l'onglet correspondant $tabs
             header('Location: index.php?action=admin#tabs-' . $tabs);
             exit();
         }
@@ -45,7 +49,8 @@ function checkUnique($uniqueValue, $key, array $data, int $tabs) {
 }
 
 /**
- * Fonction qui test si un id existe dans un tableau
+ * Fonction qui test si un id existe dans un tableau ou non
+ * Renvoie une exception si l'id n'existe pas
  *
  * @param [type] $id
  * @param array $data
@@ -99,9 +104,11 @@ if(isset($_GET['delete'])) {
             file_put_contents(WEBROOT . '/data/salles.json', json_encode($salles, JSON_PRETTY_PRINT));
             $tabs = 4;
             break;
+        // Si l'element n'existe pas, renvoie une exception
         default:
             throw new Exception("L'element $entity n'existe pas");
     }
+    // Redirection vers la page d'administration dans le bon tabs
     header('Location: index.php?action=admin#tabs-' . $tabs);
     exit();
 }
@@ -115,11 +122,12 @@ if(isset($_GET['create'])) {
             // Récupération des données du formulaire
             $data = sanitizeAndCheck($_POST, ['nom', 'prenom', 'password', 'email', 'role']);
             checkUnique($data['email'], 'email', $utilisateurs, $tabs);
-            // check password
+            // Verification du mot de passe
             if (! preg_match('/(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/', $data['password'])) {
-                $_SESSION['error-msg'] = "Le mot de passe doit contenir au moins un chiffre et une lettre majuscule et minuscule, et au moins 8 caractères.";
+                $_SESSION['error-msg'] = 'Le mot de passe doit contenir au moins un chiffre et une lettre majuscule et minuscule, et au moins 8 caractères.';
                 break;
             }
+            // Verification de l'email
             if(filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
                 // Ajout du nouvel objet dans le tableau de données
                 $utilisateurs[] = array(
@@ -133,8 +141,8 @@ if(isset($_GET['create'])) {
                 $jsonUtilisateur = json_encode($utilisateurs, JSON_PRETTY_PRINT);
                 // Écriture du contenu JSON dans le fichier
                 file_put_contents(WEBROOT .  '/data/utilisateurs.json', $jsonUtilisateur);
-            } else {
-                $_SESSION['error-msg'] = "Votre email est invalide";
+            } else { // Si l'email n'est pas valide
+                $_SESSION['error-msg'] = 'Votre email est invalide';
             }
             break;
         case 'matieres':
@@ -190,7 +198,7 @@ if(isset($_GET['edit'])) {
             $data = sanitizeAndCheck($_POST, ['nom', 'prenom', 'password', 'email', 'role']);
             // check password
             if (! preg_match('/(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/', $data['password'])) {
-                $_SESSION['error-msg'] = "Le mot de passe doit contenir au moins un chiffre et une lettre majuscule et minuscule, et au moins 8 caractères.";
+                $_SESSION['error-msg'] = 'Le mot de passe doit contenir au moins un chiffre et une lettre majuscule et minuscule, et au moins 8 caractères.';
                 break;
             }
             $utilisateurs[$id]['nom'] = strtoupper($data['nom']);

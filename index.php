@@ -4,8 +4,8 @@ define('WEBROOT', str_replace('index.php', '', $_SERVER['SCRIPT_FILENAME']));   
 define('ROOT', str_replace('index.php', '', $_SERVER['SCRIPT_NAME']));  // chemin depuis la racine du site
 try {
     if(! isset($_SESSION['role'])) { // si la personne n'est pas encore connectée
-        // si la personne vient de se connecter
         if(isset($_GET['action']) && $_GET['action'] === 'login-check') {
+            // si la personne vient de se connecter
             require(WEBROOT. '/controllers/LoginController.php');
         } else {
             $title = 'Accueil';

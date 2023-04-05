@@ -73,10 +73,10 @@ if ($_GET['search'] === 'enseignant') {
         }
     }
 
-    // recherche prof non referent
+    // recherche des autres profs non référant
     foreach ($profs as $p) {
         if ($p['referent'] == 'Non') {
-            $data[] = $p['nom'] = $p['nom'];
+            $data[] = $p['nom'];
         }
     }
     echo json_encode(

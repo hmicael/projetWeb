@@ -1,6 +1,7 @@
 <?php
 /**
- * Function qui echappe les caractères spécials des données envoyé par les utilisateurs
+ * Fonction qui echappe les caractères spécials des données envoyé par les utilisateurs et retourne un tableau
+ * sinon on redirige vers la page de visualisation
  *
  * @param array $data
  * @return array $sanitizedData
@@ -26,7 +27,7 @@ function sanitizeAndCheck(array $data, $dataKey) {
 }
 
 /**
- * Fonction qui supprimer un edt
+ * Fonction qui supprime un slot de l'emploi du temps
  *
  * @param array $edt
  * @param [type] $hdeb
@@ -36,10 +37,14 @@ function sanitizeAndCheck(array $data, $dataKey) {
  */
 function deleteEdt(array $edt, $hdeb, $jour, $groupe)
 {
-    if (isset($edt[$hdeb][$jour][$groupe])) { // verifier si le slot existe vraiment
+    // si le slot existe
+    if (isset($edt[$hdeb][$jour][$groupe])) {
+        // on supprime le slot et tous les slots qui sont dans le même groupe
         $slot = $edt[$hdeb][$jour][$groupe];
         $hfin = strtotime($slot['hfin']);
+        // pour chaque groupe du slot
         foreach ($slot['groupes'] as $g) {
+            // pour chaque heure du slot
             for ($h = strtotime($slot['hdebut']); $h < $hfin; $h += 900) {
                 unset($edt[date('H:i', $h)][$jour][$g]);
             }
@@ -75,9 +80,9 @@ if ($_GET['action'] === 'edt-delete') { // si on veut supprimer un slot
     $jour = ($get['jour'] - 1);
 
     // pour une modification, on va d'abord supprimé tous les slots à modifier
-    // puis après vérifier si les slots ou sera insérer la modification est vide ou pas
+    // puis après vérifier si les slots où sera insérer la modification est vide ou pas
     if ($_GET['action'] === 'edt-edit' &&
-        isset($edt[$post['form-edt-hdebut']][$jour][$get['groupe']-1])) { // ici on vérifier que le
+        isset($edt[$post['form-edt-hdebut']][$jour][$get['groupe']-1])) { // ici on vérifier que le slot existe
         $edt = deleteEdt($edt, $get['heure'], ($get['jour']-1), ($get['groupe']-1));
     }
 
@@ -120,8 +125,8 @@ if ($_GET['action'] === 'edt-delete') { // si on veut supprimer un slot
 
     // sectionner la séquence de groupe si elle n'est pas continue pour faciliter l'affichage
     // il faut que l'indice du groupe est égale à la première valeur de 'groupes' pour bien afficher
-    // array1 === array2 compare s'ils ont les mêmes valeurs dans le même ordre
-    // on remet $data avec le bon groupe et sans ['fusion' => true]
+    // array1 === array2: vérifie si les valeurs sont les mêmes et dans le même ordre
+    // on remet $data avec le bon groupe et sans ['fusion' => true] car c'est le premier slot
     if([0, 2, 3] === $groupes) { // split 0,2,3 en 0 et 2,3
         // 0
         $data['groupes'] = [0];
@@ -153,7 +158,7 @@ if ($_GET['action'] === 'edt-delete') { // si on veut supprimer un slot
         $edt[$post['form-edt-hdebut']][$get['jour'] - 1][3] = $data;
     } else { // par defaut
         $data['groupes'] = $groupes;
-        // $groupes[0] car c'est l'ordre trié des groupes
+        // $groupes[0] car c'est l'ordre trié des groupes et on veut le premier
         $edt[$post['form-edt-hdebut']][$get['jour'] - 1][$groupes[0]] = $data;
     }
 }

@@ -1,9 +1,8 @@
 <?php
-$lundiDeLaSemaine =  null;
-
+$lundiDeLaSemaine =  null; // la date du lundi de la semaine
+// si la semaine est spécifiée dans l'URL et que c'est une date valide
 if (isset($_GET['semaine']) &&
     preg_match('([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))', $_GET['semaine'])) {
-    // s'il y a une demande de semaine spécifique et que c'est une date valide
     $_GET['semaine'] = htmlspecialchars($_GET['semaine']);
     if (date('D', strtotime($_GET['semaine'])) != 'Mon') {
         // si le jour actuel est n'est pas un lundi
