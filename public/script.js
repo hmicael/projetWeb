@@ -42,14 +42,9 @@ $(function () {
         $.ajax({
             url: 'index.php?action=ajax&search=enseignant',
             method: 'POST',
-<<<<<<< HEAD
             data: { 'matiere': matiere.split(';')[0] }, // matiere: nom;couleur, on recherche par le nom
             success: function (response) {
-=======
-            data: {'matiere' : matiere.split(';')[0]}, // matiere: nom;couleur, on recherche par le nom
-            success: function(response) {
                 $('#form-edt-enseignant').empty();
->>>>>>> 8eac601594e1d65be5c1d703dfc738bdb8693556
                 const obj = JSON.parse(response);
                 const data = obj.data;
                 $.each(data, function (key, value) {
@@ -343,18 +338,8 @@ $(function () {
             date = date.getFullYear() + '-' + month + '-' + day;
             $('#form-edt-date').val(date);
             $('#form-edt-date').prop('readonly', true);
-<<<<<<< HEAD
-            // Choix du prof lorsqu'on choisi une matière
-            $('#form-edt-matiere').on('change', function () {
-                // vide le select
-                $('#form-edt-enseignant').empty();
-                // faire une requete ajax pour obtenir les enseignants
-                searchEnseignantByMatiere($(this).val());
-            });
-=======
             // vide le select des enseignants
             $('#form-edt-enseignant').empty();
->>>>>>> 8eac601594e1d65be5c1d703dfc738bdb8693556
             // si l'action est un edit, charger le modal form avec les données issues du tr contenant le boutton cliqué
             if ($(this).data('action') == 'edit') {
                 let enseignant = $(this).data('enseignant');
