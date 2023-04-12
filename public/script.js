@@ -407,10 +407,12 @@ $(function () {
     const iddiv = document.getElementById("error");
     const idspan = document.getElementById("error-msg");
 
-    iddiv.addEventListener("click", function () {
-        idspan.style.display = "none";
-    });
+    if (iddiv) {
+        iddiv.addEventListener("click", function () {
+            idspan.style.display = "none";
+        });
 
+    }
 });
 
 

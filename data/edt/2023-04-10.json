@@ -1,208 +1,22 @@
 {
-    "08:00": [
-<<<<<<< HEAD
-        []
-    ],
-    "08:45": [
-        [
-            {
-                "type": "Cours",
-                "matiere": "BD Miage;#23d13880",
-                "enseignant": "David Rei",
-                "salle": "E205",
-                "date": "2023-04-10",
-                "hdebut": "08:45",
-                "hfin": "09:00",
-                "groupes": [
-                    0
-                ]
-=======
-        {
-            "2": {
-                "type": "Cours",
-                "matiere": "BD;#0874e780",
-                "enseignant": "Waller",
-                "salle": "D201",
-                "date": "2023-04-10",
-                "hdebut": "08:00",
-                "hfin": "08:30",
-                "groupes": [
-                    2,
-                    3
-                ],
-                "fusion": false
-            },
-            "3": {
-                "type": "Cours",
-                "matiere": "BD;#0874e780",
-                "enseignant": "Waller",
-                "salle": "D201",
-                "date": "2023-04-10",
-                "hdebut": "08:00",
-                "hfin": "08:30",
-                "groupes": [
-                    2,
-                    3
-                ],
-                "fusion": true
-            },
-            "0": {
-                "type": "Cours",
-                "matiere": "BD;#0874e780",
-                "enseignant": "David Rei",
-                "salle": "D201",
-                "date": "2023-04-10",
-                "hdebut": "08:00",
-                "hfin": "08:30",
-                "groupes": [
-                    0,
-                    1
-                ],
-                "fusion": false
-            },
-            "1": {
-                "type": "Cours",
-                "matiere": "BD;#0874e780",
-                "enseignant": "David Rei",
-                "salle": "D201",
-                "date": "2023-04-10",
-                "hdebut": "08:00",
-                "hfin": "08:30",
-                "groupes": [
-                    0,
-                    1
-                ],
-                "fusion": true
-            }
-        }
-    ],
-    "08:15": [
-        {
-            "2": {
-                "type": "Cours",
-                "matiere": "BD;#0874e780",
-                "enseignant": "Waller",
-                "salle": "D201",
-                "date": "2023-04-10",
-                "hdebut": "08:00",
-                "hfin": "08:30",
-                "groupes": [
-                    2,
-                    3
-                ],
-                "fusion": true
-            },
-            "3": {
-                "type": "Cours",
-                "matiere": "BD;#0874e780",
-                "enseignant": "Waller",
-                "salle": "D201",
-                "date": "2023-04-10",
-                "hdebut": "08:00",
-                "hfin": "08:30",
-                "groupes": [
-                    2,
-                    3
-                ],
-                "fusion": true
-            },
-            "0": {
-                "type": "Cours",
-                "matiere": "BD;#0874e780",
-                "enseignant": "David Rei",
-                "salle": "D201",
-                "date": "2023-04-10",
-                "hdebut": "08:00",
-                "hfin": "08:30",
-                "groupes": [
-                    0,
-                    1
-                ],
-                "fusion": true
-            },
-            "1": {
-                "type": "Cours",
-                "matiere": "BD;#0874e780",
-                "enseignant": "David Rei",
-                "salle": "D201",
-                "date": "2023-04-10",
-                "hdebut": "08:00",
-                "hfin": "08:30",
-                "groupes": [
-                    0,
-                    1
-                ],
-                "fusion": true
-            }
-        }
-    ],
     "09:30": [
         [
             {
                 "type": "Cours",
-                "matiere": "Web;#c6060680",
-                "enseignant": "Frederic Vernier",
+                "matiere": "BD;#0874e780",
+                "enseignant": "Waller",
                 "salle": "D201",
                 "date": "2023-04-10",
                 "hdebut": "09:30",
                 "hfin": "09:45",
                 "groupes": [
-                    0,
-                    1,
-                    2,
-                    3
+                    0
                 ],
                 "fusion": false
-            },
-            {
-                "type": "Cours",
-                "matiere": "Web;#c6060680",
-                "enseignant": "Frederic Vernier",
-                "salle": "D201",
-                "date": "2023-04-10",
-                "hdebut": "09:30",
-                "hfin": "09:45",
-                "groupes": [
-                    0,
-                    1,
-                    2,
-                    3
-                ],
-                "fusion": true
-            },
-            {
-                "type": "Cours",
-                "matiere": "Web;#c6060680",
-                "enseignant": "Frederic Vernier",
-                "salle": "D201",
-                "date": "2023-04-10",
-                "hdebut": "09:30",
-                "hfin": "09:45",
-                "groupes": [
-                    0,
-                    1,
-                    2,
-                    3
-                ],
-                "fusion": true
-            },
-            {
-                "type": "Cours",
-                "matiere": "Web;#c6060680",
-                "enseignant": "Frederic Vernier",
-                "salle": "D201",
-                "date": "2023-04-10",
-                "hdebut": "09:30",
-                "hfin": "09:45",
-                "groupes": [
-                    0,
-                    1,
-                    2,
-                    3
-                ],
-                "fusion": true
->>>>>>> 8eac601594e1d65be5c1d703dfc738bdb8693556
             }
         ]
+    ],
+    "09:15": [
+        []
     ]
 }
