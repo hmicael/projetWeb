@@ -140,8 +140,8 @@ echo '</nav>';
                                 // affichage du contenu du slot
                                 echo $edt[$hDeb][$jour][$groupe]['type'] . '<br><br>';
                                 echo $matiere[0] . '<br>';
-                                echo $edt[$hDeb][$jour][$groupe]['enseignant'] . '<br>';
-                                echo $edt[$hDeb][$jour][$groupe]['salle'] . '<br>';
+                                echo '<span class="edt-enseignant">' . $edt[$hDeb][$jour][$groupe]['enseignant'] . '</span><br>';
+                                echo $edt[$hDeb][$jour][$groupe]['salle'] . '<br><br>';
                                 echo $edt[$hDeb][$jour][$groupe]['hdebut'] . ' à ' .  $edt[$hDeb][$jour][$groupe]['hfin'] . '<br>';
                                 echo '<br>';
                                 // boutton edit
