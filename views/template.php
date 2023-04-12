@@ -37,7 +37,7 @@
         <?php
             // Affichage des messages d'erreur
             if (isset($_SESSION['error-msg'])) {
-                echo '<span class="error-msg">' . $_SESSION['error-msg'] . ' !</span>';
+                echo '<div id="error"><span id="error-msg">' . $_SESSION['error-msg'] . ' !</span></div>';
                 unset($_SESSION['error-msg']); // on supprime le message d'erreur
             }
         ?>

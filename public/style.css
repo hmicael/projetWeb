@@ -1,6 +1,8 @@
 body {
     margin: 0;
     padding: 0;
+    height: 100%;
+    font-family: Arial, sans-serif;
 }
 
 .background-image {
@@ -41,6 +43,10 @@ body {
 
 #acceuil>ul>li {
     display: inline-block;
+}
+
+#acceuil>ul>li>a {
+    display: inline-block;
     margin-right: 20px;
     width: 200px;
     border: 1px solid white;
@@ -60,21 +66,6 @@ body {
     font-size: 50px;
     color: #fff;
 }
-
-#acceuil>ul>li:hover {
-    border: 1px solid white;
-    /* color: black; */
-    padding: 8px 16px;
-    /* text-align: center; */
-    text-decoration: none;
-    display: inline-block;
-    font-size: 14px;
-    margin: 4px 2px;
-    border-radius: 4px;
-    width: 100px;
-}
-
-
 
 
 .login-form {
@@ -165,21 +156,9 @@ header {
 #navigation a {
     color: #fff;
     text-decoration: none;
+    cursor: pointer;
 }
 
-#navigation li :hover {
-    border: 1px solid white;
-    /* color: black; */
-    padding: 8px 16px;
-    /* text-align: center; */
-    text-decoration: none;
-    display: inline-block;
-    font-size: 14px;
-    margin: 4px 2px;
-    cursor: pointer;
-    border-radius: 4px;
-    transition: background-color 0.3s ease;
-}
 
 /* Fin Ajustement Nav Bar */
 
@@ -365,8 +344,20 @@ td {
     background-color: rgba(99, 0, 60, 0.3);
 }
 
-.error-msg {
-    color: red;
+#error-msg {
+    color: white;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+#error {
+    border: 1px solid;
+    width: 39%;
+    margin: auto;
+    border: 1px solid;
+    background-color: red;
+    opacity: 0.8;
 }
 
 .ui-widget-overlay {
@@ -387,11 +378,6 @@ td {
 
 #tabs>ul {
     background-color: #63003C;
-}
-
-body {
-    height: 100%;
-    font-family: Arial, sans-serif;
 }
 
 .container {

@@ -1,0 +1,21 @@
+{
+    "08:00": [
+        []
+    ],
+    "08:45": [
+        [
+            {
+                "type": "Cours",
+                "matiere": "BD Miage;#23d13880",
+                "enseignant": "David Rei",
+                "salle": "E205",
+                "date": "2023-04-10",
+                "hdebut": "08:45",
+                "hfin": "09:00",
+                "groupes": [
+                    0
+                ]
+            }
+        ]
+    ]
+}

@@ -1,4 +1,4 @@
-$(function() {
+$(function () {
     /**
      * Fonction qui convertit une couleur RGBA en Hex (ex: rgba(255, 255, 255, 1) => #FFFFFF)
      * @param {string} rgba la couleur en rgba
@@ -6,7 +6,7 @@ $(function() {
      */
     function convertRgbaToHex(rgba) {
         rgba = rgba.match(/^rgba?\((\d+),\s*(\d+),\s*(\d+),?\s*([\d\.]+)?\)$/);
-        
+
         function hexCode(i) {
             // convertit decimal en hexadecimal
             return ('0' + parseInt(i).toString(16)).slice(-2);
@@ -14,7 +14,7 @@ $(function() {
 
         return '#' + hexCode(rgba[1]) + hexCode(rgba[2]) + hexCode(rgba[3]);
     }
-  
+
 
     /**
      * Fonction qui permet d'obtenir le parametre GET d'une url
@@ -42,15 +42,15 @@ $(function() {
         $.ajax({
             url: 'index.php?action=ajax&search=enseignant',
             method: 'POST',
-            data: {'matiere' : matiere.split(';')[0]}, // matiere: nom;couleur, on recherche par le nom
-            success: function(response) {
+            data: { 'matiere': matiere.split(';')[0] }, // matiere: nom;couleur, on recherche par le nom
+            success: function (response) {
                 const obj = JSON.parse(response);
                 const data = obj.data;
-                $.each(data, function(key, value) {
+                $.each(data, function (key, value) {
                     $('#form-edt-enseignant').append('<option value="' + value + '">' + value + '</option>');
                 });
             },
-            error: function(xhr, status, error) {
+            error: function (xhr, status, error) {
                 // erreur
             }
         });
@@ -70,9 +70,9 @@ $(function() {
             .data('tr', $(e.target).parent().parent())
             .dialog('open');
     }
-      
 
-    $( '#tabs' ).tabs(); // active le tabs dans la page d'admin
+
+    $('#tabs').tabs(); // active le tabs dans la page d'admin
 
     // BEGIN: dialog confirm detete
     $('#dialog-confirm').dialog({
@@ -82,10 +82,10 @@ $(function() {
         height: 'auto',
         width: 400,
         buttons: {
-            'Annuler': function() {
+            'Annuler': function () {
                 $(this).dialog('close');
             },
-            'Supprimer': function() {
+            'Supprimer': function () {
                 window.location.href = $(this).data('url'); // rediriger vers la page de suppression
             }
         }
@@ -93,7 +93,7 @@ $(function() {
     // END: dialog confirm detete
 
     // Ouvrir la boîte de dialogue
-    $('body').on('click', '.btn-delete', function(e) {
+    $('body').on('click', '.btn-delete', function (e) {
         e.preventDefault();
         $('#dialog-confirm')
             .data('url', $(this).attr('href'))
@@ -108,7 +108,7 @@ $(function() {
         resizable: false,
         width: 400,
         height: 500,
-        open: function() {
+        open: function () {
             // Faire en sorte que le button généré par le modal soit le boutton de submit du formulaire
             // et que le formulaire soit celui du modal
             $('div.ui-dialog-buttonpane.ui-widget-content.ui-helper-clearfix > div > button:nth-child(1)').attr('type', 'submit');
@@ -127,7 +127,7 @@ $(function() {
                 $('#email').attr('readonly', false);
             }
             // check si les mots de passe correspondent
-            $('#confirm-password').on('keyup', function() {
+            $('#confirm-password').on('keyup', function () {
                 if ($(this).val() != $('#password').val()) {
                     $('div.ui-dialog-buttonpane.ui-widget-content.ui-helper-clearfix > div > button:nth-child(1)').attr('disabled', true);
                     $('#password-not-match').show();
@@ -138,22 +138,22 @@ $(function() {
             });
         },
         buttons: {
-            'Enregistrer': function() {
+            'Enregistrer': function () {
                 // ne rien faire puisque la validation se fait déjà par les attributs HTML
             },
-            'Annuler': function() {
+            'Annuler': function () {
                 // Fermer la boîte de dialogue
                 $('#modal-user-form').dialog('close');
             }
         },
-        close: function() {
+        close: function () {
             // Réinitialiser le formulaire
             $('#modal-user-form form')[0].reset();
         }
     });
 
     // Ouvrir la boîte de dialogue
-    $('.open-user-modal').on('click', function(e) {
+    $('.open-user-modal').on('click', function (e) {
         callbackClickButtonModal(e, '#modal-user-form')
     });
     // END: Modal create utilisateur
@@ -163,7 +163,7 @@ $(function() {
         autoOpen: false,
         modal: true,
         resizable: false,
-        open: function() {
+        open: function () {
             // Faire en sorte que le button généré par le modal soit le boutton de submit du formulaire
             $('div.ui-dialog-buttonpane.ui-widget-content.ui-helper-clearfix > div > button:nth-child(1)').attr('type', 'submit');
             $('div.ui-dialog-buttonpane.ui-widget-content.ui-helper-clearfix > div > button:nth-child(1)').attr('form', 'matiere-form');
@@ -178,22 +178,22 @@ $(function() {
             }
         },
         buttons: {
-            'Enregistrer': function() {
+            'Enregistrer': function () {
                 // ne rien faire puisque la validation se fait déjà par les attributs HTML
             },
-            'Annuler': function() {
+            'Annuler': function () {
                 // Fermer la boîte de dialogue
                 $('#modal-matiere-form').dialog('close');
             }
         },
-        close: function() {
+        close: function () {
             // Réinitialiser le formulaire
             $('#modal-matiere-form form')[0].reset();
         }
     });
 
     // Ouvrir la boîte de dialogue
-    $('.open-matiere-modal').on('click', function(e) {
+    $('.open-matiere-modal').on('click', function (e) {
         callbackClickButtonModal(e, '#modal-matiere-form')
     });
     // END: Modal create matiere
@@ -203,7 +203,7 @@ $(function() {
         autoOpen: false,
         modal: true,
         resizable: false,
-        open: function() {
+        open: function () {
             // Faire en sorte que le button généré par le modal soit le boutton de submit du formulaire
             $('div.ui-dialog-buttonpane.ui-widget-content.ui-helper-clearfix > div > button:nth-child(1)').attr('type', 'submit');
             $('div.ui-dialog-buttonpane.ui-widget-content.ui-helper-clearfix > div > button:nth-child(1)').attr('form', 'enseignant-form');
@@ -221,22 +221,22 @@ $(function() {
             }
         },
         buttons: {
-            'Enregistrer': function() {
+            'Enregistrer': function () {
                 // ne rien faire puisque la validation se fait déjà par les attributs HTML
             },
-            'Annuler': function() {
+            'Annuler': function () {
                 // Fermer la boîte de dialogue
                 $('#modal-enseignant-form').dialog('close');
             }
         },
-        close: function() {
+        close: function () {
             // Réinitialiser le formulaire
             $('#modal-enseignant-form form')[0].reset();
         }
     });
 
     // Ouvrir la boîte de dialogue
-    $('.open-enseignant-modal').on('click', function(e) {
+    $('.open-enseignant-modal').on('click', function (e) {
         callbackClickButtonModal(e, '#modal-enseignant-form')
     });
     // END: Modal create Enseignants
@@ -246,7 +246,7 @@ $(function() {
         autoOpen: false,
         modal: true,
         resizable: false,
-        open: function() {
+        open: function () {
             // Faire en sorte que le button généré par le modal soit le boutton de submit du formulaire
             $('div.ui-dialog-buttonpane.ui-widget-content.ui-helper-clearfix > div > button:nth-child(1)').attr('type', 'submit');
             $('div.ui-dialog-buttonpane.ui-widget-content.ui-helper-clearfix > div > button:nth-child(1)').attr('form', 'salle-form');
@@ -259,22 +259,22 @@ $(function() {
             }
         },
         buttons: {
-            'Enregistrer': function() {
+            'Enregistrer': function () {
                 // ne rien faire puisque la validation se fait déjà par les attributs HTML
             },
-            'Annuler': function() {
+            'Annuler': function () {
                 // Fermer la boîte de dialogue
                 $('#modal-salle-form').dialog('close');
             }
         },
-        close: function() {
+        close: function () {
             // Réinitialiser le formulaire
             $('#modal-salle-form form')[0].reset();
         }
     });
 
     // Ouvrir la boîte de dialogue
-    $('.open-salle-modal').on('click', function(e) {
+    $('.open-salle-modal').on('click', function (e) {
         callbackClickButtonModal(e, '#modal-salle-form')
     });
     // END: Modal create Salle
@@ -286,7 +286,7 @@ $(function() {
         resizable: false,
         width: 400,
         height: 500,
-        open: function() {
+        open: function () {
             // Faire en sorte que le button généré par le modal soit le boutton de submit du formulaire
             $('div.ui-dialog-buttonpane.ui-widget-content.ui-helper-clearfix > div > button:nth-child(1)')
                 .attr('type', 'submit');
@@ -295,7 +295,7 @@ $(function() {
             // Modifier la trajectoire de l'action
             $('#edt-form').attr('action', $(this).data('url'));
             // Checker le checkbox du groupe et le mettre en readonly
-            let checkedGroup  = '#form-edt-groupe-' + findGetParameter('groupe', $(this).data('url'));
+            let checkedGroup = '#form-edt-groupe-' + findGetParameter('groupe', $(this).data('url'));
             $(checkedGroup).prop('checked', true);
             // empecher l'utilisateur de décocher le checkbox sur le groupe où on a declencher l'action
             $('.form-edt-groupe').removeAttr('onclick');
@@ -314,7 +314,7 @@ $(function() {
             dateFin.setHours(heure);
             dateFin.setMinutes(minutes + 15);
             // Conversion de la date en un nouveau format de chaîne de temps
-            const hdebPlus15 = dateFin.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+            const hdebPlus15 = dateFin.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
             $('#form-edt-hfin').val(hdebPlus15);
             // set date
             const lundiSemaine = findGetParameter('semaine', $(this).data('url'));
@@ -323,14 +323,14 @@ $(function() {
             day = date.getDate() + jour;
             date.setDate(day);
             // ajout de 0 devant le mois < 10 pour avoir un format correct
-            month = date.getMonth()+1;
-            month = month < 10 ? '0'+month : month;
-            day = date.getDate() < 10 ? '0'+date.getDate() : date.getDate();
+            month = date.getMonth() + 1;
+            month = month < 10 ? '0' + month : month;
+            day = date.getDate() < 10 ? '0' + date.getDate() : date.getDate();
             date = date.getFullYear() + '-' + month + '-' + day;
             $('#form-edt-date').val(date);
             $('#form-edt-date').prop('readonly', true);
             // Choix du prof lorsqu'on choisi une matière
-            $('#form-edt-matiere').on('change', function() {
+            $('#form-edt-matiere').on('change', function () {
                 // vide le select
                 $('#form-edt-enseignant').empty();
                 // faire une requete ajax pour obtenir les enseignants
@@ -345,10 +345,10 @@ $(function() {
                     data: {
                         'heure': hdeb,
                         'jour': jour,
-                        'groupe':findGetParameter('groupe', $(this).data('url')) - 1,
+                        'groupe': findGetParameter('groupe', $(this).data('url')) - 1,
                         'semaine': lundiSemaine
                     },
-                    success: function(response) {
+                    success: function (response) {
                         const obj = JSON.parse(response);
                         const data = obj.data;
                         $('#form-edt-matiere').val(data.matiere);
@@ -359,33 +359,33 @@ $(function() {
                         $('#form-edt-hdebut').val(data.hdebut);
                         $('#form-edt-hfin').val(data.hfin);
                         $('#form-edt-date').val(data.date);
-                        $.each(data.groupes, function(key, value) {
-                            $('#form-edt-groupe-' + (value+1)).prop('checked', true);
+                        $.each(data.groupes, function (key, value) {
+                            $('#form-edt-groupe-' + (value + 1)).prop('checked', true);
                         });
                     },
-                    error: function(xhr, status, error) {
+                    error: function (xhr, status, error) {
                         // TODO: afficher un message d'erreur
                     }
                 });
-                
+
             }
         },
         buttons: {
-            'Enregistrer': function() {
+            'Enregistrer': function () {
                 // ne rien faire puisque la validation se fait déjà par les attributs HTML
             },
-            'Annuler': function() {
+            'Annuler': function () {
                 // Fermer la boîte de dialogue
                 $('#modal-edt-form').dialog('close');
             }
         },
-        close: function() {
+        close: function () {
             // Réinitialiser le formulaire
             $('#modal-edt-form form')[0].reset();
         }
     });
     // Ouvrir la boîte de dialogue
-    $('.open-edt-modal').on('click', function(e) {
+    $('.open-edt-modal').on('click', function (e) {
         e.preventDefault();
         const action = $(this).hasClass('btn-edit') ? 'edit' : 'create';
         $('#modal-edt-form')
@@ -394,4 +394,14 @@ $(function() {
             .dialog('open');
     });
     // END: Modal create edt
+
+    const iddiv = document.getElementById("error");
+    const idspan = document.getElementById("error-msg");
+
+    iddiv.addEventListener("click", function () {
+        idspan.style.display = "none";
+    });
+
 });
+
+
