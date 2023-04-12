@@ -38,17 +38,26 @@ $(function () {
      * Fonction qui fait une requete ajax pour rechercher le bon enseignant pour une matière donnée
      * @param {*} matiere le nom de la matière
      */
-    function searchEnseignantByMatiere(matiere) {
+    function searchEnseignantByMatiere(matiere, enseignant = null) {
         $.ajax({
             url: 'index.php?action=ajax&search=enseignant',
             method: 'POST',
+<<<<<<< HEAD
             data: { 'matiere': matiere.split(';')[0] }, // matiere: nom;couleur, on recherche par le nom
             success: function (response) {
+=======
+            data: {'matiere' : matiere.split(';')[0]}, // matiere: nom;couleur, on recherche par le nom
+            success: function(response) {
+                $('#form-edt-enseignant').empty();
+>>>>>>> 8eac601594e1d65be5c1d703dfc738bdb8693556
                 const obj = JSON.parse(response);
                 const data = obj.data;
                 $.each(data, function (key, value) {
                     $('#form-edt-enseignant').append('<option value="' + value + '">' + value + '</option>');
                 });
+                if (enseignant != null) {
+                    $('#form-edt-enseignant').val(enseignant);
+                }
             },
             error: function (xhr, status, error) {
                 // erreur
@@ -280,6 +289,11 @@ $(function () {
     // END: Modal create Salle
 
     // BEGIN: Modal create edt
+    // Choix du prof lorsqu'on choisi une matière
+    $('#form-edt-matiere').on('change', function () {
+        // faire une requete ajax pour obtenir les enseignants
+        searchEnseignantByMatiere($(this).val());
+    });
     $('#modal-edt-form').dialog({
         autoOpen: false,
         modal: true,
@@ -329,6 +343,7 @@ $(function () {
             date = date.getFullYear() + '-' + month + '-' + day;
             $('#form-edt-date').val(date);
             $('#form-edt-date').prop('readonly', true);
+<<<<<<< HEAD
             // Choix du prof lorsqu'on choisi une matière
             $('#form-edt-matiere').on('change', function () {
                 // vide le select
@@ -336,8 +351,13 @@ $(function () {
                 // faire une requete ajax pour obtenir les enseignants
                 searchEnseignantByMatiere($(this).val());
             });
+=======
+            // vide le select des enseignants
+            $('#form-edt-enseignant').empty();
+>>>>>>> 8eac601594e1d65be5c1d703dfc738bdb8693556
             // si l'action est un edit, charger le modal form avec les données issues du tr contenant le boutton cliqué
             if ($(this).data('action') == 'edit') {
+                let enseignant = $(this).data('enseignant');
                 // faire une requete ajax pour obtenir les infos de l'edt selectionné
                 $.ajax({
                     url: 'index.php?action=ajax&search=edt',
@@ -353,12 +373,12 @@ $(function () {
                         const data = obj.data;
                         $('#form-edt-matiere').val(data.matiere);
                         $('#form-edt-type').val(data.type);
-                        searchEnseignantByMatiere(data.matiere); // recherche enseignant
-                        $('#form-edt-enseignant').val(data.enseignant);
+                        searchEnseignantByMatiere(data.matiere, enseignant); // recherche d'enseignant par matiere
                         $('#form-edt-salle').val(data.salle);
                         $('#form-edt-hdebut').val(data.hdebut);
                         $('#form-edt-hfin').val(data.hfin);
                         $('#form-edt-date').val(data.date);
+                        // checker les checkbox des groupes
                         $.each(data.groupes, function (key, value) {
                             $('#form-edt-groupe-' + (value + 1)).prop('checked', true);
                         });
@@ -367,7 +387,6 @@ $(function () {
                         // TODO: afficher un message d'erreur
                     }
                 });
-
             }
         },
         buttons: {
@@ -388,9 +407,14 @@ $(function () {
     $('.open-edt-modal').on('click', function (e) {
         e.preventDefault();
         const action = $(this).hasClass('btn-edit') ? 'edit' : 'create';
+        let enseignant = '';
+        if (action == 'edit') {
+            enseignant = $(e.target).parent().parent().children('.edt-enseignant').text();
+        }
         $('#modal-edt-form')
             .data('url', $(this).attr('href'))
             .data('action', action)
+            .data('enseignant', enseignant)
             .dialog('open');
     });
     // END: Modal create edt
