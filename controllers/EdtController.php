@@ -61,6 +61,22 @@ $filename = WEBROOT . '/data/edt/' . $get['semaine'] . '.json';
 // ouverture du fichier
 $edt = json_decode(file_get_contents($filename), true);
 
+/**
+ * Fonction qui pré-rempli l'emploi du temps avec les slots fusionnés
+ * @param $groupes
+ * @param $edt
+ */
+function fill($groupes, &$edt)
+{
+    global $hdeb, $hfin, $data, $jour;
+    foreach ($groupes as $g) {
+        for ($h = $hdeb; $h < $hfin; $h += 900) {
+            $edt[date('H:i', $h)][$jour][$g] = $data;
+            $edt[date('H:i', $h)][$jour][$g]['fusion'] = true;
+        }
+    }
+}
+
 if ($_GET['action'] === 'edt-delete') { // si on veut supprimer un slot
     $edt = deleteEdt($edt, $get['heure'], ($get['jour']-1), ($get['groupe']-1));
 } else {
@@ -74,6 +90,7 @@ if ($_GET['action'] === 'edt-delete') { // si on veut supprimer un slot
         'form-edt-hfin',
         'form-edt-date'
     ];
+
     $post = sanitizeAndCheck($_POST, $postDataKey);
     $hdeb = strtotime($post['form-edt-hdebut']);
     $hfin = strtotime($post['form-edt-hfin']);
@@ -115,13 +132,6 @@ if ($_GET['action'] === 'edt-delete') { // si on veut supprimer un slot
             };
         }
     }
-    
-    // pré-remplir avec fusion pour indiquer les slots issue d'une fusion de ligne ou de colonne
-    foreach ($groupes as $g) { 
-        for ($h = $hdeb; $h < $hfin; $h += 900) {
-            $edt[date('H:i', $h)][$jour][$g]['fusion'] = true;
-        }
-    }
 
     // sectionner la séquence de groupe si elle n'est pas continue pour faciliter l'affichage
     // il faut que l'indice du groupe est égale à la première valeur de 'groupes' pour bien afficher
@@ -130,36 +140,51 @@ if ($_GET['action'] === 'edt-delete') { // si on veut supprimer un slot
     if([0, 2, 3] === $groupes) { // split 0,2,3 en 0 et 2,3
         // 0
         $data['groupes'] = [0];
-        $edt[$post['form-edt-hdebut']][$get['jour'] - 1][0] = $data;
+        fill($data['groupes'], $edt); // remplir l'emploi du temps, avec le bon groupe et avec ['fusion' => true]
+        // on remet le premier slot sans ['fusion' => true] car c'est le premier slot et il n'a pas besoin d'être fusionné
+        $edt[$post['form-edt-hdebut']][$get['jour'] - 1][0]["fusion"] = false; 
         // 2,3
         $data['groupes'] = [2, 3];
-        $edt[$post['form-edt-hdebut']][$get['jour'] - 1][2] = $data;            
+        fill($data['groupes'], $edt);
+        $edt[$post['form-edt-hdebut']][$get['jour'] - 1][2]["fusion"] = false;
     } else if([0, 1, 3] === $groupes) { // split 0,1,3 en 0,1 et 3
         // 0,1
         $data['groupes'] = [0, 1];
-        $edt[$post['form-edt-hdebut']][$get['jour'] - 1][0] = $data;
+        fill($data['groupes'], $edt);
+        $edt[$post['form-edt-hdebut']][$get['jour'] - 1][0]["fusion"] = false;
         // 3
         $data['groupes'] = [3];
-        $edt[$post['form-edt-hdebut']][$get['jour'] - 1][3] = $data;
+        fill($data['groupes'], $edt);
+        $edt[$post['form-edt-hdebut']][$get['jour'] - 1][3]["fusion"] = false;
     } else if([0, 2] === $groupes) { // split 0 et 2
         $data['groupes'] = [0];
-        $edt[$post['form-edt-hdebut']][$get['jour'] - 1][0] = $data;
+        fill($data['groupes'], $edt);
+        $edt[$post['form-edt-hdebut']][$get['jour'] - 1]["fusion"] = false;
+
         $data['groupes'] = [2];
-        $edt[$post['form-edt-hdebut']][$get['jour'] - 1][2] = $data;
+        fill($data['groupes'], $edt);
+        $edt[$post['form-edt-hdebut']][$get['jour'] - 1][2]["fusion"] = false;
     } else if([1, 3] === $groupes) { // split 1 et 3
-        $data['groupes'] = [1];    
-        $edt[$post['form-edt-hdebut']][$get['jour'] - 1][1] = $data;
+        $data['groupes'] = [1];   
+        fill($data['groupes'], $edt); 
+        $edt[$post['form-edt-hdebut']][$get['jour'] - 1][1]["fusion"] = false;
+
         $data['groupes'] = [3];
-        $edt[$post['form-edt-hdebut']][$get['jour'] - 1][3] = $data;
+        fill($data['groupes'], $edt);
+        $edt[$post['form-edt-hdebut']][$get['jour'] - 1][3]["fusion"] = false;
     } else if([0, 3] === $groupes) { // split 0 et 3
         $data['groupes'] = [0];  
-        $edt[$post['form-edt-hdebut']][$get['jour'] - 1][0] = $data;
+        fill($data['groupes'], $edt);
+        $edt[$post['form-edt-hdebut']][$get['jour'] - 1][0]["fusion"] = false;
+
         $data['groupes'] = [3];  
-        $edt[$post['form-edt-hdebut']][$get['jour'] - 1][3] = $data;
+        fill($data['groupes'], $edt);
+        $edt[$post['form-edt-hdebut']][$get['jour'] - 1][3]["fusion"] = false;
     } else { // par defaut
         $data['groupes'] = $groupes;
+        fill($data['groupes'], $edt);
         // $groupes[0] car c'est l'ordre trié des groupes et on veut le premier
-        $edt[$post['form-edt-hdebut']][$get['jour'] - 1][$groupes[0]] = $data;
+        $edt[$post['form-edt-hdebut']][$get['jour'] - 1][$groupes[0]]["fusion"] = false;
     }
 }
 
