@@ -136,7 +136,6 @@ if ($_GET['action'] === 'edt-delete') { // si on veut supprimer un slot
     // sectionner la séquence de groupe si elle n'est pas continue pour faciliter l'affichage
     // il faut que l'indice du groupe est égale à la première valeur de 'groupes' pour bien afficher
     // array1 === array2: vérifie si les valeurs sont les mêmes et dans le même ordre
-    // on remet $data avec le bon groupe et sans ['fusion' => true] car c'est le premier slot
     if([0, 2, 3] === $groupes) { // split 0,2,3 en 0 et 2,3
         // 0
         $data['groupes'] = [0];
