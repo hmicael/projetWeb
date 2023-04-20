@@ -106,60 +106,60 @@ $(function () {
     // END: dialog confirm delete
 
     // BEGIN: Modal utilisateur
-    $('#modal-user-form').dialog({
-        autoOpen: false,
-        modal: true,
-        resizable: false,
-        width: 400,
-        height: 500,
-        open: function () {
-            // Faire en sorte que le button généré par le modal soit le boutton de submit du formulaire
-            // et que le formulaire soit celui du modal
-            $('div.ui-dialog-buttonpane.ui-widget-content.ui-helper-clearfix > div > button:nth-child(1)').attr('type', 'submit');
-            $('div.ui-dialog-buttonpane.ui-widget-content.ui-helper-clearfix > div > button:nth-child(1)').attr('form', 'user-form');
-            // Modifier la trajectoire de l'action
-            $('#user-form').attr('action', $(this).data('url'));
-            // si l'action est un edit, charger le modal form avec les données issues du tr contenant le boutton cliqué
-            if ($(this).data('action') == 'edit') {
-                const tr = $(this).data('tr');
-                $('#nom-user').val(tr.children()[1].innerText);
-                $('#prenom').val(tr.children()[2].innerText);
-                $('#email').val(tr.children()[3].innerText);
-                $('#email').attr('readonly', true); // l'email n'est plus modifiable
-                $('#role').val(tr.children()[4].innerText);
-            } else {
-                $('#email').attr('readonly', false);
-            }
-            // check si les mots de passe correspondent
-            $('#confirm-password').on('keyup', function () {
-                if ($(this).val() != $('#password').val()) {
-                    $('div.ui-dialog-buttonpane.ui-widget-content.ui-helper-clearfix > div > button:nth-child(1)').attr('disabled', true);
-                    $('#password-not-match').show();
-                } else {
-                    $('div.ui-dialog-buttonpane.ui-widget-content.ui-helper-clearfix > div > button:nth-child(1)').attr('disabled', false);
-                    $('#password-not-match').hide();
-                }
-            });
-        },
-        buttons: {
-            'Enregistrer': function () {
-                // ne rien faire puisque la validation se fait déjà par les attributs HTML
-            },
-            'Annuler': function () {
-                // Fermer la boîte de dialogue
-                $('#modal-user-form').dialog('close');
-            }
-        },
-        close: function () {
-            // Réinitialiser le formulaire
-            $('#modal-user-form form')[0].reset();
-        }
-    });
+    // $('#modal-user-form').dialog({
+    //     autoOpen: false,
+    //     modal: true,
+    //     resizable: false,
+    //     width: 400,
+    //     height: 500,
+    //     open: function () {
+    //         // Faire en sorte que le button généré par le modal soit le boutton de submit du formulaire
+    //         // et que le formulaire soit celui du modal
+    //         $('div.ui-dialog-buttonpane.ui-widget-content.ui-helper-clearfix > div > button:nth-child(1)').attr('type', 'submit');
+    //         $('div.ui-dialog-buttonpane.ui-widget-content.ui-helper-clearfix > div > button:nth-child(1)').attr('form', 'user-form');
+    //         // Modifier la trajectoire de l'action
+    //         $('#user-form').attr('action', $(this).data('url'));
+    //         // si l'action est un edit, charger le modal form avec les données issues du tr contenant le boutton cliqué
+    //         if ($(this).data('action') == 'edit') {
+    //             const tr = $(this).data('tr');
+    //             $('#nom-user').val(tr.children()[1].innerText);
+    //             $('#prenom').val(tr.children()[2].innerText);
+    //             $('#email').val(tr.children()[3].innerText);
+    //             $('#email').attr('readonly', true); // l'email n'est plus modifiable
+    //             $('#role').val(tr.children()[4].innerText);
+    //         } else {
+    //             $('#email').attr('readonly', false);
+    //         }
+    //         // check si les mots de passe correspondent
+    //         $('#confirm-password').on('keyup', function () {
+    //             if ($(this).val() != $('#password').val()) {
+    //                 $('div.ui-dialog-buttonpane.ui-widget-content.ui-helper-clearfix > div > button:nth-child(1)').attr('disabled', true);
+    //                 $('#password-not-match').show();
+    //             } else {
+    //                 $('div.ui-dialog-buttonpane.ui-widget-content.ui-helper-clearfix > div > button:nth-child(1)').attr('disabled', false);
+    //                 $('#password-not-match').hide();
+    //             }
+    //         });
+    //     },
+    //     buttons: {
+    //         'Enregistrer': function () {
+    //             // ne rien faire puisque la validation se fait déjà par les attributs HTML
+    //         },
+    //         'Annuler': function () {
+    //             // Fermer la boîte de dialogue
+    //             $('#modal-user-form').dialog('close');
+    //         }
+    //     },
+    //     close: function () {
+    //         // Réinitialiser le formulaire
+    //         $('#modal-user-form form')[0].reset();
+    //     }
+    // });
 
-    // Ouvrir la boîte de dialogue
-    $('.open-user-modal').on('click', function (e) {
-        callbackClickButtonModal(e, '#modal-user-form')
-    });
+    // // Ouvrir la boîte de dialogue
+    // $('.open-user-modal').on('click', function (e) {
+    //     callbackClickButtonModal(e, '#modal-user-form')
+    // });
     // END: Modal create utilisateur
 
     // BEGIN: Modal matiere
@@ -216,10 +216,13 @@ $(function () {
             // si l'action est un edit, charger le modal form avec les données issues du tr contenant le boutton cliqué
             if ($(this).data('action') == 'edit') {
                 const tr = $(this).data('tr');
+                console.log(tr.children()[2].innerText);
                 $('#nom-enseignant').val(tr.children()[1].innerText);
                 if (tr.children()[2].innerText == 'Oui') {
+                    $('#referent-radio-non').removeAttr('checked');
                     $('#referent-radio-oui').attr('checked', 'checked');
                 } else {
+                    $('#referent-radio-oui').removeAttr('checked');
                     $('#referent-radio-non').attr('checked', 'checked');
                 }
             }
