@@ -13,5 +13,10 @@
         "nom": "BD Miage",
         "referent": "Waller",
         "couleur": "#23d13880"
+    },
+    {
+        "nom": "Comptabilit\u00e9",
+        "referent": "Mbianga",
+        "couleur": "#979fd880"
     }
 ]

@@ -39,7 +39,7 @@ function sanitizeAndCheck(array $data, $dataKey) {
  */
 function checkUnique($uniqueValue, $key, array $data, int $tabs) {
     foreach ($data as $value) {
-        if ($value[$key] == $uniqueValue) {
+        if (strtolower($value[$key]) == strtolower($uniqueValue)) {
             $_SESSION['error-msg'] = "La valeur $uniqueValue existe déjà";
             // redirection vers la page d'administration avec un message d'erreur dans l'onglet correspondant $tabs
             header('Location: index.php?action=admin#tabs-' . $tabs);
