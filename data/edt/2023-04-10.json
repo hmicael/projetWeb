@@ -1,0 +1,64 @@
+{
+    "08:00": [
+        [
+            {
+                "type": "TD",
+                "matiere": "Web;#c6060680",
+                "enseignant": "David Rei",
+                "salle": "E205",
+                "date": "2023-04-10",
+                "hdebut": "08:00",
+                "hfin": "08:15",
+                "groupes": [
+                    0,
+                    1
+                ],
+                "fusion": false
+            },
+            {
+                "type": "TD",
+                "matiere": "Web;#c6060680",
+                "enseignant": "David Rei",
+                "salle": "E205",
+                "date": "2023-04-10",
+                "hdebut": "08:00",
+                "hfin": "08:15",
+                "groupes": [
+                    0,
+                    1
+                ],
+                "fusion": true
+            }
+        ]
+    ],
+    "09:15": {
+        "1": {
+            "1": {
+                "type": "Amphi",
+                "matiere": "BD Miage;#23d13880",
+                "enseignant": "Waller",
+                "salle": "D201",
+                "date": "2023-04-11",
+                "hdebut": "09:15",
+                "hfin": "09:30",
+                "groupes": [
+                    1
+                ],
+                "fusion": false
+            },
+            "3": {
+                "type": "Amphi",
+                "matiere": "BD Miage;#23d13880",
+                "enseignant": "Waller",
+                "salle": "D201",
+                "date": "2023-04-11",
+                "hdebut": "09:15",
+                "hfin": "09:30",
+                "groupes": [
+                    3
+                ],
+                "fusion": false
+            }
+        }
+    }
+}

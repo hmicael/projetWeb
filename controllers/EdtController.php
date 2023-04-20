@@ -191,5 +191,5 @@ if ($_GET['action'] === 'edt-delete') { // si on veut supprimer un slot
 file_put_contents($filename, json_encode($edt, JSON_PRETTY_PRINT));
 
 // redirection
-header('Location: index.php?action=visualiser');
+header('Location: index.php?action=visualiser&semaine=' . $get['semaine']);
 exit();
