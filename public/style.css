@@ -120,8 +120,6 @@ body {
     right: 10px;
 }
 
-
-
 header {
     background-color: #63003C;
     color: #fff;
@@ -290,7 +288,6 @@ body>div:nth-child(9)>div.ui-dialog-titlebar.ui-corner-all.ui-widget-header.ui-h
     text-align: center;
 }
 
-
 .fa-chevron-left,
 .fa-chevron-right {
     border: 1px solid #63003C;
@@ -305,8 +302,6 @@ body>div:nth-child(9)>div.ui-dialog-titlebar.ui-corner-all.ui-widget-header.ui-h
     border-radius: 4px;
     transition: background-color 0.3s ease;
 }
-
-
 
 .semaine-nav i:hover {
     background-color: #63003C;
@@ -337,9 +332,14 @@ th,
 td {
     border: 1px solid black;
     border-collapse: collapse;
+    padding: 7px;
 
 }
 
+#edt-table {
+    width: 100%;
+    overflow-x: scroll;
+}
 .success-highlight {
     background-color: rgba(99, 0, 60, 0.3);
 }
