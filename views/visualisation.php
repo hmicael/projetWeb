@@ -44,7 +44,6 @@ echo '</nav>';
                     <option value="TD">TD</option>
                     <option value="TP">TP</option>
                     <option value="Soutenance">Soutenance</option>
-                    <option value="Amphi">Amphi</option>
                 </select>
             </div>
             <div>
