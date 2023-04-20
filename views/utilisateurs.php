@@ -62,9 +62,9 @@
                     foreach ($utilisateur as $key2 => $value) {
                         if ($key2 != 'password') { // ne pas afficher le mdp
                             echo '<td>';
-                            if ($key2 == 'email') {
+                            if ($key2 == 'email') { // afficher l'email comme un lien
                                 echo '<a href="mailto:' . $value . '">' . $value . '</a>';
-                            } else {
+                            } else { // afficher les autres valeurs
                                 echo $value;
                             }
                             echo '</td>';
@@ -72,7 +72,7 @@
                     }
                     echo '<td class="action-buttons">';
                     echo '<a href="index.php?action=admin&edit=utilisateurs&id=' . $id . '" class="btn btn-edit open-user-modal">Modifier <i class="fa-solid fa-pen-to-square"></i></a>';
-                    if ($value != 'responsable') {
+                    if ($utilisateur['nom'] != $_SESSION['nom'] && $utilisateur['prenom'] != $_SESSION['prenom']) { // ne pas supprimer l'utilisateur connecté
                         echo '<a href="index.php?action=admin&delete=utilisateurs&id=' . $id . '" class="btn btn-delete">Supprimer <i class="fa-solid fa-trash"></i></a>';
                     }
                     echo '</td>';
