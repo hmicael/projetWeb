@@ -19,5 +19,19 @@
         "password": "$2y$10$KlY25QAokzybMJgZlMl12O8mtEW70ji6dKWdHHuXCI5LH65AYVxYW",
         "email": "sandrine.delahaye@upsd.fr",
         "role": "Responsable"
+    },
+    "4": {
+        "nom": "COSTANTIN",
+        "prenom": "SAMUEL",
+        "password": "$2y$10$6vbCbacORuCfYLPUnggiBO\/H6W8TTuRBS\/rf.1EXgalsPn9k7R\/d6",
+        "email": "sam.const@upsd.fr",
+        "role": "Coordinateur"
+    },
+    "5": {
+        "nom": "LILI",
+        "prenom": "Raj",
+        "password": "$2y$10$dvCws7JHqgi0XXiDxn3qKuDpik\/Xm9I50qzOZe8nLcVEV9ECYZtBq",
+        "email": "liantsoa.rajaonah@upsd.fr",
+        "role": "Responsable"
     }
 }

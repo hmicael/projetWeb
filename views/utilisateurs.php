@@ -71,8 +71,13 @@
                         }
                     }
                     echo '<td class="action-buttons">';
+                    // un responsable ne peut pas modifier les informations d'un autre responsable sauf si c'est lui
+                    if (strtolower($_SESSION['role']) == 'responsable' && strtolower($utilisateur['role']) != 'responsable' || 
+                        strtolower($_SESSION['role']) == 'responsable' && strtolower($utilisateur['role']) == 'responsable' && $utilisateur['email'] == $_SESSION['email']) {
+                        
                     echo '<a href="index.php?action=admin&edit=utilisateurs&id=' . $id . '" class="btn btn-edit open-user-modal">Modifier <i class="fa-solid fa-pen-to-square"></i></a>';
-                    if ($utilisateur['nom'] != $_SESSION['nom'] && $utilisateur['prenom'] != $_SESSION['prenom']) { // ne pas supprimer l'utilisateur connecté
+                    }
+                    if (strtolower($utilisateur['role']) != 'responsable') { // ne pas supprimer le responsable
                         echo '<a href="index.php?action=admin&delete=utilisateurs&id=' . $id . '" class="btn btn-delete">Supprimer <i class="fa-solid fa-trash"></i></a>';
                     }
                     echo '</td>';
