@@ -63,16 +63,18 @@ $(function () {
     /**
      * Fonction appelée lorsqu'on clique sur un boutton qui est censé ouvrir un modal
      * @param {*} e c'est l'event
-     * @param {*} selector le selecteur du modal
+     * @param {*} modalSelector le selecteur du modal
      */
-    function callbackClickButtonModal(e, selector) {
+    function callbackClickButtonModal(e, modalSelector) {
         e.preventDefault(); // empecher le comportement par défaut du boutton
         const action = $(e.currentTarget).hasClass('btn-edit') ? 'edit' : 'create'; // si le boutton a la classe btn-edit, on est en mode edit
-        $(selector)
+        $(modalSelector)
             .data('url', $(e.currentTarget).attr('href')) // on stocke l'url dans le modal
             .data('action', action) // on stocke l'action dans le modal
             .data('tr', $(e.currentTarget).parent().parent()) // on stocke le tr dans le modal
             .dialog('open'); // on ouvre le modal
+        let formSelector = modalSelector.replace(/#modal-/, ''); // on enlève le #modal- pour avoir le selecteur du form
+        document.getElementById(formSelector).reset(); // on reset le form
     }
 
 
