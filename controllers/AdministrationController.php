@@ -151,7 +151,7 @@ if(isset($_GET['create'])) {
             checkUnique($data['nom'], 'nom', $matieres, $tabs);
             $matieres[] = array(
                 'nom' => ucfirst($data['nom']),
-                'referent' => ucfirst($data['referent']),
+                'referent' => ucfirst(str_replace('_', ' ', $data['referent'])), // Remplace les _ par des espaces
                 'couleur' => $data['couleur'] . '80' // 80 pour la transparence
             );
             $jsonMatieres = json_encode($matieres, JSON_PRETTY_PRINT);
@@ -213,7 +213,7 @@ if(isset($_GET['edit'])) {
             $data = sanitizeAndCheck($_POST, ['nom', 'referent', 'couleur']);
             $matieres[$id] = array(
                 'nom' => ucfirst($data['nom']),
-                'referent' => ucfirst($data['referent']),
+                'referent' => ucfirst(str_replace('_', ' ', $data['referent'])), // Remplace les _ par des espaces
                 'couleur' => $data['couleur'] . '80' // 80 pour la transparence
             );
             file_put_contents(WEBROOT . '/data/matieres.json', json_encode($matieres, JSON_PRETTY_PRINT));

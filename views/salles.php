@@ -34,8 +34,8 @@
                             echo '<td>' . ucfirst($value) . '</td>';
                         }
                         echo '<td class="action-buttons">';
-                            echo '<a href="index.php?action=admin&edit=salles&id=' . $id . '" class="btn btn-edit open-salle-modal">Modifier <i class="fa-solid fa-pen-to-square"></i></a>';
-                            echo '<a href="index.php?action=admin&delete=salles&id=' . $id . '" class="btn btn-delete">Supprimer <i class="fa-solid fa-trash"></i></a>';
+                            echo '<a href="index.php?action=admin&edit=salles&id=' . $id . '" class="btn-edit open-salle-modal">Modifier <i class="fa-solid fa-pen-to-square"></i></a>';
+                            echo '<a href="index.php?action=admin&delete=salles&id=' . $id . '" class="btn-delete">Supprimer <i class="fa-solid fa-trash"></i></a>';
                         echo '</td>';
                     echo '</tr>';
                 }

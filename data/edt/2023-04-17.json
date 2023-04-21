@@ -60,5 +60,22 @@
                 "fusion": false
             }
         }
+    ],
+    "09:00": [
+        {
+            "2": {
+                "type": "Cours",
+                "matiere": "BD;#0874e780",
+                "enseignant": "Waller",
+                "salle": "D201",
+                "date": "2023-04-17",
+                "hdebut": "09:00",
+                "hfin": "09:15",
+                "groupes": [
+                    2
+                ],
+                "fusion": false
+            }
+        }
     ]
 }

@@ -1,6 +1,6 @@
 <h1>Liste des utilisateurs :</h1>
 <div class="action">
-    <a id="create-user-button" href="index.php?action=admin&create=utilisateurs" class="btn btn-add open-user-modal"><i class="fa-solid fa-plus"></i></a>
+    <a id="create-user-button" href="index.php?action=admin&create=utilisateurs" class="btn-add open-user-modal"><i class="fa-solid fa-plus"></i></a>
 </div>
 <!-- BEGIN: Modal -->
 <section id="modal-user-form" title="Enregister un utilisateur" class="modal">
@@ -75,10 +75,10 @@
                     if (strtolower($_SESSION['role']) == 'responsable' && strtolower($utilisateur['role']) != 'responsable' || 
                         strtolower($_SESSION['role']) == 'responsable' && strtolower($utilisateur['role']) == 'responsable' && $utilisateur['email'] == $_SESSION['email']) {
                         
-                    echo '<a href="index.php?action=admin&edit=utilisateurs&id=' . $id . '" class="btn btn-edit open-user-modal">Modifier <i class="fa-solid fa-pen-to-square"></i></a>';
+                    echo '<a href="index.php?action=admin&edit=utilisateurs&id=' . $id . '" class="btn-edit open-user-modal">Modifier <i class="fa-solid fa-pen-to-square"></i></a>';
                     }
                     if (strtolower($utilisateur['role']) != 'responsable') { // ne pas supprimer le responsable
-                        echo '<a href="index.php?action=admin&delete=utilisateurs&id=' . $id . '" class="btn btn-delete">Supprimer <i class="fa-solid fa-trash"></i></a>';
+                        echo '<a href="index.php?action=admin&delete=utilisateurs&id=' . $id . '" class="btn-delete">Supprimer <i class="fa-solid fa-trash"></i></a>';
                     }
                     echo '</td>';
                 echo '</tr>';

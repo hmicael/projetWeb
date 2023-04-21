@@ -23,9 +23,9 @@
     "4": {
         "nom": "COSTANTIN",
         "prenom": "SAMUEL",
-        "password": "$2y$10$6vbCbacORuCfYLPUnggiBO\/H6W8TTuRBS\/rf.1EXgalsPn9k7R\/d6",
+        "password": "$2y$10$iXn\/fJYCMILqe2hhEoMKyekaEC9s7DyTbRUsM5PfKM378kYFlx5CW",
         "email": "sam.const@upsd.fr",
-        "role": "Coordinateur"
+        "role": "Etudiant"
     },
     "5": {
         "nom": "RAJAONAH",
