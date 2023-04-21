@@ -1,27 +1,22 @@
-{
-    "0": {
+[
+    {
         "nom": "Web",
         "referent": "Frederic Vernier",
         "couleur": "#c6060680"
     },
-    "1": {
+    {
         "nom": "BD",
         "referent": "Waller",
         "couleur": "#0874e780"
     },
-    "2": {
+    {
         "nom": "BD Miage",
         "referent": "Waller",
         "couleur": "#23d13880"
     },
-    "3": {
+    {
         "nom": "Comptabilit\u00e9",
         "referent": "Mbianga",
         "couleur": "#979fd880"
-    },
-    "5": {
-        "nom": "Economie",
-        "referent": "Mbianga",
-        "couleur": "#4aba2c80"
     }
-}
+]

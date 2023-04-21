@@ -66,13 +66,13 @@ $(function () {
      * @param {*} selector le selecteur du modal
      */
     function callbackClickButtonModal(e, selector) {
-        e.preventDefault();
-        const action = $(e.target).hasClass('btn-edit') ? 'edit' : 'create';
+        e.preventDefault(); // empecher le comportement par défaut du boutton
+        const action = $(e.currentTarget).hasClass('btn-edit') ? 'edit' : 'create'; // si le boutton a la classe btn-edit, on est en mode edit
         $(selector)
-            .data('url', $(e.target).attr('href'))
-            .data('action', action)
-            .data('tr', $(e.target).parent().parent())
-            .dialog('open');
+            .data('url', $(e.currentTarget).attr('href')) // on stocke l'url dans le modal
+            .data('action', action) // on stocke l'action dans le modal
+            .data('tr', $(e.currentTarget).parent().parent()) // on stocke le tr dans le modal
+            .dialog('open'); // on ouvre le modal
     }
 
 
@@ -391,7 +391,7 @@ $(function () {
         const action = $(this).hasClass('btn-edit') ? 'edit' : 'create';
         let enseignant = '';
         if (action === 'edit') {
-            enseignant = $(e.target).parent().parent().children('.edt-enseignant').text();
+            enseignant = $(e.currentTarget).parent().parent().children('.edt-enseignant').text();
         }
         $('#modal-edt-form')
             .data('url', $(this).attr('href'))

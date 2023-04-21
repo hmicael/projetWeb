@@ -28,10 +28,10 @@
         "role": "Etudiant"
     },
     "5": {
-        "nom": "RAJAONAH",
-        "prenom": "Liantsoa",
+        "nom": "Responsable1",
+        "prenom": "Responsable1",
         "password": "$2y$10$dvCws7JHqgi0XXiDxn3qKuDpik\/Xm9I50qzOZe8nLcVEV9ECYZtBq",
-        "email": "liantsoa.rajaonah@upsd.fr",
+        "email": "resp.1@upsd.fr",
         "role": "Responsable"
     }
 }

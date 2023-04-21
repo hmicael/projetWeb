@@ -68,7 +68,8 @@ $enseignants = json_decode(file_get_contents(WEBROOT . '/data/enseignants.json')
 $matieres = json_decode(file_get_contents(WEBROOT . '/data/matieres.json'), true);
 $salles = json_decode(file_get_contents(WEBROOT . '/data/salles.json'), true);
 $tabs = 1; // correspond à l'id du tabs dans l'affichage
-
+// echo '<pre>';
+// var_dump($_REQUEST);exit;
 // Suppression
 if(isset($_GET['delete'])) {
     if (! $_GET['id']) {
