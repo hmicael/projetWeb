@@ -144,15 +144,17 @@ echo '</nav>';
                                     echo $edt[$hDeb][$jour][$groupe]['salle'] . '<br><br>';
                                     echo $edt[$hDeb][$jour][$groupe]['hdebut'] . ' à ' .  $edt[$hDeb][$jour][$groupe]['hfin'] . '<br>';
                                     echo '<br>';
-                                    // boutton edit
-                                    echo '<a href="index.php?action=edt-edit&heure='.
+                                    if($_SESSION['role'] != 'etudiant') {
+                                        // boutton edit
+                                        echo '<a href="index.php?action=edt-edit&heure='.
                                         $hDeb .'&jour=' . ($jour+1) . '&semaine=' . $lundiDeLaSemaine .
                                         '&groupe=' . ($groupe+1) . '" class="btn-edit open-edt-modal"><i class="fa-solid fa-pen-to-square"></i></a>';
                                         
-                                    // bouton delete
-                                    echo '<a href="index.php?action=edt-delete&heure='.
+                                        // bouton delete
+                                        echo '<a href="index.php?action=edt-delete&heure='.
                                         $hDeb .'&jour=' . ($jour+1) . '&semaine=' . $lundiDeLaSemaine .
                                         '&groupe=' . ($groupe+1) . '" class="btn-delete delete-modal"><i class="fa-solid fa-trash"></a>';
+                                    }
                                 echo '</td>';                 
                             } else {
                                 // si le slot est vide
