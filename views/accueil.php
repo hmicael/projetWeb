@@ -1,7 +1,7 @@
 <?php ob_start(); ?>
 <marquee class="marque">Bienvenu.e <?= $_SESSION['prenom'] . ' ' . $_SESSION['nom'] . ' - ' . ucfirst($_SESSION['role']) ?></marquee>
 <div id="acceuil">
-    <p>Bienvenue</p>
+    <p>Bienvenue.e</p>
     <ul>
         <li><a href="index.php?action=visualiser">Visualiser</a></li>
             <?php if ($_SESSION['role'] == 'responsable') {

@@ -170,6 +170,7 @@ if(isset($_GET['create'])) {
             break;
         case 'salles':
             $tabs = 4;
+            
             $data = sanitizeAndCheck($_POST, ['nom']);
             checkUnique($data['nom'], 'nom', $salles, $tabs);
             $salles[] = array(
