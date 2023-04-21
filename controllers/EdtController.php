@@ -112,7 +112,7 @@ if ($_GET['action'] === 'edt-delete') { // si on veut supprimer un slot
     $data = [
         "type" => $post['form-edt-type'],
         "matiere" => $post['form-edt-matiere'],
-        "enseignant" => $post['form-edt-enseignant'],
+        "enseignant" => str_replace('_', ' ', $post['form-edt-enseignant']),
         "salle" => $post['form-edt-salle'],
         "date" => $post['form-edt-date'],
         "hdebut" => $post['form-edt-hdebut'],

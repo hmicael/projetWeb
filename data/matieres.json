@@ -18,5 +18,10 @@
         "nom": "Comptabilit\u00e9",
         "referent": "Mbianga",
         "couleur": "#979fd880"
+    },
+    {
+        "nom": "Ds",
+        "referent": "Waller",
+        "couleur": "#c1818180"
     }
 ]
