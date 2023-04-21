@@ -5,25 +5,26 @@
  * @param array $data
  * @return
  */
-function sanitizeAndCheck(array $data, $dataKey) {
+function sanitizeAndCheck(array $data, $dataKey)
+{
     $sanitizedData = [];
     foreach ($dataKey as $key) {
-        if (! isset($data[$key])) {
+        if (!isset($data[$key])) {
             // si une donnée obligatoire est absent -> redirection
             echo json_encode(
                 ['code' => 500, 'status' => 'Bad Request', 'message' => "$key obligatoire"],
                 JSON_PRETTY_PRINT
             );
             exit();
-        } else {  
-            if (! is_array($data[$key])) {
+        } else {
+            if (!is_array($data[$key])) {
                 $sanitizedData[$key] = htmlspecialchars($data[$key]);
             } else {
                 $sanitizedData[$key] = sanitizeAndCheck($data[$key], array_keys($data[$key]));
             }
         }
     }
-    
+
     return $sanitizedData;
 }
 
@@ -31,7 +32,7 @@ function sanitizeAndCheck(array $data, $dataKey) {
 if ($_GET['search'] === 'edt') {
     $data = sanitizeAndCheck($_POST, ['heure', 'jour', 'groupe', 'semaine']);
     $filename = WEBROOT . '/data/edt/' . $data['semaine'] . '.json';
-    if (! file_exists($filename)) {
+    if (!file_exists($filename)) {
         // si le fichier n'existe pas, on renvoi un erreur
         echo json_encode(
             ['code' => 404, 'status' => 'Not Found', 'message' => 'L\'emploi du temps n\'existe pas'],

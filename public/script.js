@@ -15,12 +15,11 @@ $(function () {
         return '#' + hexCode(rgba[1]) + hexCode(rgba[2]) + hexCode(rgba[3]);
     }
 
-
     /**
      * Fonction qui permet d'obtenir le parametre GET d'une url
      * @param {*} parameterName le n
      * @param {*} url l'url
-     * @returns 
+     * @returns
      */
     function findGetParameter(parameterName, url) {
         let result = null,
@@ -42,7 +41,7 @@ $(function () {
         $.ajax({
             url: 'index.php?action=ajax&search=enseignant',
             method: 'POST',
-            data: { 'matiere': matiere.split(';')[0] }, // matiere: nom;couleur, on recherche par le nom
+            data: {'matiere': matiere.split(';')[0]}, // matiere: nom;couleur, on recherche par le nom
             success: function (response) {
                 $('#form-edt-enseignant').empty();
                 const obj = JSON.parse(response);
@@ -340,7 +339,7 @@ $(function () {
             dateFin.setHours(heure);
             dateFin.setMinutes(minutes + 15);
             // Conversion de la date en un nouveau format de chaîne de temps
-            const hdebPlus15 = dateFin.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+            const hdebPlus15 = dateFin.toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'});
             $('#form-edt-hfin').val(hdebPlus15);
             // set date
             const lundiSemaine = findGetParameter('semaine', $(this).data('url'));

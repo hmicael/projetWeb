@@ -35,17 +35,17 @@ body {
     text-align: center;
 }
 
-#acceuil>ul {
+#acceuil > ul {
     list-style: none;
     margin: 0;
     padding: 0;
 }
 
-#acceuil>ul>li {
+#acceuil > ul > li {
     display: inline-block;
 }
 
-#acceuil>ul>li>a {
+#acceuil > ul > li > a {
     display: inline-block;
     margin-right: 20px;
     width: 200px;
@@ -55,18 +55,17 @@ body {
     transition: background-color 0.3s ease;
 }
 
-#acceuil>ul>li>a {
+#acceuil > ul > li > a {
     color: #fff;
     text-decoration: none;
     width: 100px;
 }
 
-#acceuil>p {
+#acceuil > p {
     font-weight: bold;
     font-size: 50px;
     color: #fff;
 }
-
 
 .login-form {
     position: absolute;
@@ -157,7 +156,6 @@ header {
     cursor: pointer;
 }
 
-
 /* Fin Ajustement Nav Bar */
 
 /* Ajustement Des Boutons de Modification et de Suppression */
@@ -233,12 +231,12 @@ header {
     height: 40px;
 }
 
-body>div:nth-child(9)>div.ui-dialog-titlebar.ui-corner-all.ui-widget-header.ui-helper-clearfix.ui-draggable-handle {
+body > div:nth-child(9) > div.ui-dialog-titlebar.ui-corner-all.ui-widget-header.ui-helper-clearfix.ui-draggable-handle {
     background-color: #63003C;
     color: #fff;
 }
 
-body>div:nth-child(9)>div.ui-dialog-titlebar.ui-corner-all.ui-widget-header.ui-helper-clearfix.ui-draggable-handle>button :hover {
+body > div:nth-child(9) > div.ui-dialog-titlebar.ui-corner-all.ui-widget-header.ui-helper-clearfix.ui-draggable-handle > button :hover {
     background-color: red;
 }
 
@@ -340,6 +338,7 @@ td {
     width: 100%;
     overflow-x: scroll;
 }
+
 .success-highlight {
     background-color: rgba(99, 0, 60, 0.3);
 }
@@ -365,18 +364,18 @@ td {
     /* Couleur d'arrière-plan modal grisé personnalisée */
 }
 
-#tabs>ul>li a {
+#tabs > ul > li a {
     background-color: white;
     /* Couleur d'arrière-plan des onglets */
     color: #63003C;
 }
 
 /* Définir la couleur de la bordure de l'onglet sélectionné */
-#tabs>ul>li {
+#tabs > ul > li {
     border-color: #63003C;
 }
 
-#tabs>ul {
+#tabs > ul {
     background-color: #63003C;
 }
 
