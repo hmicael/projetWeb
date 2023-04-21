@@ -1,7 +1,9 @@
 <h1>Ajouter une salle  :</h1>
 <!-- BEGIN: Modal -->
 <div class="action">
-    <a id="create-salle-button" href="index.php?action=admin&create=salles" class="btn-add open-salle-modal"><i class="fa-solid fa-plus"></i></a>
+    <a id="create-salle-button" href="index.php?action=admin&create=salles" class="btn-add open-salle-modal">
+        <i class="fa-solid fa-plus"></i>
+    </a>
 </div>
 <section id="modal-salle-form" title="Enregister un utilisateur" class="modal">
     <form id="salle-form" action="" method="post">
@@ -34,8 +36,8 @@
                             echo '<td>' . ucfirst($value) . '</td>';
                         }
                         echo '<td class="action-buttons">';
-                            echo '<a href="index.php?action=admin&edit=salles&id=' . $id . '" class="btn btn-edit open-salle-modal">Modifier <i class="fa-solid fa-pen-to-square"></i></a>';
-                            echo '<a href="index.php?action=admin&delete=salles&id=' . $id . '" class="btn btn-delete">Supprimer <i class="fa-solid fa-trash"></i></a>';
+                            echo '<a href="index.php?action=admin&edit=salles&id=' . $id . '" class="btn-edit open-salle-modal">Modifier <i class="fa-solid fa-pen-to-square"></i></a>';
+                            echo '<a href="index.php?action=admin&delete=salles&id=' . $id . '" class="btn-delete">Supprimer <i class="fa-solid fa-trash"></i></a>';
                         echo '</td>';
                     echo '</tr>';
                 }

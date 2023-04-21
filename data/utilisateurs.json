@@ -23,15 +23,15 @@
     "4": {
         "nom": "COSTANTIN",
         "prenom": "SAMUEL",
-        "password": "$2y$10$6vbCbacORuCfYLPUnggiBO\/H6W8TTuRBS\/rf.1EXgalsPn9k7R\/d6",
+        "password": "$2y$10$iXn\/fJYCMILqe2hhEoMKyekaEC9s7DyTbRUsM5PfKM378kYFlx5CW",
         "email": "sam.const@upsd.fr",
-        "role": "Coordinateur"
+        "role": "Etudiant"
     },
     "5": {
-        "nom": "LILI",
-        "prenom": "Raj",
+        "nom": "Responsable1",
+        "prenom": "Responsable1",
         "password": "$2y$10$dvCws7JHqgi0XXiDxn3qKuDpik\/Xm9I50qzOZe8nLcVEV9ECYZtBq",
-        "email": "liantsoa.rajaonah@upsd.fr",
+        "email": "resp.1@upsd.fr",
         "role": "Responsable"
     }
 }

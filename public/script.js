@@ -66,13 +66,13 @@ $(function () {
      * @param {*} selector le selecteur du modal
      */
     function callbackClickButtonModal(e, selector) {
-        e.preventDefault();
-        const action = $(e.target).hasClass('btn-edit') ? 'edit' : 'create';
+        e.preventDefault(); // empecher le comportement par défaut du boutton
+        const action = $(e.currentTarget).hasClass('btn-edit') ? 'edit' : 'create'; // si le boutton a la classe btn-edit, on est en mode edit
         $(selector)
-            .data('url', $(e.target).attr('href'))
-            .data('action', action)
-            .data('tr', $(e.target).parent().parent())
-            .dialog('open');
+            .data('url', $(e.currentTarget).attr('href')) // on stocke l'url dans le modal
+            .data('action', action) // on stocke l'action dans le modal
+            .data('tr', $(e.currentTarget).parent().parent()) // on stocke le tr dans le modal
+            .dialog('open'); // on ouvre le modal
     }
 
 
@@ -120,7 +120,7 @@ $(function () {
             // Modifier la trajectoire de l'action
             $('#user-form').attr('action', $(this).data('url'));
             // si l'action est un edit, charger le modal form avec les données issues du tr contenant le boutton cliqué
-            if ($(this).data('action') == 'edit') {
+            if ($(this).data('action') === 'edit') {
                 const tr = $(this).data('tr');
                 $('#nom-user').val(tr.children()[1].innerText);
                 $('#prenom').val(tr.children()[2].innerText);
@@ -132,7 +132,7 @@ $(function () {
             }
             // check si les mots de passe correspondent
             $('#confirm-password').on('keyup', function () {
-                if ($(this).val() != $('#password').val()) {
+                if ($(this).val() !== $('#password').val()) {
                     $('div.ui-dialog-buttonpane.ui-widget-content.ui-helper-clearfix > div > button:nth-child(1)').attr('disabled', true);
                     $('#password-not-match').show();
                 } else {
@@ -151,14 +151,13 @@ $(function () {
             }
         },
         close: function () {
-            // Réinitialiser le formulaire
-            $('#modal-user-form form')[0].reset();
+            $('#modal-user-form').dialog('close');
         }
     });
 
     // Ouvrir la boîte de dialogue
     $('.open-user-modal').on('click', function (e) {
-        callbackClickButtonModal(e, '#modal-user-form')
+        callbackClickButtonModal(e, '#modal-user-form');
     });
     // END: Modal create utilisateur
 
@@ -174,10 +173,10 @@ $(function () {
             // Modifier la trajectoire de l'action
             $('#matiere-form').attr('action', $(this).data('url'));
             // si l'action est un edit, charger le modal form avec les données issues du tr contenant le boutton cliqué
-            if ($(this).data('action') == 'edit') {
+            if ($(this).data('action') === 'edit') {
                 const tr = $(this).data('tr');
                 $('#nom-matiere').val(tr.children()[1].innerText);
-                $('#referant-mat').val(tr.children()[2].innerText);
+                $('#referent-mat').val(tr.children()[2].innerText.replace(/ /g, '_')); // enlever les espaces
                 $('#couleur').val(convertRgbaToHex(tr.children()[3].style.backgroundColor));
             }
         },
@@ -191,14 +190,13 @@ $(function () {
             }
         },
         close: function () {
-            // Réinitialiser le formulaire
-            $('#modal-matiere-form form')[0].reset();
+            $('#modal-matiere-form').dialog('close');
         }
     });
 
     // Ouvrir la boîte de dialogue
     $('.open-matiere-modal').on('click', function (e) {
-        callbackClickButtonModal(e, '#modal-matiere-form')
+        callbackClickButtonModal(e, '#modal-matiere-form');
     });
     // END: Modal create matiere
 
@@ -214,12 +212,14 @@ $(function () {
             // Modifier la trajectoire de l'action
             $('#enseignant-form').attr('action', $(this).data('url'));
             // si l'action est un edit, charger le modal form avec les données issues du tr contenant le boutton cliqué
-            if ($(this).data('action') == 'edit') {
+            if ($(this).data('action') === 'edit') {
                 const tr = $(this).data('tr');
                 $('#nom-enseignant').val(tr.children()[1].innerText);
                 if (tr.children()[2].innerText == 'Oui') {
+                    $('#referent-radio-non').removeAttr('checked');
                     $('#referent-radio-oui').attr('checked', 'checked');
                 } else {
+                    $('#referent-radio-oui').removeAttr('checked');
                     $('#referent-radio-non').attr('checked', 'checked');
                 }
             }
@@ -234,14 +234,13 @@ $(function () {
             }
         },
         close: function () {
-            // Réinitialiser le formulaire
-            $('#modal-enseignant-form form')[0].reset();
+            $('#modal-enseignant-form').dialog('close');
         }
     });
 
     // Ouvrir la boîte de dialogue
     $('.open-enseignant-modal').on('click', function (e) {
-        callbackClickButtonModal(e, '#modal-enseignant-form')
+        callbackClickButtonModal(e, '#modal-enseignant-form');
     });
     // END: Modal create Enseignants
 
@@ -257,7 +256,7 @@ $(function () {
             // Modifier la trajectoire de l'action
             $('#salle-form').attr('action', $(this).data('url'));
             // si l'action est un edit, charger le modal form avec les données issues du tr contenant le boutton cliqué
-            if ($(this).data('action') == 'edit') {
+            if ($(this).data('action') === 'edit') {
                 const tr = $(this).data('tr');
                 $('#nom-salle').val(tr.children()[1].innerText);
             }
@@ -272,14 +271,13 @@ $(function () {
             }
         },
         close: function () {
-            // Réinitialiser le formulaire
-            $('#modal-salle-form form')[0].reset();
+            $('#modal-salle-form').dialog('close');
         }
     });
 
     // Ouvrir la boîte de dialogue
     $('.open-salle-modal').on('click', function (e) {
-        callbackClickButtonModal(e, '#modal-salle-form')
+        callbackClickButtonModal(e, '#modal-salle-form');
     });
     // END: Modal create Salle
 
@@ -329,10 +327,10 @@ $(function () {
             const lundiSemaine = findGetParameter('semaine', $(this).data('url'));
             const jour = findGetParameter('jour', $(this).data('url')) - 1;
             let date = new Date(lundiSemaine);
-            day = date.getDate() + jour;
+            let day = date.getDate() + jour;
             date.setDate(day);
             // ajout de 0 devant le mois < 10 pour avoir un format correct
-            month = date.getMonth() + 1;
+            let month = date.getMonth() + 1;
             month = month < 10 ? '0' + month : month;
             day = date.getDate() < 10 ? '0' + date.getDate() : date.getDate();
             date = date.getFullYear() + '-' + month + '-' + day;
@@ -341,7 +339,7 @@ $(function () {
             // vide le select des enseignants
             $('#form-edt-enseignant').empty();
             // si l'action est un edit, charger le modal form avec les données issues du tr contenant le boutton cliqué
-            if ($(this).data('action') == 'edit') {
+            if ($(this).data('action') === 'edit') {
                 let enseignant = $(this).data('enseignant');
                 // faire une requete ajax pour obtenir les infos de l'edt selectionné
                 $.ajax({
@@ -384,8 +382,7 @@ $(function () {
             }
         },
         close: function () {
-            // Réinitialiser le formulaire
-            $('#modal-edt-form form')[0].reset();
+            $('#modal-edt-form').dialog('close');
         }
     });
     // Ouvrir la boîte de dialogue
@@ -393,8 +390,8 @@ $(function () {
         e.preventDefault();
         const action = $(this).hasClass('btn-edit') ? 'edit' : 'create';
         let enseignant = '';
-        if (action == 'edit') {
-            enseignant = $(e.target).parent().parent().children('.edt-enseignant').text();
+        if (action === 'edit') {
+            enseignant = $(e.currentTarget).parent().parent().children('.edt-enseignant').text();
         }
         $('#modal-edt-form')
             .data('url', $(this).attr('href'))
@@ -411,7 +408,6 @@ $(function () {
         iddiv.addEventListener("click", function () {
             idspan.style.display = "none";
         });
-
     }
 });
 

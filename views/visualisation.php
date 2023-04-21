@@ -147,12 +147,12 @@ echo '</nav>';
                                     // boutton edit
                                     echo '<a href="index.php?action=edt-edit&heure='.
                                         $hDeb .'&jour=' . ($jour+1) . '&semaine=' . $lundiDeLaSemaine .
-                                        '&groupe=' . ($groupe+1) . '" class="btn btn-edit open-edt-modal"><i class="fa-solid fa-pen-to-square"></i></a>';
+                                        '&groupe=' . ($groupe+1) . '" class="btn-edit open-edt-modal"><i class="fa-solid fa-pen-to-square"></i></a>';
                                         
                                     // bouton delete
                                     echo '<a href="index.php?action=edt-delete&heure='.
                                         $hDeb .'&jour=' . ($jour+1) . '&semaine=' . $lundiDeLaSemaine .
-                                        '&groupe=' . ($groupe+1) . '" class="btn btn-delete delete-modal"><i class="fa-solid fa-trash"></a>';
+                                        '&groupe=' . ($groupe+1) . '" class="btn-delete delete-modal"><i class="fa-solid fa-trash"></a>';
                                 echo '</td>';                 
                             } else {
                                 // si le slot est vide
@@ -163,7 +163,7 @@ echo '</nav>';
                                     echo '<td>';
                                         echo '<a href="index.php?action=edt-add&heure='.
                                         $hDeb .'&jour=' . ($jour+1) . '&semaine=' . $lundiDeLaSemaine .
-                                        '&groupe=' . ($groupe+1) . '" class="btn btn-add open-edt-modal"><i class="fa-solid fa-plus"></i></a>';
+                                        '&groupe=' . ($groupe+1) . '" class="btn-add open-edt-modal"><i class="fa-solid fa-plus"></i></a>';
                                     echo '</td>';
                                 }
                             }

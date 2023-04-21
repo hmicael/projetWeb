@@ -45,8 +45,8 @@
                     echo '<td>' . $value['nom'] . '</td>';
                     echo '<td>' . $value['referent'] . '</td>';
                     echo '<td class="action-buttons">';
-                        echo '<a href="index.php?action=admin&edit=enseignants&id=' . $id . '" class="btn btn-edit open-enseignant-modal">Modifier <i class="fa-solid fa-pen-to-square"></i></a>';
-                        echo '<a href="index.php?action=admin&delete=enseignants&id=' . $id . '" class="btn btn-delete">Supprimer <i class="fa-solid fa-trash"></i></a>';
+                        echo '<a href="index.php?action=admin&edit=enseignants&id=' . $id . '" class="btn-edit open-enseignant-modal">Modifier <i class="fa-solid fa-pen-to-square"></i></a>';
+                        echo '<a href="index.php?action=admin&delete=enseignants&id=' . $id . '" class="btn-delete">Supprimer <i class="fa-solid fa-trash"></i></a>';
                     echo '</td>';
                     echo '</tr>';
                 }

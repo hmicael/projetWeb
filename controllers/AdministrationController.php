@@ -39,7 +39,7 @@ function sanitizeAndCheck(array $data, $dataKey) {
  */
 function checkUnique($uniqueValue, $key, array $data, int $tabs) {
     foreach ($data as $value) {
-        if ($value[$key] == $uniqueValue) {
+        if (strtolower($value[$key]) == strtolower($uniqueValue)) {
             $_SESSION['error-msg'] = "La valeur $uniqueValue existe déjà";
             // redirection vers la page d'administration avec un message d'erreur dans l'onglet correspondant $tabs
             header('Location: index.php?action=admin#tabs-' . $tabs);
@@ -68,7 +68,8 @@ $enseignants = json_decode(file_get_contents(WEBROOT . '/data/enseignants.json')
 $matieres = json_decode(file_get_contents(WEBROOT . '/data/matieres.json'), true);
 $salles = json_decode(file_get_contents(WEBROOT . '/data/salles.json'), true);
 $tabs = 1; // correspond à l'id du tabs dans l'affichage
-
+// echo '<pre>';
+// var_dump($_REQUEST);exit;
 // Suppression
 if(isset($_GET['delete'])) {
     if (! $_GET['id']) {
@@ -151,7 +152,7 @@ if(isset($_GET['create'])) {
             checkUnique($data['nom'], 'nom', $matieres, $tabs);
             $matieres[] = array(
                 'nom' => ucfirst($data['nom']),
-                'referent' => ucfirst($data['referent']),
+                'referent' => ucfirst(str_replace('_', ' ', $data['referent'])), // Remplace les _ par des espaces
                 'couleur' => $data['couleur'] . '80' // 80 pour la transparence
             );
             $jsonMatieres = json_encode($matieres, JSON_PRETTY_PRINT);
@@ -214,7 +215,7 @@ if(isset($_GET['edit'])) {
             $data = sanitizeAndCheck($_POST, ['nom', 'referent', 'couleur']);
             $matieres[$id] = array(
                 'nom' => ucfirst($data['nom']),
-                'referent' => ucfirst($data['referent']),
+                'referent' => ucfirst(str_replace('_', ' ', $data['referent'])), // Remplace les _ par des espaces
                 'couleur' => $data['couleur'] . '80' // 80 pour la transparence
             );
             file_put_contents(WEBROOT . '/data/matieres.json', json_encode($matieres, JSON_PRETTY_PRINT));
