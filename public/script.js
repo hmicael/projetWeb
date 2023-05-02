@@ -424,7 +424,7 @@ $(function () {
 
     if (iddiv) {
         iddiv.addEventListener("click", function () {
-            idspan.style.display = "none";
+            iddiv.style.display = "none";
         });
     }
 });

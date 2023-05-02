@@ -1,0 +1,34 @@
+{
+    "08:00": [
+        [
+            {
+                "type": "Cours",
+                "matiere": "Web;#c6060680",
+                "enseignant": "David Rei",
+                "salle": "D201",
+                "date": "2023-05-01",
+                "hdebut": "08:00",
+                "hfin": "08:15",
+                "groupes": [
+                    0,
+                    1
+                ],
+                "fusion": false
+            },
+            {
+                "type": "Cours",
+                "matiere": "Web;#c6060680",
+                "enseignant": "David Rei",
+                "salle": "D201",
+                "date": "2023-05-01",
+                "hdebut": "08:00",
+                "hfin": "08:15",
+                "groupes": [
+                    0,
+                    1
+                ],
+                "fusion": true
+            }
+        ]
+    ]
+}
