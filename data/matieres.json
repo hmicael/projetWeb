@@ -18,6 +18,7 @@
         "nom": "Comptabilit\u00e9",
         "referent": "Mbianga",
         "couleur": "#979fd880"
+<<<<<<< HEAD
     },
     {
 <<<<<<< HEAD
@@ -29,5 +30,7 @@
         "referent": "Waller",
         "couleur": "#c1818180"
 >>>>>>> 0ab6fe6ffd3aab163fc29f1bb12acf1ab5bca032
+=======
+>>>>>>> b9f86fedbdc3feebeab05714ac29c5c2ebb93fb4
     }
 ]

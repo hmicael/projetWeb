@@ -1,0 +1,678 @@
+{
+    "08:00": [
+        [
+            {
+                "type": "Cours",
+                "matiere": "Web;#c6060680",
+                "enseignant": "David Rei",
+                "salle": "D201",
+                "date": "2023-05-01",
+                "hdebut": "08:00",
+                "hfin": "08:15",
+                "groupes": [
+                    0,
+                    1
+                ],
+                "fusion": false
+            },
+            {
+                "type": "Cours",
+                "matiere": "Web;#c6060680",
+                "enseignant": "David Rei",
+                "salle": "D201",
+                "date": "2023-05-01",
+                "hdebut": "08:00",
+                "hfin": "08:15",
+                "groupes": [
+                    0,
+                    1
+                ],
+                "fusion": true
+            }
+        ]
+    ],
+    "08:45": [
+        {
+            "0": {
+                "type": "Cours",
+                "matiere": "BD Miage;#23d13880",
+                "enseignant": "Waller",
+                "salle": "D201",
+                "date": "2023-05-01",
+                "hdebut": "08:45",
+                "hfin": "12:00",
+                "groupes": [
+                    0
+                ],
+                "fusion": false
+            },
+            "3": {
+                "type": "Cours",
+                "matiere": "BD Miage;#23d13880",
+                "enseignant": "Waller",
+                "salle": "D201",
+                "date": "2023-05-01",
+                "hdebut": "08:45",
+                "hfin": "12:00",
+                "groupes": [
+                    3
+                ],
+                "fusion": false
+            },
+            "1": {
+                "type": "Soutenance",
+                "matiere": "Web;#c6060680",
+                "enseignant": "Frederic Vernier",
+                "salle": "D201",
+                "date": "2023-05-01",
+                "hdebut": "08:45",
+                "hfin": "11:15",
+                "groupes": [
+                    1
+                ],
+                "fusion": false
+            }
+        }
+    ],
+    "09:00": [
+        {
+            "0": {
+                "type": "Cours",
+                "matiere": "BD Miage;#23d13880",
+                "enseignant": "Waller",
+                "salle": "D201",
+                "date": "2023-05-01",
+                "hdebut": "08:45",
+                "hfin": "12:00",
+                "groupes": [
+                    0
+                ],
+                "fusion": true
+            },
+            "3": {
+                "type": "Cours",
+                "matiere": "BD Miage;#23d13880",
+                "enseignant": "Waller",
+                "salle": "D201",
+                "date": "2023-05-01",
+                "hdebut": "08:45",
+                "hfin": "12:00",
+                "groupes": [
+                    3
+                ],
+                "fusion": true
+            },
+            "1": {
+                "type": "Soutenance",
+                "matiere": "Web;#c6060680",
+                "enseignant": "Frederic Vernier",
+                "salle": "D201",
+                "date": "2023-05-01",
+                "hdebut": "08:45",
+                "hfin": "11:15",
+                "groupes": [
+                    1
+                ],
+                "fusion": true
+            }
+        }
+    ],
+    "09:15": [
+        {
+            "0": {
+                "type": "Cours",
+                "matiere": "BD Miage;#23d13880",
+                "enseignant": "Waller",
+                "salle": "D201",
+                "date": "2023-05-01",
+                "hdebut": "08:45",
+                "hfin": "12:00",
+                "groupes": [
+                    0
+                ],
+                "fusion": true
+            },
+            "3": {
+                "type": "Cours",
+                "matiere": "BD Miage;#23d13880",
+                "enseignant": "Waller",
+                "salle": "D201",
+                "date": "2023-05-01",
+                "hdebut": "08:45",
+                "hfin": "12:00",
+                "groupes": [
+                    3
+                ],
+                "fusion": true
+            },
+            "1": {
+                "type": "Soutenance",
+                "matiere": "Web;#c6060680",
+                "enseignant": "Frederic Vernier",
+                "salle": "D201",
+                "date": "2023-05-01",
+                "hdebut": "08:45",
+                "hfin": "11:15",
+                "groupes": [
+                    1
+                ],
+                "fusion": true
+            }
+        }
+    ],
+    "09:30": [
+        {
+            "0": {
+                "type": "Cours",
+                "matiere": "BD Miage;#23d13880",
+                "enseignant": "Waller",
+                "salle": "D201",
+                "date": "2023-05-01",
+                "hdebut": "08:45",
+                "hfin": "12:00",
+                "groupes": [
+                    0
+                ],
+                "fusion": true
+            },
+            "3": {
+                "type": "Cours",
+                "matiere": "BD Miage;#23d13880",
+                "enseignant": "Waller",
+                "salle": "D201",
+                "date": "2023-05-01",
+                "hdebut": "08:45",
+                "hfin": "12:00",
+                "groupes": [
+                    3
+                ],
+                "fusion": true
+            },
+            "1": {
+                "type": "Soutenance",
+                "matiere": "Web;#c6060680",
+                "enseignant": "Frederic Vernier",
+                "salle": "D201",
+                "date": "2023-05-01",
+                "hdebut": "08:45",
+                "hfin": "11:15",
+                "groupes": [
+                    1
+                ],
+                "fusion": true
+            }
+        }
+    ],
+    "09:45": [
+        {
+            "0": {
+                "type": "Cours",
+                "matiere": "BD Miage;#23d13880",
+                "enseignant": "Waller",
+                "salle": "D201",
+                "date": "2023-05-01",
+                "hdebut": "08:45",
+                "hfin": "12:00",
+                "groupes": [
+                    0
+                ],
+                "fusion": true
+            },
+            "3": {
+                "type": "Cours",
+                "matiere": "BD Miage;#23d13880",
+                "enseignant": "Waller",
+                "salle": "D201",
+                "date": "2023-05-01",
+                "hdebut": "08:45",
+                "hfin": "12:00",
+                "groupes": [
+                    3
+                ],
+                "fusion": true
+            },
+            "1": {
+                "type": "Soutenance",
+                "matiere": "Web;#c6060680",
+                "enseignant": "Frederic Vernier",
+                "salle": "D201",
+                "date": "2023-05-01",
+                "hdebut": "08:45",
+                "hfin": "11:15",
+                "groupes": [
+                    1
+                ],
+                "fusion": true
+            }
+        }
+    ],
+    "10:00": [
+        {
+            "0": {
+                "type": "Cours",
+                "matiere": "BD Miage;#23d13880",
+                "enseignant": "Waller",
+                "salle": "D201",
+                "date": "2023-05-01",
+                "hdebut": "08:45",
+                "hfin": "12:00",
+                "groupes": [
+                    0
+                ],
+                "fusion": true
+            },
+            "3": {
+                "type": "Cours",
+                "matiere": "BD Miage;#23d13880",
+                "enseignant": "Waller",
+                "salle": "D201",
+                "date": "2023-05-01",
+                "hdebut": "08:45",
+                "hfin": "12:00",
+                "groupes": [
+                    3
+                ],
+                "fusion": true
+            },
+            "1": {
+                "type": "Soutenance",
+                "matiere": "Web;#c6060680",
+                "enseignant": "Frederic Vernier",
+                "salle": "D201",
+                "date": "2023-05-01",
+                "hdebut": "08:45",
+                "hfin": "11:15",
+                "groupes": [
+                    1
+                ],
+                "fusion": true
+            }
+        }
+    ],
+    "10:15": [
+        {
+            "0": {
+                "type": "Cours",
+                "matiere": "BD Miage;#23d13880",
+                "enseignant": "Waller",
+                "salle": "D201",
+                "date": "2023-05-01",
+                "hdebut": "08:45",
+                "hfin": "12:00",
+                "groupes": [
+                    0
+                ],
+                "fusion": true
+            },
+            "3": {
+                "type": "Cours",
+                "matiere": "BD Miage;#23d13880",
+                "enseignant": "Waller",
+                "salle": "D201",
+                "date": "2023-05-01",
+                "hdebut": "08:45",
+                "hfin": "12:00",
+                "groupes": [
+                    3
+                ],
+                "fusion": true
+            },
+            "1": {
+                "type": "Soutenance",
+                "matiere": "Web;#c6060680",
+                "enseignant": "Frederic Vernier",
+                "salle": "D201",
+                "date": "2023-05-01",
+                "hdebut": "08:45",
+                "hfin": "11:15",
+                "groupes": [
+                    1
+                ],
+                "fusion": true
+            }
+        }
+    ],
+    "10:30": [
+        {
+            "0": {
+                "type": "Cours",
+                "matiere": "BD Miage;#23d13880",
+                "enseignant": "Waller",
+                "salle": "D201",
+                "date": "2023-05-01",
+                "hdebut": "08:45",
+                "hfin": "12:00",
+                "groupes": [
+                    0
+                ],
+                "fusion": true
+            },
+            "3": {
+                "type": "Cours",
+                "matiere": "BD Miage;#23d13880",
+                "enseignant": "Waller",
+                "salle": "D201",
+                "date": "2023-05-01",
+                "hdebut": "08:45",
+                "hfin": "12:00",
+                "groupes": [
+                    3
+                ],
+                "fusion": true
+            },
+            "1": {
+                "type": "Soutenance",
+                "matiere": "Web;#c6060680",
+                "enseignant": "Frederic Vernier",
+                "salle": "D201",
+                "date": "2023-05-01",
+                "hdebut": "08:45",
+                "hfin": "11:15",
+                "groupes": [
+                    1
+                ],
+                "fusion": true
+            }
+        }
+    ],
+    "10:45": [
+        {
+            "0": {
+                "type": "Cours",
+                "matiere": "BD Miage;#23d13880",
+                "enseignant": "Waller",
+                "salle": "D201",
+                "date": "2023-05-01",
+                "hdebut": "08:45",
+                "hfin": "12:00",
+                "groupes": [
+                    0
+                ],
+                "fusion": true
+            },
+            "3": {
+                "type": "Cours",
+                "matiere": "BD Miage;#23d13880",
+                "enseignant": "Waller",
+                "salle": "D201",
+                "date": "2023-05-01",
+                "hdebut": "08:45",
+                "hfin": "12:00",
+                "groupes": [
+                    3
+                ],
+                "fusion": true
+            },
+            "1": {
+                "type": "Soutenance",
+                "matiere": "Web;#c6060680",
+                "enseignant": "Frederic Vernier",
+                "salle": "D201",
+                "date": "2023-05-01",
+                "hdebut": "08:45",
+                "hfin": "11:15",
+                "groupes": [
+                    1
+                ],
+                "fusion": true
+            }
+        }
+    ],
+    "11:00": [
+        {
+            "0": {
+                "type": "Cours",
+                "matiere": "BD Miage;#23d13880",
+                "enseignant": "Waller",
+                "salle": "D201",
+                "date": "2023-05-01",
+                "hdebut": "08:45",
+                "hfin": "12:00",
+                "groupes": [
+                    0
+                ],
+                "fusion": true
+            },
+            "3": {
+                "type": "Cours",
+                "matiere": "BD Miage;#23d13880",
+                "enseignant": "Waller",
+                "salle": "D201",
+                "date": "2023-05-01",
+                "hdebut": "08:45",
+                "hfin": "12:00",
+                "groupes": [
+                    3
+                ],
+                "fusion": true
+            },
+            "1": {
+                "type": "Soutenance",
+                "matiere": "Web;#c6060680",
+                "enseignant": "Frederic Vernier",
+                "salle": "D201",
+                "date": "2023-05-01",
+                "hdebut": "08:45",
+                "hfin": "11:15",
+                "groupes": [
+                    1
+                ],
+                "fusion": true
+            }
+        }
+    ],
+    "11:15": [
+        {
+            "0": {
+                "type": "Cours",
+                "matiere": "BD Miage;#23d13880",
+                "enseignant": "Waller",
+                "salle": "D201",
+                "date": "2023-05-01",
+                "hdebut": "08:45",
+                "hfin": "12:00",
+                "groupes": [
+                    0
+                ],
+                "fusion": true
+            },
+            "3": {
+                "type": "Cours",
+                "matiere": "BD Miage;#23d13880",
+                "enseignant": "Waller",
+                "salle": "D201",
+                "date": "2023-05-01",
+                "hdebut": "08:45",
+                "hfin": "12:00",
+                "groupes": [
+                    3
+                ],
+                "fusion": true
+            }
+        }
+    ],
+    "11:30": [
+        {
+            "0": {
+                "type": "Cours",
+                "matiere": "BD Miage;#23d13880",
+                "enseignant": "Waller",
+                "salle": "D201",
+                "date": "2023-05-01",
+                "hdebut": "08:45",
+                "hfin": "12:00",
+                "groupes": [
+                    0
+                ],
+                "fusion": true
+            },
+            "3": {
+                "type": "Cours",
+                "matiere": "BD Miage;#23d13880",
+                "enseignant": "Waller",
+                "salle": "D201",
+                "date": "2023-05-01",
+                "hdebut": "08:45",
+                "hfin": "12:00",
+                "groupes": [
+                    3
+                ],
+                "fusion": true
+            }
+        }
+    ],
+    "11:45": [
+        {
+            "0": {
+                "type": "Cours",
+                "matiere": "BD Miage;#23d13880",
+                "enseignant": "Waller",
+                "salle": "D201",
+                "date": "2023-05-01",
+                "hdebut": "08:45",
+                "hfin": "12:00",
+                "groupes": [
+                    0
+                ],
+                "fusion": true
+            },
+            "3": {
+                "type": "Cours",
+                "matiere": "BD Miage;#23d13880",
+                "enseignant": "Waller",
+                "salle": "D201",
+                "date": "2023-05-01",
+                "hdebut": "08:45",
+                "hfin": "12:00",
+                "groupes": [
+                    3
+                ],
+                "fusion": true
+            },
+            "1": {
+                "type": "Cours",
+                "matiere": "Comptabilit\u00e9;#979fd880",
+                "enseignant": "Mbianga",
+                "salle": "D201",
+                "date": "2023-05-01",
+                "hdebut": "11:45",
+                "hfin": "12:45",
+                "groupes": [
+                    1,
+                    2
+                ],
+                "fusion": false
+            },
+            "2": {
+                "type": "Cours",
+                "matiere": "Comptabilit\u00e9;#979fd880",
+                "enseignant": "Mbianga",
+                "salle": "D201",
+                "date": "2023-05-01",
+                "hdebut": "11:45",
+                "hfin": "12:45",
+                "groupes": [
+                    1,
+                    2
+                ],
+                "fusion": true
+            }
+        }
+    ],
+    "12:00": [
+        {
+            "1": {
+                "type": "Cours",
+                "matiere": "Comptabilit\u00e9;#979fd880",
+                "enseignant": "Mbianga",
+                "salle": "D201",
+                "date": "2023-05-01",
+                "hdebut": "11:45",
+                "hfin": "12:45",
+                "groupes": [
+                    1,
+                    2
+                ],
+                "fusion": true
+            },
+            "2": {
+                "type": "Cours",
+                "matiere": "Comptabilit\u00e9;#979fd880",
+                "enseignant": "Mbianga",
+                "salle": "D201",
+                "date": "2023-05-01",
+                "hdebut": "11:45",
+                "hfin": "12:45",
+                "groupes": [
+                    1,
+                    2
+                ],
+                "fusion": true
+            }
+        }
+    ],
+    "12:15": [
+        {
+            "1": {
+                "type": "Cours",
+                "matiere": "Comptabilit\u00e9;#979fd880",
+                "enseignant": "Mbianga",
+                "salle": "D201",
+                "date": "2023-05-01",
+                "hdebut": "11:45",
+                "hfin": "12:45",
+                "groupes": [
+                    1,
+                    2
+                ],
+                "fusion": true
+            },
+            "2": {
+                "type": "Cours",
+                "matiere": "Comptabilit\u00e9;#979fd880",
+                "enseignant": "Mbianga",
+                "salle": "D201",
+                "date": "2023-05-01",
+                "hdebut": "11:45",
+                "hfin": "12:45",
+                "groupes": [
+                    1,
+                    2
+                ],
+                "fusion": true
+            }
+        }
+    ],
+    "12:30": [
+        {
+            "1": {
+                "type": "Cours",
+                "matiere": "Comptabilit\u00e9;#979fd880",
+                "enseignant": "Mbianga",
+                "salle": "D201",
+                "date": "2023-05-01",
+                "hdebut": "11:45",
+                "hfin": "12:45",
+                "groupes": [
+                    1,
+                    2
+                ],
+                "fusion": true
+            },
+            "2": {
+                "type": "Cours",
+                "matiere": "Comptabilit\u00e9;#979fd880",
+                "enseignant": "Mbianga",
+                "salle": "D201",
+                "date": "2023-05-01",
+                "hdebut": "11:45",
+                "hfin": "12:45",
+                "groupes": [
+                    1,
+                    2
+                ],
+                "fusion": true
+            }
+        }
+    ]
+}
