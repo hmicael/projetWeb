@@ -27,33 +27,34 @@
     <div class="table-container">
         <table>
             <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <?php
-                    foreach (['Nom', 'Référant', 'Actions'] as $value) {
-                        echo '<th scope="col">' . $value . '</th>';
-                    }?>
-                    
-                </tr>
+            <tr>
+                <th scope="col">#</th>
+                <?php
+                foreach (['Nom', 'Référant', 'Actions'] as $value) {
+                    echo '<th scope="col">' . $value . '</th>';
+                } ?>
+
+            </tr>
             </thead>
             <tbody id="tbody-enseignant">
-                <?php
-                    foreach ($enseignants as $key => $value) {
-                    $id = $key +1;
-                    echo '<tr>';
-                    echo '<td>'.$id .'</td>';
-                    echo '<td>' . $value['nom'] . '</td>';
-                    echo '<td>' . $value['referent'] . '</td>';
-                    echo '<td class="action-buttons">';
-                        echo '<a href="index.php?action=admin&edit=enseignants&id=' . $id . '" class="btn-edit open-enseignant-modal">Modifier <i class="fa-solid fa-pen-to-square"></i></a>';
-                        echo '<a href="index.php?action=admin&delete=enseignants&id=' . $id . '" class="btn-delete">Supprimer <i class="fa-solid fa-trash"></i></a>';
-                    echo '</td>';
-                    echo '</tr>';
-                }
-                ?>
-                <div class="action">
-                    <a id="create-enseignant-button" href="index.php?action=admin&create=enseignants" class="btn-add open-enseignant-modal"><i class="fa-solid fa-plus"></i></a>      
-                </div>
+            <?php
+            foreach ($enseignants as $key => $value) {
+                $id = $key + 1;
+                echo '<tr>';
+                echo '<td>' . $id . '</td>';
+                echo '<td>' . $value['nom'] . '</td>';
+                echo '<td>' . $value['referent'] . '</td>';
+                echo '<td class="action-buttons">';
+                echo '<a href="index.php?action=admin&edit=enseignants&id=' . $id . '" class="btn-edit open-enseignant-modal">Modifier <i class="fa-solid fa-pen-to-square"></i></a>';
+                echo '<a href="index.php?action=admin&delete=enseignants&id=' . $id . '" class="btn-delete">Supprimer <i class="fa-solid fa-trash"></i></a>';
+                echo '</td>';
+                echo '</tr>';
+            }
+            ?>
+            <div class="action">
+                <a id="create-enseignant-button" href="index.php?action=admin&create=enseignants"
+                   class="btn-add open-enseignant-modal"><i class="fa-solid fa-plus"></i></a>
+            </div>
             </tbody>
         </table>
     </div>

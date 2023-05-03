@@ -20,8 +20,14 @@
         "couleur": "#979fd880"
     },
     {
+<<<<<<< HEAD
         "nom": "R\u00e9seau",
         "referent": "Tsanta",
         "couleur": "#0bb8da80"
+=======
+        "nom": "Ds",
+        "referent": "Waller",
+        "couleur": "#c1818180"
+>>>>>>> 0ab6fe6ffd3aab163fc29f1bb12acf1ab5bca032
     }
 ]

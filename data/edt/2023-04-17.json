@@ -16,7 +16,22 @@
                 ],
                 "fusion": false
             }
-        ]
+        ],
+        {
+            "1": {
+                "type": "Cours",
+                "matiere": "BD;#0874e780",
+                "enseignant": "David Rei",
+                "salle": "D201",
+                "date": "2023-04-18",
+                "hdebut": "08:00",
+                "hfin": "08:15",
+                "groupes": [
+                    1
+                ],
+                "fusion": false
+            }
+        }
     ],
     "09:15": [
         {
